@@ -43,18 +43,7 @@ jobs:
           static_site_generator: next
 
       - name: Build with Next.js 🏗️
-        run: |
-           npx next build
-           echo "Build complete, checking output directory:"
-           ls -la
-           if [ ! -d "./out" ]; then 
-             echo "Output directory not found, creating fallback page"
-             mkdir -p out
-             echo "<html><body><h1>Site is being built</h1><p>Please check back soon.</p></body></html>" > out/index.html
-           else
-             echo "Output directory contents:"
-             ls -la ./out
-           fi
+        run: npx next build
 
       - name: Upload artifact 📡
         uses: actions/upload-pages-artifact@v3
@@ -70,6 +59,6 @@ jobs:
     needs: build
 
     steps:
-      - name: Publish to GitHub Pages 🚀
+      - name: Deploy to GitHub Pages 🚀
         id: deployment
         uses: actions/deploy-pages@v4
