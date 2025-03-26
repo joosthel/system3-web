@@ -1,5 +1,6 @@
 import Header from '../components/header';
 import Footer from '../components/footer';
+import VectorField from '@/components/vector-field';
 
 export default function Home() {
   return (
@@ -10,8 +11,8 @@ export default function Home() {
         This Website is currently under construction. To be transparent about the process you can see the current status down below.
       </div>
     
-      <div className="text-3xl font-bold py-40 border border-gray-400" id="Hero">
-        This is the Hero Section.
+      <div className="text-3xl font-bold py-40 border border-gray-400 relative" id="Hero" style={{ height: "1200px" }}>
+        <VectorField />
       </div>
 
       <div className="text-3xl font-bold py-40 border border-gray-400" id="Intro">
