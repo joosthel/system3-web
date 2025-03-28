@@ -1,6 +1,7 @@
 import Header from '../components/header';
 import Footer from '../components/footer';
 import VectorField from '@/components/vector-field';
+import ExpertiseWordCloud from '@/components/expertise-word-cloud';
 
 export default function Home() {
   return (
@@ -33,8 +34,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="text-3xl font-bold py-40 border border-gray-400" id="Expertise">
-        This is the Expertise Section.
+      <div className="text-3xl font-bold py-40 border border-gray-400 relative" id="Expertise" style={{ height: "1200px" }}>
+      <ExpertiseWordCloud />
       </div>
 
       <div className="font-bold py-40 border border-gray-400" id="Feed">
