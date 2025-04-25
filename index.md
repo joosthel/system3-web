@@ -5,7 +5,12 @@ title: Home
 
 ## Welcome
 
-I'm Joost Helfers, a creative technologist and software developer based in [Your Location]. At system³, I craft digital solutions that help businesses thrive in the modern landscape.
+Joost Helfers is a Berlin-based Creative Technologist and 3D Generalist specializing 
+  in developing innovative technical workflows and leveraging emerging technologies &
+  AI for visual creation. His core skills encompass advanced 3D techniques and digital 
+  twin development, which he leverages to support the realization of complex and imaginative 
+  artistic and technical visions. He has collaborated with companies such as INYO Mobility GmbH 
+  and CADFEM International, delivering cutting-edge technical concepts and creative problem-solving.
 
 ## Services
 
