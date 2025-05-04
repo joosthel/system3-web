@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Digital Twin Development for INYO Mobility"
+title: "INYO Mobility - Digital Twin Platform"
 date: 2025-05-04
 categories: portfolio
 image: /assets/imgs/project-images/inyo-project.jpg

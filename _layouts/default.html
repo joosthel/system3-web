@@ -58,6 +58,65 @@
           });
         }
       });
-    </script>
+
+      // Portfolio carousel functionality - Updated for infinite looping
+      document.addEventListener('DOMContentLoaded', function() {
+        // Portfolio carousel functionality
+        const carousel = document.querySelector('.portfolio-carousel');
+        const prevBtn = document.querySelector('.carousel-prev');
+        const nextBtn = document.querySelector('.carousel-next');
+        const indicators = document.querySelectorAll('.indicator');
+        
+        if (carousel && prevBtn && nextBtn) {
+          const cards = carousel.querySelectorAll('.portfolio-card');
+          let currentIndex = 0;
+          const totalCards = cards.length;
+          
+          // Exit if no cards
+          if (totalCards === 0) return;
+          
+          function updateIndicators() {
+            indicators.forEach((indicator, idx) => {
+              indicator.classList.toggle('active', idx === currentIndex);
+            });
+          }
+          
+          // Simple card width calculation
+          function getCardWidth() {
+            const containerWidth = carousel.parentElement.offsetWidth;
+            return containerWidth; // Always use container width
+          }
+          
+          function updateCarouselPosition() {
+            const width = getCardWidth();
+            carousel.style.transform = `translateX(${-currentIndex * width}px)`;
+            updateIndicators();
+          }
+          
+          // Initial position
+          updateCarouselPosition();
+          
+          // Previous button with loop
+          prevBtn.addEventListener('click', function() {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : totalCards - 1;
+            updateCarouselPosition();
+          });
+          
+          // Next button with loop
+          nextBtn.addEventListener('click', function() {
+            currentIndex = (currentIndex < totalCards - 1) ? currentIndex + 1 : 0;
+            updateCarouselPosition();
+          });
+          
+          // Handle window resize
+          window.addEventListener('resize', function() {
+            updateCarouselPosition();
+          });
+          
+          // Initialize indicators
+          updateIndicators();
+        }
+      });
+  </script>
   </body>
 </html>

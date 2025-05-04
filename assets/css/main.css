@@ -56,8 +56,7 @@ a:hover {
 
 /* Grid layouts */
 .main-content, 
-.blog-section, 
-.portfolio-section {
+.blog-section {
   display: grid;
   grid-template-columns: 50% 50%;
   width: 100%;
@@ -66,8 +65,7 @@ a:hover {
 }
 
 .main-content-inner,
-.blog-section-inner,
-.portfolio-section-inner {
+.blog-section-inner {
   grid-column: 1;
   padding: 0 2rem;
 }
@@ -78,6 +76,7 @@ a:hover {
   height: 100vh;
   position: relative;
   overflow: hidden;
+  margin-bottom: 1rem;
 }
 
 /* Slideshow container */
@@ -109,28 +108,24 @@ a:hover {
   opacity: 1;
 }
 
-/* Blog/Portfolio cards */
-.post-grid,
-.portfolio-grid {
+/* Blog cards */
+.post-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--grid-gap);
 }
 
-.post-card,
-.portfolio-card {
+.post-card {
   padding: 1.5rem 0;
   position: relative;
   background-color: var(--secondary-color);
 }
 
-.post-card:hover h3,
-.portfolio-card:hover h3 {
+.post-card:hover h3 {
   text-decoration: underline;
 }
 
-.post-card h3,
-.portfolio-card h3 {
+.post-card h3 {
   margin-top: 0;
   margin-bottom: 0.75rem;
 }
@@ -151,12 +146,6 @@ a:hover {
   text-transform: uppercase;
   font-size: 0.85rem;
   letter-spacing: 0.05em;
-}
-
-.portfolio-card img {
-  width: 100%;
-  height: auto;
-  margin-bottom: 1.5rem;
 }
 
 /* Header */
@@ -205,7 +194,7 @@ a:hover {
 
 /* Mobile menu button */
 .mobile-menu-toggle {
-  display: none; /* Hidden by default on desktop */
+  display: none;
   background: none;
   border: none;
   padding: 0.5rem;
@@ -226,7 +215,7 @@ a:hover {
 .site-footer {
   height: 100vh; 
   background-color: var(--light-gray);
-  padding: 2rem 2rem;
+  padding: 2rem;
   margin-top: 4rem;
   display: flex;
   flex-direction: column;
@@ -264,11 +253,10 @@ a:hover {
 }
 
 .footer-description {
-  max-width: 100%;
+  max-width: 65ch;
   margin-bottom: 1rem;
   font-size: 0.9rem;
   max-height: 12rem;
-  max-width: 65ch;
   overflow: hidden;
   position: relative;
 }
@@ -325,14 +313,125 @@ a:hover {
 
 /* Posts */
 .post {
-  padding-top: 6rem; /* Adjust based on your header height */
+  padding-top: 6rem;
 }
 
-/* Responsive adjustments */
+/* Portfolio section */
+.portfolio-section {
+  display: block; 
+  width: 100%;
+  overflow: hidden;
+}
+
+.portfolio-section-inner {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 2rem;
+}
+
+/* Portfolio carousel */
+.carousel-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin: 2rem 0;
+}
+
+.portfolio-carousel {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+.portfolio-card {
+  flex: 0 0 100%;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.portfolio-card img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 1.5rem;
+}
+
+.portfolio-card:hover h3 {
+  text-decoration: underline;
+}
+
+/* Carousel controls */
+.carousel-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.carousel-prev,
+.carousel-next {
+  background: none;
+  border: 1px solid #000;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+/* Carousel indicators */
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #ccc;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.indicator.active {
+  background-color: #000;
+}
+
+/* Tablet & desktop adjustments */
+@media (min-width: 769px) {
+  .portfolio-carousel {
+    gap: 1.5rem;
+  }
+  
+  .portfolio-card {
+    flex: 0 0 calc(90% - 1.5rem);
+  }
+  
+  /* Scroll offset for main content to account for full-height hero */
+  .main-content {
+    margin-top: 2rem;
+  }
+}
+
+/* Mobile adjustments */
 @media (max-width: 768px) {
   .main-content, 
-  .blog-section, 
-  .portfolio-section {
+  .blog-section {
     grid-template-columns: 1fr;
   }
   
@@ -344,10 +443,8 @@ a:hover {
   }
   
   .site-header {
-    position: absolute;
     padding: 1rem 1.5rem;
     width: calc(100% - 3rem);
-    background: rgba(255, 255, 255, 0.5);
     z-index: 100;
   }
   
@@ -356,7 +453,7 @@ a:hover {
   }
 
   .mobile-menu-toggle {
-    display: block; /* Show on mobile */
+    display: block;
   }
 
   .header-right {
@@ -380,7 +477,6 @@ a:hover {
     transform: translateX(0);
   }
   
-  /* When menu is active, transform the menu bars into X */
   .mobile-menu-toggle.active .menu-bar:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
   }
@@ -393,15 +489,9 @@ a:hover {
     transform: rotate(-45deg) translate(5px, -5px);
   }
   
-  /* Larger links on mobile menu */
   .header-right a {
     font-size: 1.25rem;
     padding: 0.5rem 0;
-  }
-
-  /* Add padding to account for fixed header */
-  .hero-section {
-    padding-top: 0px;
   }
   
   .footer-main, 
@@ -414,13 +504,25 @@ a:hover {
   }
 
   .post {
-    padding-top: 6rem;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding: 6rem 0.5rem 0;
   }
-}
 
-/* Scroll offset for main content to account for full-height hero */
-.main-content {
-  margin-top: 2rem;
+  .portfolio-section-inner {
+    padding: 0 1rem;
+  }
+
+  .portfolio-carousel {
+    gap: 0;
+  }
+  
+  .carousel-container {
+    margin: 1rem 0;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  .portfolio-card {
+    width: 100%;
+    margin: 0;
+  }
 }
