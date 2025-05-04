@@ -23,35 +23,7 @@ layout: default
     </div>
     <!-- Empty right column -->
   </section>
-  
-  <!-- Blog Posts Section (Two-Column with Right Empty) - Dynamic -->
-  <section class="blog-section">
-    <div class="blog-section-inner">
-      <h2>WRITING</h2>
-      <div class="post-grid">
-        {% for post in site.posts limit:3 %}
-        <div class="post-card">
-          <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
-          <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-          {% if post.description %}
-            <p>{{ post.description }}</p>
-          {% else %}
-            <p>{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
-          {% endif %}
-          <a href="{{ post.url | relative_url }}" class="read-more">READ MORE →</a>
-        </div>
-        {% endfor %}
-      </div>
-      
-      {% if site.posts.size > 3 %}
-      <div class="view-all">
-        <a href="{{ '/blog' | relative_url }}" class="view-all-button">ALL POSTS</a>
-      </div>
-      {% endif %}
-    </div>
-    <!-- Empty right column -->
-  </section>
-  
+
   <!-- Portfolio Projects Section (Two-Column with Right Empty) - Dynamic -->
   <section class="portfolio-section">
     <div class="portfolio-section-inner">
@@ -69,6 +41,34 @@ layout: default
         </div>
         {% endfor %}
       </div>
+    </div>
+    <!-- Empty right column -->
+  </section>
+  
+  <!-- Blog Posts Section (Two-Column with Right Empty) - Dynamic -->
+  <section class="blog-section">
+    <div class="blog-section-inner">
+      <h2>WRITING</h2>
+      <div class="post-grid">
+        {% assign blog_posts = site.posts | where: "categories", "blog" %}
+        {% for post in blog_posts limit:3 %}
+        <div class="post-card">
+          <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+          {% if post.description %}
+            <p>{{ post.description }}</p>
+          {% else %}
+            <p>{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+          {% endif %}
+          <a href="{{ post.url | relative_url }}" class="read-more">READ MORE →</a>
+        </div>
+        {% endfor %}
+      </div>
+      
+      {% if blog_posts.size > 3 %}
+      <div class="view-all">
+        <a href="{{ '/blog' | relative_url }}" class="view-all-button">ALL POSTS</a>
+      </div>
+      {% endif %}
     </div>
     <!-- Empty right column -->
   </section>
