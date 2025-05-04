@@ -5,9 +5,19 @@
     </a>
     <h1 class="site-title">{{ site.title }}</h1>
   </div>
+  
+  <!-- Mobile menu button -->
+  <button class="mobile-menu-toggle" aria-label="Toggle menu">
+    <span class="menu-bar"></span>
+    <span class="menu-bar"></span>
+    <span class="menu-bar"></span>
+  </button>
+  
+  <!-- Navigation for desktop and mobile (hidden on mobile until toggled) -->
   <nav class="header-right">
     <a href="{{ "/" | relative_url }}">Home</a>
     <a href="{{ "/about" | relative_url }}">About</a>
     <a href="{{ "/blog" | relative_url }}">Blog</a>
+    <a href="{{ "/projects" | relative_url }}">Projects</a>
   </nav>
 </header>
