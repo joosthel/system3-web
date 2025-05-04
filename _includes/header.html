@@ -1,13 +1,13 @@
 <header class="site-header">
-    <div class="header-left">
-      <a href="{{ "/" | relative_url }}" class="header-logo" title="{{ site.title }}">
-        <img src="../assets/imgs/system3_logo_transparent_black.png" alt="{{ site.title }} Logo" />
-      </a>
-      <h1 class="site-title">{{ site.title }}</h1>
-    </div>
-    <nav class="header-right">
-      <a href="{{ "/" | relative_url }}">Home</a>
-      <a href="{{ "/about" | relative_url }}">About</a>
-      <a href="{{ "/blog" | relative_url }}">Blog</a>
-    </nav>
-  </header>
+  <div class="header-left">
+    <a href="{{ "/" | relative_url }}" class="header-logo" title="{{ site.title }}">
+      <img src="{{ "/assets/imgs/system3_logo_transparent_black.png" | relative_url }}" alt="{{ site.title }} Logo" />
+    </a>
+    <h1 class="site-title">{{ site.title }}</h1>
+  </div>
+  <nav class="header-right">
+    <a href="{{ "/" | relative_url }}">Home</a>
+    <a href="{{ "/about" | relative_url }}">About</a>
+    <a href="{{ "/blog" | relative_url }}">Blog</a>
+  </nav>
+</header>

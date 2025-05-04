@@ -1,53 +1,49 @@
 <footer class="site-footer">
-    <div class="footer-main">
-      <!-- Column 1: Logo and Title -->
-      <div class="footer-column">
-        <div class="footer-logo">
-          <img src="/assets/imgs/system3_logo_transparent_black.png" alt="{{ site.title }} Logo" />
-          <h2>{{ site.title }}</h2>
-        </div>
-        <p class="footer-description">{{ site.description }}</p>
+  <div class="footer-main">
+    <!-- Column 1: Logo and Title -->
+    <div class="footer-column">
+      <div class="footer-logo">
+        <img src="{{ "/assets/imgs/system3_logo_transparent_black.png" | relative_url }}" alt="Logo" />
+        <h2>{{ site.title }}</h2>
       </div>
-      
-      <!-- Column 2: Site Map -->
-      <div class="footer-column">
-        <h3>Site Map</h3>
-        <nav class="footer-nav">
-          <ul class="footer-links">
-            <li><a href="{{ '/' | relative_url }}">Home</a></li>
-            <li><a href="{{ '/about' | relative_url }}">About</a></li>
-            <li><a href="{{ '/blog' | relative_url }}">Blog</a></li>
-            <li><a href="{{ '/projects' | relative_url }}">Projects</a></li>
-            <li><a href="{{ '/contact' | relative_url }}">Contact</a></li>
-          </ul>
-        </nav>
+      <p class="footer-description">{{ site.description }}</p>
+    </div>
+    
+    <!-- Column 2: Site Map -->
+    <div class="footer-column">
+      <h3>SITE MAP</h3>
+      <nav class="footer-nav">
+        <ul class="footer-links">
+          <li><a href="{{ '/' | relative_url }}">HOME</a></li>
+          <li><a href="{{ '/about' | relative_url }}">ABOUT</a></li>
+          <li><a href="{{ '/blog' | relative_url }}">BLOG</a></li>
+          <li><a href="{{ '/projects' | relative_url }}">PROJECTS</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Dynamic spacer -->
+  <div class="footer-spacer"></div>
+  
+  <div class="footer-bottom">
+    <div class="footer-bottom-column">
+      <h4>LOCATION</h4>
+      <p>Berlin, Germany</p>
+    </div>
+    
+    <div class="footer-bottom-column">
+      <h4>CONTACT</h4>
+      <p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+      <div class="social-links">
+        <a href="https://github.com/{{ site.github_username }}">GitHub</a>
+        <a href="https://instagram.com/{{ site.instagram_username }}">Instagram</a>
       </div>
     </div>
     
-    <div class="footer-bottom">
-      <!-- Bottom Row: Three Columns -->
-      <div class="footer-bottom-column">
-        <h4>Location</h4>
-        <p>Your City, Country</p>
-      </div>
-      
-      <div class="footer-bottom-column">
-        <h4>Contact</h4>
-        <p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
-        <div class="social-links">
-          {% if site.github_username %}
-          <a href="https://github.com/{{ site.github_username }}">GitHub</a>
-          {% endif %}
-          {% if site.instagram_username %}
-          <a href="https://instagram.com/{{ site.instagram_username }}">Instagram</a>
-          {% endif %}
-        </div>
-      </div>
-      
-      <div class="footer-bottom-column">
-        <h4>Copyright</h4>
-        <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}</p>
-        <p>All rights reserved</p>
-      </div>
+    <div class="footer-bottom-column">
+      <h4>COPYRIGHT</h4>
+      <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}</p>
     </div>
-  </footer>
+  </div>
+</footer>
