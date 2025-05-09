@@ -21,6 +21,21 @@
     <!-- Slideshow JavaScript -->
     <script>
       document.addEventListener('DOMContentLoaded', function() {
+        // Footer Timestamp
+        function updateBerlinTime() {
+          const berlinTime = new Date().toLocaleTimeString('en-US', {
+            timeZone: 'Europe/Berlin',
+            hour: '2-digit', 
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: false
+          });
+          document.getElementById('berlin-time').textContent = berlinTime + ' CET';
+        }
+        
+        updateBerlinTime();
+        setInterval(updateBerlinTime, 1000);        
+        
         // Slideshow functionality
         const slideshowImages = document.querySelectorAll('.slideshow-image');
         if (slideshowImages.length > 1) {

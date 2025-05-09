@@ -66,8 +66,8 @@ a:hover {
   display: grid;
   grid-template-columns: 50% 50%;
   width: 100%;
-  padding-bottom: 2rem;
-  margin-bottom: 2rem;
+  padding-bottom: 0rem;
+  margin-bottom: 4rem;
 }
 
 .main-content-inner,
@@ -83,7 +83,7 @@ a:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem;
+  padding: 1rem 2rem;
   position: absolute;
   top: 0;
   left: 0;
@@ -149,7 +149,7 @@ a:hover {
   height: 100vh;
   position: relative;
   overflow: hidden;
-  margin-bottom: 1rem;
+  margin-bottom: 4rem;
 }
 
 .slideshow-container {
@@ -187,6 +187,7 @@ a:hover {
   display: block; 
   width: 100%;
   overflow: hidden;
+  margin-bottom: 4rem;
 }
 
 .portfolio-section-inner {
