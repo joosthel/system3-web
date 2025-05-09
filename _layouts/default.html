@@ -32,7 +32,7 @@
             slideshowImages[currentSlide].classList.add('active');
           }
           
-          // Change image every 5 seconds (5000ms)
+          // Change image every 3 seconds (3000ms)
           setInterval(nextSlide, 3000);
         }
       
@@ -44,10 +44,9 @@
           menuToggle.addEventListener('click', function() {
             navMenu.classList.toggle('active');
             menuToggle.classList.toggle('active');
-            document.body.classList.toggle('menu-open'); // Optional: prevent body scrolling when menu is open
+            document.body.classList.toggle('menu-open'); 
           });
           
-          // Close menu when clicking a link
           const navLinks = navMenu.querySelectorAll('a');
           navLinks.forEach(link => {
             link.addEventListener('click', function() {
@@ -57,23 +56,22 @@
             });
           });
         }
-      });
 
-      // Portfolio carousel functionality - Updated for infinite looping
-      document.addEventListener('DOMContentLoaded', function() {
         // Portfolio carousel functionality
         const carousel = document.querySelector('.portfolio-carousel');
         const prevBtn = document.querySelector('.carousel-prev');
         const nextBtn = document.querySelector('.carousel-next');
-        const indicators = document.querySelectorAll('.indicator');
+        // Note: querySelectorAll for indicators will be used after they are added to home.html
         
         if (carousel && prevBtn && nextBtn) {
           const cards = carousel.querySelectorAll('.portfolio-card');
           let currentIndex = 0;
           const totalCards = cards.length;
           
-          // Exit if no cards
           if (totalCards === 0) return;
+
+          // Dynamically select indicators after they are added to the DOM
+          const indicators = document.querySelectorAll('.carousel-indicators .indicator');
           
           function updateIndicators() {
             indicators.forEach((indicator, idx) => {
@@ -81,40 +79,45 @@
             });
           }
           
-          // Simple card width calculation
           function getCardWidth() {
-            const containerWidth = carousel.parentElement.offsetWidth;
-            return containerWidth; // Always use container width
+            // Each card is set to 100% width of the carousel container by CSS
+            return carousel.parentElement.offsetWidth;
           }
           
           function updateCarouselPosition() {
             const width = getCardWidth();
             carousel.style.transform = `translateX(${-currentIndex * width}px)`;
-            updateIndicators();
+            if (indicators.length > 0) {
+              updateIndicators();
+            }
           }
           
-          // Initial position
           updateCarouselPosition();
           
-          // Previous button with loop
           prevBtn.addEventListener('click', function() {
             currentIndex = (currentIndex > 0) ? currentIndex - 1 : totalCards - 1;
             updateCarouselPosition();
           });
           
-          // Next button with loop
           nextBtn.addEventListener('click', function() {
             currentIndex = (currentIndex < totalCards - 1) ? currentIndex + 1 : 0;
             updateCarouselPosition();
           });
           
-          // Handle window resize
           window.addEventListener('resize', function() {
             updateCarouselPosition();
           });
           
-          // Initialize indicators
-          updateIndicators();
+          if (indicators.length > 0) {
+            updateIndicators(); // Initial call
+            // Add click event listeners for indicators if they are buttons
+            indicators.forEach((indicator, idx) => {
+              indicator.addEventListener('click', () => {
+                currentIndex = idx;
+                updateCarouselPosition();
+              });
+            });
+          }
         }
       });
   </script>

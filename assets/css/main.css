@@ -1,4 +1,6 @@
-/* Base styles */
+/* ===================================================================
+   1. GLOBAL VARIABLES & BASE STYLES
+   =================================================================== */
 :root {
   --primary-color: #000000;
   --secondary-color: #ffffff;
@@ -19,7 +21,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Typography */
+/* ===================================================================
+   2. TYPOGRAPHY
+   =================================================================== */
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -44,7 +48,9 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Layout structure */
+/* ===================================================================
+   3. LAYOUT CONTAINERS
+   =================================================================== */
 .page-content {
   width: 100%;
 }
@@ -70,85 +76,9 @@ a:hover {
   padding: 0 2rem;
 }
 
-/* Hero section - full height */
-.hero-section {
-  width: 100%;
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
-  margin-bottom: 1rem;
-}
-
-/* Slideshow container */
-.slideshow-container {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-.slideshow-images {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-.slideshow-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-position: center;
-  background-size: cover;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-}
-
-.slideshow-image.active {
-  opacity: 1;
-}
-
-/* Blog cards */
-.post-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--grid-gap);
-}
-
-.post-card {
-  padding: 1.5rem 0;
-  position: relative;
-  background-color: var(--secondary-color);
-}
-
-.post-card:hover h3 {
-  text-decoration: underline;
-}
-
-.post-card h3 {
-  margin-top: 0;
-  margin-bottom: 0.75rem;
-}
-
-.post-date {
-  display: inline-block;
-  font-size: 0.85rem;
-  margin-bottom: 1rem;
-  color: var(--med-gray);
-  font-weight: 500;
-}
-
-.read-more,
-.view-project {
-  display: inline-block;
-  margin-top: 1rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 0.85rem;
-  letter-spacing: 0.05em;
-}
-
-/* Header */
+/* ===================================================================
+   4. HEADER & NAVIGATION
+   =================================================================== */
 .site-header {
   display: flex;
   justify-content: space-between;
@@ -211,7 +141,203 @@ a:hover {
   transition: 0.3s;
 }
 
-/* Footer */
+/* ===================================================================
+   5. HERO SECTION & SLIDESHOW
+   =================================================================== */
+.hero-section {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.slideshow-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.slideshow-images {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.slideshow-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.slideshow-image.active {
+  opacity: 1;
+}
+
+/* ===================================================================
+   6. PORTFOLIO SECTION
+   =================================================================== */
+.portfolio-section {
+  display: block; 
+  width: 100%;
+  overflow: hidden;
+}
+
+.portfolio-section-inner {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 2rem;
+}
+
+/* Portfolio carousel */
+.carousel-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin: 2rem 0;
+}
+
+.portfolio-carousel {
+  display: flex;
+  transition: transform 0.4s ease;
+  gap: 1.5rem
+}
+
+.portfolio-card {
+  flex: 0 0 calc(100% - 1.5rem);
+  width: calc(100% - 1.5rem);
+  max-width: 450px;
+  border-radius: 0;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolio-card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+.portfolio-card-content {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.portfolio-card:hover h3 {
+  text-decoration: underline;
+}
+
+/* Carousel controls */
+.carousel-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0 0.5rem;
+}
+
+.carousel-prev,
+.carousel-next {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.8rem;
+  color: var(--text-color);
+  padding: 0.5rem;
+  line-height: 1;
+  transition: opacity 0.2s ease;
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+  opacity: 0.6;
+}
+
+/* Carousel indicators */
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--light-gray);
+  border: 1px solid var(--med-gray);
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.indicator.active {
+  background-color: var(--text-color);
+  border-color: var(--text-color);
+}
+
+/* ===================================================================
+   7. BLOG SECTION
+   =================================================================== */
+.post-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--grid-gap);
+}
+
+.post-card {
+  padding: 1.5rem 0;
+  position: relative;
+  background-color: var(--secondary-color);
+}
+
+.post-card:hover h3 {
+  text-decoration: underline;
+}
+
+.post-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.post-date {
+  display: inline-block;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  color: var(--med-gray);
+  font-weight: 500;
+}
+
+/* ===================================================================
+   8. BUTTONS & INTERACTIVE ELEMENTS
+   =================================================================== */
+.read-more,
+.view-project {
+  display: inline-block;
+  margin-top: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+}
+
+/* ===================================================================
+   9. FOOTER
+   =================================================================== */
 .site-footer {
   height: 100vh; 
   background-color: var(--light-gray);
@@ -311,120 +437,20 @@ a:hover {
   margin-right: 1rem;
 }
 
-/* Posts */
+/* ===================================================================
+   10. SINGLE POST STYLES
+   =================================================================== */
 .post {
   padding-top: 6rem;
 }
 
-/* Portfolio section */
-.portfolio-section {
-  display: block; 
-  width: 100%;
-  overflow: hidden;
-}
-
-.portfolio-section-inner {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 0 2rem;
-}
-
-/* Portfolio carousel */
-.carousel-container {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-  margin: 2rem 0;
-}
-
-.portfolio-carousel {
-  display: flex;
-  transition: transform 0.4s ease;
-}
-
-.portfolio-card {
-  flex: 0 0 100%;
-  width: 100%;
-  max-width: 450px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-  border-radius: 4px;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-}
-
-.portfolio-card img {
-  width: 100%;
-  height: auto;
-  margin-bottom: 1.5rem;
-}
-
-.portfolio-card:hover h3 {
-  text-decoration: underline;
-}
-
-/* Carousel controls */
-.carousel-controls {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-}
-
-.carousel-prev,
-.carousel-next {
-  background: none;
-  border: 1px solid #000;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 1.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.carousel-prev:hover,
-.carousel-next:hover {
-  background-color: #000;
-  color: #fff;
-}
-
-/* Carousel indicators */
-.carousel-indicators {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
-}
-
-.indicator {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: #ccc;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-}
-
-.indicator.active {
-  background-color: #000;
-}
-
+/* ===================================================================
+   11. RESPONSIVE STYLES
+   =================================================================== */
 /* Tablet & desktop adjustments */
 @media (min-width: 769px) {
-  .portfolio-carousel {
-    gap: 1.5rem;
-  }
-  
   .portfolio-card {
-    flex: 0 0 calc(90% - 1.5rem);
-  }
-  
-  /* Scroll offset for main content to account for full-height hero */
-  .main-content {
-    margin-top: 2rem;
+    flex: 0 0 100%;
   }
 }
 
@@ -512,7 +538,7 @@ a:hover {
   }
 
   .portfolio-carousel {
-    gap: 0;
+    gap: 0.75rem;
   }
   
   .carousel-container {
@@ -522,7 +548,8 @@ a:hover {
   }
   
   .portfolio-card {
-    width: 100%;
+    width: calc(100% - 0.75rem);
+    flex: 0 0 calc(100% - 0.75rem);
     margin: 0;
   }
 }

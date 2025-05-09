@@ -3,7 +3,7 @@ layout: post
 title: "INYO Mobility - Digital Twin Platform"
 date: 2025-05-04
 categories: portfolio
-image: /assets/imgs/project-images/inyo-project.jpg
+image: /assets/imgs/slideshow/genai_bike.webp
 description: "Interactive 3D visualization solutions for vehicle design optimization"
 ---
 
