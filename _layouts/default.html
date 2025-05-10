@@ -134,6 +134,44 @@
             });
           }
         }
+
+        // ASCII Progress Bar
+        const asciiBar = document.getElementById('ascii-progress-bar');
+        if (asciiBar) {
+          const maxLength = 40; // Number of characters to fill
+          let currentPosition = 0;
+          const asciiChars = '!@#$%^&*()_+-={}|;:,.<>?/~`';
+          
+          function updateAsciiBar() {
+            if (currentPosition >= maxLength) {
+              // Reset the bar when full
+              asciiBar.textContent = '[' + ' '.repeat(maxLength) + ']';
+              currentPosition = 0;
+              setTimeout(updateAsciiBar, 500); // Pause before starting again
+              return;
+            }
+            
+            // Get the current bar content
+            let barContent = asciiBar.textContent;
+            
+            // Replace the character at current position with a random ASCII character
+            const randomChar = asciiChars.charAt(Math.floor(Math.random() * asciiChars.length));
+            barContent = barContent.substring(0, currentPosition + 1) + randomChar + barContent.substring(currentPosition + 2);
+            
+            // Update the bar
+            asciiBar.textContent = barContent;
+            
+            // Move to next position
+            currentPosition++;
+            
+            // Schedule next update with variable timing for dynamic effect
+            const nextDelay = 100; // 100ms
+            setTimeout(updateAsciiBar, nextDelay);
+          }
+          
+          // Start the ASCII animation
+          updateAsciiBar();
+        }
       });
   </script>
   </body>
