@@ -37,24 +37,26 @@ layout: default
     <div class="portfolio-section-inner">
       <h2>Here are some of the things I have worked on</h2>
       
-      <!-- Swipeable Card Container -->
-      <div class="carousel-container">
-        <div class="portfolio-carousel">
-          {% assign portfolio_posts = site.posts | where: "categories", "portfolio" %}
-          {% for post in portfolio_posts %}
-          <div class="portfolio-card">
-            {% if post.image %}
-            <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
-            {% endif %}
-            <div class="portfolio-card-content">
-              <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-              <p>{{ post.description | strip_html | truncatewords: 20 }}</p>
-              <a href="{{ post.url | relative_url }}" class="view-project">VIEW PROJECT →</a>
-            </div>
+    <!-- Swipeable Card Container -->
+    <div class="carousel-container">
+      <button class="carousel-prev" aria-label="Previous project">‹</button>
+      <div class="portfolio-carousel">
+        {% assign portfolio_posts = site.posts | where: "categories", "portfolio" %}
+        {% for post in portfolio_posts %}
+        <div class="portfolio-card">
+          {% if post.image %}
+          <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+          {% endif %}
+          <div class="portfolio-card-content">
+            <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+            <p>{{ post.description | strip_html | truncatewords: 20 }}</p>
+            <a href="{{ post.url | relative_url }}" class="view-project">VIEW PROJECT →</a>
           </div>
-          {% endfor %}
         </div>
+        {% endfor %}
       </div>
+      <button class="carousel-next" aria-label="Next project">›</button>
+    </div>
 
       <!-- Carousel Indicators -->
       {% if portfolio_posts.size > 1 %}

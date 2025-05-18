@@ -90,63 +90,109 @@
         const carousel = document.querySelector('.portfolio-carousel');
         const prevBtn = document.querySelector('.carousel-prev');
         const nextBtn = document.querySelector('.carousel-next');
-        // Note: querySelectorAll for indicators will be used after they are added to home.html
-        
-        if (carousel && prevBtn && nextBtn) {
+
+        if (carousel) {
           const cards = carousel.querySelectorAll('.portfolio-card');
           let currentIndex = 0;
           const totalCards = cards.length;
           
           if (totalCards === 0) return;
-
-          // Dynamically select indicators after they are added to the DOM
-          const indicators = document.querySelectorAll('.carousel-indicators .indicator');
           
-          function updateIndicators() {
+          // Get card width and gap
+          function getCardAndGap() {
+            const card = carousel.querySelector('.portfolio-card');
+            const cardWidth = card.offsetWidth;
+            const computedStyle = window.getComputedStyle(carousel);
+            const gap = parseInt(computedStyle.gap) || 0;
+            return { cardWidth, gap };
+          }
+          
+          function updateCarouselPosition() {
+            const { cardWidth, gap } = getCardAndGap();
+            const isMobile = window.innerWidth <= 768;
+            
+            carousel.style.transition = 'transform 0.4s ease';
+            carousel.style.transform = `translateX(${-currentIndex * (cardWidth + (isMobile ? 0 : gap))}px)`;
+            
+            // Update indicators
+            const indicators = document.querySelectorAll('.indicator');
             indicators.forEach((indicator, idx) => {
               indicator.classList.toggle('active', idx === currentIndex);
             });
           }
           
-          function getCardWidth() {
-            // Each card is set to 100% width of the carousel container by CSS
-            return carousel.parentElement.offsetWidth;
-          }
-          
-          function updateCarouselPosition() {
-            const width = getCardWidth();
-            carousel.style.transform = `translateX(${-currentIndex * width}px)`;
-            if (indicators.length > 0) {
-              updateIndicators();
-            }
-          }
-          
+          // Initialize position
           updateCarouselPosition();
           
-          prevBtn.addEventListener('click', function() {
-            currentIndex = (currentIndex > 0) ? currentIndex - 1 : totalCards - 1;
-            updateCarouselPosition();
-          });
-          
-          nextBtn.addEventListener('click', function() {
-            currentIndex = (currentIndex < totalCards - 1) ? currentIndex + 1 : 0;
-            updateCarouselPosition();
-          });
-          
-          window.addEventListener('resize', function() {
-            updateCarouselPosition();
-          });
-          
-          if (indicators.length > 0) {
-            updateIndicators(); // Initial call
-            // Add click event listeners for indicators if they are buttons
-            indicators.forEach((indicator, idx) => {
-              indicator.addEventListener('click', () => {
-                currentIndex = idx;
-                updateCarouselPosition();
-              });
+          // Previous button
+          if (prevBtn) {
+            prevBtn.addEventListener('click', function() {
+              currentIndex = Math.max(0, currentIndex - 1);
+              updateCarouselPosition();
             });
           }
+          
+          // Next button
+          if (nextBtn) {
+            nextBtn.addEventListener('click', function() {
+              const maxIndex = cards.length - (window.innerWidth <= 768 ? 1 : 4);
+              currentIndex = Math.min(maxIndex, currentIndex + 1);
+              updateCarouselPosition();
+            });
+          }
+          
+          // Handle touch events for swiping
+          let touchStartX = 0;
+          let touchEndX = 0;
+          
+          carousel.addEventListener('touchstart', function(e) {
+            touchStartX = e.touches[0].clientX;
+          }, {passive: true});
+          
+          carousel.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].clientX;
+            const difference = touchStartX - touchEndX;
+            
+            // Swipe right (previous)
+            if (difference < -50) {
+              currentIndex = Math.max(0, currentIndex - 1);
+              updateCarouselPosition();
+            }
+            
+            // Swipe left (next)
+            else if (difference > 50) {
+              const maxIndex = cards.length - (window.innerWidth <= 768 ? 1 : 4);
+              currentIndex = Math.min(maxIndex, currentIndex + 1);
+              updateCarouselPosition();
+            }
+          }, {passive: true});
+          
+          // Add indicator click handlers
+          const indicators = document.querySelectorAll('.indicator');
+          indicators.forEach((indicator, idx) => {
+            indicator.addEventListener('click', () => {
+              currentIndex = idx;
+              updateCarouselPosition();
+            });
+          });
+          
+          // Update on window resize
+          window.addEventListener('resize', function() {
+            // Reset transition during resize to prevent jumping
+            carousel.style.transition = 'none';
+            
+            // Make sure we don't scroll beyond available cards
+            const maxIndex = cards.length - (window.innerWidth <= 768 ? 1 : 4);
+            currentIndex = Math.min(currentIndex, maxIndex);
+            
+            // Update position
+            updateCarouselPosition();
+            
+            // Re-enable transitions after a short delay
+            setTimeout(() => {
+              carousel.style.transition = 'transform 0.4s ease';
+            }, 50);
+          });
         }
 
         // ASCII Progress Bar
