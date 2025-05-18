@@ -61,7 +61,6 @@ a:hover {
 }
 
 /* Grid layouts */
-.main-content, 
 .blog-section {
   display: grid;
   grid-template-columns: 50% 50%;
@@ -70,10 +69,26 @@ a:hover {
   margin-bottom: 4rem;
 }
 
-.main-content-inner,
 .blog-section-inner {
   grid-column: 1;
   padding: 0 2rem;
+}
+
+.main-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 2rem;
+  margin-bottom: 4rem;
+  box-sizing: border-box;
+}
+
+.main-content-inner {
+  flex: 0 1 45%; 
+  max-width: 600px; 
+  padding-right: 2rem;
 }
 
 /* ===================================================================
@@ -158,37 +173,37 @@ a:hover {
 .hero-section {
   width: 100%;
   height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
-  overflow: hidden;
-  margin-bottom: 4rem;
+  padding: 0;
+  margin-bottom: 1rem;
 }
 
-.slideshow-container {
+.hero-content {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 0.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-model {
+  width: 100%;
+  height: 98vh; 
+  position: relative;
+  z-index: 1;
+}
+
+.hero-model model-viewer {
   width: 100%;
   height: 100%;
-  position: relative;
-}
-
-.slideshow-images {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-.slideshow-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-position: center;
-  background-size: cover;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-}
-
-.slideshow-image.active {
-  opacity: 1;
+  background-color: transparent;
+  --poster-color: transparent;
 }
 
 /* ===================================================================
@@ -468,12 +483,36 @@ a:hover {
 
 /* Mobile adjustments */
 @media (max-width: 768px) {
-  .main-content, 
+  .hero-section {
+    height: 98vh;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-content {
+    margin-top:3.5rem;
+  }
+  
+  .hero-model {
+    height: 98vh;
+  }
+  
+  .main-content {
+    flex-direction: column;
+    padding: 0 1.5rem;
+    align-items: stretch;
+  }
+  
+  .main-content-inner {
+    flex: 0 0 auto;
+    max-width: 100%;
+    padding-right: 0;
+    margin-bottom: 2rem;
+  }
+  
   .blog-section {
     grid-template-columns: 1fr;
   }
   
-  .main-content-inner,
   .blog-section-inner,
   .portfolio-section-inner {
     grid-column: 1;
