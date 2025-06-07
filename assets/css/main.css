@@ -494,6 +494,38 @@ a:hover {
 }
 
 /* ===================================================================
+   LAB SECTION
+   =================================================================== */
+.lab-section {
+  width: 100%;
+  margin-bottom: 4rem;
+}
+
+.lab-section-inner {
+  padding: 0 2rem;
+}
+
+.lab-grid {
+  margin-top: 2rem;
+}
+
+.lab-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  background: transparent;
+}
+
+.lab-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border: none;
+}
+
+/* ===================================================================
    11. RESPONSIVE STYLES
    =================================================================== */
 
@@ -584,5 +616,16 @@ a:hover {
     max-width: 100% !important; /* Force full width on mobile */
     margin: 0;
     width: 100%;
+  }
+
+  .lab-section {
+    margin-bottom: 4rems;
+  }
+  .lab-section-inner {
+    padding: 0 1.5rem;
+  }
+  
+  .lab-grid {
+    grid-template-columns: 1fr;
   }
 }

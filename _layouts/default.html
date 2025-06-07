@@ -33,7 +33,7 @@
     {% include footer.html %}
 
     <!-- Slideshow JavaScript -->
-    <script>
+<script>
       document.addEventListener('DOMContentLoaded', function() {
         // Footer Timestamp
         function updateBerlinTime() {
@@ -44,7 +44,10 @@
             second: '2-digit',
             hour12: false
           });
-          document.getElementById('berlin-time').textContent = berlinTime + ' CET';
+          const timeElement = document.getElementById('berlin-time');
+          if (timeElement) {
+            timeElement.textContent = berlinTime + ' CET';
+          }
         }
         
         updateBerlinTime();
@@ -61,7 +64,6 @@
             slideshowImages[currentSlide].classList.add('active');
           }
           
-          // Change image every 3 seconds (3000ms)
           setInterval(nextSlide, 3000);
         }
       
@@ -98,9 +100,10 @@
           
           if (totalCards === 0) return;
           
-          // Get card width and gap
           function getCardAndGap() {
             const card = carousel.querySelector('.portfolio-card');
+            if (!card) return { cardWidth: 0, gap: 0 };
+            
             const cardWidth = card.offsetWidth;
             const computedStyle = window.getComputedStyle(carousel);
             const gap = parseInt(computedStyle.gap) || 0;
@@ -121,10 +124,8 @@
             });
           }
           
-          // Initialize position
           updateCarouselPosition();
           
-          // Previous button
           if (prevBtn) {
             prevBtn.addEventListener('click', function() {
               currentIndex = Math.max(0, currentIndex - 1);
@@ -132,7 +133,6 @@
             });
           }
           
-          // Next button
           if (nextBtn) {
             nextBtn.addEventListener('click', function() {
               const maxIndex = cards.length - (window.innerWidth <= 768 ? 1 : 4);
@@ -141,7 +141,7 @@
             });
           }
           
-          // Handle touch events for swiping
+          // Touch events for swiping
           let touchStartX = 0;
           let touchEndX = 0;
           
@@ -153,21 +153,17 @@
             touchEndX = e.changedTouches[0].clientX;
             const difference = touchStartX - touchEndX;
             
-            // Swipe right (previous)
             if (difference < -50) {
               currentIndex = Math.max(0, currentIndex - 1);
               updateCarouselPosition();
-            }
-            
-            // Swipe left (next)
-            else if (difference > 50) {
+            } else if (difference > 50) {
               const maxIndex = cards.length - (window.innerWidth <= 768 ? 1 : 4);
               currentIndex = Math.min(maxIndex, currentIndex + 1);
               updateCarouselPosition();
             }
           }, {passive: true});
           
-          // Add indicator click handlers
+          // Indicator click handlers
           const indicators = document.querySelectorAll('.indicator');
           indicators.forEach((indicator, idx) => {
             indicator.addEventListener('click', () => {
@@ -176,63 +172,147 @@
             });
           });
           
-          // Update on window resize
+          // Window resize handler
+          let resizeTimeout;
           window.addEventListener('resize', function() {
-            // Reset transition during resize to prevent jumping
-            carousel.style.transition = 'none';
-            
-            // Make sure we don't scroll beyond available cards
-            const maxIndex = cards.length - (window.innerWidth <= 768 ? 1 : 4);
-            currentIndex = Math.min(currentIndex, maxIndex);
-            
-            // Update position
-            updateCarouselPosition();
-            
-            // Re-enable transitions after a short delay
-            setTimeout(() => {
-              carousel.style.transition = 'transform 0.4s ease';
-            }, 50);
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+              carousel.style.transition = 'none';
+              const maxIndex = cards.length - (window.innerWidth <= 768 ? 1 : 4);
+              currentIndex = Math.min(currentIndex, maxIndex);
+              updateCarouselPosition();
+              
+              setTimeout(() => {
+                carousel.style.transition = 'transform 0.4s ease';
+              }, 50);
+            }, 250);
           });
         }
 
         // ASCII Progress Bar
         const asciiBar = document.getElementById('ascii-progress-bar');
         if (asciiBar) {
-          const maxLength = 40; // Number of characters to fill
+          const maxLength = 40;
           let currentPosition = 0;
           const asciiChars = '!@#$%^&*()_+-={}|;:,.<>?/~`';
           
           function updateAsciiBar() {
             if (currentPosition >= maxLength) {
-              // Reset the bar when full
               asciiBar.textContent = '[' + ' '.repeat(maxLength) + ']';
               currentPosition = 0;
-              setTimeout(updateAsciiBar, 500); // Pause before starting again
+              setTimeout(updateAsciiBar, 500);
               return;
             }
             
-            // Get the current bar content
             let barContent = asciiBar.textContent;
-            
-            // Replace the character at current position with a random ASCII character
             const randomChar = asciiChars.charAt(Math.floor(Math.random() * asciiChars.length));
             barContent = barContent.substring(0, currentPosition + 1) + randomChar + barContent.substring(currentPosition + 2);
             
-            // Update the bar
             asciiBar.textContent = barContent;
-            
-            // Move to next position
             currentPosition++;
             
-            // Schedule next update with variable timing for dynamic effect
-            const nextDelay = 100; // 100ms
-            setTimeout(updateAsciiBar, nextDelay);
+            setTimeout(updateAsciiBar, 100);
           }
           
-          // Start the ASCII animation
           updateAsciiBar();
         }
+
+        // Lab Masonry Grid
+        function initMasonry() {
+          const grid = document.getElementById('lab-masonry');
+          if (!grid) return;
+          
+          const items = Array.from(grid.querySelectorAll('.lab-item'));
+          if (items.length === 0) return;
+          
+          // Skip masonry on mobile - use CSS grid instead
+          if (window.innerWidth <= 600) {
+            items.forEach(item => {
+              item.style.position = 'static';
+              item.style.left = 'auto';
+              item.style.top = 'auto';
+              item.style.width = 'auto';
+            });
+            grid.style.height = 'auto';
+            grid.style.position = 'static';
+            return;
+          }
+          
+          // Reset grid
+          grid.style.height = 'auto';
+          grid.style.position = 'relative';
+          
+          // Calculate columns
+          const containerWidth = grid.offsetWidth;
+          const minItemWidth = 280;
+          const gap = 16;
+          const calculatedCols = Math.floor((containerWidth + gap) / (minItemWidth + gap));
+          const cols = Math.min(4, Math.max(1, calculatedCols));
+          
+          const columnHeights = Array(cols).fill(0);
+          
+          // Position each item
+          items.forEach(item => {
+            const img = item.querySelector('img');
+            if (!img || !img.naturalWidth || !img.naturalHeight) return;
+            
+            const aspectRatio = img.naturalHeight / img.naturalWidth;
+            const itemWidth = (containerWidth - gap * (cols - 1)) / cols;
+            const itemHeight = itemWidth * aspectRatio;
+            
+            // Find shortest column
+            const shortestCol = columnHeights.indexOf(Math.min(...columnHeights));
+            
+            // Position item
+            const x = shortestCol * (itemWidth + gap);
+            const y = columnHeights[shortestCol];
+            
+            item.style.position = 'absolute';
+            item.style.left = x + 'px';
+            item.style.top = y + 'px';
+            item.style.width = itemWidth + 'px';
+            
+            // Update column height
+            columnHeights[shortestCol] += itemHeight + gap;
+          });
+          
+          // Set container height
+          grid.style.height = Math.max(...columnHeights) + 'px';
+        }
+
+        // Initialize masonry after images load
+        let loadedImages = 0;
+        const labImages = document.querySelectorAll('#lab-masonry img');
+        
+        if (labImages.length > 0) {
+          labImages.forEach(img => {
+            if (img.complete) {
+              loadedImages++;
+              if (loadedImages === labImages.length) {
+                initMasonry();
+              }
+            } else {
+              img.addEventListener('load', () => {
+                loadedImages++;
+                if (loadedImages === labImages.length) {
+                  initMasonry();
+                }
+              });
+            }
+          });
+          
+          // Fallback - initialize after a delay even if not all images loaded
+          setTimeout(initMasonry, 1000);
+        }
+
+        // Resize handler for masonry
+        let masonryResizeTimeout;
+        window.addEventListener('resize', () => {
+          clearTimeout(masonryResizeTimeout);
+          masonryResizeTimeout = setTimeout(initMasonry, 250);
+        });
       });
-  </script>
+    </script>
+
   </body>
 </html>

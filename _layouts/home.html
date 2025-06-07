@@ -68,6 +68,21 @@ layout: default
       {% endif %}
     </div>
   </section>
+
+  <!-- Lab Section - Visual Experiments -->
+  <section class="lab-section">
+    <div class="lab-section-inner">
+      <h2>Lab</h2>
+      <div class="lab-grid" id="lab-masonry">
+        {% assign lab_images = site.static_files | where: "extname", ".webp" | where_exp: "file", "file.path contains 'lab'" | sort: "date" %}
+        {% for image in lab_images %}
+        <div class="lab-item">
+          <img src="{{ image.path | relative_url }}" alt="{{ image.basename | replace: '_', ' ' | capitalize }}" loading="lazy">
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
   
   <!-- Blog Posts Section (Two-Column with Right Empty) - Dynamic -->
   <section class="blog-section">
@@ -96,4 +111,5 @@ layout: default
     </div>
     <!-- Empty right column -->
   </section>
+
 </div>
