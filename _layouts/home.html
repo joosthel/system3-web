@@ -36,10 +36,8 @@ layout: default
   <section class="portfolio-section">
     <div class="portfolio-section-inner">
       <h2>Here are some of the things I have worked on</h2>
-      
-    <!-- Swipeable Card Container -->
+        <!-- Swipeable Card Container -->
     <div class="carousel-container">
-      <button class="carousel-prev" aria-label="Previous project">‹</button>
       <div class="portfolio-carousel">
         {% assign portfolio_posts = site.posts | where: "categories", "portfolio" %}
         {% for post in portfolio_posts %}
@@ -55,15 +53,18 @@ layout: default
         </div>
         {% endfor %}
       </div>
-      <button class="carousel-next" aria-label="Next project">›</button>
     </div>
 
-      <!-- Carousel Indicators -->
+      <!-- Carousel Controls -->
       {% if portfolio_posts.size > 1 %}
-      <div class="carousel-indicators">
-        {% for post in portfolio_posts %}
-          <button class="indicator{% if forloop.first %} active{% endif %}" aria-label="Go to project {{ forloop.index }}"></button>
-        {% endfor %}
+      <div class="carousel-controls">
+        <button class="carousel-prev" aria-label="Previous project">‹</button>
+        <div class="carousel-indicators">
+          {% for post in portfolio_posts %}
+            <button class="indicator{% if forloop.first %} active{% endif %}" aria-label="Go to project {{ forloop.index }}"></button>
+          {% endfor %}
+        </div>
+        <button class="carousel-next" aria-label="Next project">›</button>
       </div>
       {% endif %}
     </div>
