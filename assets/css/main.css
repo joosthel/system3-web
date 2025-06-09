@@ -53,10 +53,20 @@ a:hover {
    =================================================================== */
 .page-content {
   width: 100%;
+  margin-top: 6rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  box-sizing: border-box;
 }
 
-.wrapper,
+/* Exception for home page - it has its own layout */
 .home-container {
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.wrapper {
   width: 100%;
 }
 
@@ -71,7 +81,7 @@ a:hover {
 
 .blog-section-inner {
   grid-column: 1;
-  padding: 0 2rem;
+  padding: 0;
 }
 
 .main-content {
@@ -80,7 +90,7 @@ a:hover {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 0 2rem;
+  padding: 0;
   margin-bottom: 4rem;
   box-sizing: border-box;
 }
@@ -226,21 +236,7 @@ a:hover {
 .portfolio-section-inner {
   width: 100%;
   box-sizing: border-box;
-  padding: 0 2rem;
-}
-
-/* Portfolio carousel */
-.portfolio-section {
-  display: block; 
-  width: 100%;
-  overflow: hidden;
-  margin-bottom: 4rem;
-}
-
-.portfolio-section-inner {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 0 2rem;
+  padding: 0;
 }
 
 /* Portfolio carousel */
@@ -619,7 +615,7 @@ a:hover {
 }
 
 .lab-section-inner {
-  padding: 0 2rem;
+  padding: 0;
 }
 
 .lab-grid {
@@ -659,10 +655,9 @@ a:hover {
   
   .hero-model {
     height: 98vh;
-  }
-    .main-content {
+  }  .main-content {
     flex-direction: column;
-    padding: 0 1.5rem;
+    padding: 0;
     align-items: stretch;
   }
   
@@ -676,11 +671,10 @@ a:hover {
   .blog-section {
     grid-template-columns: 1fr;
   }
-  
-  .blog-section-inner,
+    .blog-section-inner,
   .portfolio-section-inner {
     grid-column: 1;
-    padding: 0 1.5rem;
+    padding: 0;
   }
   
   .site-header {
@@ -714,13 +708,18 @@ a:hover {
   .footer-description {
     display: none;
   }
-
   .post {
     padding: 6rem 0.5rem 0;
   }
 
+  /* Page content mobile padding */
+  .page-content {
+    padding-left: 2rem;
+    padding-right: 1.5rem;
+    margin-top: 5rem;
+  }
   .portfolio-section-inner {
-    padding: 0 1rem;
+    padding: 0;
   }
   
   .carousel-container {
@@ -754,9 +753,8 @@ a:hover {
 
   .lab-section {
     margin-bottom: 4rems;
-  }
-  .lab-section-inner {
-    padding: 0 1.5rem;
+  }  .lab-section-inner {
+    padding: 0;
   }
     .lab-grid {
     grid-template-columns: 1fr;
@@ -774,5 +772,18 @@ a:hover {
     padding: 0.45rem 0.9rem;
     margin-top: 1rem;
     border-radius: 4px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .page-content {
+    padding-left: 1.5rem;
+    padding-right: 1rem;
+  }
+  
+  .site-header {
+    padding: 0.5rem 1rem;
+    width: calc(100% - 2rem);
   }
 }
