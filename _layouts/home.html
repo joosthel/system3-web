@@ -3,37 +3,42 @@ layout: default
 ---
 
 <div class="home-container">
-  <!-- Hero Section (Full Width) -->
+  <!-- Unified Hero Section (Full Screen) -->
   <section class="hero-section">
     <div class="hero-content">
-      <div class="hero-model">
-            <model-viewer 
-              camera-controls 
-              auto-rotate
-              rotation-per-second="30deg"
-              touch-action="pan-y" 
-              autoplay 
-              ar 
-              ar-modes="webxr scene-viewer" 
-              scale="0.2 0.2 0.2" 
-              shadow-intensity="1" 
-              src="{{ '/assets/3D/Joost_dance.glb' | relative_url }}" 
-              alt="A 3D model of myself waving and greeting you">
-            </model-viewer>
+      <!-- Hero Text Content -->
+      <div class="hero-text">
+        <div class="hero-intro">
+          <h1 class="hero-title">Creative Technologist</h1>
+          <p class="hero-subtitle">Turning ambitious visions into reality through technical innovation</p>
+        </div>
+        
+        <div class="hero-description">
+          <p>I develop custom technical workflows that bridge design, engineering, and emerging technologies. With a background in architecture and startup experience, I create solutions where creative possibility meets technical implementation.</p>
+        </div>
+        
+        <div class="hero-actions">
+          <a href="mailto:mail@joosthelfers.com" class="cta-button">
+            <span class="cta-text">Let's start a Project 📧</span>
+          </a>
+        </div>
       </div>
-    </div>
-  </section>
-    <!-- Main Content -->
-  <section class="main-content">
-    <div class="main-content-wrapper">
-      <div class="h1-wrapper"> 
-        <h1>Building technical solutions for visions that don't exist yet - and bringing them to life</h1>
-        <p>I develop custom technical workflows that turn ambitious ideas into reality. Currently based in Berlin, I work at the intersection of advanced 3D techniques, emerging AI tools, and (if necessary) full-stack development - building solutions when conventional approaches fall short.</p>
-        <p>My projects range from algorithmic world-building, development of complex infotainment systems to digital twin platforms, always focused on bridging the gap between complex technical requirements and creative vision.</p>
-          <!-- CTA Button -->
-        <a href="mailto:mail@joosthelfers.com" class="cta-button">
-          <span class="cta-text">Let's grab a coffee</span>
-        </a>
+      
+      <!-- Hero 3D Model -->
+      <div class="hero-model">
+        <model-viewer 
+          camera-controls 
+          auto-rotate
+          rotation-per-second="30deg"
+          touch-action="pan-y" 
+          autoplay 
+          ar 
+          ar-modes="webxr scene-viewer" 
+          scale="0.2 0.2 0.2" 
+          shadow-intensity="1" 
+          src="{{ '/assets/3D/Joost_dance.glb' | relative_url }}" 
+          alt="A 3D model of myself waving and greeting you">
+        </model-viewer>
       </div>
     </div>
   </section>
@@ -47,14 +52,14 @@ layout: default
       <div class="portfolio-carousel">
         {% assign portfolio_posts = site.posts | where: "categories", "portfolio" %}
         {% for post in portfolio_posts %}
-        <div class="portfolio-card">
+        <div class="portfolio-card" data-modal-target="modal-{{ post.slug }}">
           {% if post.image %}
           <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
           {% endif %}
           <div class="portfolio-card-content">
-            <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+            <h3>{{ post.title }}</h3>
             <p>{{ post.description | strip_html | truncatewords: 20 }}</p>
-            <a href="{{ post.url | relative_url }}" class="view-project">VIEW PROJECT →</a>
+            <button class="view-project" data-modal-target="modal-{{ post.slug }}">VIEW PROJECT →</button>
           </div>
         </div>
         {% endfor %}
@@ -120,3 +125,128 @@ layout: default
   </section>
 
 </div>
+
+<!-- Modal Overlay Structure -->
+<div id="modal-overlay" class="modal-overlay">
+  <div class="modal-container">
+    <button class="modal-close" aria-label="Close modal">&times;</button>
+    <div class="modal-content">
+      <!-- Modal content will be populated by JavaScript -->
+    </div>
+  </div>
+</div>
+
+<!-- Project Modals Data -->
+{% assign portfolio_posts = site.posts | where: "categories", "portfolio" %}
+{% for post in portfolio_posts %}
+<div id="modal-{{ post.slug }}" class="modal-data" style="display: none;">
+  <div class="modal-header">
+    <h2>{{ post.title }}</h2>
+    {% if post.date %}
+    <p class="modal-date">{{ post.date | date: "%B %Y" }}</p>
+    {% endif %}
+  </div>
+  
+  {% if post.image %}
+  <div class="modal-image">
+    <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+  </div>
+  {% endif %}
+  
+  <div class="modal-description">
+    {% if post.description %}
+    <p class="lead">{{ post.description }}</p>
+    {% endif %}
+    
+    <div class="modal-content-body">
+      {{ post.content }}
+    </div>
+    
+    {% if post.technologies %}
+    <div class="modal-technologies">
+      <h4>Technologies</h4>
+      <div class="tech-tags">
+        {% for tech in post.technologies %}
+        <span class="tech-tag">{{ tech }}</span>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+    
+    {% if post.project_url %}
+    <div class="modal-links">
+      <a href="{{ post.project_url }}" target="_blank" rel="noopener" class="project-link">View Live Project →</a>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endfor %}
+
+<script>
+// Modal functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const modalOverlay = document.getElementById('modal-overlay');
+  const modalContent = document.querySelector('.modal-content');
+  const closeButton = document.querySelector('.modal-close');
+  const portfolioCards = document.querySelectorAll('.portfolio-card');
+  const viewProjectButtons = document.querySelectorAll('.view-project');
+  
+  // Function to open modal
+  function openModal(modalId) {
+    const modalData = document.getElementById(modalId);
+    if (modalData) {
+      modalContent.innerHTML = modalData.innerHTML;
+      modalOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+  }
+  
+  // Function to close modal
+  function closeModal() {
+    modalOverlay.classList.remove('active');
+    document.body.style.overflow = ''; // Restore scrolling
+  }
+  
+  // Add click event to portfolio cards
+  portfolioCards.forEach(card => {
+    card.addEventListener('click', function(e) {
+      if (e.target.closest('.view-project')) {
+        e.preventDefault();
+        const modalTarget = this.getAttribute('data-modal-target');
+        if (modalTarget) {
+          openModal(modalTarget);
+        }
+      }
+    });
+  });
+  
+  // Add click event to view project buttons
+  viewProjectButtons.forEach(button => {
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const modalTarget = this.getAttribute('data-modal-target');
+      if (modalTarget) {
+        openModal(modalTarget);
+      }
+    });
+  });
+  
+  // Close modal when clicking close button
+  closeButton.addEventListener('click', closeModal);
+  
+  // Close modal when clicking outside the modal container
+  modalOverlay.addEventListener('click', function(e) {
+    if (e.target === modalOverlay) {
+      closeModal();
+    }
+  });
+  
+  // Close modal with Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+      closeModal();
+    }
+  });
+});
+</script>

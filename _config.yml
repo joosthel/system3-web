@@ -21,16 +21,16 @@
 title: Joost Helfers | system³
 email: mail@joosthelfers.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Based in Berlin, Joost Helfers builds technical solutions that turn ambitious creative visions
-  into reality. Drawing from his architectural background and experience across diverse technical
-  fields, he specializes in multidisciplinary problem-solving - bridging design, engineering, and
-  emerging technologies. His strength lies in technical adaptability and cross-disciplinary understanding,
-  developing custom workflows for projects that exist at the intersection of creative possibility and
-  technical implementation.
+  Joost Helfers is a Creative Technologist and 3D Artist, developing technical solutions that turn ambitious 
+  creative visions into reality. Drawing from his architectural background, he specializes in multidisciplinary 
+  problem-solving that bridges design, engineering, and emerging technologies. His strength lies in technical 
+  adaptability and cross-disciplinary understanding, creating custom workflows for projects at the intersection 
+  of creative possibility and technical implementation.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://joosthelfers.com" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  joosthel
 instagram_username: joosthel
+linkedin_username: joosthel
 
 # Build settings
 theme: minima
