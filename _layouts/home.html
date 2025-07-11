@@ -248,5 +248,132 @@ document.addEventListener('DOMContentLoaded', function() {
       closeModal();
     }
   });
+
+  // Lightbox functionality
+  const lightbox = document.createElement('div');
+  lightbox.className = 'lightbox-overlay';
+  lightbox.innerHTML = `
+    <div class="lightbox-container">
+      <button class="lightbox-close">&times;</button>
+      <img class="lightbox-image" src="" alt="">
+      <div class="lightbox-caption"></div>
+      <div class="lightbox-nav">
+        <button class="lightbox-prev">‹</button>
+        <button class="lightbox-next">›</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(lightbox);
+
+  let currentImageIndex = 0;
+  let lightboxImages = [];
+
+  // Collect all modal images
+  function collectModalImages() {
+    const modalContent = document.querySelector('.modal-overlay.active .modal-content-body');
+    if (modalContent) {
+      lightboxImages = Array.from(modalContent.querySelectorAll('img')).map(img => ({
+        src: img.src,
+        alt: img.alt,
+        caption: img.nextElementSibling && img.nextElementSibling.tagName === 'EM' ? img.nextElementSibling.textContent : ''
+      }));
+    }
+  }
+
+  // Collect all lab images
+  function collectLabImages() {
+    const labSection = document.querySelector('.lab-section');
+    if (labSection) {
+      lightboxImages = Array.from(labSection.querySelectorAll('.lab-item img')).map(img => ({
+        src: img.src,
+        alt: img.alt,
+        caption: '' // No captions for lab images
+      }));
+    }
+  }
+
+  // Open lightbox
+  function openLightbox(index) {
+    currentImageIndex = index;
+    const lightboxImg = lightbox.querySelector('.lightbox-image');
+    const lightboxCaption = lightbox.querySelector('.lightbox-caption');
+    
+    lightboxImg.src = lightboxImages[currentImageIndex].src;
+    lightboxImg.alt = lightboxImages[currentImageIndex].alt;
+    lightboxCaption.textContent = lightboxImages[currentImageIndex].caption;
+    
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  // Close lightbox
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Navigate lightbox
+  function navigateLightbox(direction) {
+    if (direction === 'next') {
+      currentImageIndex = (currentImageIndex + 1) % lightboxImages.length;
+    } else {
+      currentImageIndex = (currentImageIndex - 1 + lightboxImages.length) % lightboxImages.length;
+    }
+    openLightbox(currentImageIndex);
+  }
+
+  // Add click handlers to modal images
+  function addLightboxHandlers() {
+    const modalImages = document.querySelectorAll('.modal-overlay.active .modal-content-body img');
+    modalImages.forEach((img, index) => {
+      img.style.cursor = 'pointer';
+      img.addEventListener('click', function() {
+        collectModalImages();
+        openLightbox(index);
+      });
+    });
+  }
+
+  // Add click handlers to lab images
+  function addLabLightboxHandlers() {
+    const labImages = document.querySelectorAll('.lab-item img');
+    labImages.forEach((img, index) => {
+      img.style.cursor = 'pointer';
+      img.addEventListener('click', function() {
+        collectLabImages();
+        openLightbox(index);
+      });
+    });
+  }
+
+  // Initialize lab lightbox handlers on page load
+  addLabLightboxHandlers();
+
+  // Lightbox event listeners
+  lightbox.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+  lightbox.querySelector('.lightbox-prev').addEventListener('click', () => navigateLightbox('prev'));
+  lightbox.querySelector('.lightbox-next').addEventListener('click', () => navigateLightbox('next'));
+  
+  lightbox.addEventListener('click', function(e) {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', function(e) {
+    if (lightbox.classList.contains('active')) {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') navigateLightbox('prev');
+      if (e.key === 'ArrowRight') navigateLightbox('next');
+    }
+  });
+
+  // Add lightbox handlers when modal opens
+  const originalOpenModal = openModal;
+  openModal = function(projectId) {
+    originalOpenModal(projectId);
+    setTimeout(addLightboxHandlers, 100); // Small delay to ensure modal is rendered
+  };
 });
 </script>

@@ -540,6 +540,11 @@ a:hover {
   margin-bottom: 1rem;
   break-inside: avoid;
   background: var(--light-gray);
+  transition: transform 0.2s ease;
+}
+
+.lab-item:hover {
+  transform: translateY(-2px);
 }
 
 .lab-item img {
@@ -547,6 +552,12 @@ a:hover {
   height: auto;
   display: block;
   object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.lab-item img:hover {
+  transform: scale(1.05);
 }
 
 /* ===================================================================
@@ -1428,4 +1439,308 @@ a:hover {
 /* Hide modal data elements */
 .modal-data {
   display: none !important;
+}
+
+/* ===================================================================
+   13. PORTFOLIO PROJECT IMAGE LAYOUTS
+   =================================================================== */
+
+/* All images in modal content are full-width */
+.modal-content-body img {
+  width: 100%;
+  height: auto;
+  max-height: 70vh;
+  object-fit: contain;
+  margin: 2rem 0 0.5rem 0;
+  border-radius: 6px;
+  border: 1px solid var(--light-gray);
+  background: var(--light-gray);
+}
+
+.modal-content-body img + em {
+  display: block;
+  font-style: italic;
+  color: var(--med-gray);
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Remove grid layouts - make all images full-width */
+.image-grid-2,
+.image-grid-3 {
+  display: block;
+  margin: 2rem 0;
+}
+
+.image-grid-2 img,
+.image-grid-3 img {
+  width: 100%;
+  height: auto;
+  max-height: 70vh;
+  object-fit: contain;
+  border-radius: 6px;
+  border: 1px solid var(--light-gray);
+  background: var(--light-gray);
+  margin: 1rem 0;
+  display: block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .modal-content-body img,
+  .image-grid-2 img,
+  .image-grid-3 img {
+    margin: 1.5rem 0 0.5rem 0;
+    max-height: 60vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content-body img,
+  .image-grid-2 img,
+  .image-grid-3 img {
+    margin: 1rem 0 0.5rem 0;
+    max-height: 50vh;
+  }
+}
+
+/* Video styling */
+.modal-content-body video {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 2rem 0;
+  border-radius: 6px;
+  border: 1px solid var(--light-gray);
+}
+
+/* Video container for responsive YouTube embeds */
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  margin: 2rem 0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.video-container + em {
+  display: block;
+  font-style: italic;
+  color: var(--med-gray);
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Project video styling */
+.project-video {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: 70vh;
+  margin: 2rem 0;
+  border-radius: 6px;
+  border: 1px solid var(--light-gray);
+  background: var(--light-gray);
+}
+
+.project-video + em {
+  display: block;
+  font-style: italic;
+  color: var(--med-gray);
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .project-video {
+    margin: 1.5rem 0;
+    max-height: 60vh;
+  }
+}
+
+/* ===================================================================
+   14. LIGHTBOX OVERLAY STYLES
+   =================================================================== */
+
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.lightbox-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-container {
+  position: relative;
+  max-width: 95vw;
+  max-height: 95vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: 85vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -50px;
+  right: 0;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  font-weight: 300;
+  z-index: 2001;
+}
+
+.lightbox-close:hover {
+  color: var(--med-gray);
+  transform: scale(1.1);
+}
+
+.lightbox-caption {
+  color: white;
+  font-size: 0.9rem;
+  font-style: italic;
+  text-align: center;
+  margin-top: 1rem;
+  max-width: 600px;
+  line-height: 1.4;
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.lightbox-prev,
+.lightbox-next {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  pointer-events: auto;
+  backdrop-filter: blur(10px);
+  font-weight: 300;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.lightbox-prev {
+  margin-left: -80px;
+}
+
+.lightbox-next {
+  margin-right: -80px;
+}
+
+/* Mobile lightbox adjustments */
+@media (max-width: 768px) {
+  .lightbox-close {
+    top: -40px;
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .lightbox-image {
+    max-height: 80vh;
+  }
+  
+  .lightbox-prev,
+  .lightbox-next {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+  
+  .lightbox-prev {
+    margin-left: -60px;
+  }
+  
+  .lightbox-next {
+    margin-right: -60px;
+  }
+  
+  .lightbox-caption {
+    font-size: 0.8rem;
+    margin-top: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .lightbox-prev {
+    margin-left: -25px;
+  }
+  
+  .lightbox-next {
+    margin-right: -25px;
+  }
+  
+  .lightbox-prev,
+  .lightbox-next {
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
+  }
 }
