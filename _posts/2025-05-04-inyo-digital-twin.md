@@ -3,6 +3,7 @@ layout: post
 title: "INYO Mobility - Digital Twin Platform"
 date: 2025-05-04
 categories: portfolio
+order: 2
 image: /assets/imgs/proj_INYO-Digital-Twin/Screenshot_3D-View.webp
 description: "Interactive 3D visualization solutions for vehicle design optimization"
 technologies: ["Digital Twin", "3D Visualization", "Real-time Rendering", "Data Integration"]

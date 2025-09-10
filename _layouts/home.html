@@ -51,7 +51,7 @@ layout: default
         <!-- Swipeable Card Container -->
     <div class="carousel-container">
       <div class="portfolio-carousel">
-        {% assign portfolio_posts = site.posts | where: "categories", "portfolio" %}
+        {% assign portfolio_posts = site.posts | where: "categories", "portfolio" | sort: "order" %}
         {% for post in portfolio_posts %}
         <div class="portfolio-card" data-modal-target="modal-{{ post.slug }}">
           {% if post.image %}

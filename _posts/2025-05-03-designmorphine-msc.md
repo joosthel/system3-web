@@ -3,6 +3,7 @@ layout: post
 title: "DesignMorphine MSc Computational and Advanced Design - Project Arcadia"
 date: 2023-05-01
 categories: portfolio
+order: 4
 image: /assets/imgs/proj_MSc-CAD/MSc-CAD_04.webp
 description: "Final Project for my M. Sc. in Computational and Advanced Design"
 technologies: ["Grasshopper", "Rhino", "Python", "Computational Design", "Parametric Architecture"]

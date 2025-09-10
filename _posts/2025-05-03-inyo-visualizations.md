@@ -3,6 +3,7 @@ layout: post
 title: "INYO Mobility - Various Visualizations"
 date: 2023-05-01
 categories: portfolio
+order: 3
 image: /assets/imgs/proj_INYO-Viz/INYO-Viz_06.webp
 description: "3D visualizations and digital marketing materials for INYO Mobility's electric vehicle ecosystem"
 technologies: ["3D Visualization", "Product Rendering", "Marketing Design", "Motion Graphics"]
