@@ -402,6 +402,15 @@
           // Just ensure the rainbow effect works on hover
           // CSS handles all the animation and visual effects
         });
+
+        // External Links - Open in new tab
+        document.querySelectorAll('a[href]').forEach(link => {
+          const href = link.getAttribute('href');
+          if (href && href.match(/^https?:\/\//) && !href.includes('joosthelfers.com')) {
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+          }
+        });
       });
     </script>
 
