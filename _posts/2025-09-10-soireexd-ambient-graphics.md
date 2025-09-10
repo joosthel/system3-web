@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "SoiréeXD Ambient Graphics"
-date: 2023-09-10
+date: 2025-09-10
 categories: portfolio
 order: 1
 image: /assets/imgs/proj_soireexd/SoireeXD-thumbnail.webp
