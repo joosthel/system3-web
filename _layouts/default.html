@@ -9,8 +9,35 @@
     {% feed_meta %}
     {% seo %}
 
-    <!-- Tracking -->
-    <script src="https://tinylytics.app/embed/7ZMWAxo3SGfyS79F-9JM.js" defer></script>
+    <!-- Google Analytics 4 with Consent Mode -->
+    {% if site.google_analytics %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      
+      // Set default consent state
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'wait_for_update': 500
+      });
+      
+      gtag('config', '{{ site.google_analytics }}', {
+        anonymize_ip: true,
+        cookie_flags: 'SameSite=None;Secure'
+      });
+      
+      // Check if user has already consented
+      const cookieConsent = localStorage.getItem('cookie-consent');
+      if (cookieConsent === 'accepted') {
+        gtag('consent', 'update', {
+          'analytics_storage': 'granted'
+        });
+      }
+    </script>
+    {% endif %}
 
     <!-- 3D Model Viewer -->
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
@@ -31,6 +58,20 @@
     </main>
     
     {% include footer.html %}
+
+    <!-- Cookie Notice -->
+    <div id="cookie-notice" class="cookie-notice" style="display: none;">
+      <div class="cookie-content">
+        <div class="cookie-text">
+          <p>This site uses analytics cookies so I know how many people are visiting my page. I love getting insights through data. ¯\_(ツ)_/¯</p>
+        </div>
+        <div class="cookie-actions">
+          <button id="cookie-accept" class="cookie-btn cookie-accept">Accept</button>
+          <button id="cookie-decline" class="cookie-btn cookie-decline">Decline</button>
+          <a href="/privacy/" class="cookie-link">Privacy</a>
+        </div>
+      </div>
+    </div>
 
     <!-- Slideshow JavaScript -->
 <script>
@@ -412,6 +453,102 @@
           }
         });
       });
+
+      // CV Download Tracking Function
+      function trackCVDownload() {
+        // Track with Google Analytics 4 if available
+        if (typeof gtag !== 'undefined') {
+          // File download event (standard GA4 event)
+          gtag('event', 'file_download', {
+            'file_name': 'CV-Helfers.pdf',
+            'file_extension': 'pdf',
+            'link_text': 'Download CV',
+            'link_url': '/assets/pdf/CV-Helfers.pdf',
+            'link_classes': 'footer-nav-link'
+          });
+          
+          // Custom CV interest event for better tracking
+          gtag('event', 'cv_download', {
+            'event_category': 'engagement',
+            'event_label': 'CV Footer Download',
+            'value': 1,
+            'page_location': window.location.href,
+            'page_referrer': document.referrer
+          });
+        }
+        
+        console.log('CV download tracked:', {
+          timestamp: new Date().toISOString(),
+          method: 'footer_link',
+          userAgent: navigator.userAgent.substring(0, 100),
+          referrer: document.referrer,
+          page: window.location.pathname
+        });
+      }
+
+      // Cookie Notice Functionality
+      function initCookieNotice() {
+        const cookieNotice = document.getElementById('cookie-notice');
+        const acceptBtn = document.getElementById('cookie-accept');
+        const declineBtn = document.getElementById('cookie-decline');
+        
+        // Check if user has already made a choice
+        const cookieConsent = localStorage.getItem('cookie-consent');
+        
+        if (!cookieConsent) {
+          // Show cookie notice after a short delay
+          setTimeout(() => {
+            cookieNotice.style.display = 'block';
+            setTimeout(() => cookieNotice.classList.add('show'), 100);
+          }, 2000);
+        }
+        
+        // Handle accept
+        acceptBtn.addEventListener('click', () => {
+          localStorage.setItem('cookie-consent', 'accepted');
+          hideCookieNotice();
+          
+          // Enable Google Analytics if not already enabled
+          if (typeof gtag !== 'undefined') {
+            gtag('consent', 'update', {
+              'analytics_storage': 'granted'
+            });
+            gtag('event', 'cookie_consent', {
+              'event_category': 'privacy',
+              'event_label': 'accepted',
+              'value': 1
+            });
+          }
+        });
+        
+        // Handle decline
+        declineBtn.addEventListener('click', () => {
+          localStorage.setItem('cookie-consent', 'declined');
+          hideCookieNotice();
+          
+          // Disable Google Analytics
+          if (typeof gtag !== 'undefined') {
+            gtag('consent', 'update', {
+              'analytics_storage': 'denied'
+            });
+            gtag('event', 'cookie_consent', {
+              'event_category': 'privacy',
+              'event_label': 'declined',  
+              'value': 0
+            });
+          }
+        });
+        
+        function hideCookieNotice() {
+          cookieNotice.classList.remove('show');
+          setTimeout(() => {
+            cookieNotice.style.display = 'none';
+          }, 400);
+        }
+      }
+
+      // Initialize cookie notice
+      initCookieNotice();
     </script>
 
   </body>

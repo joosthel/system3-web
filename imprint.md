@@ -12,8 +12,12 @@ permalink: /imprint/
 **Name:** Joost Helfers  
 **Address:** Friedenauer Höhe, 12159 Berlin, Germany
 
+**Contact:**  
 **Email:** mail@joosthelfers.com  
 **Instagram:** @joosthel
+**LinkedIn:** joosthel
+
+**Tax Information:** DE451239713
 
 ### Copyright
 This website and its contents are subject to German copyright law. Unless expressly permitted by law (§ 44a et seq. of the copyright law), every form of utilizing, reproducing, or processing the design of this site, or its containing works, is subject to copyright protection and requires my prior consents.

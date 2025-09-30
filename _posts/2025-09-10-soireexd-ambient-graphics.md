@@ -17,7 +17,7 @@ SOIREE XD is an ongoing series of conversations on early signs of deep disruptio
 As part of the Event organization, I created a series of ambient graphics and promotional materials to visually represent the themes and atmosphere of the events.
 
 <video class="project-video" autoplay muted loop>
-  <source src="/assets/vids/proj_SoireeXD/soireexd_already-possible_logo-animation.webm" type="video/webm">
+  <source src="/assets/vids/proj_SoireeXD/soireexd_already-possible_logo-animation-2.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 

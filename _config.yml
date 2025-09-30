@@ -28,6 +28,9 @@ github_username:  joosthel
 instagram_username: joosthel
 linkedin_username: joosthel
 
+# Analytics
+google_analytics: G-YE3MN2MSF2
+
 # Build settings
 theme: minima
 plugins:
