@@ -52,6 +52,7 @@ h2 {
 
 /* Section styling */
 .portfolio-section,
+.services-section,
 .lab-section,
 .blog-section {
   padding: 4rem 0;
@@ -60,6 +61,7 @@ h2 {
 }
 
 .portfolio-section h2,
+.services-section h2,
 .lab-section h2,
 .blog-section h2 {
   font-size: 2.5rem;
@@ -72,6 +74,7 @@ h2 {
 }
 
 .portfolio-section h2::after,
+.services-section h2::after,
 .lab-section h2::after,
 .blog-section h2::after {
   display: none;
@@ -617,7 +620,192 @@ ul, ol, li {
 }
 
 /* ===================================================================
-   8. BLOG & LAB SECTIONS
+   8. SERVICES SECTION
+   =================================================================== */
+.services-section {
+  width: 100%;
+  padding: 4rem 2rem;
+  margin-bottom: 2rem;
+}
+
+.services-section-inner {
+  width: 100%;
+  margin: 0;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.service-card {
+  background: var(--secondary-color);
+  padding: 0;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-card:hover {
+  transform: translateY(-1px);
+}
+
+.service-image {
+  width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: #f8f8f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.service-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 400;
+  color: #666;
+  background: #f8f8f8;
+  transition: all 0.3s ease;
+}
+
+.service-card:hover .service-image img {
+  transform: scale(1.05);
+}
+
+.service-card:hover .service-placeholder {
+  background: #eee;
+  color: #555;
+}
+
+.service-content {
+  padding: 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-content h3 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.service-content p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #666;
+  margin-bottom: 2rem;
+  flex: 1;
+  max-width: none;
+}
+
+.service-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.tag {
+  display: inline-block;
+  background: var(--text-color);
+  color: var(--secondary-color);
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+}
+
+.tag:hover {
+  background: var(--secondary-color);
+  color: var(--text-color);
+  border: 1px solid var(--text-color);
+}
+
+.service-cta {
+  margin-top: auto;
+  padding: 0 1rem 1rem 1rem;
+}
+
+.service-cta-button {
+  display: block;
+  width: 100%;
+  background: var(--text-color);
+  color: var(--secondary-color);
+  padding: 1rem 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.85rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  font-family: inherit;
+  z-index: 1;
+  text-align: center;
+}
+
+.service-cta-button::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: -20%;
+  right: -20%;
+  bottom: -20%;
+  background: 
+    radial-gradient(circle at 30% 20%, #0066ff 0%, transparent 50%),
+    radial-gradient(circle at 70% 80%, #00ff41 0%, transparent 50%),
+    radial-gradient(circle at 90% 40%, #ff0040 0%, transparent 50%),
+    linear-gradient(45deg, 
+      #0066ff, #b300ff, #ff0099, #ff0040, 
+      #ff8c00, #00ff41, #00d4ff, #0066ff);
+  background-size: 300% 300%, 400% 400%, 250% 250%, 500% 500%;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(1px);
+}
+
+.service-cta-button:hover::before {
+  opacity: 1;
+  animation: organicFlow 6s ease-in-out infinite;
+}
+
+.service-cta-button:hover {
+  color: white;
+  text-decoration: none;
+  transform: none;
+}
+
+.service-cta-button .cta-text {
+  position: relative;
+  z-index: 2;
+}
+
+/* ===================================================================
+   9. BLOG & LAB SECTIONS
    =================================================================== */
 .blog-section {
   padding: 4rem 2rem;
@@ -989,6 +1177,16 @@ ul, ol, li {
   .portfolio-carousel {
     gap: 0;
   }
+
+  /* Services mobile */
+  .services-section {
+    padding: 4rem 1.5rem;
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
   
   .carousel-prev,
   .carousel-next {
@@ -1069,9 +1267,15 @@ ul, ol, li {
   }
   
   .portfolio-section,
+  .services-section,
   .blog-section,
   .lab-section {
     padding: 2rem 0.75rem;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
   
   .lab-grid {
