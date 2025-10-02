@@ -9,7 +9,7 @@
     {% feed_meta %}
     {% seo %}
 
-    <!-- Google Analytics 4 with Consent Mode -->
+    <!-- Google Analytics 4 with Default Tracking -->
     {% if site.google_analytics %}
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
     <script>
@@ -17,24 +17,26 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       
-      // Set default consent state
-      gtag('consent', 'default', {
-        'analytics_storage': 'denied',
-        'ad_storage': 'denied',
-        'wait_for_update': 500
-      });
-      
-      gtag('config', '{{ site.google_analytics }}', {
-        anonymize_ip: true,
-        cookie_flags: 'SameSite=None;Secure'
-      });
-      
-      // Check if user has already consented
+      // Check user's cookie preference
       const cookieConsent = localStorage.getItem('cookie-consent');
-      if (cookieConsent === 'accepted') {
-        gtag('consent', 'update', {
-          'analytics_storage': 'granted'
+      
+      if (cookieConsent === 'declined') {
+        // Only disable if explicitly declined
+        console.log('🚫 Analytics disabled - user declined cookies');
+        gtag('consent', 'default', {
+          'analytics_storage': 'denied',
+          'ad_storage': 'denied'
         });
+      } else {
+        // Default: Enable analytics (accepted or no choice made yet)
+        console.log('📊 Analytics enabled - tracking page views');
+        gtag('config', '{{ site.google_analytics }}', {
+          anonymize_ip: true,
+          cookie_flags: 'SameSite=None;Secure'
+        });
+        
+        // Log page view for debugging
+        console.log('✅ GA4 page view sent for:', window.location.pathname);
       }
     </script>
     {% endif %}
@@ -505,11 +507,13 @@
         
         // Handle accept
         acceptBtn.addEventListener('click', () => {
+          console.log('🍪 Cookie consent accepted');
           localStorage.setItem('cookie-consent', 'accepted');
           hideCookieNotice();
           
           // Enable Google Analytics if not already enabled
           if (typeof gtag !== 'undefined') {
+            console.log('📊 Updating GA4 consent to granted');
             gtag('consent', 'update', {
               'analytics_storage': 'granted'
             });
@@ -518,24 +522,35 @@
               'event_label': 'accepted',
               'value': 1
             });
+            console.log('✅ GA4 consent updated and event sent');
+            
+            // Send immediate page view
+            gtag('config', '{{ site.google_analytics }}', {
+              page_path: window.location.pathname
+            });
+          } else {
+            console.error('❌ gtag not available');
           }
         });
         
         // Handle decline
         declineBtn.addEventListener('click', () => {
+          console.log('🚫 Cookie consent declined - disabling analytics');
           localStorage.setItem('cookie-consent', 'declined');
           hideCookieNotice();
           
-          // Disable Google Analytics
+          // Disable Google Analytics immediately
           if (typeof gtag !== 'undefined') {
             gtag('consent', 'update', {
-              'analytics_storage': 'denied'
+              'analytics_storage': 'denied',
+              'ad_storage': 'denied'
             });
-            gtag('event', 'cookie_consent', {
-              'event_category': 'privacy',
-              'event_label': 'declined',  
-              'value': 0
-            });
+            console.log('❌ Analytics tracking disabled');
+            
+            // Reload page to fully disable tracking
+            setTimeout(() => {
+              window.location.reload();
+            }, 500);
           }
         });
         
