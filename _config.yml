@@ -21,7 +21,7 @@
 title: Joost Helfers | system³
 email: mail@joosthelfers.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Joost Helfers is a Creative Technologist working at the intersection of 3D, AI, and emerging technology. His work is driven by a spatial approach, creating high-impact visuals and advanced technical workflows that help brands and designers communicate complex ideas. Combining his architectural and advanced 3D design background with startup experience, he builds innovative solutions that work.
+  Joost Helfers is a Creative Technologist working at the intersection of 3D, AI and emerging technology. His work is driven by a spatial approach, creating high-impact visuals and advanced technical workflows that help brands and designers communicate complex ideas. Combining his architectural and advanced 3D design background with startup experience, he builds innovative solutions that work.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://joosthelfers.com" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  joosthel
