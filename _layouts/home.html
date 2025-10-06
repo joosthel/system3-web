@@ -269,6 +269,9 @@ document.addEventListener('DOMContentLoaded', function() {
   const portfolioCards = document.querySelectorAll('.portfolio-card');
   const viewProjectButtons = document.querySelectorAll('.view-project');
   
+  // Track modal session timing
+  let modalOpenTime = null;
+  
   // Function to open modal
   function openModal(modalId) {
     const modalData = document.getElementById(modalId);
@@ -276,6 +279,19 @@ document.addEventListener('DOMContentLoaded', function() {
       modalContent.innerHTML = modalData.innerHTML;
       modalOverlay.classList.add('active');
       document.body.style.overflow = 'hidden'; // Prevent background scrolling
+      
+      // Analytics: Track project view
+      modalOpenTime = Date.now();
+      const projectName = modalId.replace('modal-', '').replace(/-/g, ' ');
+      
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'portfolio_project_view', {
+          'event_category': 'Portfolio',
+          'event_label': projectName,
+          'custom_parameter_1': modalId
+        });
+        console.log('📊 Portfolio project viewed:', projectName);
+      }
     }
   }
   
@@ -283,15 +299,69 @@ document.addEventListener('DOMContentLoaded', function() {
   function closeModal() {
     modalOverlay.classList.remove('active');
     document.body.style.overflow = ''; // Restore scrolling
+    
+    // Analytics: Track engagement time
+    if (modalOpenTime && typeof gtag !== 'undefined') {
+      const timeSpent = Math.round((Date.now() - modalOpenTime) / 1000); // seconds
+      const activeModal = document.querySelector('.modal-data');
+      const projectName = activeModal ? activeModal.id.replace('modal-', '').replace(/-/g, ' ') : 'unknown';
+      
+      gtag('event', 'portfolio_engagement_time', {
+        'event_category': 'Portfolio',
+        'event_label': projectName,
+        'value': timeSpent,
+        'custom_parameter_1': 'seconds_spent'
+      });
+      
+      console.log('📊 Project engagement:', projectName, '(' + timeSpent + 's)');
+      modalOpenTime = null;
+    }
   }
   
   // Add click event to portfolio cards
   portfolioCards.forEach(card => {
+    // Track portfolio card hover engagement
+    let hoverStartTime = null;
+    
+    card.addEventListener('mouseenter', function() {
+      hoverStartTime = Date.now();
+    });
+    
+    card.addEventListener('mouseleave', function() {
+      if (hoverStartTime) {
+        const hoverTime = Date.now() - hoverStartTime;
+        if (hoverTime > 1000 && typeof gtag !== 'undefined') { // Only track if hovered for >1s
+          const modalTarget = this.getAttribute('data-modal-target');
+          const projectName = modalTarget ? modalTarget.replace('modal-', '').replace(/-/g, ' ') : 'unknown';
+          
+          gtag('event', 'portfolio_card_hover', {
+            'event_category': 'Portfolio',
+            'event_label': projectName,
+            'value': Math.round(hoverTime / 1000),
+            'custom_parameter_1': 'engagement_hover'
+          });
+          console.log('📊 Portfolio card hovered:', projectName, '(' + Math.round(hoverTime / 1000) + 's)');
+        }
+        hoverStartTime = null;
+      }
+    });
+    
     card.addEventListener('click', function(e) {
       if (e.target.closest('.view-project')) {
         e.preventDefault();
         const modalTarget = this.getAttribute('data-modal-target');
         if (modalTarget) {
+          // Analytics: Track VIEW PROJECT button click
+          const projectName = modalTarget.replace('modal-', '').replace(/-/g, ' ');
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'portfolio_cta_click', {
+              'event_category': 'Portfolio',
+              'event_label': projectName,
+              'custom_parameter_1': 'view_project_button'
+            });
+            console.log('📊 VIEW PROJECT clicked:', projectName);
+          }
+          
           openModal(modalTarget);
         }
       }
@@ -382,6 +452,18 @@ document.addEventListener('DOMContentLoaded', function() {
     
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
+    
+    // Analytics: Track image view
+    if (typeof gtag !== 'undefined') {
+      const imageName = lightboxImages[currentImageIndex].alt || `image-${index + 1}`;
+      gtag('event', 'portfolio_image_view', {
+        'event_category': 'Portfolio',
+        'event_label': imageName,
+        'value': index + 1,
+        'custom_parameter_1': 'lightbox_opened'
+      });
+      console.log('📊 Portfolio image viewed:', imageName);
+    }
   }
 
   // Close lightbox
@@ -397,6 +479,18 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
       currentImageIndex = (currentImageIndex - 1 + lightboxImages.length) % lightboxImages.length;
     }
+    
+    // Analytics: Track image navigation
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'portfolio_image_navigation', {
+        'event_category': 'Portfolio',
+        'event_label': direction,
+        'value': currentImageIndex + 1,
+        'custom_parameter_1': `navigated_${direction}`
+      });
+      console.log('📊 Image navigation:', direction, 'to image', currentImageIndex + 1);
+    }
+    
     openLightbox(currentImageIndex);
   }
 
