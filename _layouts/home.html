@@ -179,11 +179,27 @@ layout: default
     <div class="blog-section-inner">
       <h2>What has been on my mind?</h2>
       
-      <!-- Quick Notes Grid (Placeholder) -->
+      <!-- Quick Notes Grid from Are.na -->
       <div class="notes-grid">
-        <div class="notes-placeholder">
-          <p>Quick notes coming soon...</p>
-        </div>
+        {% if site.data.arena-notes.contents %}
+          {% assign sorted_notes = site.data.arena-notes.contents | sort: "position" | reverse %}
+          {% for note in sorted_notes limit:16 %}
+            <div class="note-card" data-note-id="{{ note.id }}">
+              <div class="note-content">
+                {{ note.content_html }}
+              </div>
+              <div class="note-meta">
+                <time datetime="{{ note.created_at }}">
+                  {{ note.created_at | date: "%b %d, %Y" }}
+                </time>
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <div class="notes-placeholder">
+            <p>Quick notes coming soon...</p>
+          </div>
+        {% endif %}
       </div>
       
       <!-- Long-form Blog Posts List -->
@@ -400,6 +416,28 @@ document.addEventListener('DOMContentLoaded', function() {
       if (modalTarget) {
         openModal(modalTarget);
       }
+    });
+  });
+  
+  // Track Are.na note card clicks
+  const noteCards = document.querySelectorAll('.note-card');
+  noteCards.forEach(noteCard => {
+    noteCard.addEventListener('click', function() {
+      const noteId = this.getAttribute('data-note-id');
+      const noteText = this.querySelector('.note-content')?.textContent.trim().substring(0, 50) || 'untitled';
+      
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'arena_note_click', {
+          'event_category': 'Notes',
+          'event_label': noteText,
+          'value': noteId,
+          'custom_parameter_1': 'quick_notes'
+        });
+        console.log('📊 Are.na note clicked:', noteText.substring(0, 30) + '...');
+      }
+      
+      // Optional: Open Are.na block in new tab
+      window.open(`https://www.are.na/block/${noteId}`, '_blank');
     });
   });
   
