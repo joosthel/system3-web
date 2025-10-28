@@ -174,35 +174,58 @@ layout: default
     </div>
   </section>
 
-  <!-- Blog Posts Section (Two-Column with Right Empty) - Dynamic -->
+  <!-- Blog Posts Section - Notes + Long-form List -->
   <section class="blog-section">
     <div class="blog-section-inner">
       <h2>What has been on my mind?</h2>
-      <div class="post-grid">
-        {% assign blog_posts = site.posts | where: "categories", "blog" %}
-        {% for post in blog_posts limit:3 %}
-        <div class="post-card">
-          <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-          {% if post.description %}
-            <p>{{ post.description }}</p>
-          {% else %}
-            <p>{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
-          {% endif %}
-          <a href="{{ post.url | relative_url }}" class="read-more">READ MORE →</a>
+      
+      <!-- Quick Notes Grid (Placeholder) -->
+      <div class="notes-grid">
+        <div class="notes-placeholder">
+          <p>Quick notes coming soon...</p>
         </div>
-        {% endfor %}
       </div>
       
-      {% if blog_posts.size > 3 %}
-      <div class="view-all">
-        <a href="{{ '/blog' | relative_url }}" class="view-all-button">ALL POSTS</a>
+      <!-- Long-form Blog Posts List -->
+      <div class="blog-list">
+        {% assign blog_posts = site.posts | where: "categories", "blog" %}
+        {% assign current_timestamp = site.time | date: "%s" | plus: 0 %}
+        {% assign one_year_seconds = 31536000 %}
+        {% assign one_year_ago = current_timestamp | minus: one_year_seconds %}
+        {% for post in blog_posts %}
+          {% assign post_timestamp = post.date | date: "%s" | plus: 0 %}
+          {% if post_timestamp > one_year_ago %}
+        <div class="blog-list-item" data-post-id="blog-post-{{ forloop.index }}">
+          <span class="blog-list-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+          <h3 class="blog-list-title">{{ post.title }}</h3>
+          <button class="blog-list-link" data-target="blog-post-{{ forloop.index }}">Read →</button>
+        </div>
+          {% endif %}
+        {% endfor %}
       </div>
-      {% endif %}
     </div>
-    <!-- Empty right column -->
   </section>
 
 </div>
+<!-- Blog Post Modal Data -->
+{% assign blog_posts = site.posts | where: "categories", "blog" %}
+{% assign current_timestamp = site.time | date: "%s" | plus: 0 %}
+{% assign one_year_seconds = 31536000 %}
+{% assign one_year_ago = current_timestamp | minus: one_year_seconds %}
+{% for post in blog_posts %}
+  {% assign post_timestamp = post.date | date: "%s" | plus: 0 %}
+  {% if post_timestamp > one_year_ago %}
+<div id="blog-post-{{ forloop.index }}" class="blog-post-data" style="display: none;">
+  <div class="blog-post-header">
+    <h2>{{ post.title }}</h2>
+    <p class="blog-post-date">{{ post.date | date: "%B %d, %Y" }}</p>
+  </div>
+  <div class="blog-post-content">
+    {{ post.content }}
+  </div>
+</div>
+  {% endif %}
+{% endfor %}
 
 <!-- Modal Overlay Structure -->
 <div id="modal-overlay" class="modal-overlay">
@@ -395,6 +418,31 @@ document.addEventListener('DOMContentLoaded', function() {
     if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
       closeModal();
     }
+  });
+
+  // Blog Post Modal Functionality
+  const blogReadMoreButtons = document.querySelectorAll('.blog-read-more, .blog-list-link');
+  
+  blogReadMoreButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const targetId = this.getAttribute('data-target');
+      const blogPostData = document.getElementById(targetId);
+      
+      if (blogPostData) {
+        // Track blog post view
+        const postTitle = blogPostData.querySelector('h2').textContent;
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'blog_post_view', {
+            'event_category': 'Blog',
+            'event_label': postTitle,
+            'custom_parameter_1': 'read_more_clicked'
+          });
+          console.log('📊 Blog post viewed:', postTitle);
+        }
+        
+        openModal(targetId);
+      }
+    });
   });
 
   // Lightbox functionality
