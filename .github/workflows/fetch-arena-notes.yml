@@ -19,14 +19,36 @@ jobs:
         
       - name: Fetch Are.na channel data
         run: |
-          # Fetch the channel contents
-          curl -H "Accept: application/json" \
+          # Fetch the channel contents with proper headers to bypass Cloudflare
+          echo "Fetching Are.na channel: 99_notes"
+          HTTP_CODE=$(curl -w "%{http_code}" \
+            -H "Accept: application/json" \
+            -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
             "https://api.are.na/v2/channels/99_notes/contents?per=100" \
-            -o _data/arena-notes.json
-            
+            -o _data/arena-notes.json)
+          
+          echo "HTTP Status Code: $HTTP_CODE"
+          
+          # Check if request was successful
+          if [ "$HTTP_CODE" != "200" ]; then
+            echo "Error: API returned status code $HTTP_CODE"
+            cat _data/arena-notes.json
+            exit 1
+          fi
+          
+          # Verify we got valid JSON
+          if ! python3 -m json.tool _data/arena-notes.json > /dev/null 2>&1; then
+            echo "Error: Invalid JSON received from API"
+            echo "Response content:"
+            cat _data/arena-notes.json
+            exit 1
+          fi
+          
           # Pretty print the JSON
           python3 -m json.tool _data/arena-notes.json > _data/arena-notes-formatted.json
           mv _data/arena-notes-formatted.json _data/arena-notes.json
+          
+          echo "Successfully fetched and formatted Are.na data"
           
       - name: Commit and push if changed
         run: |
