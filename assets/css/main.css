@@ -552,11 +552,18 @@ ul, ol, li {
   position: relative;
   display: flex;
   flex-direction: column;
+  text-decoration: none;
+  color: inherit;
 }
 
 .portfolio-card:hover {
   transform: none;
   background-color: white;
+}
+
+.portfolio-card:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
 }
 
 .portfolio-card img {
@@ -930,13 +937,10 @@ ul, ol, li {
 }
 
 .blog-list-link {
-  background: none;
-  border: none;
   color: var(--text-color);
   font-size: 0.85rem;
   font-weight: 500;
-  cursor: pointer;
-  padding: 0;
+  text-decoration: none;
   transition: opacity 0.2s ease;
   white-space: nowrap;
 }
@@ -944,10 +948,8 @@ ul, ol, li {
 .blog-list-link:hover {
   opacity: 0.5;
 }
-/* Blog post modal content styling */
-.blog-post-data {
-  display: none;
-}
+
+/* Lab Section */
 
 .blog-post-header {
   padding: 12rem 0 3rem 0;
@@ -2217,10 +2219,40 @@ ul, ol, li {
   text-align: center;
 }
 
+/* Portfolio project page images - Desktop: 75% width, Mobile: full width */
+.post img:not(.project-video) {
+  max-width: 75%;
+  height: auto;
+  margin: 2rem auto;
+  display: block;
+  border-radius: 6px;
+  border: 1px solid var(--light-gray);
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.post img:not(.project-video):hover {
+  opacity: 0.9;
+}
+
+.post img + em {
+  display: block;
+  font-style: italic;
+  color: var(--med-gray);
+  font-size: 0.9rem;
+  margin: -1rem 0 2rem 0;
+  text-align: center;
+}
+
 @media (max-width: 768px) {
   .project-video {
     margin: 1.5rem 0;
     max-height: 60vh;
+  }
+  
+  .post img:not(.project-video) {
+    max-width: 100%;
+    margin: 1.5rem 0;
   }
 }
 
@@ -2271,28 +2303,27 @@ ul, ol, li {
 
 .lightbox-close {
   position: absolute;
-  top: -60px;
+  top: -50px;
   right: 0;
-  background: var(--secondary-color);
+  background: none;
   border: none;
-  color: var(--text-color);
-  font-size: 1.5rem;
+  color: var(--secondary-color);
+  font-size: 1.2rem;
   cursor: pointer;
-  width: 64px;
-  height: 64px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: none;
-  font-weight: 600;
+  transition: opacity 0.2s ease;
+  font-weight: 300;
   z-index: 2001;
-  text-transform: uppercase;
   border-radius: 0;
+  opacity: 0.7;
 }
 
 .lightbox-close:hover {
-  background: var(--accent-color);
-  color: var(--secondary-color);
+  opacity: 1;
   transform: none;
 }
 
@@ -2318,46 +2349,45 @@ ul, ol, li {
 
 .lightbox-prev,
 .lightbox-next {
-  background: var(--secondary-color);
+  background: none;
   border: none;
-  color: var(--text-color);
+  color: var(--secondary-color);
   font-size: 1.5rem;
   cursor: pointer;
-  width: 64px;
-  height: 64px;
+  width: 50px;
+  height: 50px;
   border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: none;
+  transition: opacity 0.2s ease;
   pointer-events: auto;
   backdrop-filter: none;
-  font-weight: 600;
-  text-transform: uppercase;
+  font-weight: 300;
+  opacity: 0.7;
 }
 
 .lightbox-prev:hover,
 .lightbox-next:hover {
-  background: var(--accent-color);
-  color: var(--secondary-color);
+  opacity: 1;
   transform: none;
 }
 
 .lightbox-prev {
-  margin-left: -80px;
+  margin-left: -70px;
 }
 
 .lightbox-next {
-  margin-right: -80px;
+  margin-right: -70px;
 }
 
 /* Mobile lightbox adjustments */
 @media (max-width: 768px) {
   .lightbox-close {
-    top: -40px;
-    font-size: 1.5rem;
-    width: 40px;
-    height: 40px;
+    top: -35px;
+    font-size: 1rem;
+    width: 32px;
+    height: 32px;
   }
   
   .lightbox-image {
@@ -2366,17 +2396,17 @@ ul, ol, li {
   
   .lightbox-prev,
   .lightbox-next {
-    width: 50px;
-    height: 50px;
-    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
   }
   
   .lightbox-prev {
-    margin-left: -60px;
+    margin-left: -50px;
   }
   
   .lightbox-next {
-    margin-right: -60px;
+    margin-right: -50px;
   }
   
   .lightbox-caption {
@@ -2387,18 +2417,18 @@ ul, ol, li {
 
 @media (max-width: 480px) {
   .lightbox-prev {
-    margin-left: -25px;
+    margin-left: -20px;
   }
   
   .lightbox-next {
-    margin-right: -25px;
+    margin-right: -20px;
   }
   
   .lightbox-prev,
   .lightbox-next {
-    width: 40px;
-    height: 40px;
-    font-size: 1.25rem;
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
   }
 }
 

@@ -53,16 +53,16 @@ layout: default
       <div class="portfolio-carousel">
         {% assign portfolio_posts = site.posts | where: "categories", "portfolio" | sort: "order" %}
         {% for post in portfolio_posts %}
-        <div class="portfolio-card" data-modal-target="modal-{{ post.slug }}">
+        <a href="{{ post.url | relative_url }}" class="portfolio-card">
           {% if post.image %}
           <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
           {% endif %}
           <div class="portfolio-card-content">
             <h3>{{ post.title }}</h3>
             <p>{{ post.description | strip_html | truncatewords: 20 }}</p>
-            <button class="view-project" data-modal-target="modal-{{ post.slug }}">VIEW PROJECT →</button>
+            <span class="view-project">VIEW PROJECT →</span>
           </div>
-        </div>
+        </a>
         {% endfor %}
       </div>
     </div>
@@ -211,10 +211,10 @@ layout: default
         {% for post in blog_posts %}
           {% assign post_timestamp = post.date | date: "%s" | plus: 0 %}
           {% if post_timestamp > one_year_ago %}
-        <div class="blog-list-item" data-post-id="blog-post-{{ forloop.index }}">
+        <div class="blog-list-item">
           <span class="blog-list-date">{{ post.date | date: "%Y-%m-%d" }}</span>
           <h3 class="blog-list-title">{{ post.title }}</h3>
-          <button class="blog-list-link" data-target="blog-post-{{ forloop.index }}">Read →</button>
+          <a href="{{ post.url | relative_url }}" class="blog-list-link">Read →</a>
         </div>
           {% endif %}
         {% endfor %}
@@ -223,415 +223,42 @@ layout: default
   </section>
 
 </div>
-<!-- Blog Post Modal Data -->
-{% assign blog_posts = site.posts | where: "categories", "blog" %}
-{% assign current_timestamp = site.time | date: "%s" | plus: 0 %}
-{% assign one_year_seconds = 31536000 %}
-{% assign one_year_ago = current_timestamp | minus: one_year_seconds %}
-{% for post in blog_posts %}
-  {% assign post_timestamp = post.date | date: "%s" | plus: 0 %}
-  {% if post_timestamp > one_year_ago %}
-<div id="blog-post-{{ forloop.index }}" class="blog-post-data" style="display: none;">
-  <div class="blog-post-header">
-    <h2>{{ post.title }}</h2>
-    <p class="blog-post-date">{{ post.date | date: "%B %d, %Y" }}</p>
-  </div>
-  <div class="blog-post-content">
-    {{ post.content }}
-  </div>
-</div>
-  {% endif %}
-{% endfor %}
-
-<!-- Modal Overlay Structure -->
-<div id="modal-overlay" class="modal-overlay">
-  <div class="modal-container">
-    <button class="modal-close" aria-label="Close modal">&times;</button>
-    <div class="modal-content">
-      <!-- Modal content will be populated by JavaScript -->
-    </div>
-  </div>
-</div>
-
-<!-- Project Modals Data -->
-{% assign portfolio_posts = site.posts | where: "categories", "portfolio" %}
-{% for post in portfolio_posts %}
-<div id="modal-{{ post.slug }}" class="modal-data" style="display: none;">
-  <div class="modal-header">
-    <h2>{{ post.title }}</h2>
-    {% if post.date %}
-    <p class="modal-date">{{ post.date | date: "%B %Y" }}</p>
-    {% endif %}
-  </div>
-  
-  {% if post.image %}
-  <div class="modal-image">
-    <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
-  </div>
-  {% endif %}
-  
-  <div class="modal-description">
-    {% if post.description %}
-    <p class="lead">{{ post.description }}</p>
-    {% endif %}
-    
-    <div class="modal-content-body">
-      {{ post.content }}
-    </div>
-    
-    {% if post.technologies %}
-    <div class="modal-technologies">
-      <h4>Technologies</h4>
-      <div class="tech-tags">
-        {% for tech in post.technologies %}
-        <span class="tech-tag">{{ tech }}</span>
-        {% endfor %}
-      </div>
-    </div>
-    {% endif %}
-    
-    {% if post.project_url %}
-    <div class="modal-links">
-      <a href="{{ post.project_url }}" target="_blank" rel="noopener" class="project-link">View Live Project →</a>
-    </div>
-    {% endif %}
-  </div>
-</div>
-{% endfor %}
 
 <script>
-// Modal functionality
+// Simple analytics and lightbox functionality
 document.addEventListener('DOMContentLoaded', function() {
-  const modalOverlay = document.getElementById('modal-overlay');
-  const modalContent = document.querySelector('.modal-content');
-  const closeButton = document.querySelector('.modal-close');
-  const portfolioCards = document.querySelectorAll('.portfolio-card');
-  const viewProjectButtons = document.querySelectorAll('.view-project');
-  
-  // Track modal session timing
-  let modalOpenTime = null;
-  
-  // Function to open modal
-  function openModal(modalId) {
-    const modalData = document.getElementById(modalId);
-    if (modalData) {
-      modalContent.innerHTML = modalData.innerHTML;
-      modalOverlay.classList.add('active');
-      document.body.style.overflow = 'hidden'; // Prevent background scrolling
-      
-      // Analytics: Track project view
-      modalOpenTime = Date.now();
-      const projectName = modalId.replace('modal-', '').replace(/-/g, ' ');
+  // Track portfolio project clicks
+  document.querySelectorAll('.portfolio-card').forEach(card => {
+    card.addEventListener('click', function() {
+      const projectUrl = this.getAttribute('href');
+      const projectName = projectUrl ? projectUrl.split('/').pop().replace(/-/g, ' ') : 'unknown';
       
       if (typeof gtag !== 'undefined') {
-        gtag('event', 'portfolio_project_view', {
+        gtag('event', 'portfolio_click', {
           'event_category': 'Portfolio',
-          'event_label': projectName,
-          'custom_parameter_1': modalId
+          'event_label': projectName
         });
-        console.log('📊 Portfolio project viewed:', projectName);
-      }
-    }
-  }
-  
-  // Function to close modal
-  function closeModal() {
-    modalOverlay.classList.remove('active');
-    document.body.style.overflow = ''; // Restore scrolling
-    
-    // Analytics: Track engagement time
-    if (modalOpenTime && typeof gtag !== 'undefined') {
-      const timeSpent = Math.round((Date.now() - modalOpenTime) / 1000); // seconds
-      const activeModal = document.querySelector('.modal-data');
-      const projectName = activeModal ? activeModal.id.replace('modal-', '').replace(/-/g, ' ') : 'unknown';
-      
-      gtag('event', 'portfolio_engagement_time', {
-        'event_category': 'Portfolio',
-        'event_label': projectName,
-        'value': timeSpent,
-        'custom_parameter_1': 'seconds_spent'
-      });
-      
-      console.log('📊 Project engagement:', projectName, '(' + timeSpent + 's)');
-      modalOpenTime = null;
-    }
-  }
-  
-  // Add click event to portfolio cards
-  portfolioCards.forEach(card => {
-    // Track portfolio card hover engagement
-    let hoverStartTime = null;
-    
-    card.addEventListener('mouseenter', function() {
-      hoverStartTime = Date.now();
-    });
-    
-    card.addEventListener('mouseleave', function() {
-      if (hoverStartTime) {
-        const hoverTime = Date.now() - hoverStartTime;
-        if (hoverTime > 1000 && typeof gtag !== 'undefined') { // Only track if hovered for >1s
-          const modalTarget = this.getAttribute('data-modal-target');
-          const projectName = modalTarget ? modalTarget.replace('modal-', '').replace(/-/g, ' ') : 'unknown';
-          
-          gtag('event', 'portfolio_card_hover', {
-            'event_category': 'Portfolio',
-            'event_label': projectName,
-            'value': Math.round(hoverTime / 1000),
-            'custom_parameter_1': 'engagement_hover'
-          });
-          console.log('📊 Portfolio card hovered:', projectName, '(' + Math.round(hoverTime / 1000) + 's)');
-        }
-        hoverStartTime = null;
-      }
-    });
-    
-    card.addEventListener('click', function(e) {
-      if (e.target.closest('.view-project')) {
-        e.preventDefault();
-        const modalTarget = this.getAttribute('data-modal-target');
-        if (modalTarget) {
-          // Analytics: Track VIEW PROJECT button click
-          const projectName = modalTarget.replace('modal-', '').replace(/-/g, ' ');
-          if (typeof gtag !== 'undefined') {
-            gtag('event', 'portfolio_cta_click', {
-              'event_category': 'Portfolio',
-              'event_label': projectName,
-              'custom_parameter_1': 'view_project_button'
-            });
-            console.log('📊 VIEW PROJECT clicked:', projectName);
-          }
-          
-          openModal(modalTarget);
-        }
+        console.log('📊 Portfolio:', projectName);
       }
     });
   });
   
-  // Add click event to view project buttons
-  viewProjectButtons.forEach(button => {
-    button.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      const modalTarget = this.getAttribute('data-modal-target');
-      if (modalTarget) {
-        openModal(modalTarget);
-      }
-    });
-  });
-  
-  // Track Are.na note card clicks
-  const noteCards = document.querySelectorAll('.note-card');
-  noteCards.forEach(noteCard => {
+  // Track Are.na note clicks
+  document.querySelectorAll('.note-card').forEach(noteCard => {
     noteCard.addEventListener('click', function() {
-      const noteId = this.getAttribute('data-note-id');
-      const noteText = this.querySelector('.note-content')?.textContent.trim().substring(0, 50) || 'untitled';
+      const noteText = this.querySelector('.note-content')?.textContent.trim().substring(0, 30) || 'untitled';
       
       if (typeof gtag !== 'undefined') {
-        gtag('event', 'arena_note_click', {
+        gtag('event', 'note_click', {
           'event_category': 'Notes',
-          'event_label': noteText,
-          'value': noteId,
-          'custom_parameter_1': 'quick_notes'
+          'event_label': noteText
         });
-        console.log('📊 Are.na note clicked:', noteText.substring(0, 30) + '...');
+        console.log('📊 Note:', noteText + '...');
       }
       
-      // Optional: Open Are.na block in new tab
+      const noteId = this.getAttribute('data-note-id');
       window.open(`https://www.are.na/block/${noteId}`, '_blank');
     });
   });
-  
-  // Close modal when clicking close button
-  closeButton.addEventListener('click', closeModal);
-  
-  // Close modal when clicking outside the modal container
-  modalOverlay.addEventListener('click', function(e) {
-    if (e.target === modalOverlay) {
-      closeModal();
-    }
-  });
-  
-  // Close modal with Escape key
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
-      closeModal();
-    }
-  });
-
-  // Blog Post Modal Functionality
-  const blogReadMoreButtons = document.querySelectorAll('.blog-read-more, .blog-list-link');
-  
-  blogReadMoreButtons.forEach(button => {
-    button.addEventListener('click', function() {
-      const targetId = this.getAttribute('data-target');
-      const blogPostData = document.getElementById(targetId);
-      
-      if (blogPostData) {
-        // Track blog post view
-        const postTitle = blogPostData.querySelector('h2').textContent;
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'blog_post_view', {
-            'event_category': 'Blog',
-            'event_label': postTitle,
-            'custom_parameter_1': 'read_more_clicked'
-          });
-          console.log('📊 Blog post viewed:', postTitle);
-        }
-        
-        openModal(targetId);
-      }
-    });
-  });
-
-  // Lightbox functionality
-  const lightbox = document.createElement('div');
-  lightbox.className = 'lightbox-overlay';
-  lightbox.innerHTML = `
-    <div class="lightbox-container">
-      <button class="lightbox-close">&times;</button>
-      <img class="lightbox-image" src="" alt="">
-      <div class="lightbox-caption"></div>
-      <div class="lightbox-nav">
-        <button class="lightbox-prev">‹</button>
-        <button class="lightbox-next">›</button>
-      </div>
-    </div>
-  `;
-  document.body.appendChild(lightbox);
-
-  let currentImageIndex = 0;
-  let lightboxImages = [];
-
-  // Collect all modal images
-  function collectModalImages() {
-    const modalContent = document.querySelector('.modal-overlay.active .modal-content-body');
-    if (modalContent) {
-      lightboxImages = Array.from(modalContent.querySelectorAll('img')).map(img => ({
-        src: img.src,
-        alt: img.alt,
-        caption: img.nextElementSibling && img.nextElementSibling.tagName === 'EM' ? img.nextElementSibling.textContent : ''
-      }));
-    }
-  }
-
-  // Collect all lab images
-  function collectLabImages() {
-    const labSection = document.querySelector('.lab-section');
-    if (labSection) {
-      lightboxImages = Array.from(labSection.querySelectorAll('.lab-item img')).map(img => ({
-        src: img.src,
-        alt: img.alt,
-        caption: '' // No captions for lab images
-      }));
-    }
-  }
-
-  // Open lightbox
-  function openLightbox(index) {
-    currentImageIndex = index;
-    const lightboxImg = lightbox.querySelector('.lightbox-image');
-    const lightboxCaption = lightbox.querySelector('.lightbox-caption');
-    
-    lightboxImg.src = lightboxImages[currentImageIndex].src;
-    lightboxImg.alt = lightboxImages[currentImageIndex].alt;
-    lightboxCaption.textContent = lightboxImages[currentImageIndex].caption;
-    
-    lightbox.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    
-    // Analytics: Track image view
-    if (typeof gtag !== 'undefined') {
-      const imageName = lightboxImages[currentImageIndex].alt || `image-${index + 1}`;
-      gtag('event', 'portfolio_image_view', {
-        'event_category': 'Portfolio',
-        'event_label': imageName,
-        'value': index + 1,
-        'custom_parameter_1': 'lightbox_opened'
-      });
-      console.log('📊 Portfolio image viewed:', imageName);
-    }
-  }
-
-  // Close lightbox
-  function closeLightbox() {
-    lightbox.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-
-  // Navigate lightbox
-  function navigateLightbox(direction) {
-    if (direction === 'next') {
-      currentImageIndex = (currentImageIndex + 1) % lightboxImages.length;
-    } else {
-      currentImageIndex = (currentImageIndex - 1 + lightboxImages.length) % lightboxImages.length;
-    }
-    
-    // Analytics: Track image navigation
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'portfolio_image_navigation', {
-        'event_category': 'Portfolio',
-        'event_label': direction,
-        'value': currentImageIndex + 1,
-        'custom_parameter_1': `navigated_${direction}`
-      });
-      console.log('📊 Image navigation:', direction, 'to image', currentImageIndex + 1);
-    }
-    
-    openLightbox(currentImageIndex);
-  }
-
-  // Add click handlers to modal images
-  function addLightboxHandlers() {
-    const modalImages = document.querySelectorAll('.modal-overlay.active .modal-content-body img');
-    modalImages.forEach((img, index) => {
-      img.style.cursor = 'pointer';
-      img.addEventListener('click', function() {
-        collectModalImages();
-        openLightbox(index);
-      });
-    });
-  }
-
-  // Add click handlers to lab images
-  function addLabLightboxHandlers() {
-    const labImages = document.querySelectorAll('.lab-item img');
-    labImages.forEach((img, index) => {
-      img.style.cursor = 'pointer';
-      img.addEventListener('click', function() {
-        collectLabImages();
-        openLightbox(index);
-      });
-    });
-  }
-
-  // Initialize lab lightbox handlers on page load
-  addLabLightboxHandlers();
-
-  // Lightbox event listeners
-  lightbox.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
-  lightbox.querySelector('.lightbox-prev').addEventListener('click', () => navigateLightbox('prev'));
-  lightbox.querySelector('.lightbox-next').addEventListener('click', () => navigateLightbox('next'));
-  
-  lightbox.addEventListener('click', function(e) {
-    if (e.target === lightbox) {
-      closeLightbox();
-    }
-  });
-
-  // Keyboard navigation
-  document.addEventListener('keydown', function(e) {
-    if (lightbox.classList.contains('active')) {
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft') navigateLightbox('prev');
-      if (e.key === 'ArrowRight') navigateLightbox('next');
-    }
-  });
-
-  // Add lightbox handlers when modal opens
-  const originalOpenModal = openModal;
-  openModal = function(projectId) {
-    originalOpenModal(projectId);
-    setTimeout(addLightboxHandlers, 100); // Small delay to ensure modal is rendered
-  };
 });
 </script>
