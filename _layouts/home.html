@@ -163,61 +163,22 @@ layout: default
   <section class="lab-section">
     <div class="lab-section-inner">
       <h2>Lab</h2>
-      <div class="lab-grid" id="lab-masonry">
-        {% assign lab_images = site.static_files | where: "extname", ".webp" | where_exp: "file", "file.path contains 'lab'" | sort: "date" %}
-        {% for image in lab_images %}
-        <div class="lab-item">
-          <img src="{{ image.path | relative_url }}" alt="{{ image.basename | replace: '_', ' ' | capitalize }}" loading="lazy">
-        </div>
-        {% endfor %}
-      </div>
-    </div>
-  </section>
-
-  <!-- Blog Posts Section - Notes + Long-form List -->
-  <section class="blog-section">
-    <div class="blog-section-inner">
-      <h2>What has been on my mind?</h2>
-      
-      <!-- Quick Notes Grid from Are.na -->
-      <div class="notes-grid">
-        {% if site.data.arena-notes.contents %}
-          {% assign sorted_notes = site.data.arena-notes.contents | sort: "position" | reverse %}
-          {% for note in sorted_notes limit:16 %}
-            <div class="note-card" data-note-id="{{ note.id }}">
-              <div class="note-content">
-                {{ note.content_html }}
-              </div>
-              <div class="note-meta">
-                <time datetime="{{ note.created_at }}">
-                  {{ note.created_at | date: "%b %d, %Y" }}
-                </time>
-              </div>
-            </div>
-          {% endfor %}
-        {% else %}
-          <div class="notes-placeholder">
-            <p>Quick notes coming soon...</p>
+      <div class="lab-marquee">
+        <div class="lab-track">
+          {% assign lab_images = site.static_files | where: "extname", ".webp" | where_exp: "file", "file.path contains 'lab'" | sort: "date" %}
+          <!-- First loop -->
+          {% for image in lab_images %}
+          <div class="lab-item">
+            <img src="{{ image.path | relative_url }}" alt="{{ image.basename | replace: '_', ' ' | capitalize }}" loading="lazy">
           </div>
-        {% endif %}
-      </div>
-      
-      <!-- Long-form Blog Posts List -->
-      <div class="blog-list">
-        {% assign blog_posts = site.posts | where: "categories", "blog" %}
-        {% assign current_timestamp = site.time | date: "%s" | plus: 0 %}
-        {% assign one_year_seconds = 31536000 %}
-        {% assign one_year_ago = current_timestamp | minus: one_year_seconds %}
-        {% for post in blog_posts %}
-          {% assign post_timestamp = post.date | date: "%s" | plus: 0 %}
-          {% if post_timestamp > one_year_ago %}
-        <div class="blog-list-item">
-          <span class="blog-list-date">{{ post.date | date: "%Y-%m-%d" }}</span>
-          <h3 class="blog-list-title">{{ post.title }}</h3>
-          <a href="{{ post.url | relative_url }}" class="blog-list-link">Read →</a>
+          {% endfor %}
+          <!-- Duplicate loop for seamless scrolling -->
+          {% for image in lab_images %}
+          <div class="lab-item">
+            <img src="{{ image.path | relative_url }}" alt="{{ image.basename | replace: '_', ' ' | capitalize }}" loading="lazy">
+          </div>
+          {% endfor %}
         </div>
-          {% endif %}
-        {% endfor %}
       </div>
     </div>
   </section>
@@ -240,24 +201,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         console.log('📊 Portfolio:', projectName);
       }
-    });
-  });
-  
-  // Track Are.na note clicks
-  document.querySelectorAll('.note-card').forEach(noteCard => {
-    noteCard.addEventListener('click', function() {
-      const noteText = this.querySelector('.note-content')?.textContent.trim().substring(0, 30) || 'untitled';
-      
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'note_click', {
-          'event_category': 'Notes',
-          'event_label': noteText
-        });
-        console.log('📊 Note:', noteText + '...');
-      }
-      
-      const noteId = this.getAttribute('data-note-id');
-      window.open(`https://www.are.na/block/${noteId}`, '_blank');
     });
   });
 });

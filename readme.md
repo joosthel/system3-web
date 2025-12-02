@@ -1,4 +1,4 @@
-# system³ Personal Website
+# Joost Helfers Personal Website
 
 A minimal, left-aligned portfolio website built with Jekyll. Features a clean design with 3D models, project showcases, and modal overlays.
 

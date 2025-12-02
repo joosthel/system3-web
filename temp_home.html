@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>system³ Personal Website</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Joost Helfers | system³" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>system³ Personal Website | Joost Helfers system³</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="system³ Personal Website" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Joost Helfers is a Creative Technologist working at the intersection of 3D, AI and emerging technology. His work is driven by a spatial approach, creating high-impact visuals and advanced technical workflows that help brands and designers communicate complex ideas. Combining his architectural and advanced 3D design background with startup experience, he builds innovative solutions that work." />
+<meta property="og:description" content="Joost Helfers is a Creative Technologist working at the intersection of 3D, AI and emerging technology. His work is driven by a spatial approach, creating high-impact visuals and advanced technical workflows that help brands and designers communicate complex ideas. Combining his architectural and advanced 3D design background with startup experience, he builds innovative solutions that work." />
+<link rel="canonical" href="http://localhost:4000/" />
+<meta property="og:url" content="http://localhost:4000/" />
+<meta property="og:site_name" content="Joost Helfers system³" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="system³ Personal Website" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","description":"Joost Helfers is a Creative Technologist working at the intersection of 3D, AI and emerging technology. His work is driven by a spatial approach, creating high-impact visuals and advanced technical workflows that help brands and designers communicate complex ideas. Combining his architectural and advanced 3D design background with startup experience, he builds innovative solutions that work.","headline":"system³ Personal Website","name":"Joost Helfers system³","url":"http://localhost:4000/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <!-- Google Analytics 4 with Default Tracking -->
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FV9Q5RL89T"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      
+      // Check user's cookie preference
+      const cookieConsent = localStorage.getItem('cookie-consent');
+      
+      if (cookieConsent === 'declined') {
+        // Only disable if explicitly declined
+        console.log('🚫 Analytics disabled - user declined cookies');
+        gtag('consent', 'default', {
+          'analytics_storage': 'denied',
+          'ad_storage': 'denied'
+        });
+      } else {
+        // Default: Enable analytics (accepted or no choice made yet)
+        console.log('📊 Analytics enabled - tracking page views');
+        gtag('config', 'G-FV9Q5RL89T', {
+          anonymize_ip: true,
+          cookie_flags: 'SameSite=None;Secure'
+        });
+        
+        // Log page view for debugging
+        console.log('✅ GA4 page view sent for:', window.location.pathname);
+      }
+    </script>
+    
+
+    <!-- 3D Model Viewer -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+    <!-- Favicon-->
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="JH" />
+    <link rel="manifest" href="/assets/favicon/site.webmanifest" />
+  </head>
+  <body>
+    <header class="site-header">
+  <div class="header-left">
+    <a href="/" class="header-logo" title="Joost Helfers | system³">
+      <img src="/assets/imgs/system3_logo_transparent_black.png" alt="Joost Helfers | system³ Logo" />
+    </a>
+    <a href="/" class="header-logo-text">
+      
+      <h1 class="site-title">Joost Helfers | system³</h1>
+      
+    </a>
+  </div>
+
+  <!-- ASCII Glitch Bar (on desktop) -->
+    <div class="ascii-bar-container">
+    <div id="ascii-progress-bar" class="ascii-progress-bar">[]</div>
+  </div>
+    <!-- Email contact link (works on both desktop and mobile) -->
+  <div class="header-right">
+    <a href="mailto:mail@joosthelfers.com" class="cta-button cta-button-small">
+      <span class="cta-text">Send me an E-Mail</span>
+    </a>
+  </div>
+</header>
+    
+    <main class="page-content" aria-label="Content">
+      <div class="home-container">
+  <!-- Unified Hero Section (Full Screen) -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <!-- Hero Text Content -->
+      <div class="hero-text">
+        <div class="hero-intro">
+            <h2 class="hero-title">Creative Technologist</h2>
+            <p class="hero-subtitle">Building technical solutions and engaging visuals with emerging technology</p>
+          </div>
+          
+          <div class="hero-description">
+            <p>Joost Helfers is a Creative Technologist working at the intersection of 3D, AI and emerging technology. His work is driven by a spatial approach, creating high-impact visuals and advanced technical workflows that help brands and designers communicate complex ideas. <br>
+              Combining his architectural and advanced 3D design background with startup experience, he builds innovative solutions that work.</p>
+        </div>
+        
+        <div class="hero-actions">
+          <a href="mailto:mail@joosthelfers.com" class="cta-button">
+            <span class="cta-text">Let's start a Project 📧</span>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Hero 3D Model -->
+      <div class="hero-model">
+        <model-viewer 
+          camera-controls 
+          auto-rotate
+          rotation-per-second="30deg"
+          touch-action="pan-y" 
+          autoplay 
+          ar 
+          ar-modes="webxr scene-viewer" 
+          scale="0.2 0.2 0.2" 
+          shadow-intensity="1" 
+          src="/assets/3D/Joost_dance.glb" 
+          alt="A 3D model of myself waving and greeting you">
+        </model-viewer>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Projects Section with Swipeable Cards -->
+  <section class="portfolio-section">
+    <div class="portfolio-section-inner">
+      <h2>Past projects (WIP)</h2>
+        <!-- Swipeable Card Container -->
+    <div class="carousel-container">
+      <div class="portfolio-carousel">
+        
+        
+        <a href="/portfolio/2025/09/10/soireexd-ambient-graphics.html" class="portfolio-card">
+          
+          <img src="/assets/imgs/proj_soireexd/SoireeXD-thumbnail.webp" alt="SoiréeXD Ambient Graphics">
+          
+          <div class="portfolio-card-content">
+            <h3>SoiréeXD Ambient Graphics</h3>
+            <p>Ambient visuals for SoiréeXD's event series, trailers, and promotional materials</p>
+            <span class="view-project">VIEW PROJECT →</span>
+          </div>
+        </a>
+        
+        <a href="/portfolio/2025/05/04/inyo-digital-twin.html" class="portfolio-card">
+          
+          <img src="/assets/imgs/proj_INYO-Digital-Twin/Screenshot_3D-View.webp" alt="INYO Mobility - Digital Twin Platform">
+          
+          <div class="portfolio-card-content">
+            <h3>INYO Mobility - Digital Twin Platform</h3>
+            <p>Interactive 3D visualization solutions for vehicle design optimization | Full Stack development</p>
+            <span class="view-project">VIEW PROJECT →</span>
+          </div>
+        </a>
+        
+        <a href="/portfolio/2023/05/01/inyo-visualizations.html" class="portfolio-card">
+          
+          <img src="/assets/imgs/proj_INYO-Viz/INYO-Viz_06.webp" alt="INYO Mobility - Various Visualizations">
+          
+          <div class="portfolio-card-content">
+            <h3>INYO Mobility - Various Visualizations</h3>
+            <p>3D visualizations and digital marketing materials for INYO Mobility's electric vehicle ecosystem</p>
+            <span class="view-project">VIEW PROJECT →</span>
+          </div>
+        </a>
+        
+        <a href="/portfolio/2023/05/01/designmorphine-msc.html" class="portfolio-card">
+          
+          <img src="/assets/imgs/proj_MSc-CAD/MSc-CAD_04.webp" alt="DesignMorphine MSc Computational and Advanced Design - Project Arcadia">
+          
+          <div class="portfolio-card-content">
+            <h3>DesignMorphine MSc Computational and Advanced Design - Project Arcadia</h3>
+            <p>Final Project for my M. Sc. in Computational and Advanced Design</p>
+            <span class="view-project">VIEW PROJECT →</span>
+          </div>
+        </a>
+        
+        <a href="/portfolio/2023/05/01/t-cell-explainer.html" class="portfolio-card">
+          
+          <img src="/assets/imgs/proj_T-Cell/T-Cell_Hero.webp" alt="T-Cell AG - Explainer Videos">
+          
+          <div class="portfolio-card-content">
+            <h3>T-Cell AG - Explainer Videos</h3>
+            <p>Series of videos for the T-Cell AG, explaining the hydrogen-fuel-cell technology and impact it can have for the energy transition....</p>
+            <span class="view-project">VIEW PROJECT →</span>
+          </div>
+        </a>
+        
+      </div>
+    </div>
+
+      <!-- Carousel Controls -->
+      
+      <div class="carousel-controls">
+        <button class="carousel-prev" aria-label="Previous project">‹</button>
+        <div class="carousel-indicators">
+          
+            <button class="indicator active" aria-label="Go to project 1"></button>
+          
+            <button class="indicator" aria-label="Go to project 2"></button>
+          
+            <button class="indicator" aria-label="Go to project 3"></button>
+          
+            <button class="indicator" aria-label="Go to project 4"></button>
+          
+            <button class="indicator" aria-label="Go to project 5"></button>
+          
+        </div>
+        <button class="carousel-next" aria-label="Next project">›</button>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- Services Section - What I Offer -->
+  <section class="services-section">
+    <div class="services-section-inner">
+      <h2>Services</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-image">
+            <img src="/assets/imgs/services/service_cgi.webp" alt="High-Impact Brand & Media Assets" loading="lazy">
+          </div>
+          <div class="service-content">
+            <h3>High-Impact Brand & Media Assets</h3>
+            <p>I create cinematic, high-fidelity visuals that translate abstract ideas and complicated topics into clear, engaging imagery. With roots in architecture and 3D design, my imagery balances precision, clarity and emotions.</p>
+            <div class="service-tags">
+              <span class="tag">3D Visualization</span>
+              <span class="tag">Renderings</span>
+              <span class="tag">Motion Graphics</span>
+              <span class="tag">Blender</span>
+              <span class="tag">Houdini</span>
+              <span class="tag">Product Animation</span>
+              <span class="tag">Brand Imagery</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-image">
+            <img src="/assets/imgs/services/service_truck.webp" alt="Custom Automation Pipelines" loading="lazy">
+          </div>
+          <div class="service-content">
+            <h3>Custom Automation Pipelines</h3>
+            <p>I build custom, scalable pipelines that automate or enhance design and content creation, enabling productive outcomes and faster turnaround times. These workflows enable rapid iteration, customization and push the boundaries on what's possible with technology.</p>
+            <div class="service-tags">
+              <span class="tag">ComfyUI</span>
+              <span class="tag">Generative Workflows</span>
+              <span class="tag">AI Integration</span>
+              <span class="tag">Python</span>
+              <span class="tag">Cloud Integration</span>
+              <span class="tag">R&D</span>
+              <span class="tag">Agentic Workflows</span>
+              <span class="tag">AI Strategy</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-image">
+            <img src="/assets/imgs/services/service_digital-twin.webp" alt="Real-Time & Digital Twin Platforms" loading="lazy">
+          </div>
+          <div class="service-content">
+            <h3>Real-Time & Digital Twin Platforms</h3>
+            <p>I design functional environments, where data and space converge. From digital twins to interactive configurators, these platforms transform complex systems into intuitive experiences for engineering, sales and storytelling.</p>
+            <div class="service-tags">
+              <span class="tag">Digital Twin Development</span>
+              <span class="tag">Unreal Engine</span>
+              <span class="tag">Three.js</span>
+              <span class="tag">React / Next.js</span>
+              <span class="tag">Data Integration</span>
+              <span class="tag">Plattform Development</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-content">
+            <h3>The bespoke Way</h3>
+            <p>Just as I feel like I don't fit in a box, sometimes ideas can be really unconventional as well. If you think you have an exciting idea and need someone to fuse design, technology and imagination: Let's find a solution together.</p>
+            <div class="service-cta">
+              <a href="mailto:mail@joosthelfers.com" class="cta-button service-cta-button">
+                <span class="cta-text">Let's Connect 📧</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lab Section - Visual Experiments -->
+  <section class="lab-section">
+    <div class="lab-section-inner">
+      <h2>Lab</h2>
+      <div class="lab-grid" id="lab-masonry">
+        
+        
+        <div class="lab-item">
+          <img src="/assets/imgs/lab/blobtracking.webp" alt="Blobtracking" loading="lazy">
+        </div>
+        
+        <div class="lab-item">
+          <img src="/assets/imgs/lab/genai-ledlights.webp" alt="Genai-ledlights" loading="lazy">
+        </div>
+        
+        <div class="lab-item">
+          <img src="/assets/imgs/lab/genai_archiperson.webp" alt="Genai archiperson" loading="lazy">
+        </div>
+        
+        <div class="lab-item">
+          <img src="/assets/imgs/lab/genai_bike.webp" alt="Genai bike" loading="lazy">
+        </div>
+        
+        <div class="lab-item">
+          <img src="/assets/imgs/lab/genai_city.webp" alt="Genai city" loading="lazy">
+        </div>
+        
+        <div class="lab-item">
+          <img src="/assets/imgs/lab/genai_demo-days-soireexd.webp" alt="Genai demo-days-soireexd" loading="lazy">
+        </div>
+        
+        <div class="lab-item">
+          <img src="/assets/imgs/lab/genai_dinner.webp" alt="Genai dinner" loading="lazy">
+        </div>
+        
+        <div class="lab-item">
+          <img src="/assets/imgs/lab/genai_flash.webp" alt="Genai flash" loading="lazy">
+        </div>
+        
+        <div class="lab-item">
+          <img src="/assets/imgs/lab/genai_fly.webp" alt="Genai fly" loading="lazy">
+        </div>
+        
+        <div class="lab-item">
+          <img src="/assets/imgs/lab/genai_future-space-iv-bar.webp" alt="Genai future-space-iv-bar" loading="lazy">
+        </div>
+        
+        <div class="lab-item">
+          <img src="/assets/imgs/lab/genai_future-space-office.webp" alt="Genai future-space-office" loading="lazy">
+        </div>
+        
+        <div class="lab-item">
+          <img src="/assets/imgs/lab/genai_future-space-retail.webp" alt="Genai future-space-retail" loading="lazy">
+        </div>
+        
+        <div class="lab-item">
+          <img src="/assets/imgs/lab/genai_horse.webp" alt="Genai horse" loading="lazy">
+        </div>
+        
+        <div class="lab-item">
+          <img src="/assets/imgs/lab/genai_hotrod.webp" alt="Genai hotrod" loading="lazy">
+        </div>
+        
+        <div class="lab-item">
+          <img src="/assets/imgs/lab/genai_inyo-lora.webp" alt="Genai inyo-lora" loading="lazy">
+        </div>
+        
+        <div class="lab-item">
+          <img src="/assets/imgs/lab/genai_latentwar.webp" alt="Genai latentwar" loading="lazy">
+        </div>
+        
+        <div class="lab-item">
+          <img src="/assets/imgs/lab/genai_scaffoding-detail.webp" alt="Genai scaffoding-detail" loading="lazy">
+        </div>
+        
+        <div class="lab-item">
+          <img src="/assets/imgs/lab/genai_scaffolding.webp" alt="Genai scaffolding" loading="lazy">
+        </div>
+        
+        <div class="lab-item">
+          <img src="/assets/imgs/lab/genai_screens.webp" alt="Genai screens" loading="lazy">
+        </div>
+        
+        <div class="lab-item">
+          <img src="/assets/imgs/lab/genai_sky.webp" alt="Genai sky" loading="lazy">
+        </div>
+        
+        <div class="lab-item">
+          <img src="/assets/imgs/lab/genai_space.webp" alt="Genai space" loading="lazy">
+        </div>
+        
+        <div class="lab-item">
+          <img src="/assets/imgs/lab/genai_totem.webp" alt="Genai totem" loading="lazy">
+        </div>
+        
+        <div class="lab-item">
+          <img src="/assets/imgs/lab/genai_traffic.webp" alt="Genai traffic" loading="lazy">
+        </div>
+        
+        <div class="lab-item">
+          <img src="/assets/imgs/lab/genai_wan-t2i-1.webp" alt="Genai wan-t2i-1" loading="lazy">
+        </div>
+        
+        <div class="lab-item">
+          <img src="/assets/imgs/lab/genai_wan-t2i-2.webp" alt="Genai wan-t2i-2" loading="lazy">
+        </div>
+        
+        <div class="lab-item">
+          <img src="/assets/imgs/lab/lab_chrosseng.webp" alt="Lab chrosseng" loading="lazy">
+        </div>
+        
+        <div class="lab-item">
+          <img src="/assets/imgs/lab/led_dj-setup.webp" alt="Led dj-setup" loading="lazy">
+        </div>
+        
+        <div class="lab-item">
+          <img src="/assets/imgs/lab/object-tracking.webp" alt="Object-tracking" loading="lazy">
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Posts Section - Notes + Long-form List -->
+  <section class="blog-section">
+    <div class="blog-section-inner">
+      <h2>What has been on my mind?</h2>
+      
+      <!-- Quick Notes Grid from Are.na -->
+      <div class="notes-grid">
+        
+          
+          
+            <div class="note-card" data-note-id="40699517">
+              <div class="note-content">
+                <p>Consider the context.</p>
+              </div>
+              <div class="note-meta">
+                <time datetime="2025-10-29T10:54:08.282Z">
+                  Oct 29, 2025
+                </time>
+              </div>
+            </div>
+          
+            <div class="note-card" data-note-id="40695976">
+              <div class="note-content">
+                <p>Attention is modern day currency. Watch out where you spend it.</p>
+              </div>
+              <div class="note-meta">
+                <time datetime="2025-10-29T09:27:54.322Z">
+                  Oct 29, 2025
+                </time>
+              </div>
+            </div>
+          
+            <div class="note-card" data-note-id="40651416">
+              <div class="note-content">
+                <p>Focus<br>
+Consistency (Repeated Action) </p>
+
+<p>!!!</p>
+              </div>
+              <div class="note-meta">
+                <time datetime="2025-10-28T05:27:38.284Z">
+                  Oct 28, 2025
+                </time>
+              </div>
+            </div>
+          
+            <div class="note-card" data-note-id="40651397">
+              <div class="note-content">
+                <p>Brick by brick</p>
+              </div>
+              <div class="note-meta">
+                <time datetime="2025-10-28T05:26:28.946Z">
+                  Oct 28, 2025
+                </time>
+              </div>
+            </div>
+          
+            <div class="note-card" data-note-id="40588870">
+              <div class="note-content">
+                <p>step-by-step // consistency</p>
+
+<p>a house is just a collection of bricks</p>
+              </div>
+              <div class="note-meta">
+                <time datetime="2025-10-25T18:01:40.805Z">
+                  Oct 25, 2025
+                </time>
+              </div>
+            </div>
+          
+            <div class="note-card" data-note-id="40588855">
+              <div class="note-content">
+                <p>reduce the barrier so much, it becomes stupid easy to act (build, create, move, live) // do not overcomplicate things</p>
+              </div>
+              <div class="note-meta">
+                <time datetime="2025-10-25T18:00:31.643Z">
+                  Oct 25, 2025
+                </time>
+              </div>
+            </div>
+          
+        
+      </div>
+      
+      <!-- Long-form Blog Posts List -->
+      <div class="blog-list">
+        
+        
+        
+        
+        
+          
+          
+        <div class="blog-list-item">
+          <span class="blog-list-date">2025-10-02</span>
+          <h3 class="blog-list-title">On being a Generalist</h3>
+          <a href="/blog/2025/10/02/on-being-a-generalist.html" class="blog-list-link">Read →</a>
+        </div>
+          
+        
+          
+          
+        <div class="blog-list-item">
+          <span class="blog-list-date">2025-01-01</span>
+          <h3 class="blog-list-title">Reviewing 2024</h3>
+          <a href="/blog/2025/01/01/review-2024.html" class="blog-list-link">Read →</a>
+        </div>
+          
+        
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+// Simple analytics and lightbox functionality
+document.addEventListener('DOMContentLoaded', function() {
+  // Track portfolio project clicks
+  document.querySelectorAll('.portfolio-card').forEach(card => {
+    card.addEventListener('click', function() {
+      const projectUrl = this.getAttribute('href');
+      const projectName = projectUrl ? projectUrl.split('/').pop().replace(/-/g, ' ') : 'unknown';
+      
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'portfolio_click', {
+          'event_category': 'Portfolio',
+          'event_label': projectName
+        });
+        console.log('📊 Portfolio:', projectName);
+      }
+    });
+  });
+  
+  // Track Are.na note clicks
+  document.querySelectorAll('.note-card').forEach(noteCard => {
+    noteCard.addEventListener('click', function() {
+      const noteText = this.querySelector('.note-content')?.textContent.trim().substring(0, 30) || 'untitled';
+      
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'note_click', {
+          'event_category': 'Notes',
+          'event_label': noteText
+        });
+        console.log('📊 Note:', noteText + '...');
+      }
+      
+      const noteId = this.getAttribute('data-note-id');
+      window.open(`https://www.are.na/block/${noteId}`, '_blank');
+    });
+  });
+});
+</script>
+    </main>
+    
+    <footer class="site-footer">
+  <div class="footer-main">
+    <!-- Column 1: Logo and Title -->
+    <div class="footer-column">
+      <div class="footer-logo">
+        <img src="/assets/imgs/system3_logo_transparent_black.png" alt="Logo" />
+        <h2>Joost Helfers | system³</h2>
+      </div>
+      <p class="footer-description">Joost Helfers is a Creative Technologist working at the intersection of 3D, AI and emerging technology. His work is driven by a spatial approach, creating high-impact visuals and advanced technical workflows that help brands and designers communicate complex ideas. Combining his architectural and advanced 3D design background with startup experience, he builds innovative solutions that work.</p>
+    </div>
+    
+    <!-- Column 2: Site Map -->
+    <div class="footer-column">
+      <nav class="footer-nav">
+        <ul class="footer-links">
+          <li><a href="/">HOME</a></li><br>
+          <li><a href="/assets/pdf/CV-Helfers.pdf" onclick="trackCVDownload()" target="_blank">CV</a></li><br>
+          <li><a href="/privacy/">PRIVACY</a></li><br>
+          <li><a href="/imprint/">IMPRINT</a></li><br>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Dynamic spacer -->
+  <div class="footer-spacer"></div>
+    <div class="footer-bottom">
+    <div class="footer-bottom-column">
+      <p>Available everywhere, currently in:</p>
+      <p>Berlin, Germany</p>
+      <p id="berlin-time">Loading time...</p>
+    </div>
+      <div class="footer-bottom-column">
+      <p><a href="mailto:mail@joosthelfers.com">mail@joosthelfers.com</a></p>
+      <div class="social-links">
+        <a href="https://github.com/joosthel">GitHub</a>
+        <a href="https://instagram.com/joosthel">Instagram</a>
+        <a href="https://linkedin.com/in/joosthel">LinkedIn</a>
+      </div>
+    
+    <div class="footer-bottom-column">
+      <p>&copy; 2025 Joost Helfers | system³</p>
+    </div>
+  </div>
+</footer>
+
+    <!-- Cookie Notice -->
+    <div id="cookie-notice" class="cookie-notice" style="display: none;">
+      <div class="cookie-content">
+        <div class="cookie-text">
+          <p>This site uses analytics cookies so I know how many people are visiting my page. I love getting insights through data. ¯\_(ツ)_/¯</p>
+        </div>
+        <div class="cookie-actions">
+          <button id="cookie-accept" class="cookie-btn cookie-accept">Accept</button>
+          <button id="cookie-decline" class="cookie-btn cookie-decline">Decline</button>
+          <a href="/privacy/" class="cookie-link">Privacy</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slideshow JavaScript -->
+<script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Footer Timestamp
+        function updateBerlinTime() {
+          const berlinTime = new Date().toLocaleTimeString('en-US', {
+            timeZone: 'Europe/Berlin',
+            hour: '2-digit', 
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: false
+          });
+          const timeElement = document.getElementById('berlin-time');
+          if (timeElement) {
+            timeElement.textContent = berlinTime + ' CET';
+          }
+        }
+        
+        updateBerlinTime();
+        setInterval(updateBerlinTime, 1000);        
+        
+        // Slideshow functionality
+        const slideshowImages = document.querySelectorAll('.slideshow-image');
+        if (slideshowImages.length > 1) {
+          let currentSlide = 0;
+          
+          function nextSlide() {
+            slideshowImages[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slideshowImages.length;
+            slideshowImages[currentSlide].classList.add('active');
+          }
+          
+          setInterval(nextSlide, 3000);
+        }
+      
+        // Mobile menu toggle functionality
+        const menuToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('.header-right');
+        
+        if (menuToggle && navMenu) {
+          menuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+            document.body.classList.toggle('menu-open'); 
+          });
+          
+          const navLinks = navMenu.querySelectorAll('a');
+          navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+              navMenu.classList.remove('active');
+              menuToggle.classList.remove('active');
+              document.body.classList.remove('menu-open');
+            });
+          });
+        }        // Portfolio carousel functionality
+        const carousel = document.querySelector('.portfolio-carousel');
+        const prevBtn = document.querySelector('.carousel-prev');
+        const nextBtn = document.querySelector('.carousel-next');
+        const indicators = document.querySelectorAll('.indicator');
+
+        if (carousel) {
+          const cards = carousel.querySelectorAll('.portfolio-card');
+          let currentIndex = 0;
+          const totalCards = cards.length;
+          
+          if (totalCards === 0) return;
+          
+          function getCardWidth() {
+            const card = carousel.querySelector('.portfolio-card');
+            if (!card) return 0;
+            return card.offsetWidth;
+          }
+          
+          function getGap() {
+            const computedStyle = window.getComputedStyle(carousel);
+            return parseInt(computedStyle.gap) || 0;
+          }
+          
+          function getVisibleCards() {
+            const isMobile = window.innerWidth <= 768;
+            return isMobile ? 1 : 4;
+          }
+          
+          function getMaxIndex() {
+            const visibleCards = getVisibleCards();
+            return Math.max(0, totalCards - visibleCards);
+          }
+          
+          function shouldShowNavigation() {
+            return totalCards > getVisibleCards();
+          }
+            function updateNavigationVisibility() {
+            const shouldShow = shouldShowNavigation();
+            
+            // Hide/show navigation buttons
+            if (prevBtn) prevBtn.style.display = shouldShow ? 'flex' : 'none';
+            if (nextBtn) nextBtn.style.display = shouldShow ? 'flex' : 'none';
+            
+            // Hide/show entire controls container
+            const controlsContainer = document.querySelector('.carousel-controls');
+            if (controlsContainer) {
+              controlsContainer.style.display = shouldShow ? 'flex' : 'none';
+            }
+          }
+            function updateCarouselPosition(animate = true) {
+            const cardWidth = getCardWidth();
+            const gap = getGap();
+            const isMobile = window.innerWidth <= 768;
+            const maxIndex = getMaxIndex();
+            
+            // Clamp currentIndex to valid range for bounded scrolling
+            if (!isMobile) {
+              currentIndex = Math.max(0, Math.min(currentIndex, maxIndex));
+            } else {
+              // Keep endless scrolling on mobile
+              currentIndex = ((currentIndex % totalCards) + totalCards) % totalCards;
+            }
+            
+            // On mobile, use full card width without gap to prevent shifting
+            const offset = isMobile ? 
+              currentIndex * cardWidth : 
+              currentIndex * (cardWidth + gap);
+            
+            carousel.style.transition = animate ? 'transform 0.4s ease' : 'none';
+            carousel.style.transform = `translateX(-${offset}px)`;
+            
+            // Update indicators
+            const displayIndex = isMobile ? 
+              ((currentIndex % totalCards) + totalCards) % totalCards : 
+              currentIndex;
+              
+            indicators.forEach((indicator, idx) => {
+              indicator.classList.toggle('active', idx === displayIndex);
+            });
+            
+            // Update button states for desktop
+            if (!isMobile && shouldShowNavigation()) {
+              if (prevBtn) prevBtn.disabled = currentIndex <= 0;
+              if (nextBtn) nextBtn.disabled = currentIndex >= maxIndex;
+            }
+          }
+          
+          function nextSlide() {
+            const isMobile = window.innerWidth <= 768;
+            const maxIndex = getMaxIndex();
+            
+            if (isMobile) {
+              // Endless scrolling on mobile
+              currentIndex = (currentIndex + 1) % totalCards;
+            } else {
+              // Bounded scrolling on desktop
+              if (currentIndex < maxIndex) {
+                currentIndex++;
+              }
+            }
+            updateCarouselPosition();
+          }
+          
+          function prevSlide() {
+            const isMobile = window.innerWidth <= 768;
+            const maxIndex = getMaxIndex();
+            
+            if (isMobile) {
+              // Endless scrolling on mobile
+              currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+            } else {
+              // Bounded scrolling on desktop
+              if (currentIndex > 0) {
+                currentIndex--;
+              }
+            }
+            updateCarouselPosition();
+          }
+          
+          // Initialize
+          updateNavigationVisibility();
+          updateCarouselPosition(false);
+          
+          if (prevBtn) {
+            prevBtn.addEventListener('click', prevSlide);
+          }
+          
+          if (nextBtn) {
+            nextBtn.addEventListener('click', nextSlide);
+          }
+            // Touch events for swiping
+          let touchStartX = 0;
+          let touchEndX = 0;
+          let isDragging = false;
+          let hasMoved = false;
+          
+          carousel.addEventListener('touchstart', function(e) {
+            touchStartX = e.touches[0].clientX;
+            isDragging = true;
+            hasMoved = false;
+            e.stopPropagation();
+          }, {passive: true});
+          
+          carousel.addEventListener('touchmove', function(e) {
+            if (!isDragging) return;
+            hasMoved = true;
+            touchEndX = e.touches[0].clientX;
+            e.preventDefault();
+            e.stopPropagation();
+          });
+          
+          carousel.addEventListener('touchend', function(e) {
+            if (!isDragging || !hasMoved) {
+              isDragging = false;
+              return;
+            }
+            isDragging = false;
+            
+            const difference = touchStartX - touchEndX;
+            const threshold = 50;
+            
+            if (Math.abs(difference) > threshold) {
+              if (difference > 0) {
+                nextSlide();
+              } else {
+                prevSlide();
+              }
+            }
+          }, {passive: true});
+          
+          // Indicator click handlers
+          indicators.forEach((indicator, idx) => {
+            indicator.addEventListener('click', () => {
+              currentIndex = idx;
+              updateCarouselPosition();
+            });
+          });
+          
+          // Window resize handler
+          let resizeTimeout;
+          window.addEventListener('resize', function() {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+              updateNavigationVisibility();
+              updateCarouselPosition(false);
+            }, 250);
+          });
+        }
+
+        // ASCII Progress Bar
+        const asciiBar = document.getElementById('ascii-progress-bar');
+        if (asciiBar) {
+          const maxLength = 40;
+          let currentPosition = 0;
+          const asciiChars = '!@#$%^&*()_+-={}|;:,.<>?/~`';
+          
+          function updateAsciiBar() {
+            if (currentPosition >= maxLength) {
+              asciiBar.textContent = '[' + ' '.repeat(maxLength) + ']';
+              currentPosition = 0;
+              setTimeout(updateAsciiBar, 500);
+              return;
+            }
+            
+            let barContent = asciiBar.textContent;
+            const randomChar = asciiChars.charAt(Math.floor(Math.random() * asciiChars.length));
+            barContent = barContent.substring(0, currentPosition + 1) + randomChar + barContent.substring(currentPosition + 2);
+            
+            asciiBar.textContent = barContent;
+            currentPosition++;
+            
+            setTimeout(updateAsciiBar, 100);
+          }
+          
+          updateAsciiBar();
+        }
+
+        // Lab Masonry Grid
+        function initMasonry() {
+          const grid = document.getElementById('lab-masonry');
+          if (!grid) return;
+          
+          const items = Array.from(grid.querySelectorAll('.lab-item'));
+          if (items.length === 0) return;
+          
+          // Skip masonry on mobile - use CSS grid instead
+          if (window.innerWidth <= 600) {
+            items.forEach(item => {
+              item.style.position = 'static';
+              item.style.left = 'auto';
+              item.style.top = 'auto';
+              item.style.width = 'auto';
+            });
+            grid.style.height = 'auto';
+            grid.style.position = 'static';
+            return;
+          }
+          
+          // Reset grid
+          grid.style.height = 'auto';
+          grid.style.position = 'relative';
+          
+          // Calculate columns
+          const containerWidth = grid.offsetWidth;
+          const minItemWidth = 280;
+          const gap = 16;
+          const calculatedCols = Math.floor((containerWidth + gap) / (minItemWidth + gap));
+          const cols = Math.min(4, Math.max(1, calculatedCols));
+          
+          const columnHeights = Array(cols).fill(0);
+          
+          // Position each item
+          items.forEach(item => {
+            const img = item.querySelector('img');
+            if (!img || !img.naturalWidth || !img.naturalHeight) return;
+            
+            const aspectRatio = img.naturalHeight / img.naturalWidth;
+            const itemWidth = (containerWidth - gap * (cols - 1)) / cols;
+            const itemHeight = itemWidth * aspectRatio;
+            
+            // Find shortest column
+            const shortestCol = columnHeights.indexOf(Math.min(...columnHeights));
+            
+            // Position item
+            const x = shortestCol * (itemWidth + gap);
+            const y = columnHeights[shortestCol];
+            
+            item.style.position = 'absolute';
+            item.style.left = x + 'px';
+            item.style.top = y + 'px';
+            item.style.width = itemWidth + 'px';
+            
+            // Update column height
+            columnHeights[shortestCol] += itemHeight + gap;
+          });
+          
+          // Set container height
+          grid.style.height = Math.max(...columnHeights) + 'px';
+        }
+
+        // Initialize masonry after images load
+        let loadedImages = 0;
+        const labImages = document.querySelectorAll('#lab-masonry img');
+        
+        if (labImages.length > 0) {
+          labImages.forEach(img => {
+            if (img.complete) {
+              loadedImages++;
+              if (loadedImages === labImages.length) {
+                initMasonry();
+              }
+            } else {
+              img.addEventListener('load', () => {
+                loadedImages++;
+                if (loadedImages === labImages.length) {
+                  initMasonry();
+                }
+              });
+            }
+          });
+          
+          // Fallback - initialize after a delay even if not all images loaded
+          setTimeout(initMasonry, 1000);
+        }        // Resize handler for masonry
+        let masonryResizeTimeout;
+        window.addEventListener('resize', () => {
+          clearTimeout(masonryResizeTimeout);
+          masonryResizeTimeout = setTimeout(initMasonry, 250);
+        });        // CTA Button Rainbow Effect
+        const ctaButtons = document.querySelectorAll('.cta-button, .cta-button-small');
+        
+        ctaButtons.forEach((button) => {
+          // Just ensure the rainbow effect works on hover
+          // CSS handles all the animation and visual effects
+        });
+
+        // External Links - Open in new tab
+        document.querySelectorAll('a[href]').forEach(link => {
+          const href = link.getAttribute('href');
+          if (href && href.match(/^https?:\/\//) && !href.includes('joosthelfers.com')) {
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+          }
+        });
+      });
+
+      // CV Download Tracking Function
+      function trackCVDownload() {
+        // Track with Google Analytics 4 if available
+        if (typeof gtag !== 'undefined') {
+          // File download event (standard GA4 event)
+          gtag('event', 'file_download', {
+            'file_name': 'CV-Helfers.pdf',
+            'file_extension': 'pdf',
+            'link_text': 'Download CV',
+            'link_url': '/assets/pdf/CV-Helfers.pdf',
+            'link_classes': 'footer-nav-link'
+          });
+          
+          // Custom CV interest event for better tracking
+          gtag('event', 'cv_download', {
+            'event_category': 'engagement',
+            'event_label': 'CV Footer Download',
+            'value': 1,
+            'page_location': window.location.href,
+            'page_referrer': document.referrer
+          });
+        }
+        
+        console.log('CV download tracked:', {
+          timestamp: new Date().toISOString(),
+          method: 'footer_link',
+          userAgent: navigator.userAgent.substring(0, 100),
+          referrer: document.referrer,
+          page: window.location.pathname
+        });
+      }
+
+      // Cookie Notice Functionality
+      function initCookieNotice() {
+        const cookieNotice = document.getElementById('cookie-notice');
+        const acceptBtn = document.getElementById('cookie-accept');
+        const declineBtn = document.getElementById('cookie-decline');
+        
+        // Check if user has already made a choice
+        const cookieConsent = localStorage.getItem('cookie-consent');
+        
+        if (!cookieConsent) {
+          // Show cookie notice after a short delay
+          setTimeout(() => {
+            cookieNotice.style.display = 'block';
+            setTimeout(() => cookieNotice.classList.add('show'), 100);
+          }, 2000);
+        }
+        
+        // Handle accept
+        acceptBtn.addEventListener('click', () => {
+          console.log('🍪 Cookie consent accepted');
+          localStorage.setItem('cookie-consent', 'accepted');
+          hideCookieNotice();
+          
+          // Enable Google Analytics if not already enabled
+          if (typeof gtag !== 'undefined') {
+            console.log('📊 Updating GA4 consent to granted');
+            gtag('consent', 'update', {
+              'analytics_storage': 'granted'
+            });
+            gtag('event', 'cookie_consent', {
+              'event_category': 'privacy',
+              'event_label': 'accepted',
+              'value': 1
+            });
+            console.log('✅ GA4 consent updated and event sent');
+            
+            // Send immediate page view
+            gtag('config', 'G-FV9Q5RL89T', {
+              page_path: window.location.pathname
+            });
+          } else {
+            console.error('❌ gtag not available');
+          }
+        });
+        
+        // Handle decline
+        declineBtn.addEventListener('click', () => {
+          console.log('🚫 Cookie consent declined - disabling analytics');
+          localStorage.setItem('cookie-consent', 'declined');
+          hideCookieNotice();
+          
+          // Disable Google Analytics immediately
+          if (typeof gtag !== 'undefined') {
+            gtag('consent', 'update', {
+              'analytics_storage': 'denied',
+              'ad_storage': 'denied'
+            });
+            console.log('❌ Analytics tracking disabled');
+            
+            // Reload page to fully disable tracking
+            setTimeout(() => {
+              window.location.reload();
+            }, 500);
+          }
+        });
+        
+        function hideCookieNotice() {
+          cookieNotice.classList.remove('show');
+          setTimeout(() => {
+            cookieNotice.style.display = 'none';
+          }, 400);
+        }
+      }
+
+      // Initialize cookie notice
+      initCookieNotice();
+    </script>
+
+    <!-- Lightbox for images -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Create lightbox element
+      const lightbox = document.createElement('div');
+      lightbox.className = 'lightbox-overlay';
+      lightbox.innerHTML = `
+        <div class="lightbox-container">
+          <button class="lightbox-close">&times;</button>
+          <img class="lightbox-image" src="" alt="">
+          <div class="lightbox-caption"></div>
+          <div class="lightbox-nav">
+            <button class="lightbox-prev">‹</button>
+            <button class="lightbox-next">›</button>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(lightbox);
+
+      let currentImageIndex = 0;
+      let lightboxImages = [];
+
+      // Open lightbox
+      function openLightbox(index) {
+        currentImageIndex = index;
+        const lightboxImg = lightbox.querySelector('.lightbox-image');
+        const lightboxCaption = lightbox.querySelector('.lightbox-caption');
+        
+        lightboxImg.src = lightboxImages[currentImageIndex].src;
+        lightboxImg.alt = lightboxImages[currentImageIndex].alt;
+        lightboxCaption.textContent = lightboxImages[currentImageIndex].caption;
+        
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        // Track image view
+        if (typeof gtag !== 'undefined') {
+          const imageName = lightboxImages[currentImageIndex].alt || `image-${index + 1}`;
+          const category = lightboxImages[currentImageIndex].category || 'Image';
+          gtag('event', 'image_view', {
+            'event_category': category,
+            'event_label': imageName
+          });
+          console.log('📊 ' + category + ':', imageName);
+        }
+      }
+
+      // Close lightbox
+      function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      // Navigate lightbox
+      function navigateLightbox(direction) {
+        if (direction === 'next') {
+          currentImageIndex = (currentImageIndex + 1) % lightboxImages.length;
+        } else {
+          currentImageIndex = (currentImageIndex - 1 + lightboxImages.length) % lightboxImages.length;
+        }
+        openLightbox(currentImageIndex);
+      }
+
+      // Add lightbox to portfolio project page images
+      const projectImages = document.querySelectorAll('.post img:not(.project-video)');
+      if (projectImages.length > 0) {
+        lightboxImages = Array.from(projectImages).map(img => ({
+          src: img.src,
+          alt: img.alt,
+          caption: img.nextElementSibling && img.nextElementSibling.tagName === 'EM' ? img.nextElementSibling.textContent : '',
+          category: 'Portfolio'
+        }));
+        
+        projectImages.forEach((img, index) => {
+          img.addEventListener('click', function() {
+            openLightbox(index);
+          });
+        });
+      }
+
+      // Add lightbox to lab images
+      const labImages = document.querySelectorAll('.lab-item img');
+      if (labImages.length > 0) {
+        lightboxImages = Array.from(labImages).map(img => ({
+          src: img.src,
+          alt: img.alt,
+          caption: '',
+          category: 'Lab'
+        }));
+        
+        labImages.forEach((img, index) => {
+          img.style.cursor = 'pointer';
+          img.addEventListener('click', function() {
+            openLightbox(index);
+          });
+        });
+      }
+
+      // Lightbox event listeners
+      lightbox.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+      lightbox.querySelector('.lightbox-prev').addEventListener('click', () => navigateLightbox('prev'));
+      lightbox.querySelector('.lightbox-next').addEventListener('click', () => navigateLightbox('next'));
+      
+      lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+      });
+
+      // Keyboard navigation
+      document.addEventListener('keydown', function(e) {
+        if (lightbox.classList.contains('active')) {
+          if (e.key === 'Escape') closeLightbox();
+          if (e.key === 'ArrowLeft') navigateLightbox('prev');
+          if (e.key === 'ArrowRight') navigateLightbox('next');
+        }
+      });
+    });
+    </script>
+
+  </body>
+</html>
