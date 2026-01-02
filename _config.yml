@@ -45,8 +45,6 @@ plugins:
 # their entries' file path in the `include:` list.
 #
 exclude:
-  - README_ARENA.md
-  - update-arena-notes.ps1
   - .sass-cache/
   - .jekyll-cache/
   - gemfiles/

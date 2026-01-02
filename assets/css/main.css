@@ -45,16 +45,17 @@ h6 {
 }
 
 h1 {
-  font-size: 3rem;
-  font-weight: 600;
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
 }
 
 h2 {
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: -0.02em;
-  line-height: 0.9;
+  line-height: 1;
   margin-bottom: 2rem;
   color: var(--text-color);
 }
@@ -73,11 +74,11 @@ h2 {
 .services-section h2,
 .lab-section h2,
 .blog-section h2 {
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: -0.02em;
-  line-height: 0.9;
+  line-height: 1;
   margin-bottom: 3rem;
   position: relative;
 }
@@ -90,8 +91,9 @@ h2 {
 }
 
 h3 {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 p {
@@ -100,14 +102,13 @@ p {
   font-weight: 400;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  hyphens: auto;
 }
 
 a {
   color: var(--text-color);
   text-decoration: none;
   font-weight: 500;
-  word-break: break-all;
+  word-break: break-word;
   overflow-wrap: break-word;
 }
 
@@ -205,14 +206,7 @@ li {
   color: var(--secondary-color);
 }
 
-/* ASCII Progress Bar - Hidden for minimal design */
-.ascii-bar-container {
-  display: none;
-}
 
-.ascii-progress-bar {
-  display: none;
-}
 
 /* ===================================================================
    5. HERO SECTION

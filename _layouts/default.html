@@ -75,21 +75,48 @@
       </div>
     </div>
 
-    <!-- Slideshow JavaScript -->
-<script>
+    <!-- Scripts -->
+    <script>
+      // Define trackCVDownload globally
+      window.trackCVDownload = function() {
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'file_download', {
+            'file_name': 'CV-Helfers.pdf',
+            'file_extension': 'pdf',
+            'link_text': 'Download CV',
+            'link_url': '/assets/pdf/CV-Helfers.pdf',
+            'link_classes': 'footer-nav-link'
+          });
+          
+          gtag('event', 'cv_download', {
+            'event_category': 'engagement',
+            'event_label': 'CV Footer Download',
+            'value': 1,
+            'page_location': window.location.href,
+            'page_referrer': document.referrer
+          });
+        }
+        console.log('CV download tracked');
+      };
+
       document.addEventListener('DOMContentLoaded', function() {
         // Footer Timestamp
         function updateBerlinTime() {
-          const berlinTime = new Date().toLocaleTimeString('en-US', {
-            timeZone: 'Europe/Berlin',
-            hour: '2-digit', 
-            minute: '2-digit',
-            second: '2-digit',
-            hour12: false
-          });
           const timeElement = document.getElementById('berlin-time');
-          if (timeElement) {
+          if (!timeElement) return;
+          
+          try {
+            const berlinTime = new Date().toLocaleTimeString('en-US', {
+              timeZone: 'Europe/Berlin',
+              hour: '2-digit', 
+              minute: '2-digit',
+              second: '2-digit',
+              hour12: false
+            });
             timeElement.textContent = berlinTime + ' CET';
+          } catch (e) {
+            console.error('Error updating time:', e);
+            timeElement.textContent = 'Berlin, Germany';
           }
         }
         
@@ -144,14 +171,15 @@
           
           function getCardWidth() {
             const card = carousel.querySelector('.portfolio-card');
-            if (!card) return 0;
-            return card.offsetWidth;
-          }
-          
-          function getGap() {
-            const computedStyle = window.getComputedStyle(carousel);
-            return parseInt(computedStyle.gap) || 0;
-          }
+            if (!carousel || !carousel.parentElement) return false;
+            
+            const containerWidth = carousel.parentElement.clientWidth;
+            const cardWidth = getCardWidth();
+            const gap = getGap();
+            const totalContentWidth = totalCards * (cardWidth + gap) - gap;
+            
+            // Only show if content is significantly larger than container (buffer of 10px)
+            return totalContentWidth > (containerWidth + 10
           
           function getVisibleCards() {
             const isMobile = window.innerWidth <= 768;
@@ -164,7 +192,14 @@
           }
           
           function shouldShowNavigation() {
-            return totalCards > getVisibleCards();
+            // Check if the total width of cards + gaps exceeds the container width
+            // We use a small buffer (5px) to avoid rounding errors
+            const containerWidth = carousel.parentElement.clientWidth;
+            const cardWidth = getCardWidth();
+            const gap = getGap();
+            const totalContentWidth = totalCards * (cardWidth + gap) - gap;
+            
+            return totalContentWidth > (containerWidth + 5);
           }
             function updateNavigationVisibility() {
             const shouldShow = shouldShowNavigation();
@@ -317,44 +352,6 @@
               updateCarouselPosition(false);
             }, 250);
           });
-        }
-
-        // ASCII Progress Bar
-        const asciiBar = document.getElementById('ascii-progress-bar');
-        if (asciiBar) {
-          const maxLength = 40;
-          let currentPosition = 0;
-          const asciiChars = '!@#$%^&*()_+-={}|;:,.<>?/~`';
-          
-          function updateAsciiBar() {
-            if (currentPosition >= maxLength) {
-              asciiBar.textContent = '[' + ' '.repeat(maxLength) + ']';
-        if (typeof gtag !== 'undefined') {
-          // File download event (standard GA4 event)
-          gtag('event', 'file_download', {
-            'file_name': 'CV-Helfers.pdf',
-            'file_extension': 'pdf',
-            'link_text': 'Download CV',
-            'link_url': '/assets/pdf/CV-Helfers.pdf',
-            'link_classes': 'footer-nav-link'
-          });
-          
-          // Custom CV interest event for better tracking
-          gtag('event', 'cv_download', {
-            'event_category': 'engagement',
-            'event_label': 'CV Footer Download',
-            'value': 1,
-            'page_location': window.location.href,
-            'page_referrer': document.referrer
-          });
-        }
-        
-        console.log('CV download tracked:', {
-          timestamp: new Date().toISOString(),
-          method: 'footer_link',
-          userAgent: navigator.userAgent.substring(0, 100),
-          referrer: document.referrer,
-          page: window.location.pathname
         });
       }
 
