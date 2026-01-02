@@ -4,7 +4,7 @@ title: "Souly & Boondawg - I got this feeling"
 date: 2025-09-10
 categories: portfolio
 order: 1
-image: /assets/imgs/proj_Souly-Boondawg-igotthisfeelling/Souly-Boondawg_igotthisfeeling-01.webp
+image: /assets/imgs/proj_Souly-Boondawg-igotthisfeelling/Souly-Boondawg_igotthisfeeling-02.webp
 description: "A hybrid AI music video production transforming greenscreen footage into compelling visuals."
 technologies: ["AI Video Generation", "Video-to-Video", "ComfyUI", "Visual Storytelling"]
 project_url: "https://youtu.be/j66rlYZQVeM?si=XuckWFc-6S6IufQI"
@@ -12,15 +12,11 @@ project_url: "https://youtu.be/j66rlYZQVeM?si=XuckWFc-6S6IufQI"
 
 ## Project Overview
 
-I created this music video with **yyyyyyy.studio** as an AI artist.
+In collaboration with [yyyyyyy.studio](https://yyyyyyy.studio/) as an AI Artist, I contributed to this hybrid production that seamlessly blends traditional greenscreen footage with generative AI environments. By leveraging advanced video-to-video models, we transposed the artists, Souly and Boondawg, into surreal, digitally constructed worlds, adding a distinct layer of visual narrative to the performance.
 
-It was a hybrid AI production where we transformed greenscreen footage into compelling visuals. We placed the actors (Souly and Boondawg) into various environments while also adding an additional visual storytelling layer to the video using video-to-video models.
+<p style="font-size: 1.5rem; font-weight: 600; margin: 2rem 0;"><a href="https://www.youtube.com/watch?v=j66rlYZQVeM" target="_blank">Watch the music video on YouTube ↗</a></p>
 
-<div class="video-wrapper">
-  <iframe width="100%" height="500" src="https://www.youtube.com/embed/j66rlYZQVeM?si=XuckWFc-6S6IufQI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-</div>
-
-<div class="project-gallery">
+<div class="project-gallery-grid">
   <img src="/assets/imgs/proj_Souly-Boondawg-igotthisfeelling/Souly-Boondawg_igotthisfeeling-02.webp" alt="Scene from the music video">
   <img src="/assets/imgs/proj_Souly-Boondawg-igotthisfeelling/Souly-Boondawg_igotthisfeeling-03.webp" alt="Scene from the music video">
   <img src="/assets/imgs/proj_Souly-Boondawg-igotthisfeelling/Souly-Boondawg_igotthisfeeling-04.webp" alt="Scene from the music video">
