@@ -93,7 +93,7 @@ layout: default
           </div>
           <div class="service-content">
             <h3>High-Impact Brand & Media Assets</h3>
-            <p>I create cinematic, high-fidelity visuals that translate abstract ideas and complicated topics into clear, engaging imagery. With roots in architecture and 3D design, my imagery balances precision, clarity and emotions.</p>
+            <p>I create cinematic, high-fidelity visuals that translate abstract ideas and complex topics into clear, engaging imagery. With roots in architecture and 3D design, my imagery balances precision, clarity and emotions.</p>
             <div class="service-tags">
               <span class="tag">3D Visualization</span>
               <span class="tag">Renderings</span>
@@ -147,7 +147,7 @@ layout: default
 
         <div class="service-card">
           <div class="service-content">
-            <h3>The bespoke Way</h3>
+            <h3>The Bespoke Way</h3>
             <p>Just as I feel like I don't fit in a box, sometimes ideas can be really unconventional as well. If you think you have an exciting idea and need someone to fuse design, technology and imagination: Let's find a solution together.</p>
             <div class="service-cta">
               <a href="mailto:mail@joosthelfers.com" class="cta-button service-cta-button">
@@ -155,30 +155,6 @@ layout: default
               </a>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Lab Section - Visual Experiments -->
-  <section class="lab-section">
-    <div class="lab-section-inner">
-      <h2>Lab</h2>
-      <div class="lab-marquee">
-        <div class="lab-track">
-          {% assign lab_images = site.static_files | where: "extname", ".webp" | where_exp: "file", "file.path contains 'lab'" | sort: "date" %}
-          <!-- First loop -->
-          {% for image in lab_images %}
-          <div class="lab-item">
-            <img src="{{ image.path | relative_url }}" alt="{{ image.basename | replace: '_', ' ' | capitalize }}" loading="lazy">
-          </div>
-          {% endfor %}
-          <!-- Duplicate loop for seamless scrolling -->
-          {% for image in lab_images %}
-          <div class="lab-item">
-            <img src="{{ image.path | relative_url }}" alt="{{ image.basename | replace: '_', ' ' | capitalize }}" loading="lazy">
-          </div>
-          {% endfor %}
         </div>
       </div>
     </div>
@@ -204,5 +180,196 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
+
+  // Portfolio carousel functionality
+  const carousel = document.querySelector('.portfolio-carousel');
+  const prevBtn = document.querySelector('.carousel-prev');
+  const nextBtn = document.querySelector('.carousel-next');
+  const indicators = document.querySelectorAll('.indicator');
+
+  if (carousel) {
+    const cards = carousel.querySelectorAll('.portfolio-card');
+    let currentIndex = 0;
+    const totalCards = cards.length;
+    
+    if (totalCards === 0) return;
+    
+    function getGap() {
+      // Calculate gap based on CSS (2rem = 32px usually, or retrieve computed style)
+      // Since it's flex gap, we can try to compute it or hardcode if we know the CSS
+      // Inspecting CSS: .portfolio-carousel { gap: 2rem; }
+      return 32; // 2rem approximate
+    }
+
+    function getCardWidth() {
+      const card = carousel.querySelector('.portfolio-card');
+      if (!card) return 0;
+      return card.getBoundingClientRect().width;
+    }
+
+    function getVisibleCards() {
+      const isMobile = window.innerWidth <= 768;
+      // CSS says flex: 0 0 calc(25% - 1.5rem), which roughly fits 4
+      return isMobile ? 1 : 4;
+    }
+    
+    function getMaxIndex() {
+      const visibleCards = getVisibleCards();
+      // Ensure we don't go negative
+      return Math.max(0, totalCards - visibleCards);
+    }
+    
+    function shouldShowNavigation() {
+      if (!carousel.parentElement) return false;
+      
+      const containerWidth = carousel.parentElement.clientWidth;
+      const cardWidth = getCardWidth();
+      const gap = getGap();
+      const totalContentWidth = totalCards * (cardWidth + gap) - gap;
+      
+      // Use a small buffer (5px) to avoid rounding errors
+      return totalContentWidth > (containerWidth + 5);
+    }
+
+    function updateNavigationVisibility() {
+      const shouldShow = shouldShowNavigation();
+      
+      // Hide/show navigation buttons
+      if (prevBtn) prevBtn.style.display = shouldShow ? 'flex' : 'none';
+      if (nextBtn) nextBtn.style.display = shouldShow ? 'flex' : 'none';
+      
+      // Hide/show entire controls container
+      const controlsContainer = document.querySelector('.carousel-controls');
+      if (controlsContainer) {
+        controlsContainer.style.display = shouldShow ? 'flex' : 'none';
+      }
+    }
+
+    function updateCarouselPosition(animate = true) {
+      const cardWidth = getCardWidth();
+      const gap = getGap();
+      const isMobile = window.innerWidth <= 768;
+      const maxIndex = getMaxIndex();
+      
+      // Clamp currentIndex to valid range for bounded scrolling on desktop
+      // On mobile we might want endless, but let's stick to bounded for simplicity & robustness first
+      // The original code had endless logic which was a bit complex, let's simplify for stability.
+      
+      if (!isMobile) {
+        currentIndex = Math.max(0, Math.min(currentIndex, maxIndex));
+      } else {
+        // Simple cyclic behavior for mobile if desired, or just bounded.
+        // Let's use bounded for now to match desktop stability.
+        currentIndex = Math.max(0, Math.min(currentIndex, totalCards - 1)); 
+      }
+      
+      const offset = currentIndex * (cardWidth + gap);
+      
+      carousel.style.transition = animate ? 'transform 0.4s ease' : 'none';
+      carousel.style.transform = `translateX(-${offset}px)`;
+      
+      // Update indicators
+      indicators.forEach((indicator, idx) => {
+        indicator.classList.toggle('active', idx === currentIndex);
+      });
+      
+      // Update button states
+      if (prevBtn) prevBtn.disabled = currentIndex <= 0;
+      if (nextBtn) {
+         // On mobile, last index is totalCards - 1
+         // On desktop, last index is maxIndex
+         const limit = isMobile ? totalCards - 1 : maxIndex;
+         nextBtn.disabled = currentIndex >= limit;
+      }
+    }
+    
+    function nextSlide() {
+      const isMobile = window.innerWidth <= 768;
+      const limit = isMobile ? totalCards - 1 : getMaxIndex();
+      
+      if (currentIndex < limit) {
+        currentIndex++;
+        updateCarouselPosition();
+      }
+    }
+    
+    function prevSlide() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateCarouselPosition();
+      }
+    }
+    
+    // Initialize
+    // Wait for layout to settle (images loading etc might affect width?)
+    // Actually requestAnimationFrame might be better, or just immediate.
+    updateNavigationVisibility();
+    updateCarouselPosition(false);
+    
+    if (prevBtn) {
+      prevBtn.addEventListener('click', prevSlide);
+    }
+    
+    if (nextBtn) {
+      nextBtn.addEventListener('click', nextSlide);
+    }
+    
+    // Touch events for swiping
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let isDragging = false;
+    let hasMoved = false;
+    
+    carousel.addEventListener('touchstart', function(e) {
+      touchStartX = e.touches[0].clientX;
+      isDragging = true;
+      hasMoved = false;
+      // e.stopPropagation(); // Passive listeners shouldn't call stopPropagation usually
+    }, {passive: true});
+    
+    carousel.addEventListener('touchmove', function(e) {
+      if (!isDragging) return;
+      hasMoved = true;
+      touchEndX = e.touches[0].clientX;
+      // e.preventDefault(); // Passive listener issue
+    }, {passive: true});
+    
+    carousel.addEventListener('touchend', function(e) {
+      if (!isDragging || !hasMoved) {
+        isDragging = false;
+        return;
+      }
+      isDragging = false;
+      
+      const difference = touchStartX - touchEndX;
+      const threshold = 50;
+      
+      if (Math.abs(difference) > threshold) {
+        if (difference > 0) {
+          nextSlide();
+        } else {
+          prevSlide();
+        }
+      }
+    }, {passive: true});
+    
+    // Indicator click handlers
+    indicators.forEach((indicator, idx) => {
+      indicator.addEventListener('click', () => {
+        currentIndex = idx;
+        updateCarouselPosition();
+      });
+    });
+    
+    // Window resize handler
+    let resizeTimeout;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        updateNavigationVisibility();
+        updateCarouselPosition(false);
+      }, 250);
+    });
+  }
 });
 </script>

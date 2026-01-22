@@ -18,10 +18,10 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Joost Helfers
+title: Joost Helfers | Creative Technologist & 3D Designer
 email: mail@joosthelfers.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Joost Helfers is a Creative Technologist working at the intersection of 3D, AI and emerging technology. His work is driven by a spatial approach, creating high-impact visuals and advanced technical workflows that help brands and designers communicate complex ideas. Combining his architectural and advanced 3D design background with startup experience, he builds innovative solutions that work.
+  Joost Helfers is a Creative Technologist specializing in 3D visualization, AI integration, and emerging technology. Explore his portfolio of high-impact visuals, custom automation pipelines, and digital twin platforms.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://joosthelfers.com" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  joosthel
