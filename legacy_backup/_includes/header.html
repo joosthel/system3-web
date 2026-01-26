@@ -1,0 +1,17 @@
+<header class="site-header">
+  <div class="header-left">
+    <a href="{{ "/" | relative_url }}" class="header-logo" title="{{ site.title }}">
+      <img src="{{ "/assets/imgs/JH_Logo-black.png" | relative_url }}" alt="{{ site.title }} Logo" />
+    </a>
+    <a href="{{ "/" | relative_url }}" class="header-logo-text">
+      <div class="site-title">{{ site.title }}</div>
+    </a>
+  </div>
+
+  <!-- Email contact link (works on both desktop and mobile) -->
+  <div class="header-right">
+    <a href="mailto:{{ site.email }}" class="cta-button cta-button-small">
+      <span class="cta-text">Send me an E-Mail</span>
+    </a>
+  </div>
+</header>

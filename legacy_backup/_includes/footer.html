@@ -1,0 +1,45 @@
+<footer class="site-footer">
+  <div class="footer-main">
+    <!-- Column 1: Logo and Title -->
+    <div class="footer-column">
+      <div class="footer-logo">
+        <img src="{{ "/assets/imgs/JH_Logo-black.png" | relative_url }}" alt="Logo" />
+        <h2>{{ site.title }}</h2>
+      </div>
+      <p class="footer-description">{{ site.description }}</p>
+    </div>
+    
+    <!-- Column 2: Site Map -->
+    <div class="footer-column">
+      <nav class="footer-nav">
+        <ul class="footer-links">
+          <li><a href="{{ '/' | relative_url }}">HOME</a></li><br>
+          <li><a href="/assets/pdf/CV-Helfers.pdf" onclick="trackCVDownload()" target="_blank">CV</a></li><br>
+          <li><a href="{{ '/privacy/' | relative_url }}">PRIVACY</a></li><br>
+          <li><a href="{{ '/imprint/' | relative_url }}">IMPRINT</a></li><br>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Dynamic spacer -->
+  <div class="footer-spacer"></div>
+    <div class="footer-bottom">
+    <div class="footer-bottom-column">
+      <p>Available everywhere, currently in:</p>
+      <p>Berlin, Germany</p>
+      <p id="berlin-time">Loading time...</p>
+    </div>
+      <div class="footer-bottom-column">
+      <p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+      <div class="social-links">
+        <a href="https://github.com/{{ site.github_username }}">GitHub</a>
+        <a href="https://instagram.com/{{ site.instagram_username }}">Instagram</a>
+        <a href="https://linkedin.com/in/{{ site.linkedin_username }}">LinkedIn</a>
+      </div>
+    
+    <div class="footer-bottom-column">
+      <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}</p>
+    </div>
+  </div>
+</footer>

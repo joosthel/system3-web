@@ -1,0 +1,766 @@
+/* ===================================================================
+   1. GLOBAL VARIABLES & BASE STYLES
+   =================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  /* Colors */
+  --primary-color: #1a1a1a;
+  --secondary-color: #ffffff;
+  --text-color: #1a1a1a;
+  --light-gray: #f8f9fa;
+  --med-gray: #6c757d;
+  --accent-color: #0066cc;
+
+  /* Spacing - Graphic & Tight */
+  --space-unit: clamp(0.75rem, 1.2vw, 0.9rem);
+  --space-sm: calc(var(--space-unit) * 0.5);
+  --space-md: var(--space-unit);
+  --space-lg: calc(var(--space-unit) * 2.5);
+  --space-xl: calc(var(--space-unit) * 5);
+  --space-xxl: calc(var(--space-unit) * 10);
+
+  /* Layout */
+  --max-width: 1600px;
+  --grid-gap: var(--space-md);
+  --border-radius: 0px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  font-size: 0.9rem;
+  /* Reduced base size */
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+
+/* ===================================================================
+   2. TYPOGRAPHY
+   =================================================================== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 var(--space-md) 0;
+  line-height: 1.1;
+  color: var(--text-color);
+}
+
+h1 {
+  font-size: clamp(1.5rem, 5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 3vw, 2.5rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: var(--space-lg);
+}
+
+h3 {
+  font-size: clamp(1rem, 1.5vw, 1.5rem);
+  font-weight: 600;
+}
+
+p {
+  margin: 0 0 var(--space-md) 0;
+  font-weight: 400;
+  max-width: 65ch;
+}
+
+a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ===================================================================
+   3. LAYOUT CONTAINERS
+   =================================================================== */
+.page-content {
+  width: 100%;
+  margin-top: 5rem;
+  overflow-x: hidden;
+}
+
+.wrapper,
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+/* ===================================================================
+   4. HEADER & NAVIGATION
+   =================================================================== */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-md);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: transparent;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.header-logo img {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+
+.site-title {
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cta-button-small {
+  background: var(--text-color);
+  color: var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.cta-button-small:hover {
+  opacity: 0.9;
+  text-decoration: none;
+  color: var(--secondary-color);
+}
+
+/* ===================================================================
+   5. HERO SECTION
+   =================================================================== */
+.hero-section {
+  width: 100%;
+  min-height: 100dvh;
+  /* Dynamic viewport height */
+  display: flex;
+  position: relative;
+  /* Use padding-top to account for header if needed, or justify-content center */
+  padding-top: 60px;
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-lg);
+  gap: var(--space-lg);
+  align-items: center;
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-lg) 0;
+  z-index: 2;
+  /* Check stacking context on mobile */
+}
+
+.hero-intro {
+  margin-bottom: var(--space-md);
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-weight: 500;
+  opacity: 0.8;
+  margin-top: var(--space-sm);
+}
+
+.hero-description {
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  line-height: 1.6;
+  max-width: 50ch;
+  margin-bottom: var(--space-lg);
+}
+
+.hero-model {
+  width: 100%;
+  height: 100%;
+  min-height: 50vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-model model-viewer {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  background-color: transparent;
+  --poster-color: transparent;
+}
+
+
+/* ===================================================================
+   6. PORTFOLIO CAROUSEL (CSS SCROLL SNAP)
+   =================================================================== */
+.portfolio-section {
+  padding: var(--space-xl) var(--space-md);
+  overflow: hidden;
+}
+
+.portfolio-section h2 {
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.carousel-container-outer {
+  position: relative;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.carousel-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: var(--space-md);
+  padding-bottom: var(--space-md);
+  /* Space for scrollbar if visible */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE/Edge */
+}
+
+.carousel-container::-webkit-scrollbar {
+  display: none;
+  /* Chrome/Safari */
+}
+
+.portfolio-card {
+  flex: 0 0 85vw;
+  /* Mobile default */
+  border: 1px solid #eee;
+  background: #fff;
+  scroll-snap-align: center;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  text-decoration: none;
+}
+
+.portfolio-image-wrapper {
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: #f0f0f0;
+}
+
+.portfolio-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.portfolio-card:hover img {
+  transform: scale(1.05);
+}
+
+.portfolio-card-content {
+  padding: var(--space-md);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.portfolio-card h3 {
+  margin-bottom: var(--space-xs);
+  font-size: 1.25rem;
+}
+
+.portfolio-card p {
+  font-size: 0.9rem;
+  color: var(--med-gray);
+  margin-bottom: var(--space-md);
+}
+
+.view-project {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-color);
+}
+
+.carousel-controls {
+  display: flex;
+  gap: var(--space-sm);
+  justify-content: flex-end;
+  margin-top: var(--space-md);
+}
+
+.carousel-prev,
+.carousel-next {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--text-color);
+  background: transparent;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.2s ease;
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+  background: var(--text-color);
+  color: var(--secondary-color);
+}
+
+
+/* ===================================================================
+   7. SERVICES SECTION
+   =================================================================== */
+.services-section {
+  padding: var(--space-xl) var(--space-md);
+  background: var(--light-gray);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-lg);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.service-card {
+  background: var(--secondary-color);
+  padding: 0;
+  border: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.service-image {
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: #e0e0e0;
+}
+
+.service-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.service-content {
+  padding: var(--space-md);
+}
+
+.service-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: var(--space-md);
+}
+
+.tag {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  background: #eee;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ===================================================================
+   8. INTERACTIVE ELEMENTS (RAINBOW GRADIENTS)
+   =================================================================== */
+/* Retaining the fun gimmicks as requested */
+
+@keyframes rainbowPulse {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes organicFlow {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(-1deg) scale(0.98);
+  }
+
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+.cta-button {
+  display: inline-block;
+  background: var(--text-color);
+  color: var(--secondary-color);
+  padding: 1.25rem 2.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  background: linear-gradient(45deg,
+      #0066ff, #b300ff, #ff0099, #ff0040,
+      #ff8c00, #00ff41, #00d4ff, #0066ff);
+  background-size: 400% 400%;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+  filter: blur(4px);
+  border-radius: 4px;
+}
+
+.cta-button:hover::before {
+  opacity: 0.6;
+  /* Reduced opacity */
+  animation: rainbowPulse 4s ease infinite;
+}
+
+
+
+.cta-button:hover {
+  text-decoration: none;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Service CTA Special */
+.service-cta-button {
+  width: 100%;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+
+/* ===================================================================
+   9. FOOTER
+   =================================================================== */
+.site-footer {
+  background: var(--text-color);
+  color: var(--secondary-color);
+  padding: var(--space-xl) var(--space-md);
+  margin-top: var(--space-xxl);
+}
+
+.footer-main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-xl);
+  flex-wrap: wrap;
+  /* responsive */
+}
+
+.footer-column:first-child {
+  flex: 1 1 300px;
+  max-width: 400px;
+}
+
+.footer-column:last-child {
+  flex: 2 1 400px;
+  /* Takes more space */
+}
+
+.footer-links {
+  column-count: 2;
+  column-gap: var(--space-xl);
+  display: block;
+}
+
+.footer-links li {
+  break-inside: avoid;
+  margin-bottom: var(--space-sm);
+}
+
+.footer-logo h2 {
+  color: #fff;
+  margin-bottom: var(--space-sm);
+}
+
+.footer-links a,
+.footer-bottom a {
+  color: #ccc;
+  display: block;
+  margin-bottom: 0.5rem;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
+
+/* ===================================================================
+   10. RESPONSIVE MEDIA QUERIES
+   =================================================================== */
+
+/* Tablet & Up */
+@media (min-width: 768px) {
+  .portfolio-card {
+    flex: 0 0 calc(50% - var(--space-md));
+    /* 2 cards */
+  }
+
+  .hero-content {
+    padding: 0 var(--space-lg);
+  }
+
+  .hero-text {
+    padding-right: var(--space-lg);
+  }
+}
+
+/* Desktop & Up */
+@media (min-width: 1024px) {
+  .portfolio-card {
+    flex: 0 0 calc(25% - var(--space-md));
+    /* 4 cards */
+    scroll-snap-align: start;
+  }
+
+  .hero-model {
+    height: 100%;
+  }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 767px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    padding-top: 2rem;
+    gap: 0;
+  }
+
+  .hero-text {
+    order: 2;
+    /* Text below model on very small screens if desired, or keep as is */
+    text-align: left;
+    padding-top: 0;
+  }
+
+  .hero-model {
+    order: 1;
+    min-height: 40vh;
+    /* Allow model to take space */
+  }
+
+  .site-header {
+    position: relative;
+    /* Prevent overlap with hero model on mobile */
+  }
+
+  .hero-section {
+    height: auto;
+    /* Allow content to dictate height on mobile */
+    min-height: auto;
+    flex-direction: column;
+    display: block;
+  }
+}
+
+/* ===================================================================
+   11. GLOBAL IMAGE RESET & UTILS
+   =================================================================== */
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Ensure logos stay small */
+.header-logo img,
+.footer-logo img {
+  width: 32px;
+  height: 32px;
+  max-width: none;
+  /* Prevent interference */
+}
+
+/* ===================================================================
+   12. PROJECT PAGE STYLES
+   =================================================================== */
+.project-hero {
+  padding: var(--space-xl) 0;
+  margin-bottom: var(--space-xl);
+  border-bottom: 1px solid #eee;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: var(--space-md);
+}
+
+.project-meta {
+  font-family: 'Inter', monospace;
+  font-size: 0.9rem;
+  color: var(--med-gray);
+  margin-bottom: var(--space-sm);
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.project-content-wrapper {
+  max-width: 800px;
+  /* Optimal reading width */
+  margin: 0;
+}
+
+.project-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.project-content h2 {
+  margin-top: 3rem;
+  font-size: 1.8rem;
+}
+
+.project-content ul {
+  margin-bottom: 2rem;
+  padding-left: 1.5rem;
+}
+
+.project-content li {
+  margin-bottom: 0.5rem;
+}
+
+/* Project Images/Videos container */
+/* Project Images/Videos container - Left Aligned to Text */
+.project-media-full {
+  width: 100%;
+  max-width: 100%;
+  margin: 3rem 0;
+  position: relative;
+  /* Removed viewport breakout */
+}
+
+.project-media-full img,
+.project-media-full video {
+  width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  background: #f8f8f8;
+}
+
+.project-next-nav {
+  margin-top: 5rem;
+  padding-top: 3rem;
+  border-top: 1px solid #eee;
+  text-align: right;
+}
+
+.project-next-link {
+  display: inline-block;
+  font-size: 2rem;
+  font-weight: 700;
+  transition: transform 0.2s ease;
+}
+
+
+.project-next-link:hover {
+  transform: translateX(10px);
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+/* Image Padding and Alignment */
+.project-content img,
+.project-content video {
+  padding: 2rem 0;
+}
+
+.project-content {
+  text-align: left;
+}
+
+/* Utilities */
+.aspect-video {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  object-fit: cover;
+}

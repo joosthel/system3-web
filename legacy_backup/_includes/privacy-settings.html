@@ -1,0 +1,27 @@
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const resetBtn = document.getElementById('reset-cookies');
+  const statusSpan = document.getElementById('cookie-status');
+  
+  if (resetBtn && statusSpan) {
+    // Show current status
+    const cookieConsent = localStorage.getItem('cookie-consent');
+    statusSpan.textContent = cookieConsent ? 
+      (cookieConsent === 'accepted' ? 'Analytics enabled' : 'Analytics disabled') : 
+      'Not set';
+    
+    // Reset function
+    resetBtn.addEventListener('click', function() {
+      localStorage.removeItem('cookie-consent');
+      statusSpan.textContent = 'Not set';
+      
+      // Show cookie notice again
+      const cookieNotice = document.getElementById('cookie-notice');
+      if (cookieNotice) {
+        cookieNotice.style.display = 'block';
+        setTimeout(() => cookieNotice.classList.add('show'), 100);
+      }
+    });
+  }
+});
+</script>

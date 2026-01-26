@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" type="image/x-icon" href="{{ "/favicon.ico" | relative_url }}">
+    <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
+    {% feed_meta %}
+    {% seo %}
+
+    <!-- Google Analytics 4 with Default Tracking -->
+    {% if site.google_analytics %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      
+      // Check user's cookie preference
+      const cookieConsent = localStorage.getItem('cookie-consent');
+      
+      if (cookieConsent === 'declined') {
+        // Only disable if explicitly declined
+        console.log('🚫 Analytics disabled - user declined cookies');
+        gtag('consent', 'default', {
+          'analytics_storage': 'denied',
+          'ad_storage': 'denied'
+        });
+      } else {
+        // Default: Enable analytics (accepted or no choice made yet)
+        console.log('📊 Analytics enabled - tracking page views');
+        gtag('config', '{{ site.google_analytics }}', {
+          anonymize_ip: true,
+          cookie_flags: 'SameSite=None;Secure'
+        });
+        
+        // Log page view for debugging
+        console.log('✅ GA4 page view sent for:', window.location.pathname);
+      }
+    </script>
+    {% endif %}
+
+    <!-- 3D Model Viewer -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+    <!-- Favicon-->
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="JH" />
+    <link rel="manifest" href="/assets/favicon/site.webmanifest" />
+  </head>
+  <body>
+    {% include header.html %}
+    
+    <main class="page-content" aria-label="Content">
+      {{ content }}
+    </main>
+    
+    {% include footer.html %}
+
+    <!-- Cookie Notice -->
+    <div id="cookie-notice" class="cookie-notice" style="display: none;">
+      <div class="cookie-content">
+        <div class="cookie-text">
+          <p>This site uses analytics cookies so I know how many people are visiting my page. I love getting insights through data. ¯\_(ツ)_/¯</p>
+        </div>
+        <div class="cookie-actions">
+          <button id="cookie-accept" class="cookie-btn cookie-accept">Accept</button>
+          <button id="cookie-decline" class="cookie-btn cookie-decline">Decline</button>
+          <a href="/privacy/" class="cookie-link">Privacy</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+      // Define trackCVDownload globally
+      window.trackCVDownload = function() {
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'file_download', {
+            'file_name': 'CV-Helfers.pdf',
+            'file_extension': 'pdf',
+            'link_text': 'Download CV',
+            'link_url': '/assets/pdf/CV-Helfers.pdf',
+            'link_classes': 'footer-nav-link'
+          });
+          
+          gtag('event', 'cv_download', {
+            'event_category': 'engagement',
+            'event_label': 'CV Footer Download',
+            'value': 1,
+            'page_location': window.location.href,
+            'page_referrer': document.referrer
+          });
+        }
+        console.log('CV download tracked');
+      };
+
+      document.addEventListener('DOMContentLoaded', function() {
+        // Footer Timestamp
+        function updateBerlinTime() {
+          const timeElement = document.getElementById('berlin-time');
+          if (!timeElement) return;
+          
+          try {
+            const berlinTime = new Date().toLocaleTimeString('en-US', {
+              timeZone: 'Europe/Berlin',
+              hour: '2-digit', 
+              minute: '2-digit',
+              second: '2-digit',
+              hour12: false
+            });
+            timeElement.textContent = berlinTime + ' CET';
+          } catch (e) {
+            console.error('Error updating time:', e);
+            timeElement.textContent = 'Berlin, Germany';
+          }
+        }
+        
+        updateBerlinTime();
+        setInterval(updateBerlinTime, 1000);        
+        
+        // Slideshow functionality
+        const slideshowImages = document.querySelectorAll('.slideshow-image');
+        if (slideshowImages.length > 1) {
+          let currentSlide = 0;
+          
+          function nextSlide() {
+            slideshowImages[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slideshowImages.length;
+            slideshowImages[currentSlide].classList.add('active');
+          }
+          
+          setInterval(nextSlide, 3000);
+        }
+      
+        // Mobile menu toggle functionality
+        const menuToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('.header-right');
+        
+        if (menuToggle && navMenu) {
+          menuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+            document.body.classList.toggle('menu-open'); 
+          });
+          
+          const navLinks = navMenu.querySelectorAll('a');
+          navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+              navMenu.classList.remove('active');
+              menuToggle.classList.remove('active');
+              document.body.classList.remove('menu-open');
+            });
+          });
+        }        // Portfolio carousel functionality
+        const carousel = document.querySelector('.portfolio-carousel');
+        const prevBtn = document.querySelector('.carousel-prev');
+        const nextBtn = document.querySelector('.carousel-next');
+        const indicators = document.querySelectorAll('.indicator');
+
+        if (carousel) {
+          const cards = carousel.querySelectorAll('.portfolio-card');
+          let currentIndex = 0;
+          const totalCards = cards.length;
+          
+          if (totalCards === 0) return;
+          
+          function getCardWidth() {
+            const card = carousel.querySelector('.portfolio-card');
+            if (!carousel || !carousel.parentElement) return false;
+            
+            const containerWidth = carousel.parentElement.clientWidth;
+            const cardWidth = getCardWidth();
+            const gap = getGap();
+            const totalContentWidth = totalCards * (cardWidth + gap) - gap;
+            
+            // Only show if content is significantly larger than container (buffer of 10px)
+            return totalContentWidth > (containerWidth + 10
+          
+          function getVisibleCards() {
+            const isMobile = window.innerWidth <= 768;
+            return isMobile ? 1 : 4;
+          }
+          
+          function getMaxIndex() {
+            const visibleCards = getVisibleCards();
+            return Math.max(0, totalCards - visibleCards);
+          }
+          
+          function shouldShowNavigation() {
+            // Check if the total width of cards + gaps exceeds the container width
+            // We use a small buffer (5px) to avoid rounding errors
+            const containerWidth = carousel.parentElement.clientWidth;
+            const cardWidth = getCardWidth();
+            const gap = getGap();
+            const totalContentWidth = totalCards * (cardWidth + gap) - gap;
+            
+            return totalContentWidth > (containerWidth + 5);
+          }
+            function updateNavigationVisibility() {
+            const shouldShow = shouldShowNavigation();
+            
+            // Hide/show navigation buttons
+            if (prevBtn) prevBtn.style.display = shouldShow ? 'flex' : 'none';
+            if (nextBtn) nextBtn.style.display = shouldShow ? 'flex' : 'none';
+            
+            // Hide/show entire controls container
+            const controlsContainer = document.querySelector('.carousel-controls');
+            if (controlsContainer) {
+              controlsContainer.style.display = shouldShow ? 'flex' : 'none';
+            }
+          }
+            function updateCarouselPosition(animate = true) {
+            const cardWidth = getCardWidth();
+            const gap = getGap();
+            const isMobile = window.innerWidth <= 768;
+            const maxIndex = getMaxIndex();
+            
+            // Clamp currentIndex to valid range for bounded scrolling
+            if (!isMobile) {
+              currentIndex = Math.max(0, Math.min(currentIndex, maxIndex));
+            } else {
+              // Keep endless scrolling on mobile
+              currentIndex = ((currentIndex % totalCards) + totalCards) % totalCards;
+            }
+            
+            // On mobile, use full card width without gap to prevent shifting
+            const offset = isMobile ? 
+              currentIndex * cardWidth : 
+              currentIndex * (cardWidth + gap);
+            
+            carousel.style.transition = animate ? 'transform 0.4s ease' : 'none';
+            carousel.style.transform = `translateX(-${offset}px)`;
+            
+            // Update indicators
+            const displayIndex = isMobile ? 
+              ((currentIndex % totalCards) + totalCards) % totalCards : 
+              currentIndex;
+              
+            indicators.forEach((indicator, idx) => {
+              indicator.classList.toggle('active', idx === displayIndex);
+            });
+            
+            // Update button states for desktop
+            if (!isMobile && shouldShowNavigation()) {
+              if (prevBtn) prevBtn.disabled = currentIndex <= 0;
+              if (nextBtn) nextBtn.disabled = currentIndex >= maxIndex;
+            }
+          }
+          
+          function nextSlide() {
+            const isMobile = window.innerWidth <= 768;
+            const maxIndex = getMaxIndex();
+            
+            if (isMobile) {
+              // Endless scrolling on mobile
+              currentIndex = (currentIndex + 1) % totalCards;
+            } else {
+              // Bounded scrolling on desktop
+              if (currentIndex < maxIndex) {
+                currentIndex++;
+              }
+            }
+            updateCarouselPosition();
+          }
+          
+          function prevSlide() {
+            const isMobile = window.innerWidth <= 768;
+            const maxIndex = getMaxIndex();
+            
+            if (isMobile) {
+              // Endless scrolling on mobile
+              currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+            } else {
+              // Bounded scrolling on desktop
+              if (currentIndex > 0) {
+                currentIndex--;
+              }
+            }
+            updateCarouselPosition();
+          }
+          
+          // Initialize
+          updateNavigationVisibility();
+          updateCarouselPosition(false);
+          
+          if (prevBtn) {
+            prevBtn.addEventListener('click', prevSlide);
+          }
+          
+          if (nextBtn) {
+            nextBtn.addEventListener('click', nextSlide);
+          }
+            // Touch events for swiping
+          let touchStartX = 0;
+          let touchEndX = 0;
+          let isDragging = false;
+          let hasMoved = false;
+          
+          carousel.addEventListener('touchstart', function(e) {
+            touchStartX = e.touches[0].clientX;
+            isDragging = true;
+            hasMoved = false;
+            e.stopPropagation();
+          }, {passive: true});
+          
+          carousel.addEventListener('touchmove', function(e) {
+            if (!isDragging) return;
+            hasMoved = true;
+            touchEndX = e.touches[0].clientX;
+            e.preventDefault();
+            e.stopPropagation();
+          });
+          
+          carousel.addEventListener('touchend', function(e) {
+            if (!isDragging || !hasMoved) {
+              isDragging = false;
+              return;
+            }
+            isDragging = false;
+            
+            const difference = touchStartX - touchEndX;
+            const threshold = 50;
+            
+            if (Math.abs(difference) > threshold) {
+              if (difference > 0) {
+                nextSlide();
+              } else {
+                prevSlide();
+              }
+            }
+          }, {passive: true});
+          
+          // Indicator click handlers
+          indicators.forEach((indicator, idx) => {
+            indicator.addEventListener('click', () => {
+              currentIndex = idx;
+              updateCarouselPosition();
+            });
+          });
+          
+          // Window resize handler
+          let resizeTimeout;
+          window.addEventListener('resize', function() {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+              updateNavigationVisibility();
+              updateCarouselPosition(false);
+            }, 250);
+          });
+        });
+      }
+
+      // Cookie Notice Functionality
+      function initCookieNotice() {
+        const cookieNotice = document.getElementById('cookie-notice');
+        const acceptBtn = document.getElementById('cookie-accept');
+        const declineBtn = document.getElementById('cookie-decline');
+        
+        // Check if user has already made a choice
+        const cookieConsent = localStorage.getItem('cookie-consent');
+        
+        if (!cookieConsent) {
+          // Show cookie notice after a short delay
+          setTimeout(() => {
+            cookieNotice.style.display = 'block';
+            setTimeout(() => cookieNotice.classList.add('show'), 100);
+          }, 2000);
+        }
+        
+        // Handle accept
+        acceptBtn.addEventListener('click', () => {
+          console.log('🍪 Cookie consent accepted');
+          localStorage.setItem('cookie-consent', 'accepted');
+          hideCookieNotice();
+          
+          // Enable Google Analytics if not already enabled
+          if (typeof gtag !== 'undefined') {
+            console.log('📊 Updating GA4 consent to granted');
+            gtag('consent', 'update', {
+              'analytics_storage': 'granted'
+            });
+            gtag('event', 'cookie_consent', {
+              'event_category': 'privacy',
+              'event_label': 'accepted',
+              'value': 1
+            });
+            console.log('✅ GA4 consent updated and event sent');
+            
+            // Send immediate page view
+            gtag('config', '{{ site.google_analytics }}', {
+              page_path: window.location.pathname
+            });
+          } else {
+            console.error('❌ gtag not available');
+          }
+        });
+        
+        // Handle decline
+        declineBtn.addEventListener('click', () => {
+          console.log('🚫 Cookie consent declined - disabling analytics');
+          localStorage.setItem('cookie-consent', 'declined');
+          hideCookieNotice();
+          
+          // Disable Google Analytics immediately
+          if (typeof gtag !== 'undefined') {
+            gtag('consent', 'update', {
+              'analytics_storage': 'denied',
+              'ad_storage': 'denied'
+            });
+            console.log('❌ Analytics tracking disabled');
+            
+            // Reload page to fully disable tracking
+            setTimeout(() => {
+              window.location.reload();
+            }, 500);
+          }
+        });
+        
+        function hideCookieNotice() {
+          cookieNotice.classList.remove('show');
+          setTimeout(() => {
+            cookieNotice.style.display = 'none';
+          }, 400);
+        }
+      }
+
+      // Initialize cookie notice
+      initCookieNotice();
+    </script>
+
+    </script>
+
+  </body>
+</html>

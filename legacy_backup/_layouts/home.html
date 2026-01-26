@@ -1,0 +1,375 @@
+---
+layout: default
+---
+
+<div class="home-container">
+  <!-- Unified Hero Section (Full Screen) -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <!-- Hero Text Content -->
+      <div class="hero-text">
+        <div class="hero-intro">
+            <h1 class="hero-title">Creative Technologist</h1>
+            <p class="hero-subtitle">Building technical solutions and engaging visuals with emerging technology</p>
+          </div>
+          
+          <div class="hero-description">
+            <p>Joost Helfers is a Creative Technologist working at the intersection of 3D, AI and emerging technology. His work is driven by a spatial approach, creating high-impact visuals and advanced technical workflows that help brands and designers communicate complex ideas. <br>
+              Combining his architectural and advanced 3D design background with startup experience, he builds innovative solutions that work.</p>
+        </div>
+        
+        <div class="hero-actions">
+          <a href="mailto:mail@joosthelfers.com" class="cta-button">
+            <span class="cta-text">Let's start a Project 📧</span>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Hero 3D Model -->
+      <div class="hero-model">
+        <model-viewer 
+          camera-controls 
+          auto-rotate
+          rotation-per-second="30deg"
+          touch-action="pan-y" 
+          autoplay 
+          ar 
+          ar-modes="webxr scene-viewer" 
+          scale="0.2 0.2 0.2" 
+          shadow-intensity="1" 
+          src="{{ '/assets/3D/Joost_dance.glb' | relative_url }}" 
+          alt="A 3D model of myself waving and greeting you">
+        </model-viewer>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Projects Section with Swipeable Cards -->
+  <section class="portfolio-section">
+    <div class="portfolio-section-inner">
+      <h2>Past projects (WIP)</h2>
+        <!-- Swipeable Card Container -->
+    <div class="carousel-container">
+      <div class="portfolio-carousel">
+        {% assign portfolio_posts = site.posts | where: "categories", "portfolio" | sort: "order" %}
+        {% for post in portfolio_posts %}
+        <a href="{{ post.url | relative_url }}" class="portfolio-card">
+          {% if post.image %}
+          <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+          {% endif %}
+          <div class="portfolio-card-content">
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.description | strip_html | truncatewords: 20 }}</p>
+            <span class="view-project">VIEW PROJECT →</span>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+
+      <!-- Carousel Controls -->
+      {% if portfolio_posts.size > 1 %}
+      <div class="carousel-controls">
+        <button class="carousel-prev" aria-label="Previous project">‹</button>
+        <div class="carousel-indicators">
+          {% for post in portfolio_posts %}
+            <button class="indicator{% if forloop.first %} active{% endif %}" aria-label="Go to project {{ forloop.index }}"></button>
+          {% endfor %}
+        </div>
+        <button class="carousel-next" aria-label="Next project">›</button>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+
+  <!-- Services Section - What I Offer -->
+  <section class="services-section">
+    <div class="services-section-inner">
+      <h2>Services</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-image">
+            <img src="{{ '/assets/imgs/services/service_cgi.webp' | relative_url }}" alt="High-Impact Brand & Media Assets" loading="lazy">
+          </div>
+          <div class="service-content">
+            <h3>High-Impact Brand & Media Assets</h3>
+            <p>I create cinematic, high-fidelity visuals that translate abstract ideas and complex topics into clear, engaging imagery. With roots in architecture and 3D design, my imagery balances precision, clarity and emotions.</p>
+            <div class="service-tags">
+              <span class="tag">3D Visualization</span>
+              <span class="tag">Renderings</span>
+              <span class="tag">Motion Graphics</span>
+              <span class="tag">Blender</span>
+              <span class="tag">Houdini</span>
+              <span class="tag">Product Animation</span>
+              <span class="tag">Brand Imagery</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-image">
+            <img src="{{ '/assets/imgs/services/service_truck.webp' | relative_url }}" alt="Custom Automation Pipelines" loading="lazy">
+          </div>
+          <div class="service-content">
+            <h3>Custom Automation Pipelines</h3>
+            <p>I build custom, scalable pipelines that automate or enhance design and content creation, enabling productive outcomes and faster turnaround times. These workflows enable rapid iteration, customization and push the boundaries on what's possible with technology.</p>
+            <div class="service-tags">
+              <span class="tag">ComfyUI</span>
+              <span class="tag">Generative Workflows</span>
+              <span class="tag">AI Integration</span>
+              <span class="tag">Python</span>
+              <span class="tag">Custom LoRAs</span>
+              <span class="tag">Cloud Integration</span>
+              <span class="tag">R&D</span>
+              <span class="tag">Agentic Workflows</span>
+              <span class="tag">AI Strategy</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-image">
+            <img src="{{ '/assets/imgs/services/service_digital-twin.webp' | relative_url }}" alt="Real-Time & Digital Twin Platforms" loading="lazy">
+          </div>
+          <div class="service-content">
+            <h3>Real-Time & Digital Twin Platforms</h3>
+            <p>I design functional environments, where data and space converge. From digital twins to interactive configurators, these platforms transform complex systems into intuitive experiences for engineering, sales and storytelling.</p>
+            <div class="service-tags">
+              <span class="tag">Digital Twin Development</span>
+              <span class="tag">Unreal Engine</span>
+              <span class="tag">Three.js</span>
+              <span class="tag">React / Next.js</span>
+              <span class="tag">Data Integration</span>
+              <span class="tag">Plattform Development</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-content">
+            <h3>The Bespoke Way</h3>
+            <p>Just as I feel like I don't fit in a box, sometimes ideas can be really unconventional as well. If you think you have an exciting idea and need someone to fuse design, technology and imagination: Let's find a solution together.</p>
+            <div class="service-cta">
+              <a href="mailto:mail@joosthelfers.com" class="cta-button service-cta-button">
+                <span class="cta-text">Let's Connect 📧</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+// Simple analytics and lightbox functionality
+document.addEventListener('DOMContentLoaded', function() {
+  // Track portfolio project clicks
+  document.querySelectorAll('.portfolio-card').forEach(card => {
+    card.addEventListener('click', function() {
+      const projectUrl = this.getAttribute('href');
+      const projectName = projectUrl ? projectUrl.split('/').pop().replace(/-/g, ' ') : 'unknown';
+      
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'portfolio_click', {
+          'event_category': 'Portfolio',
+          'event_label': projectName
+        });
+        console.log('📊 Portfolio:', projectName);
+      }
+    });
+  });
+
+  // Portfolio carousel functionality
+  const carousel = document.querySelector('.portfolio-carousel');
+  const prevBtn = document.querySelector('.carousel-prev');
+  const nextBtn = document.querySelector('.carousel-next');
+  const indicators = document.querySelectorAll('.indicator');
+
+  if (carousel) {
+    const cards = carousel.querySelectorAll('.portfolio-card');
+    let currentIndex = 0;
+    const totalCards = cards.length;
+    
+    if (totalCards === 0) return;
+    
+    function getGap() {
+      // Calculate gap based on CSS (2rem = 32px usually, or retrieve computed style)
+      // Since it's flex gap, we can try to compute it or hardcode if we know the CSS
+      // Inspecting CSS: .portfolio-carousel { gap: 2rem; }
+      return 32; // 2rem approximate
+    }
+
+    function getCardWidth() {
+      const card = carousel.querySelector('.portfolio-card');
+      if (!card) return 0;
+      return card.getBoundingClientRect().width;
+    }
+
+    function getVisibleCards() {
+      const isMobile = window.innerWidth <= 768;
+      // CSS says flex: 0 0 calc(25% - 1.5rem), which roughly fits 4
+      return isMobile ? 1 : 4;
+    }
+    
+    function getMaxIndex() {
+      const visibleCards = getVisibleCards();
+      // Ensure we don't go negative
+      return Math.max(0, totalCards - visibleCards);
+    }
+    
+    function shouldShowNavigation() {
+      if (!carousel.parentElement) return false;
+      
+      const containerWidth = carousel.parentElement.clientWidth;
+      const cardWidth = getCardWidth();
+      const gap = getGap();
+      const totalContentWidth = totalCards * (cardWidth + gap) - gap;
+      
+      // Use a small buffer (5px) to avoid rounding errors
+      return totalContentWidth > (containerWidth + 5);
+    }
+
+    function updateNavigationVisibility() {
+      const shouldShow = shouldShowNavigation();
+      
+      // Hide/show navigation buttons
+      if (prevBtn) prevBtn.style.display = shouldShow ? 'flex' : 'none';
+      if (nextBtn) nextBtn.style.display = shouldShow ? 'flex' : 'none';
+      
+      // Hide/show entire controls container
+      const controlsContainer = document.querySelector('.carousel-controls');
+      if (controlsContainer) {
+        controlsContainer.style.display = shouldShow ? 'flex' : 'none';
+      }
+    }
+
+    function updateCarouselPosition(animate = true) {
+      const cardWidth = getCardWidth();
+      const gap = getGap();
+      const isMobile = window.innerWidth <= 768;
+      const maxIndex = getMaxIndex();
+      
+      // Clamp currentIndex to valid range for bounded scrolling on desktop
+      // On mobile we might want endless, but let's stick to bounded for simplicity & robustness first
+      // The original code had endless logic which was a bit complex, let's simplify for stability.
+      
+      if (!isMobile) {
+        currentIndex = Math.max(0, Math.min(currentIndex, maxIndex));
+      } else {
+        // Simple cyclic behavior for mobile if desired, or just bounded.
+        // Let's use bounded for now to match desktop stability.
+        currentIndex = Math.max(0, Math.min(currentIndex, totalCards - 1)); 
+      }
+      
+      const offset = currentIndex * (cardWidth + gap);
+      
+      carousel.style.transition = animate ? 'transform 0.4s ease' : 'none';
+      carousel.style.transform = `translateX(-${offset}px)`;
+      
+      // Update indicators
+      indicators.forEach((indicator, idx) => {
+        indicator.classList.toggle('active', idx === currentIndex);
+      });
+      
+      // Update button states
+      if (prevBtn) prevBtn.disabled = currentIndex <= 0;
+      if (nextBtn) {
+         // On mobile, last index is totalCards - 1
+         // On desktop, last index is maxIndex
+         const limit = isMobile ? totalCards - 1 : maxIndex;
+         nextBtn.disabled = currentIndex >= limit;
+      }
+    }
+    
+    function nextSlide() {
+      const isMobile = window.innerWidth <= 768;
+      const limit = isMobile ? totalCards - 1 : getMaxIndex();
+      
+      if (currentIndex < limit) {
+        currentIndex++;
+        updateCarouselPosition();
+      }
+    }
+    
+    function prevSlide() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateCarouselPosition();
+      }
+    }
+    
+    // Initialize
+    // Wait for layout to settle (images loading etc might affect width?)
+    // Actually requestAnimationFrame might be better, or just immediate.
+    updateNavigationVisibility();
+    updateCarouselPosition(false);
+    
+    if (prevBtn) {
+      prevBtn.addEventListener('click', prevSlide);
+    }
+    
+    if (nextBtn) {
+      nextBtn.addEventListener('click', nextSlide);
+    }
+    
+    // Touch events for swiping
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let isDragging = false;
+    let hasMoved = false;
+    
+    carousel.addEventListener('touchstart', function(e) {
+      touchStartX = e.touches[0].clientX;
+      isDragging = true;
+      hasMoved = false;
+      // e.stopPropagation(); // Passive listeners shouldn't call stopPropagation usually
+    }, {passive: true});
+    
+    carousel.addEventListener('touchmove', function(e) {
+      if (!isDragging) return;
+      hasMoved = true;
+      touchEndX = e.touches[0].clientX;
+      // e.preventDefault(); // Passive listener issue
+    }, {passive: true});
+    
+    carousel.addEventListener('touchend', function(e) {
+      if (!isDragging || !hasMoved) {
+        isDragging = false;
+        return;
+      }
+      isDragging = false;
+      
+      const difference = touchStartX - touchEndX;
+      const threshold = 50;
+      
+      if (Math.abs(difference) > threshold) {
+        if (difference > 0) {
+          nextSlide();
+        } else {
+          prevSlide();
+        }
+      }
+    }, {passive: true});
+    
+    // Indicator click handlers
+    indicators.forEach((indicator, idx) => {
+      indicator.addEventListener('click', () => {
+        currentIndex = idx;
+        updateCarouselPosition();
+      });
+    });
+    
+    // Window resize handler
+    let resizeTimeout;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        updateNavigationVisibility();
+        updateCarouselPosition(false);
+      }, 250);
+    });
+  }
+});
+</script>
