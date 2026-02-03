@@ -20,6 +20,8 @@ export const viewport: Viewport = {
     themeColor: '#ffffff',
 };
 
+import JsonLd from './components/JsonLd';
+
 export default function RootLayout({
     children,
 }: {
@@ -37,6 +39,7 @@ export default function RootLayout({
                 <link rel="manifest" href="/assets/favicon/site.webmanifest" />
             </head>
             <body className={inter.className}>
+                <JsonLd />
                 <Header />
                 <main className="page-content">{children}</main>
                 <Footer />

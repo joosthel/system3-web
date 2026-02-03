@@ -2,14 +2,7 @@
 
 import { useRef } from 'react';
 import Link from 'next/link';
-
-interface Project {
-    id: string;
-    title: string;
-    description: string;
-    image: string;
-    url: string;
-}
+import { Project } from '@/lib/data';
 
 export default function ProjectsCarousel({ projects }: { projects: Project[] }) {
     const carouselRef = useRef<HTMLDivElement>(null);

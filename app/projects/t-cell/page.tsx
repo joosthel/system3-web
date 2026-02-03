@@ -1,4 +1,5 @@
 import ProjectLayout from '../../components/ProjectLayout';
+import VideoJsonLd from '../../components/VideoJsonLd';
 
 export default function TCellPage() {
     return (
@@ -14,6 +15,20 @@ export default function TCellPage() {
             }}
         >
             <div className="space-y-20">
+                <VideoJsonLd
+                    name="T-Cell AG - Hydrogen Fuel Cell Technology Presentation (English)"
+                    description="Comprehensive presentation video explaining T-Cell's hydrogen fuel cell technology and its applications."
+                    uploadDate="2023-05-01"
+                    thumbnailUrl="/assets/imgs/proj_T-Cell/T-Cell_Hero.webp"
+                    contentUrl="/assets/vids/T-Cell_Vorstellungsvideo_ENG_1440p.mp4"
+                />
+                <VideoJsonLd
+                    name="T-Cell AG - Hydrogen Technology (German Mobile)"
+                    description="Mobile-optimized German version focusing on key benefits and applications of T-Cell hydrogen technology."
+                    uploadDate="2023-05-01"
+                    thumbnailUrl="/assets/imgs/proj_T-Cell/T-Cell_Hero.webp"
+                    contentUrl="/assets/vids/T-Cell_Mobil_DEU.mp4"
+                />
                 <section>
                     <h2 className="text-3xl font-bold mb-6 text-white">Project Overview</h2>
                     <p>
@@ -25,7 +40,7 @@ export default function TCellPage() {
                     <section>
                         <h2 className="text-2xl font-bold mb-4 text-white">English Presentation Video</h2>
                         <div className="w-full rounded-xl overflow-hidden bg-gray-900 border border-white/10 mb-2">
-                            <video controls className="w-full h-auto">
+                            <video controls className="w-full h-auto" poster="/assets/imgs/proj_T-Cell/T-Cell_Hero.webp">
                                 <source src="/assets/vids/T-Cell_Vorstellungsvideo_ENG_1440p.mp4" type="video/mp4" />
                                 Your browser does not support the video tag.
                             </video>
@@ -36,7 +51,7 @@ export default function TCellPage() {
                     <section>
                         <h2 className="text-2xl font-bold mb-4 text-white">German Mobile Version</h2>
                         <div className="w-full max-w-sm mx-auto rounded-xl overflow-hidden bg-gray-900 border border-white/10 mb-2">
-                            <video controls className="w-full h-auto bg-black">
+                            <video controls className="w-full h-auto bg-black" poster="/assets/imgs/proj_T-Cell/T-Cell_Hero.webp">
                                 <source src="/assets/vids/T-Cell_Mobil_DEU.mp4" type="video/mp4" />
                                 Your browser does not support the video tag.
                             </video>

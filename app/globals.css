@@ -1,29 +1,41 @@
 /* ===================================================================
    1. GLOBAL VARIABLES & BASE STYLES
    =================================================================== */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
 :root {
-  /* Colors */
-  --primary-color: #1a1a1a;
+  /* Colors - High Tech Minimalist */
+  --primary-color: #0a0a0a;
   --secondary-color: #ffffff;
-  --text-color: #1a1a1a;
-  --light-gray: #f8f9fa;
-  --med-gray: #6c757d;
-  --accent-color: #0066cc;
+  --text-color: #111111;
+  --light-gray: #f4f4f5;
+  /* Zinc 100 */
+  --med-gray: #71717a;
+  /* Zinc 500 */
+  --border-color: #e4e4e7;
+  /* Zinc 200 */
+  --accent-color: #2563eb;
+  /* Tech Blue */
 
   /* Spacing - Graphic & Tight */
-  --space-unit: clamp(0.75rem, 1.2vw, 0.9rem);
-  --space-sm: calc(var(--space-unit) * 0.5);
+  --space-unit: clamp(0.75rem, 1vw, 1rem);
+  --space-xs: calc(var(--space-unit) * 0.5);
+  --space-sm: calc(var(--space-unit) * 0.75);
   --space-md: var(--space-unit);
-  --space-lg: calc(var(--space-unit) * 2.5);
-  --space-xl: calc(var(--space-unit) * 5);
-  --space-xxl: calc(var(--space-unit) * 10);
+  --space-lg: calc(var(--space-unit) * 2);
+  --space-xl: calc(var(--space-unit) * 4);
+  --space-xxl: calc(var(--space-unit) * 8);
 
   /* Layout */
-  --max-width: 1600px;
+  --max-width: 1440px;
   --grid-gap: var(--space-md);
-  --border-radius: 0px;
+  --border-radius: 4px;
+  /* Slightly tighter radius */
+  --font-mono: 'Menlo', 'Monaco', 'Courier New', monospace;
 }
 
 * {
@@ -48,6 +60,34 @@ body {
 /* ===================================================================
    2. TYPOGRAPHY
    =================================================================== */
+
+
+/* Utilities */
+.aspect-video {
+  aspect-ratio: 16/9;
+}
+
+.aspect-square {
+  aspect-ratio: 1/1;
+}
+
+.aspect-portrait {
+  aspect-ratio: 3/4;
+}
+
+.object-cover {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.tech-mono {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
 h1,
 h2,
 h3,
@@ -55,14 +95,15 @@ h4,
 h5,
 h6 {
   font-weight: 700;
-  letter-spacing: -0.02em;
-  margin: 0 0 var(--space-md) 0;
   line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin: 0 0 var(--space-md) 0;
   color: var(--text-color);
 }
 
 h1 {
-  font-size: clamp(1.5rem, 5vw, 3.5rem);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  /* Slightly smaller max size */
   font-weight: 800;
   letter-spacing: -0.04em;
   line-height: 0.95;
@@ -278,25 +319,26 @@ a:hover {
 .portfolio-card {
   flex: 0 0 85vw;
   /* Mobile default */
-  border: 1px solid #eee;
+  border: 1px solid var(--border-color);
   background: #fff;
   scroll-snap-align: center;
   text-decoration: none;
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .portfolio-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  text-decoration: none;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+  border-color: var(--text-color);
 }
 
 .portfolio-image-wrapper {
   aspect-ratio: 16/9;
   overflow: hidden;
-  background: #f0f0f0;
+  background: var(--light-gray);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .portfolio-card img {
