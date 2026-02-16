@@ -62,7 +62,7 @@ export default function Footer() {
                 {/* Bottom Row: Dynamic Time & Location */}
                 <div className="w-full border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-start md:items-center text-xs text-gray-500 uppercase tracking-widest font-medium">
                     <div>
-                        Based in Berlin, Germany
+                        Based in Berlin, Germany | Available everywhere.
                     </div>
                     <div>
                         Local Time: {time}

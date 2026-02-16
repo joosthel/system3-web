@@ -2,7 +2,11 @@ import ProjectsCarousel from './components/ProjectsCarousel';
 import { SITE_CONFIG } from '../lib/constants';
 import { PROJECTS, SERVICES } from '../lib/data';
 
-export default function Home() {
+import { getAllPosts } from '@/lib/blog';
+
+export default async function Home() {
+    const posts = getAllPosts();
+
     return (
         <div className="home-container">
             {/* Unified Hero Section / About */}
@@ -48,6 +52,7 @@ export default function Home() {
                 </div>
             </section>
 
+
             {/* Portfolio Projects Section */}
             <section className="portfolio-section" id="work">
                 <div className="portfolio-section-inner">
@@ -55,6 +60,8 @@ export default function Home() {
                     <ProjectsCarousel projects={PROJECTS} />
                 </div>
             </section>
+
+
 
             {/* Services Section */}
             <section className="services-section" id="services">
@@ -89,6 +96,36 @@ export default function Home() {
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Blog Section */}
+            <section className="blog-section bg-white" id="blog" style={{ padding: 'var(--space-xl) var(--space-md)' }}>
+                <div style={{ maxWidth: 'var(--max-width)', margin: '0 auto' }}>
+                    <div className="flex justify-between items-baseline mb-8">
+                        <h2 className="text-2xl font-bold">Blog</h2>
+                        <a href="/blog" className="text-sm text-gray-500 hover:text-gray-800 transition-colors">
+                            View all →
+                        </a>
+                    </div>
+                    <div className="space-y-6">
+                        {posts.slice(0, 3).map((post) => (
+                            <a key={post.slug} href={`/blog/${post.slug}`} className="block group">
+                                <article className="flex justify-between items-baseline pb-4">
+                                    <h3 className="text-lg font-medium">
+                                        {post.title}
+                                    </h3>
+                                    <time className="text-sm text-gray-500 whitespace-nowrap ml-4">
+                                        {new Date(post.date).toLocaleDateString("en-US", {
+                                            year: "numeric",
+                                            month: "short",
+                                            day: "numeric",
+                                        })}
+                                    </time>
+                                </article>
+                            </a>
+                        ))}
                     </div>
                 </div>
             </section>
