@@ -50,6 +50,7 @@ export default async function Home() {
                             ar
                             ar-modes="webxr scene-viewer"
                             shadow-intensity="1"
+                            camera-target="0m 1.2m 0m"
                             src="/assets/3D/Joost_Waving_AI.glb"
                             alt="A 3D model of myself waving and greeting you">
                             {/* @ts-expect-error - model-viewer is a custom element */}
