@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { SITE_CONFIG } from '../../lib/constants';
+import TrackedLink from './TrackedLink';
 
 export default function Header() {
     return (
@@ -14,9 +15,14 @@ export default function Header() {
             </div>
 
             <div className="header-right">
-                <a href={`mailto:${SITE_CONFIG.email}`} className="cta-button cta-button-small">
-                    <span className="cta-text">Send me an E-Mail</span>
-                </a>
+                <TrackedLink
+                    href={`mailto:${SITE_CONFIG.email}`}
+                    className="cta-button cta-button-small"
+                    eventName="contact_click"
+                    eventParams={{ location: 'header' }}
+                >
+                    <span className="cta-text">Send me a message</span>
+                </TrackedLink>
             </div>
         </header>
     );

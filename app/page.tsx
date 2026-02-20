@@ -3,6 +3,7 @@ import { SITE_CONFIG } from '../lib/constants';
 import { PROJECTS, SERVICES } from '../lib/data';
 
 import { getAllPosts } from '@/lib/blog';
+import TrackedLink from './components/TrackedLink';
 
 export default async function Home() {
     const posts = getAllPosts();
@@ -14,25 +15,31 @@ export default async function Home() {
                 <div className="hero-content">
                     <div className="hero-text">
                         <div className="hero-intro">
-                            <span className="mb-2 block text-sm font-semibold uppercase tracking-wider text-gray-500">Available for Freelance & Contract</span>
-                            <h1 className="hero-title">Creative<br />Technologist</h1>
-                            <p className="hero-subtitle">Building technical solutions and engaging visuals with emerging technology</p>
+                            <span className="mb-4 block text-xs font-bold uppercase tracking-widest text-[#555]">Creative Technologist & Systems Architect</span>
+                            <h1 className="hero-title" style={{ fontSize: 'clamp(3rem, 6vw, 5rem)', fontWeight: '900', letterSpacing: '-0.05em', lineHeight: '1', marginBottom: '1.5rem' }}>
+                                Engineering AI Workflows <br />& High-End Visuals
+                            </h1>
                         </div>
 
-                        <div className="hero-description">
-                            <p>Joost Helfers is a Creative Technologist working at the intersection of 3D, AI and emerging technology. His work is driven by a spatial approach, creating high-impact visuals and advanced technical workflows that help brands and designers communicate complex ideas. <br />
-                                Combining his architectural and advanced 3D design background with startup experience, he builds innovative solutions that work.</p>
+                        <div className="hero-description" style={{ maxWidth: '600px', fontSize: '1.2rem', marginBottom: '2.5rem', color: '#444' }}>
+                            <p>I bridge the gap between creative vision and emerging technology. Whether creating high-impact AI visuals for campaigns or engineering scalable backend automation pipelines, I bring a robust, systems-driven approach to complex projects.</p>
                         </div>
 
                         <div className="hero-actions">
-                            <a href={`mailto:${SITE_CONFIG.email}`} className="cta-button">
-                                <span className="cta-text">Let's start a Project 📧</span>
-                            </a>
+                            <TrackedLink
+                                href={`mailto:${SITE_CONFIG.email}`}
+                                className="cta-button"
+                                style={{ background: '#0a0a0a', color: '#fff', border: '1px solid #0a0a0a', padding: '1rem 2rem', letterSpacing: '0.05em' }}
+                                eventName="contact_click"
+                                eventParams={{ location: 'hero' }}
+                            >
+                                <span className="cta-text">Send me a message 📧</span>
+                            </TrackedLink>
                         </div>
                     </div>
 
                     {/* Hero 3D Model */}
-                    <div className="hero-model">
+                    <div className="hero-model" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         {/* @ts-expect-error - model-viewer is a custom element */}
                         <model-viewer
                             camera-controls
@@ -42,9 +49,8 @@ export default async function Home() {
                             autoplay
                             ar
                             ar-modes="webxr scene-viewer"
-                            scale="0.2 0.2 0.2"
                             shadow-intensity="1"
-                            src="/assets/3D/Joost_dance.glb"
+                            src="/assets/3D/Joost_Waving_AI.glb"
                             alt="A 3D model of myself waving and greeting you">
                             {/* @ts-expect-error - model-viewer is a custom element */}
                         </model-viewer>
@@ -90,9 +96,14 @@ export default async function Home() {
                                 <h3>Contact</h3>
                                 <p className="mb-4">Just as I feel like I don't fit in a box, sometimes ideas can be really unconventional as well. If you think you have an exciting idea and need someone to fuse design, technology and imagination: Let's find a solution together.</p>
                                 <div className="service-cta">
-                                    <a href={`mailto:${SITE_CONFIG.email}`} className="cta-button service-cta-button">
+                                    <TrackedLink
+                                        href={`mailto:${SITE_CONFIG.email}`}
+                                        className="cta-button service-cta-button"
+                                        eventName="contact_click"
+                                        eventParams={{ location: 'services' }}
+                                    >
                                         <span className="cta-text">Start Collaboration 📧</span>
-                                    </a>
+                                    </TrackedLink>
                                 </div>
                             </div>
                         </div>

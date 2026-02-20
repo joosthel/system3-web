@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { SITE_CONFIG } from '../../lib/constants';
+import TrackedLink from './TrackedLink';
 
 export default function Footer() {
     const [time, setTime] = useState('Loading time...');
@@ -55,6 +56,15 @@ export default function Footer() {
                             <div className="h-2"></div>
                             <Link href="/imprint" className="text-xs text-gray-500 hover:text-white transition-colors">Imprint</Link>
                             <Link href="/privacy" className="text-xs text-gray-500 hover:text-white transition-colors">Privacy Policy</Link>
+                            <TrackedLink
+                                href="/assets/pdf/CV-Helfers.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-xs text-gray-500 hover:text-white transition-colors mt-2"
+                                eventName="download_cv"
+                            >
+                                Download CV (PDF)
+                            </TrackedLink>
                         </nav>
                     </div>
                 </div>

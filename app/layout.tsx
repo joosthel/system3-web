@@ -21,6 +21,7 @@ export const viewport: Viewport = {
 };
 
 import JsonLd from './components/JsonLd';
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 export default function RootLayout({
     children,
@@ -39,6 +40,7 @@ export default function RootLayout({
                 <link rel="manifest" href="/assets/favicon/site.webmanifest" />
             </head>
             <body className={inter.className}>
+                <GoogleAnalytics gaId="G-FV9Q5RL89T" />
                 <JsonLd />
                 <Header />
                 <main className="page-content">{children}</main>
