@@ -15,14 +15,14 @@ export default async function Home() {
                 <div className="hero-content">
                     <div className="hero-text">
                         <div className="hero-intro">
-                            <span className="mb-4 block text-xs font-bold uppercase tracking-widest text-[#555]">Creative Technologist & Systems Architect</span>
+                            <span className="mb-4 block text-xs font-bold uppercase tracking-widest text-[#555]">Creative Technologist</span>
                             <h1 className="hero-title" style={{ fontSize: 'clamp(3rem, 6vw, 5rem)', fontWeight: '900', letterSpacing: '-0.05em', lineHeight: '1', marginBottom: '1.5rem' }}>
                                 Engineering AI Workflows <br />& High-End Visuals
                             </h1>
                         </div>
 
                         <div className="hero-description" style={{ maxWidth: '600px', fontSize: '1.2rem', marginBottom: '2.5rem', color: '#444' }}>
-                            <p>I bridge the gap between creative vision and emerging technology. Whether creating high-impact AI visuals for campaigns or engineering scalable backend automation pipelines, I bring a robust, systems-driven approach to complex projects.</p>
+                            <p>I bridge the gap between creative vision and emerging technology. Whether creating high-impact AI visuals for campaigns or engineering scalable backend automation pipelines, I bring a robust, structured approach to complex projects.</p>
                         </div>
 
                         <div className="hero-actions">
