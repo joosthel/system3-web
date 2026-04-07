@@ -1,50 +1,56 @@
 ---
-title: "I Got Tired of Writing Prompts. So I Built Something."
+title: "The future of AI content is not better prompts. It's better systems."
 date: "2026-04-07"
-excerpt: "Prompt engineering is high-leverage work in AI visual production — but it's also repetitive. I built a tool that turns a creative brief and reference images into a consistent set of optimised prompts across multiple AI tools."
+excerpt: "AI-generated content is everywhere, but most of it looks like it. I built a tool that brings art direction thinking into the prompting process, because I think that's the missing layer between 'technically impressive' and 'actually good'."
 tags: ["Technical", "AI", "Product"]
 ---
 
-There's a surprisingly tedious problem in AI visual production that doesn't get much attention: writing the prompts.
+Most AI-generated content looks like AI-generated content, not because the models are bad, but because the process around them is: people type a sentence into an image generator, get something back, tweak a few words, try again, and at no point is there a creative framework behind any of it, no visual logic that ties one output to the next, which means the result might look impressive in isolation but falls apart the moment you put two pieces next to each other.
 
-Not model quality, not compute costs, not hallucinated fingers. Those are real issues, but they're obvious. The one I kept running into was more mundane — translating "this is what the scene should feel like" into structured prompts that actually work, then doing it a dozen times across different tools while keeping the visual language consistent.
+I've been working with AI tools in creative production for a while now, and the pattern I kept seeing was always the same: the bottleneck is not the model, it's the gap between having a clear creative vision and translating that vision into prompts that actually produce coherent, high-quality results across multiple tools and scenes.
 
-Every shot from scratch. Every time.
+## The quality problem
 
-## What a good prompt actually is
+There's a lot of AI content out there right now and most of it is mediocre, not because the technology can't do better, but because speed tends to win over craft and it turns out that generating twenty images in ten minutes is easy while generating twenty images that feel like they belong to the same project is genuinely hard.
 
-A good prompt isn't a description. It's a compressed art direction brief — lighting logic, texture register, camera behaviour, the mood grammar of a specific project. Writing one well takes craft. Writing twelve of them consistently for the same campaign, each adapted to a different scene and tool? That's just repetitive work. And repetitive work should be automated.
+This is the same problem that has always existed in creative production: consistency requires a system, and in traditional work that system is called art direction, where someone defines the visual language, the lighting approach, the colour logic, and the texture palette, and then every individual piece gets produced within that framework, which is what makes a campaign feel like a campaign instead of a mood board dump.
 
-Experienced art directors don't approach each shot from scratch either. They build a visual framework first — a set of decisions about how the world looks, feels, and moves — then apply it to every individual shot. That's what makes a campaign feel coherent rather than just a folder of images.
+AI tools don't have this layer because they're stateless, every generation starts from zero, and if you want consistency you have to manually carry it across every single prompt, which means writing detailed, structured prompts over and over, adjusted for each tool's syntax and strengths, and while that works, it's slow, repetitive, and error-prone.
 
-AI tools don't do this. They're stateless. They don't remember the last shot. Consistency is entirely your problem.
+## What I built
 
-## The tool
+I called it the [Prompt Enhancement Engine](https://promptenhancer.joosthelfers.com), and what it does is take a creative brief and some reference images and, before writing any prompts, first generate an art direction layer: a structured interpretation of your brief that defines the lighting language, material logic, colour palette, and overall mood, essentially the visual framework that an experienced art director would establish before any production begins.
 
-I called it the [Prompt Enhancement Engine](https://promptenhancer.joosthelfers.com), which is a serious name for something I built because I was annoyed.
+From that framework it then generates a full set of prompts for image generation, image editing, and video creation, all derived from the same visual logic, so that when you change the brief everything updates consistently.
 
-You give it a creative brief and some reference images. It returns an optimised art direction brief — the visual framework layer — plus a full set of prompts for image generation, image editing, and video creation. All derived from that framework and consistent with each other. Change the brief, everything updates.
+The order of operations is the whole point: most prompt tools go straight from "idea" to "prompt," while this one goes from "idea" to "art direction" to "prompt," and that middle step is where the quality lives.
 
-The key is the art direction step in the middle. Before writing a single tool-specific prompt, it interprets the brief the way an art director would: defines the lighting language, material and texture logic, colour palette and mood. The prompts are generated from that framework. It's just the right order of operations.
+## Why the human in the loop matters
 
-## Stack
+What I think is important, and what gets lost in a lot of the conversation around AI tooling, is that the human doesn't just validate the output but validates the thinking: the art direction layer that this tool generates is not a black box, you can read it, adjust it, disagree with it, and because you see the creative decisions before they get turned into prompts you catch bad interpretations early, before you've burned through generation credits on content that misses the mark.
+
+At this stage of AI development, this kind of human oversight makes a real difference in output quality because models are good at pattern matching and getting better at creative interpretation, but they still benefit enormously from a person who can say "no, the mood should be more restrained" or "this lighting approach doesn't fit the brand," and that feedback loop, applied at the art direction level rather than at the pixel level, is where you get the biggest quality gains for the least effort.
+
+## The stack
 
 Deliberately lean:
 
 - **Framework:** Next.js App Router, TypeScript, Tailwind CSS (all hand-rolled, no component libraries)
-- **LLM routing:** OpenRouter — Gemini 2.5 Flash for vision/reference analysis, DeepSeek v3.2 for briefs and prompt generation
+- **LLM routing:** OpenRouter with Gemini 2.5 Flash for vision/reference analysis, DeepSeek v3.2 for briefs and prompt generation
 - **Validation:** Zod for all structured LLM output at runtime
 - **Deployment:** Vercel with SSE streaming
-- **State:** No database, no auth, no state management library. useState and useRef. I wanted to see how minimal I could make it while it's still genuinely useful.
+- **State:** No database, no auth, no state management library. useState and useRef. I wanted to see how minimal this could be while still being genuinely useful.
 
-## What's next
+## Where this is going
 
-The tool keeps a human in the loop, and that's the right call for now. AI generation is still expensive enough per iteration that you want real judgment before committing to a direction.
+What I built is a tool with a human at the centre, but the architecture points toward something broader: agentic art direction, where the individual steps this tool performs (brief interpretation, reference analysis, visual framework generation, prompt writing) are all things that agents will handle increasingly well on their own, and once you add a few more capabilities like visual trend research, output evaluation, and iterative refinement, you have a system that can run large parts of the creative production pipeline with minimal human input.
 
-But what I built is essentially a proof of concept for something broader: agentic art direction. Brief interpretation, visual trend research, pulling current references, iterative prompt refinement based on output evaluation — all of this is automatable. Not to remove the human, but to move them upstream: into creative strategy, brand judgment, and final approval, rather than the mechanical translation between a good idea and a good output.
+I don't think this means creative people become irrelevant, if anything it's the opposite, because as AI handles more of the production mechanics the value of human judgment moves upstream into brand strategy, creative direction, editorial taste, and knowing what "good" looks like for a specific context, which are the things that are hardest to automate and most valuable to get right.
 
-The teams producing the best AI content won't be the ones with the sharpest prompts. They'll be the ones who build the best systems around prompting.
+The practical near-term development will probably look something like this: tools that can take a brand guideline, analyse current visual trends in a specific market, generate a visual framework, produce a first round of content, evaluate it against the brief, and iterate, all within minutes, with a human checking in at key decision points rather than manually steering every step.
+
+We're not there yet, but we're closer than most people think, and the teams and individuals that will produce the best AI content won't be the ones who write the best prompts by hand but the ones who build the best systems around the creative process. This tool is my first step in that direction.
 
 ---
 
-[Try it out](https://promptenhancer.joosthelfers.com) — feedback welcome, especially if you're working in this space.
+[Try it out](https://promptenhancer.joosthelfers.com) if you want to see how it works. Feedback is welcome, especially if you're working on similar problems.
