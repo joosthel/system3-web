@@ -33,6 +33,22 @@ export default function SoulyBoondawgPage() {
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen
                         ></iframe>
+                        <script
+                            type="application/ld+json"
+                            dangerouslySetInnerHTML={{
+                                __html: JSON.stringify({
+                                    "@context": "https://schema.org",
+                                    "@type": "VideoObject",
+                                    "name": "Souly & Boondawg - I got this feeling",
+                                    "description": "A hybrid AI music video production transforming greenscreen footage into compelling visuals.",
+                                    "thumbnailUrl": [
+                                        "https://joosthelfers.com/assets/imgs/proj_Souly-Boondawg-igotthisfeelling/Souly-Boondawg_igotthisfeeling-02.webp"
+                                    ],
+                                    "uploadDate": "2023-11-20T08:00:00+08:00",
+                                    "embedUrl": "https://www.youtube.com/embed/j66rlYZQVeM"
+                                })
+                            }}
+                        />
                     </div>
                     <div className="mt-4 text-center">
                         <a href="https://www.youtube.com/watch?v=j66rlYZQVeM" target="_blank" rel="noopener noreferrer" className="text-xl font-semibold border-b border-white hover:text-gray-300 transition-colors">

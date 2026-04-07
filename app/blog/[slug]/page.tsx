@@ -10,32 +10,109 @@ export async function generateStaticParams() {
     }));
 }
 
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+    try {
+        const post = getPostBySlug(params.slug);
+        return {
+            title: post.title,
+            description: post.content.substring(0, 160).replace(/\s+/g, ' ').trim() + '...',
+        };
+    } catch {
+        return {};
+    }
+}
+
 export default function BlogPost({ params }: { params: { slug: string } }) {
     const { slug } = params;
     try {
         const post = getPostBySlug(slug);
 
+        const relatedPosts = post.relatedPosts
+            ? post.relatedPosts.map((relSlug) => {
+                try { return getPostBySlug(relSlug); } catch { return null; }
+            }).filter(Boolean)
+            : [];
+
         return (
-            <article className="py-12 px-4 sm:px-6 lg:px-8" style={{ maxWidth: 'var(--max-width)' }}>
+            <article style={{ paddingTop: '120px', paddingBottom: '4rem', maxWidth: '1200px', margin: '0 auto', padding: '120px 2.5rem 4rem' }}>
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "BlogPosting",
+                            "headline": post.title,
+                            "datePublished": new Date(post.date).toISOString(),
+                            "author": [{
+                                "@type": "Person",
+                                "name": "Joost Helfers",
+                                "url": "https://joosthelfers.com"
+                            }]
+                        })
+                    }}
+                />
                 <Link
                     href="/blog"
-                    className="text-sm text-gray-500 hover:text-gray-800 mb-8 inline-block transition-colors"
+                    style={{ fontSize: '0.8125rem', color: 'var(--text-tertiary)', marginBottom: '2rem', display: 'inline-block' }}
                 >
-                    ← Back to blog
+                    ← Back
                 </Link>
-                <header className="mb-8">
-                    <h1 className="text-4xl font-bold mb-2">{post.title}</h1>
-                    <p className="text-gray-500">
-                        {new Date(post.date).toLocaleDateString("en-US", {
-                            year: "numeric",
-                            month: "long",
-                            day: "numeric",
-                        })}
-                    </p>
+                <header style={{ marginBottom: '2.5rem' }}>
+                    <h1 style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2rem)', marginBottom: '0.75rem' }}>{post.title}</h1>
+                    <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.75rem',
+                        fontFamily: "'Doto'",
+                        fontSize: '0.75rem',
+                        color: 'var(--text-tertiary)',
+                        letterSpacing: '0.02em',
+                    }}>
+                        <time>
+                            {new Date(post.date).toLocaleDateString("en-US", {
+                                year: "numeric",
+                                month: "long",
+                                day: "numeric",
+                            })}
+                        </time>
+                        <span>·</span>
+                        <span>{post.readTime} min read</span>
+                        {post.tags.length > 0 && (
+                            <>
+                                <span>·</span>
+                                <span>{post.tags.join(", ")}</span>
+                            </>
+                        )}
+                    </div>
                 </header>
-                <div className="prose prose-lg prose-gray max-w-none">
+                <div className="prose prose-lg max-w-none" style={{ maxWidth: '680px' }}>
                     <MDXRemote source={post.content} />
                 </div>
+
+                {relatedPosts.length > 0 && (
+                    <div style={{ marginTop: '4rem', paddingTop: '2rem', borderTop: '1px solid var(--border)', maxWidth: '680px' }}>
+                        <h3 style={{
+                            fontFamily: "'Doto'",
+                            fontSize: '0.6875rem',
+                            letterSpacing: '0.06em',
+                            textTransform: 'uppercase',
+                            color: 'var(--text-tertiary)',
+                            marginBottom: '1rem',
+                        }}>Related</h3>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                            {relatedPosts.map((rp) => rp && (
+                                <Link key={rp.slug} href={`/blog/${rp.slug}`} style={{
+                                    fontSize: '0.9375rem',
+                                    fontFamily: "'Doto'",
+                                    fontWeight: 600,
+                                    color: 'var(--text-primary)',
+                                }}>
+                                    {rp.title} →
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+                )}
             </article>
         );
     } catch (error) {

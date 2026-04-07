@@ -81,6 +81,22 @@ export default function MscArcadiaPage() {
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen
                         ></iframe>
+                        <script
+                            type="application/ld+json"
+                            dangerouslySetInnerHTML={{
+                                __html: JSON.stringify({
+                                    "@context": "https://schema.org",
+                                    "@type": "VideoObject",
+                                    "name": "Project Development Process",
+                                    "description": "Development process and iterative design exploration",
+                                    "thumbnailUrl": [
+                                        "https://joosthelfers.com/assets/imgs/proj_MSc-CAD/MSc-CAD_07.webp"
+                                    ],
+                                    "uploadDate": "2023-05-01T08:00:00+08:00",
+                                    "embedUrl": "https://www.youtube.com/embed/c0c-HG-MEYA"
+                                })
+                            }}
+                        />
                     </div>
                     <p className="text-sm text-center text-gray-500 italic">Development process and iterative design exploration</p>
                 </section>
@@ -107,6 +123,22 @@ export default function MscArcadiaPage() {
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen
                         ></iframe>
+                        <script
+                            type="application/ld+json"
+                            dangerouslySetInnerHTML={{
+                                __html: JSON.stringify({
+                                    "@context": "https://schema.org",
+                                    "@type": "VideoObject",
+                                    "name": "DesignMorphine MSc Project",
+                                    "description": "Final project presentation showcasing the complete design process and outcomes",
+                                    "thumbnailUrl": [
+                                        "https://joosthelfers.com/assets/imgs/proj_MSc-CAD/MSc-CAD_08.webp"
+                                    ],
+                                    "uploadDate": "2023-05-01T08:00:00+08:00",
+                                    "embedUrl": "https://www.youtube.com/embed/1gLwwzydQ-c"
+                                })
+                            }}
+                        />
                     </div>
                     <p className="text-sm text-center text-gray-500 italic">Final project presentation showcasing the complete design process and outcomes</p>
                 </section>
@@ -115,19 +147,19 @@ export default function MscArcadiaPage() {
                     <h2 className="text-2xl font-bold mb-4 text-white">Technical Implementation</h2>
                     <div className="grid md:grid-cols-2 gap-4">
                         <div>
-                            <h4 className="font-bold text-white mb-1">Parametric Modeling</h4>
+                            <h3 className="font-bold text-white mb-1">Parametric Modeling</h3>
                             <p className="text-gray-400">Grasshopper for visual programming</p>
                         </div>
                         <div>
-                            <h4 className="font-bold text-white mb-1">Environmental Analysis</h4>
+                            <h3 className="font-bold text-white mb-1">Environmental Analysis</h3>
                             <p className="text-gray-400">Climate data integration for responsive behavior</p>
                         </div>
                         <div>
-                            <h4 className="font-bold text-white mb-1">Form Optimization</h4>
+                            <h3 className="font-bold text-white mb-1">Form Optimization</h3>
                             <p className="text-gray-400">Python scripting for performance-based design</p>
                         </div>
                         <div>
-                            <h4 className="font-bold text-white mb-1">Visualization</h4>
+                            <h3 className="font-bold text-white mb-1">Visualization</h3>
                             <p className="text-gray-400">High-quality rendering pipeline for presentation</p>
                         </div>
                     </div>

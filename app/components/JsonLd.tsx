@@ -4,19 +4,22 @@ export default function JsonLd() {
     const jsonLd = {
         '@context': 'https://schema.org',
         '@type': 'Person',
-        name: 'Joost Helfers',
+        name: SITE_CONFIG.author,
         url: SITE_CONFIG.url,
-        sameAs: [
-            `https://github.com/${SITE_CONFIG.github}`,
-            `https://instagram.com/${SITE_CONFIG.instagram}`,
-            `https://linkedin.com/in/${SITE_CONFIG.linkedin}`,
-        ],
-        jobTitle: 'Creative Technologist',
+        sameAs: SITE_CONFIG.sameAs,
+        jobTitle: SITE_CONFIG.jobTitle,
         worksFor: {
             '@type': 'Organization',
             name: 'Freelance',
         },
         description: SITE_CONFIG.description,
+        knowsAbout: [
+            "Creative Technology",
+            "AI Strategy",
+            "3D Design",
+            "Workflow Automation",
+            "Creative Coding"
+        ]
     };
 
     return (

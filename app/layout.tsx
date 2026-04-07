@@ -5,11 +5,30 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import { SITE_CONFIG } from '../lib/constants';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({
+    subsets: ['latin'],
+    variable: '--font-body',
+    display: 'swap',
+});
 
 export const metadata: Metadata = {
-    title: SITE_CONFIG.title,
+    metadataBase: new URL(SITE_CONFIG.url),
+    title: {
+        default: SITE_CONFIG.title,
+        template: `%s | ${SITE_CONFIG.author}`,
+    },
     description: SITE_CONFIG.description,
+    openGraph: {
+        title: SITE_CONFIG.title,
+        description: SITE_CONFIG.description,
+        url: SITE_CONFIG.url,
+        siteName: SITE_CONFIG.title,
+        locale: 'en_US',
+        type: 'website',
+    },
+    alternates: {
+        canonical: '/',
+    },
 };
 
 export const viewport: Viewport = {
@@ -17,7 +36,7 @@ export const viewport: Viewport = {
     initialScale: 1,
     maximumScale: 5,
     userScalable: true,
-    themeColor: '#ffffff',
+    themeColor: '#fafaf8',
 };
 
 import JsonLd from './components/JsonLd';
@@ -29,8 +48,11 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en">
+        <html lang="en" className={inter.variable}>
             <head>
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+                <link href="https://fonts.googleapis.com/css2?family=Doto:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
                 <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
                 <link rel="icon" type="image/png" href="/assets/favicon/favicon-96x96.png" sizes="96x96" />
                 <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg" />
@@ -39,7 +61,7 @@ export default function RootLayout({
                 <meta name="apple-mobile-web-app-title" content="JH" />
                 <link rel="manifest" href="/assets/favicon/site.webmanifest" />
             </head>
-            <body className={inter.className}>
+            <body>
                 <GoogleAnalytics gaId="G-FV9Q5RL89T" />
                 <JsonLd />
                 <Header />

@@ -31,8 +31,8 @@ export default function ProjectLayout({
                         {date && <time>{new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}</time>}
                         {projectUrl && (
                             <>
-                                <span>•</span>
-                                <a href={projectUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                                <span style={{ color: 'var(--text-tertiary)' }}>·</span>
+                                <a href={projectUrl} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-tertiary)', transition: 'color 0.15s ease' }}>
                                     View Live ↗
                                 </a>
                             </>
@@ -51,7 +51,7 @@ export default function ProjectLayout({
                         </div>
                     )}
 
-                    <p className="hero-description" style={{ maxWidth: '65ch', marginTop: '1.5rem', opacity: 0.8 }}>
+                    <p style={{ maxWidth: '60ch', marginTop: 'var(--space-md)', color: 'var(--text-secondary)', fontSize: '0.9375rem', lineHeight: 1.7 }}>
                         {description}
                     </p>
                 </header>
@@ -72,7 +72,15 @@ export default function ProjectLayout({
 
                     {nextProject && (
                         <div className="project-next-nav">
-                            <span style={{ display: 'block', fontSize: '0.9rem', color: '#666', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                            <span style={{
+                                display: 'block',
+                                fontFamily: "'Doto', monospace",
+                                fontSize: '0.6875rem',
+                                color: 'var(--text-tertiary)',
+                                marginBottom: '0.5rem',
+                                textTransform: 'uppercase',
+                                letterSpacing: '0.04em',
+                            }}>
                                 Next Project
                             </span>
                             <Link href={nextProject.url} className="project-next-link">

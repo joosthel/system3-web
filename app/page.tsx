@@ -1,4 +1,5 @@
 import ProjectsCarousel from './components/ProjectsCarousel';
+import RevealOnScroll from './components/RevealOnScroll';
 import { SITE_CONFIG } from '../lib/constants';
 import { PROJECTS, SERVICES } from '../lib/data';
 
@@ -10,36 +11,35 @@ export default async function Home() {
 
     return (
         <div className="home-container">
-            {/* Unified Hero Section / About */}
-            <section className="hero-section" id="about">
+            {/* Hero */}
+            <section className="hero-section">
                 <div className="hero-content">
                     <div className="hero-text">
                         <div className="hero-intro">
-                            <span className="mb-4 block text-xs font-bold uppercase tracking-widest text-[#555]">Creative Technologist</span>
-                            <h1 className="hero-title" style={{ fontSize: 'clamp(3rem, 6vw, 5rem)', fontWeight: '900', letterSpacing: '-0.05em', lineHeight: '1', marginBottom: '1.5rem' }}>
-                                Engineering AI Workflows <br />& High-End Visuals
+                            <span className="label" style={{ marginBottom: '1.25rem', display: 'block' }}>Creative Technologist — Berlin</span>
+                            <h1 className="hero-title">
+                                AI visual production<br />&amp; technical solutions
                             </h1>
                         </div>
 
-                        <div className="hero-description" style={{ maxWidth: '600px', fontSize: '1.2rem', marginBottom: '2.5rem', color: '#444' }}>
-                            <p>I bridge the gap between creative vision and emerging technology. Whether creating high-impact AI visuals for campaigns or engineering scalable backend automation pipelines, I bring a robust, structured approach to complex projects.</p>
+                        <div className="hero-description">
+                            <p>I help agencies, studios, and product teams turn complex AI ideas into campaign-grade visuals, working pipelines, and deployed platforms.</p>
                         </div>
 
                         <div className="hero-actions">
                             <TrackedLink
                                 href={`mailto:${SITE_CONFIG.email}`}
                                 className="cta-button"
-                                style={{ background: '#0a0a0a', color: '#fff', border: '1px solid #0a0a0a', padding: '1rem 2rem', letterSpacing: '0.05em' }}
                                 eventName="contact_click"
                                 eventParams={{ location: 'hero' }}
                             >
-                                <span className="cta-text">Send me a message 📧</span>
+                                Get in touch
                             </TrackedLink>
                         </div>
                     </div>
 
                     {/* Hero 3D Model */}
-                    <div className="hero-model" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <div className="hero-model">
                         {/* @ts-expect-error - model-viewer is a custom element */}
                         <model-viewer
                             camera-controls
@@ -58,89 +58,123 @@ export default async function Home() {
                         </model-viewer>
                     </div>
                 </div>
+
             </section>
 
-
-            {/* Portfolio Projects Section */}
+            {/* Selected Work */}
             <section className="portfolio-section" id="work">
                 <div className="portfolio-section-inner">
-                    <h2>Selected Work</h2>
-                    <ProjectsCarousel projects={PROJECTS} />
+                    <RevealOnScroll>
+                        <div className="section-header">
+                            <span className="section-number">01</span>
+                            <h2>Selected Work</h2>
+                        </div>
+                    </RevealOnScroll>
+                    <RevealOnScroll delay={100}>
+                        <ProjectsCarousel projects={PROJECTS} />
+                    </RevealOnScroll>
                 </div>
             </section>
 
-
-
-            {/* Services Section */}
+            {/* Capabilities */}
             <section className="services-section" id="services">
                 <div className="services-section-inner">
-                    <h2>Expertise</h2>
+                    <RevealOnScroll>
+                        <div className="section-header">
+                            <span className="section-number">02</span>
+                            <h2>Capabilities</h2>
+                        </div>
+                    </RevealOnScroll>
                     <div className="services-grid">
-                        {SERVICES.map((service) => (
-                            <div className="service-card" key={service.id}>
-                                <div className="service-image">
-                                    <img src={service.image} alt={service.title} loading="lazy" />
-                                </div>
-                                <div className="service-content">
-                                    <h3>{service.title}</h3>
-                                    <p>{service.description}</p>
-                                    <div className="service-tags">
-                                        {service.tags && service.tags.map((tag) => (
-                                            <span className="tag" key={tag}>{tag}</span>
-                                        ))}
+                        {SERVICES.map((service, i) => (
+                            <RevealOnScroll key={service.id} delay={i * 80}>
+                                <div className="service-card">
+                                    <div className="service-image">
+                                        <img src={service.image} alt={service.title} width="800" height="600" loading="lazy" />
+                                    </div>
+                                    <div className="service-content">
+                                        <h3>{service.title}</h3>
+                                        <p>{service.description}</p>
+                                        <div className="service-tags">
+                                            {service.tags && service.tags.map((tag) => (
+                                                <span className="tag" key={tag}>{tag}</span>
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </RevealOnScroll>
                         ))}
-
-                        <div className="service-card" id="contact">
-                            <div className="service-content">
-                                <h3>Contact</h3>
-                                <p className="mb-4">Just as I feel like I don't fit in a box, sometimes ideas can be really unconventional as well. If you think you have an exciting idea and need someone to fuse design, technology and imagination: Let's find a solution together.</p>
-                                <div className="service-cta">
-                                    <TrackedLink
-                                        href={`mailto:${SITE_CONFIG.email}`}
-                                        className="cta-button service-cta-button"
-                                        eventName="contact_click"
-                                        eventParams={{ location: 'services' }}
-                                    >
-                                        <span className="cta-text">Start Collaboration 📧</span>
-                                    </TrackedLink>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </section>
 
-            {/* Blog Section */}
-            <section className="blog-section bg-white" id="blog" style={{ padding: 'var(--space-xl) var(--space-md)' }}>
-                <div style={{ maxWidth: 'var(--max-width)', margin: '0 auto' }}>
-                    <div className="flex justify-between items-baseline mb-8">
-                        <h2 className="text-2xl font-bold">Blog</h2>
-                        <a href="/blog" className="text-sm text-gray-500 hover:text-gray-800 transition-colors">
-                            View all →
-                        </a>
+            {/* Contact — Dark */}
+            <section id="contact" className="contact-section">
+                <RevealOnScroll>
+                    <div className="contact-inner">
+                        <div className="section-header section-header-light">
+                            <span className="section-number section-number-light">03</span>
+                        </div>
+                        <h2>Let&apos;s work together</h2>
+                        <p>
+                            If you have an AI project that needs someone who understands both the creative and the technical side — I&apos;d like to hear about it.
+                        </p>
+                        <TrackedLink
+                            href={`mailto:${SITE_CONFIG.email}`}
+                            className="cta-button cta-button-light"
+                            eventName="contact_click"
+                            eventParams={{ location: 'contact' }}
+                        >
+                            Get in touch
+                        </TrackedLink>
                     </div>
-                    <div className="space-y-6">
-                        {posts.slice(0, 3).map((post) => (
-                            <a key={post.slug} href={`/blog/${post.slug}`} className="block group">
-                                <article className="flex justify-between items-baseline pb-4">
-                                    <h3 className="text-lg font-medium">
+                </RevealOnScroll>
+            </section>
+
+            {/* Writing */}
+            <section id="blog" className="writing-section">
+                <div className="writing-inner">
+                    <RevealOnScroll>
+                        <div className="section-header" style={{ marginBottom: 'var(--space-xl)' }}>
+                            <span className="section-number">04</span>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', width: '100%' }}>
+                                <h2 style={{ marginBottom: 0 }}>Writing</h2>
+                                <a href="/blog" className="view-all-link">
+                                    View all
+                                </a>
+                            </div>
+                        </div>
+                    </RevealOnScroll>
+                    <RevealOnScroll delay={80}>
+                        <div>
+                            {posts.slice(0, 3).map((post) => (
+                                <a key={post.slug} href={`/blog/${post.slug}`} className="writing-item">
+                                    <h3 className="writing-item-title">
                                         {post.title}
                                     </h3>
-                                    <time className="text-sm text-gray-500 whitespace-nowrap ml-4">
+                                    <time className="writing-item-date">
                                         {new Date(post.date).toLocaleDateString("en-US", {
                                             year: "numeric",
                                             month: "short",
-                                            day: "numeric",
                                         })}
                                     </time>
-                                </article>
-                            </a>
-                        ))}
-                    </div>
+                                </a>
+                            ))}
+                        </div>
+                    </RevealOnScroll>
                 </div>
+            </section>
+
+            {/* About — minimal, bottom */}
+            <section id="about" className="about-minimal">
+                <RevealOnScroll>
+                    <div className="about-minimal-inner">
+                        <span className="about-label">About</span>
+                        <p>
+                            Background in architecture and computational design (MSc, DesignMorphine). Previously built digital twins and 3D platforms at INYO Mobility. Now focused exclusively on AI visual production and technical AI solutions — generative pipelines, prompt engineering, and full-stack AI tooling. Based in Berlin.
+                        </p>
+                    </div>
+                </RevealOnScroll>
             </section>
         </div>
     );

@@ -10,7 +10,15 @@ export type Post = {
     date: string;
     excerpt: string;
     content: string;
+    tags: string[];
+    readTime: number;
+    relatedPosts?: string[];
 };
+
+function calculateReadTime(content: string): number {
+    const words = content.trim().split(/\s+/).length;
+    return Math.max(1, Math.ceil(words / 200));
+}
 
 export function getPostSlugs() {
     if (!fs.existsSync(postsDirectory)) {
@@ -31,6 +39,9 @@ export function getPostBySlug(slug: string): Post {
         date: data.date,
         excerpt: data.excerpt,
         content,
+        tags: data.tags || [],
+        readTime: calculateReadTime(content),
+        relatedPosts: data.relatedPosts || undefined,
     };
 }
 

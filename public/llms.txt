@@ -1,0 +1,28 @@
+# Joost Helfers
+
+> Berlin-based creative technologist specializing in AI visual production and technical AI solutions.
+
+## About
+Joost Helfers helps agencies, studios, and product teams turn complex AI ideas into campaign-grade visuals, working pipelines, and deployed platforms. Background in architecture and computational design (MSc, DesignMorphine). Now focused exclusively on AI visual production and technical AI solutions — generative pipelines, prompt engineering, and full-stack AI tooling.
+
+## Professional Profiles
+- Website: https://joosthelfers.com
+- LinkedIn: https://linkedin.com/in/joosthel
+- GitHub: https://github.com/joosthel
+
+## Core Expertise
+- AI Visual Production — campaign-grade generative imagery and video
+- AI Automation & Custom Pipelines — ComfyUI, generative workflows, agentic systems
+- Full-Stack AI Tooling — Next.js, TypeScript, Python, API design
+- Prompt Engineering — systematic prompt development for consistent, high-quality output
+
+## Case Studies
+- /projects/prompt-engine — Live AI tool for prompt enhancement
+- /projects/ai-video-campaign — AI video production for a global brand campaign
+- /projects/ai-pipeline-backend — Custom ComfyUI workflows and segmentation tooling
+- /projects/souly-boondawg — Hybrid AI music video production
+- /projects/inyo-digital-twin — Digital twin platform (React, Three.js)
+- /projects/msc-arcadia — MSc computational design research
+
+## Blog & Articles
+- /blog

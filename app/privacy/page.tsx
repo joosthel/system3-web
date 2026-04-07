@@ -18,7 +18,7 @@ export default function Privacy() {
                         As the controller, Joost Helfers has implemented numerous technical and organizational measures to ensure the most complete protection of personal data processed through this website. However, Internet-based data transmissions may in principle have security gaps, so absolute protection may not be guaranteed. For this reason, every data subject is free to transfer personal data to us via alternative means, e.g. by telephone.
                     </p>
 
-                    <h3>1. Definitions</h3>
+                    <h2>1. Definitions</h2>
                     <p>
                         The data protection declaration of Joost Helfers is based on the terms used by the European legislator for the adoption of the General Data Protection Regulation (GDPR). Our data protection declaration should be legible and understandable for the general public, as well as our customers and business partners. To ensure this, we would like to first explain the terminology used.
                     </p>
@@ -33,7 +33,7 @@ export default function Privacy() {
                         <li><strong>g) Controller:</strong> Controller or controller responsible for the processing is the natural or legal person, public authority, agency or other body which, alone or jointly with others, determines the purposes and means of the processing of personal data.</li>
                     </ul>
 
-                    <h3>2. Name and Address of the controller</h3>
+                    <h2>2. Name and Address of the controller</h2>
                     <p>
                         Controller for the purposes of the General Data Protection Regulation (GDPR), other data protection laws applicable in Member states of the European Union and other provisions related to data protection is:
                     </p>
@@ -48,7 +48,7 @@ export default function Privacy() {
                         Website: www.joosthelfers.com
                     </p>
 
-                    <h3>3. Cookies</h3>
+                    <h2>3. Cookies</h2>
                     <p>
                         The Internet pages of the Joost Helfers use cookies. Cookies are text files that are stored in a computer system via an Internet browser.
                     </p>
@@ -56,17 +56,17 @@ export default function Privacy() {
                         The data subject may, at any time, prevent the setting of cookies through our website by means of a corresponding setting of the Internet browser used, and may thus permanently deny the setting of cookies.
                     </p>
 
-                    <h3>4. Collection of general data and information</h3>
+                    <h2>4. Collection of general data and information</h2>
                     <p>
                         The website of the Joost Helfers collects a series of general data and information when a data subject or automated system calls up the website. This general data and information are stored in the server log files.
                     </p>
 
-                    <h3>5. Routine erasure and blocking of personal data</h3>
+                    <h2>5. Routine erasure and blocking of personal data</h2>
                     <p>
                         The data controller shall process and store the personal data of the data subject only for the period necessary to achieve the purpose of storage, or as far as this is granted by the European legislator.
                     </p>
 
-                    <h3>6. Rights of the data subject</h3>
+                    <h2>6. Rights of the data subject</h2>
                     <p>Each data subject shall have the right granted by the European legislator to:</p>
                     <ul>
                         <li>a) Obtain confirmation as to whether or not personal data concerning him or her are being processed.</li>
@@ -80,12 +80,12 @@ export default function Privacy() {
                         <li>i) Withdraw his or her consent to processing of his or her personal data at any time.</li>
                     </ul>
 
-                    <h3>7. Data protection provisions about the application and use of Google Analytics 4 (GA4)</h3>
+                    <h2>7. Data protection provisions about the application and use of Google Analytics 4 (GA4)</h2>
                     <p>
                         On this website, the controller has integrated Google Analytics 4 (GA4). We use Google Analytics 4 with IP anonymization enabled (anonymize_ip: true) and consent mode implementation.
                     </p>
 
-                    <h3>13. Existence of automated decision-making</h3>
+                    <h2>13. Existence of automated decision-making</h2>
                     <p>As a responsible company, we do not use automatic decision-making or profiling.</p>
 
                     <p style={{ marginTop: '2rem', fontStyle: 'italic' }}>(͡ ° ͜ʖ ͡ °)</p>

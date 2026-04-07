@@ -26,7 +26,12 @@ export default function ProjectsCarousel({ projects }: { projects: Project[] }) 
                     <Link key={post.id} href={post.url} className="portfolio-card">
                         <div className="portfolio-image-wrapper">
                             {post.image && (
-                                <img src={post.image} alt={post.title} loading="lazy" />
+                                <img src={post.image} alt={`${post.title} Cover`} width="600" height="400" loading="lazy" />
+                            )}
+                            {post.badge && (
+                                <span className={`project-badge ${post.badge.toLowerCase().includes('nda') ? 'badge-nda' : 'badge-live'}`}>
+                                    {post.badge}
+                                </span>
                             )}
                         </div>
                         <div className="portfolio-card-content">
@@ -41,17 +46,17 @@ export default function ProjectsCarousel({ projects }: { projects: Project[] }) 
             <div className="carousel-controls">
                 <button
                     className="carousel-prev"
-                    aria-label="Previous projects"
+                    aria-label="previous projects"
                     onClick={() => scroll('left')}
                 >
-                    ‹
+                    <span aria-hidden="true">‹</span>
                 </button>
                 <button
                     className="carousel-next"
-                    aria-label="Next projects"
+                    aria-label="next projects"
                     onClick={() => scroll('right')}
                 >
-                    ›
+                    <span aria-hidden="true">›</span>
                 </button>
             </div>
         </div>
