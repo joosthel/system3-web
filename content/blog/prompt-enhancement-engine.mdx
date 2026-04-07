@@ -1,0 +1,50 @@
+---
+title: "I Got Tired of Writing Prompts. So I Built Something."
+date: "2026-04-07"
+excerpt: "Prompt engineering is high-leverage work in AI visual production — but it's also repetitive. I built a tool that turns a creative brief and reference images into a consistent set of optimised prompts across multiple AI tools."
+tags: ["Technical", "AI", "Product"]
+---
+
+There's a surprisingly tedious problem in AI visual production that doesn't get much attention: writing the prompts.
+
+Not model quality, not compute costs, not hallucinated fingers. Those are real issues, but they're obvious. The one I kept running into was more mundane — translating "this is what the scene should feel like" into structured prompts that actually work, then doing it a dozen times across different tools while keeping the visual language consistent.
+
+Every shot from scratch. Every time.
+
+## What a good prompt actually is
+
+A good prompt isn't a description. It's a compressed art direction brief — lighting logic, texture register, camera behaviour, the mood grammar of a specific project. Writing one well takes craft. Writing twelve of them consistently for the same campaign, each adapted to a different scene and tool? That's just repetitive work. And repetitive work should be automated.
+
+Experienced art directors don't approach each shot from scratch either. They build a visual framework first — a set of decisions about how the world looks, feels, and moves — then apply it to every individual shot. That's what makes a campaign feel coherent rather than just a folder of images.
+
+AI tools don't do this. They're stateless. They don't remember the last shot. Consistency is entirely your problem.
+
+## The tool
+
+I called it the [Prompt Enhancement Engine](https://promptenhancer.joosthelfers.com), which is a serious name for something I built because I was annoyed.
+
+You give it a creative brief and some reference images. It returns an optimised art direction brief — the visual framework layer — plus a full set of prompts for image generation, image editing, and video creation. All derived from that framework and consistent with each other. Change the brief, everything updates.
+
+The key is the art direction step in the middle. Before writing a single tool-specific prompt, it interprets the brief the way an art director would: defines the lighting language, material and texture logic, colour palette and mood. The prompts are generated from that framework. It's just the right order of operations.
+
+## Stack
+
+Deliberately lean:
+
+- **Framework:** Next.js App Router, TypeScript, Tailwind CSS (all hand-rolled, no component libraries)
+- **LLM routing:** OpenRouter — Gemini 2.5 Flash for vision/reference analysis, DeepSeek v3.2 for briefs and prompt generation
+- **Validation:** Zod for all structured LLM output at runtime
+- **Deployment:** Vercel with SSE streaming
+- **State:** No database, no auth, no state management library. useState and useRef. I wanted to see how minimal I could make it while it's still genuinely useful.
+
+## What's next
+
+The tool keeps a human in the loop, and that's the right call for now. AI generation is still expensive enough per iteration that you want real judgment before committing to a direction.
+
+But what I built is essentially a proof of concept for something broader: agentic art direction. Brief interpretation, visual trend research, pulling current references, iterative prompt refinement based on output evaluation — all of this is automatable. Not to remove the human, but to move them upstream: into creative strategy, brand judgment, and final approval, rather than the mechanical translation between a good idea and a good output.
+
+The teams producing the best AI content won't be the ones with the sharpest prompts. They'll be the ones who build the best systems around prompting.
+
+---
+
+[Try it out](https://promptenhancer.joosthelfers.com) — feedback welcome, especially if you're working in this space.
