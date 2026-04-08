@@ -5,24 +5,39 @@
 ## About
 Joost Helfers helps agencies, studios, and product teams turn complex AI ideas into campaign-grade visuals, working pipelines, and deployed platforms. Background in architecture and computational design (MSc, DesignMorphine). Now focused exclusively on AI visual production and technical AI solutions — generative pipelines, prompt engineering, and full-stack AI tooling.
 
-## Professional Profiles
+## Contact
+- Email: mail@joosthelfers.com
 - Website: https://joosthelfers.com
 - LinkedIn: https://linkedin.com/in/joosthel
 - GitHub: https://github.com/joosthel
 
-## Core Expertise
-- AI Visual Production — campaign-grade generative imagery and video
-- AI Automation & Custom Pipelines — ComfyUI, generative workflows, agentic systems
-- Full-Stack AI Tooling — Next.js, TypeScript, Python, API design
-- Prompt Engineering — systematic prompt development for consistent, high-quality output
+## Tech Stack
+- Frontend: Next.js, TypeScript, React, Three.js, Tailwind CSS
+- AI/ML: ComfyUI, Stable Diffusion, OpenRouter, custom LoRAs, prompt engineering
+- Backend: Python, Node.js, API design
+- Infrastructure: Vercel, cloud GPU pipelines
+- Design: Houdini, Blender, computational/parametric design
+
+## Services
+- AI Visual Production — campaign-grade generative imagery and video for brands
+- AI Automation & Custom Pipelines — ComfyUI workflows, generative pipelines, agentic systems
+- Full-Stack AI Tooling — Next.js apps, TypeScript, Python, API design
+- Real-Time & Digital Twin Platforms — React, Three.js, interactive 3D
 
 ## Case Studies
-- /projects/prompt-engine — Live AI tool for prompt enhancement
-- /projects/ai-video-campaign — AI video production for a global brand campaign
-- /projects/ai-pipeline-backend — Custom ComfyUI workflows and segmentation tooling
-- /projects/souly-boondawg — Hybrid AI music video production
-- /projects/inyo-digital-twin — Digital twin platform (React, Three.js)
-- /projects/msc-arcadia — MSc computational design research
+- /projects/prompt-engine — Live AI tool for prompt enhancement (Next.js, TypeScript, OpenRouter)
+- /projects/ai-video-campaign — AI video production for a global brand campaign (ComfyUI, generative video)
+- /projects/ai-pipeline-backend — Custom ComfyUI workflows and segmentation tooling (Python, computer vision)
+- /projects/souly-boondawg — Hybrid AI music video production (Stable Diffusion, VFX)
+- /projects/inyo-digital-twin — Digital twin platform (React, Three.js, web app)
+- /projects/msc-arcadia — MSc computational design research (Houdini, parametric architecture)
 
 ## Blog & Articles
-- /blog
+- /blog/prompt-enhancement-engine — Building the Prompt Enhancement Engine
+- /blog/digital-stoicism — Digital Stoicism
+
+## Machine-Readable Resources
+- Projects JSON: /api/projects.json
+- Sitemap: /sitemap.xml
+- Agent discovery: /.well-known/agent.json
+- Robots: /robots.txt

@@ -1,0 +1,54 @@
+[
+  {
+    "id": "prompt-engine",
+    "title": "Prompt Enhancement Engine",
+    "description": "A live AI tool that turns a creative brief and reference images into a full set of optimised, consistent prompts.",
+    "url": "https://joosthelfers.com/projects/prompt-engine",
+    "date": "2025-03-01",
+    "tags": ["Next.js", "TypeScript", "OpenRouter", "Vercel", "AI Product"],
+    "badge": "Live Project",
+    "live_url": "https://promptenhancer.joosthelfers.com"
+  },
+  {
+    "id": "ai-video-campaign",
+    "title": "AI Video Production for a Global Brand Campaign",
+    "description": "From storyboard to edited campaign video — generative AI visual pipeline.",
+    "url": "https://joosthelfers.com/projects/ai-video-campaign",
+    "date": "2025-01-15",
+    "tags": ["AI Visuals", "Generative Video", "ComfyUI", "Prompt Engineering"],
+    "badge": "NDA — Process Only"
+  },
+  {
+    "id": "ai-pipeline-backend",
+    "title": "AI Pipeline Backend & Interactive Segmentation Tool",
+    "description": "Custom ComfyUI workflows + web-based segmentation interface for an AI asset platform.",
+    "url": "https://joosthelfers.com/projects/ai-pipeline-backend",
+    "date": "2024-11-01",
+    "tags": ["ComfyUI", "Python", "Computer Vision", "API Design"],
+    "badge": "NDA — Process Only"
+  },
+  {
+    "id": "souly-boondawg",
+    "title": "Souly & Boondawg - I got this feeling",
+    "description": "A hybrid AI music video production transforming greenscreen footage into compelling visuals.",
+    "url": "https://joosthelfers.com/projects/souly-boondawg",
+    "date": "2023-11-20",
+    "tags": ["AI Video", "Music Video", "Stable Diffusion", "VFX"]
+  },
+  {
+    "id": "inyo-digital-twin",
+    "title": "INYO Mobility - Digital Twin Platform",
+    "description": "Interactive 3D visualization solutions for vehicle design optimization | Full Stack development.",
+    "url": "https://joosthelfers.com/projects/inyo-digital-twin",
+    "date": "2023-09-01",
+    "tags": ["Digital Twin", "React", "Three.js", "Web App"]
+  },
+  {
+    "id": "msc-arcadia",
+    "title": "DesignMorphine MSc - Project Arcadia",
+    "description": "Final Project for M. Sc. in Computational and Advanced Design exploring parametric architecture.",
+    "url": "https://joosthelfers.com/projects/msc-arcadia",
+    "date": "2022-09-01",
+    "tags": ["Computational Design", "Architecture", "Houdini", "Research"]
+  }
+]
