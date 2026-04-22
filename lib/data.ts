@@ -23,27 +23,27 @@ export const PROJECTS: Project[] = [
     {
         id: 'ai-video-campaign',
         title: 'AI Video Production for a Global Brand Campaign',
-        description: 'From storyboard to edited campaign video — generative AI visual pipeline.',
+        description: 'A generative AI visual pipeline from storyboard to edited campaign video.',
         image: '/assets/imgs/proj_ai-video-campaign/cover.webp',
         url: '/projects/ai-video-campaign',
         date: '2025-01-15',
         tags: ['AI Visuals', 'Generative Video', 'ComfyUI', 'Prompt Engineering'],
-        badge: 'NDA — Process Only'
+        badge: 'NDA. Process only.'
     },
     {
         id: 'ai-pipeline-backend',
         title: 'AI Pipeline Backend & Interactive Segmentation Tool',
-        description: 'Custom ComfyUI workflows + web-based segmentation interface for an AI asset platform.',
+        description: 'Custom ComfyUI workflows and a web-based segmentation interface for an AI asset platform.',
         image: '/assets/imgs/proj_ai-pipeline-backend/cover.webp',
         url: '/projects/ai-pipeline-backend',
         date: '2024-11-01',
         tags: ['ComfyUI', 'Python', 'Computer Vision', 'API Design'],
-        badge: 'NDA — Process Only'
+        badge: 'NDA. Process only.'
     },
     {
         id: 'souly-boondawg',
-        title: 'Souly & Boondawg - I got this feeling',
-        description: 'A hybrid AI music video production transforming greenscreen footage into compelling visuals.',
+        title: 'Souly & Boondawg. I got this feeling.',
+        description: 'A hybrid AI music video that turns greenscreen footage into a finished visual through Stable Diffusion and VFX compositing.',
         image: '/assets/imgs/proj_Souly-Boondawg-igotthisfeelling/Souly-Boondawg_igotthisfeeling-02.webp',
         url: '/projects/souly-boondawg',
         date: '2023-11-20',
@@ -51,8 +51,8 @@ export const PROJECTS: Project[] = [
     },
     {
         id: 'inyo-digital-twin',
-        title: 'INYO Mobility - Digital Twin Platform',
-        description: 'Interactive 3D visualization solutions for vehicle design optimization | Full Stack development',
+        title: 'INYO Mobility. Digital Twin Platform.',
+        description: 'An interactive 3D platform for vehicle design optimisation, built full-stack with React and Three.js.',
         image: '/assets/imgs/proj_INYO-Digital-Twin/Screenshot_3D-View.webp',
         url: '/projects/inyo-digital-twin',
         date: '2023-09-01',
@@ -60,8 +60,8 @@ export const PROJECTS: Project[] = [
     },
     {
         id: 'msc-arcadia',
-        title: 'DesignMorphine MSc - Project Arcadia',
-        description: "Final Project for my M. Sc. in Computational and Advanced Design exploring parametric architecture.",
+        title: 'DesignMorphine MSc. Project Arcadia.',
+        description: 'My final project for the MSc in Computational and Advanced Design. A deep exploration of parametric architecture.',
         image: '/assets/imgs/proj_MSc-CAD/MSc-CAD_04.webp',
         url: '/projects/msc-arcadia',
         date: '2022-09-01',
@@ -91,21 +91,21 @@ export const SERVICES = [
     {
         id: 'ai-visuals',
         title: 'AI Visual Production',
-        description: 'Campaign-grade AI visuals and video. I work with generative models to produce imagery that meets the accuracy and quality demands of real brand work — product consistency, text fidelity, and art direction across shots.',
+        description: 'Campaign-grade AI visuals and video. I work with generative models to produce imagery that meets the accuracy and quality demands of real brand work. Product consistency across shots, readable text in-frame, and coherent art direction from one hero image to the next.',
         image: '/assets/imgs/services/service_cgi.webp',
         tags: ['Generative AI', 'ComfyUI', 'Prompt Engineering', 'Video Production', 'Campaign Visuals', 'Brand Imagery']
     },
     {
         id: 'automation',
         title: 'AI Automation & Custom Pipelines',
-        description: 'I build custom, scalable pipelines that automate or enhance design and content creation, enabling productive outcomes and faster turnaround times. These workflows enable rapid iteration, customization and push the boundaries on what\'s possible with technology.',
+        description: 'I build custom, scalable pipelines that automate the repetitive parts of design and content production. The result is faster turnaround, reliable outputs, and a clear path from an idea to a shippable asset. Built with ComfyUI, Python, and cloud infrastructure that teams can actually run.',
         image: '/assets/imgs/services/service_truck.webp',
         tags: ['ComfyUI', 'Generative Workflows', 'AI Integration', 'Python', 'Custom LoRAs', 'Cloud Integration', 'R&D', 'Agentic Workflows', 'AI Strategy']
     },
     {
         id: 'digital-platforms',
         title: 'Real-Time & Digital Twin Platforms',
-        description: 'I design functional environments, where data and space converge. From digital twins to interactive configurators, these platforms transform complex systems into intuitive experiences for engineering, sales and storytelling. Built with React, Three.js, and modern web technologies.',
+        description: 'I design functional environments where data and space meet. Digital twins and interactive configurators that make complex systems legible for engineering, sales, and storytelling. Built with React, Three.js, and the rest of the modern web stack.',
         image: '/assets/imgs/services/service_digital-twin.webp',
         tags: ['Digital Twin Development', 'React / Next.js', 'Three.js', 'Unreal Engine', 'Data Integration', 'Platform Development']
     }

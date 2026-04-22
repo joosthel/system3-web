@@ -1,0 +1,57 @@
+---
+title: "MCP apps and how brands will show up in agentic commerce"
+date: "2026-04-22"
+excerpt: "A new layer is forming in consumer-facing AI, and agents need a way to talk to brands. MCP apps are emerging as that interface. Why this matters more than it sounds, and what it changes about how companies think about their digital presence."
+tags: ["Opinion", "Strategy", "AI"]
+---
+
+The question most companies have been answering for the past twenty-five years is some version of "how do we get found". First by people searching, then by algorithms ranking, then by feeds recommending. Each shift rewarded a specific kind of work. A good website, then SEO, then social presence, then paid distribution. The companies that moved early on each transition tended to compound their advantage over time.
+
+A new layer is forming now. It is not fully consumer-facing yet, but it is close enough that you can see the shape of it. Agents are increasingly acting on behalf of people. Asking questions, comparing options, summarising research, and in a growing number of cases, taking real action like booking, buying, or scheduling. When that happens, the question shifts. It is no longer only "how do we get found". It is "how do we exist for an agent that is acting on behalf of a person".
+
+MCP apps are one way companies are starting to answer that.
+
+## What an MCP app actually is
+
+MCP stands for Model Context Protocol. Its goal is simple. Give AI systems a standard way to interact with outside services, data, and tools.
+
+In practice, an MCP app exposes a defined set of capabilities. The actions a system can take on your behalf, the resources it can read, the information it can return. The protocol itself is deliberately boring, which is what you want from infrastructure. What matters is what it unlocks. An agent can ask your systems a question, take an action, or pull the information it needs to answer something well, without anyone having to build a custom integration for every new model or client.
+
+If your company already has an API, most of the hard technical work is done. An MCP app is the thoughtful, agent-readable wrapper on top of it.
+
+## This is a brand problem, not a tech problem
+
+It is tempting to frame MCP apps as an engineering concern. Something the platform team will get to after the next sprint. That framing misses the shift that is actually happening.
+
+When an agent plans a trip, compares prices, or orders groceries, the brands that show up in the answer are the ones that speak the protocol. Visibility moves from the search results page into the agent's reasoning step. That is a different surface with different rules.
+
+If two hotels have the same inventory and only one exposes structured availability through MCP, the agent will reach for the one it can actually use. Over time that gap compounds. Agents learn which sources are reliable. The platforms hosting those agents prioritise the integrations that perform. The end user never sees which hotel was in the long list and which one was not. Only one of them ends up in the short list.
+
+That is what I mean by a brand representation problem. It is not a logo question. It is a presence question. If an agent cannot talk to you, you are not in the conversation.
+
+## The parallel to the early web
+
+We have been here before. When the web was new, a lot of companies treated "get a website" as a small IT task. They shipped something basic, did not invest in it, and assumed customers would find them through other channels. A smaller number of companies treated the website as a core brand surface from day one. They hired the right people, wrote the right copy, and designed an experience that reflected how they wanted to be seen.
+
+The second group built a lead that was hard to close later.
+
+MCP apps feel like a similar inflection, with one important difference. The surface is smaller and less visible to end users today, which means the pressure is lower and the incentive to invest is easier to defer. The companies that do invest early will have a quieter but real advantage as the agent layer grows.
+
+## What a good MCP app looks like
+
+A thoughtful MCP app is not a raw API dump. It is a designed interface for an agent user. The good ones treat the agent the way you would treat any other customer.
+
+A few principles seem to hold up so far.
+
+- **Expose what serves the user.** Not every action or resource in your system needs to be callable from an agent. Curate the surface.
+- **Give tools clear, descriptive names and documentation.** An agent chooses what to call based on the description. Vague descriptions produce vague behaviour.
+- **Keep responses structured and predictable.** Numbers as numbers, enums as enums, dates in a standard format. The agent parses better, and the end user gets a better answer.
+- **Reflect your brand in the machine-readable surface.** The language you use in tool descriptions, confirmation messages, and error states is part of how your company will be quoted back to people. That voice is a brand decision.
+
+None of this is glamorous work. It is the same sort of careful, unshowy craft that separates a great website from a functional one.
+
+## Where this leaves us
+
+MCP apps will not be urgent for most companies this quarter. The agent layer is still maturing, and most of the commerce it handles is experimental. That will change, and probably faster than the current pace suggests.
+
+The companies that do the thinking now, about what their machine-readable presence should say and feel like, will be ready when the pressure arrives. For most brands, the question is not really whether to have an MCP app. It is whether the version that eventually shows up in the agent is the one they would be proud to put their name on.

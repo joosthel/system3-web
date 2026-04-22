@@ -26,18 +26,16 @@ export default function ProjectsCarousel({ projects }: { projects: Project[] }) 
                     <Link key={post.id} href={post.url} className="portfolio-card">
                         <div className="portfolio-image-wrapper">
                             {post.image && (
-                                <img src={post.image} alt={`${post.title} Cover`} width="600" height="400" loading="lazy" />
+                                <img src={post.image} alt={`${post.title} cover`} width="600" height="400" loading="lazy" />
                             )}
                             {post.badge && (
-                                <span className={`project-badge ${post.badge.toLowerCase().includes('nda') ? 'badge-nda' : 'badge-live'}`}>
-                                    {post.badge}
-                                </span>
+                                <span className="project-badge">{post.badge}</span>
                             )}
                         </div>
                         <div className="portfolio-card-content">
                             <h3>{post.title}</h3>
                             <p>{post.description}</p>
-                            <span className="view-project">VIEW PROJECT →</span>
+                            <span className="view-project">View project →</span>
                         </div>
                     </Link>
                 ))}
@@ -46,17 +44,17 @@ export default function ProjectsCarousel({ projects }: { projects: Project[] }) 
             <div className="carousel-controls">
                 <button
                     className="carousel-prev"
-                    aria-label="previous projects"
+                    aria-label="Previous projects"
                     onClick={() => scroll('left')}
                 >
-                    <span aria-hidden="true">‹</span>
+                    <span aria-hidden="true">←</span>
                 </button>
                 <button
                     className="carousel-next"
-                    aria-label="next projects"
+                    aria-label="Next projects"
                     onClick={() => scroll('right')}
                 >
-                    <span aria-hidden="true">›</span>
+                    <span aria-hidden="true">→</span>
                 </button>
             </div>
         </div>

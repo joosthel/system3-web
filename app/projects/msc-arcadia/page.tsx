@@ -3,13 +3,13 @@ import ProjectLayout from '../../components/ProjectLayout';
 export default function MscArcadiaPage() {
     return (
         <ProjectLayout
-            title="DesignMorphine MSc - Project Arcadia"
-            description="Final Project for my M. Sc. in Computational and Advanced Design"
+            title="DesignMorphine MSc. Project Arcadia."
+            description="My final project for the MSc in Computational and Advanced Design. A deep exploration of parametric architecture."
             date="2023-05-01"
             tags={["Grasshopper", "Rhino", "Python", "Computational Design", "Parametric Architecture"]}
             heroImage="/assets/imgs/proj_MSc-CAD/MSc-CAD_04.webp"
             nextProject={{
-                title: "T-Cell AG - Explainer Videos",
+                title: "T-Cell AG. Explainer Videos.",
                 url: "/projects/t-cell"
             }}
         >
@@ -17,7 +17,7 @@ export default function MscArcadiaPage() {
                 <section>
                     <h2 className="text-3xl font-bold mb-6 text-white">Project Overview</h2>
                     <p>
-                        Project Arcadia represents the culmination of my Master's degree in Computational and Advanced Design. This project explores the intersection of parametric design, environmental responsiveness, and architectural form-finding through computational methods.
+                        Project Arcadia is the culmination of my Master&apos;s degree in Computational and Advanced Design. It explores the intersection of parametric design, environmental responsiveness, and architectural form-finding through computational methods.
                     </p>
                     <div className="mt-8 rounded-xl overflow-hidden">
                         <img src="/assets/imgs/proj_MSc-CAD/MSc-CAD_01.webp" alt="Main project visualization" className="w-full" />
@@ -104,7 +104,7 @@ export default function MscArcadiaPage() {
                 <section>
                     <h2 className="text-2xl font-bold mb-6 text-white">Final Design</h2>
                     <p className="mb-8">
-                        The final design demonstrates a successful integration of computational design principles with architectural sensibility, creating a structure that is both formally compelling and environmentally responsive.
+                        The final design integrates computational design principles with architectural sensibility. The structure is both formally compelling and environmentally responsive.
                     </p>
 
                     <div className="mb-12">
@@ -168,7 +168,7 @@ export default function MscArcadiaPage() {
                 <section>
                     <h2 className="text-2xl font-bold mb-4 text-white">Key Learnings</h2>
                     <p className="text-lg text-gray-300">
-                        This project taught me the importance of balancing computational complexity with design intent, and how parametric tools can be used not just for efficiency, but as a creative medium for architectural exploration.
+                        This project taught me how to balance computational complexity with design intent. Parametric tools are not only efficient. They are a creative medium for architectural exploration.
                     </p>
                 </section>
             </div>

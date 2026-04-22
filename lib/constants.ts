@@ -1,5 +1,5 @@
 export const SITE_CONFIG = {
-    title: "Joost Helfers — Creative Technologist · AI Visuals & Pipelines · Berlin",
+    title: "Joost Helfers. Creative Technologist. AI Visuals & Pipelines. Berlin.",
     author: "Joost Helfers",
     email: "mail@joosthelfers.com",
     description: "Berlin-based creative technologist. I build AI visual pipelines, automation workflows, and interactive platforms for agencies, studios, and product teams.",

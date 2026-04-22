@@ -3,14 +3,14 @@ import ProjectLayout from '../../components/ProjectLayout';
 export default function InyoVizPage() {
     return (
         <ProjectLayout
-            title="INYO Mobility - Various Visualizations"
-            description="3D visualizations and digital marketing materials for INYO Mobility's electric vehicle ecosystem"
+            title="INYO Mobility. Various Visualizations."
+            description="3D visualisations and digital marketing materials for INYO Mobility's electric vehicle ecosystem."
             date="2023-05-01"
             tags={["3D Visualization", "Product Rendering", "Marketing Design", "Motion Graphics"]}
             heroImage="/assets/imgs/proj_INYO-Viz/INYO-Viz_06.webp"
             projectUrl="https://inyo-mobility.com"
             nextProject={{
-                title: "DesignMorphine MSc - Project Arcadia",
+                title: "DesignMorphine MSc. Project Arcadia.",
                 url: "/projects/msc-arcadia"
             }}
         >
@@ -18,7 +18,7 @@ export default function InyoVizPage() {
                 <section>
                     <h2 className="text-3xl font-bold mb-6 text-white">Project Overview</h2>
                     <p>
-                        INYO Mobility is revolutionizing urban transportation with their innovative electric vehicle ecosystem. I created a comprehensive set of 3D visualizations and marketing materials to showcase their cutting-edge technology and design philosophy.
+                        INYO Mobility is building a new kind of electric vehicle ecosystem for urban transportation. I produced a comprehensive set of 3D visualisations and marketing materials that showcase the technology and the design thinking behind it.
                     </p>
                     <div className="mt-8 rounded-xl overflow-hidden">
                         <img src="/assets/imgs/proj_INYO-Viz/INYO-Viz_00.webp" alt="INYO Hero Visualization" className="w-full" />
@@ -71,7 +71,7 @@ export default function InyoVizPage() {
                 <section>
                     <h2 className="text-2xl font-bold mb-6 text-white">Process & Approach</h2>
                     <p className="mb-8">
-                        The project began with understanding INYO's vision for sustainable urban mobility. I worked closely with their design team to ensure accuracy in technical details while maintaining the sleek, futuristic aesthetic that defines their brand.
+                        The project began with understanding INYO&apos;s vision for sustainable urban mobility. I worked closely with their design team to keep technical details accurate while maintaining the sleek, futuristic aesthetic that defines the brand.
                     </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
@@ -101,11 +101,11 @@ export default function InyoVizPage() {
                     <div className="relative z-10">
                         <h2 className="text-2xl font-bold mb-4 text-white">Results</h2>
                         <p className="text-lg text-gray-300 mb-6">
-                            The visualizations have been used across INYO's marketing channels, helping them secure funding and partnerships. The materials effectively communicate the innovation and quality of their electric vehicle ecosystem to investors, customers, and media.
+                            The visualisations have been used across INYO&apos;s marketing channels and supported their work in securing funding and partnerships. The materials communicate the engineering and design quality of the ecosystem to investors, customers, and media.
                         </p>
                         <blockquote className="border-l-4 border-white pl-6 italic text-xl font-light">
-                            "The visualizations perfectly captured our vision and helped us communicate the potential of our technology to stakeholders."
-                            <footer className="text-sm not-italic mt-2 text-gray-400">- INYO Mobility Team</footer>
+                            &ldquo;The visualisations captured our vision and helped us communicate the potential of our technology to stakeholders.&rdquo;
+                            <footer className="text-sm not-italic mt-2 text-gray-400">INYO Mobility Team</footer>
                         </blockquote>
                     </div>
                 </section>

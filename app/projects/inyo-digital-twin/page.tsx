@@ -3,14 +3,14 @@ import ProjectLayout from '../../components/ProjectLayout';
 export default function InyoDigitalTwinPage() {
     return (
         <ProjectLayout
-            title="INYO Mobility - Digital Twin Platform"
-            description="Interactive 3D visualization solutions for vehicle design optimization | Full Stack development"
+            title="INYO Mobility. Digital Twin Platform."
+            description="An interactive 3D platform for vehicle design optimisation, built full-stack with React and Three.js."
             date="2025-05-04"
             tags={["Digital Twin", "3D Visualization", "Real-time Rendering", "Data Integration", "Full Stack Development"]}
             heroImage="/assets/imgs/proj_INYO-Digital-Twin/Screenshot_3D-View.webp"
             projectUrl="https://inyo-mobility.com"
             nextProject={{
-                title: "INYO Mobility - Various Visualizations",
+                title: "INYO Mobility. Various Visualizations.",
                 url: "/projects/inyo-viz"
             }}
         >
@@ -18,7 +18,7 @@ export default function InyoDigitalTwinPage() {
                 <section>
                     <h2 className="text-3xl font-bold mb-6 text-white">Project Overview</h2>
                     <p>
-                        Developed a comprehensive digital twin platform for INYO Mobility's electric vehicle development process. The platform combines real-time data visualization with interactive 3D models to optimize vehicle design and performance.
+                        I built a digital twin platform for INYO Mobility&apos;s electric vehicle development process. The platform combines real-time data visualisation with interactive 3D models to optimise vehicle design and performance.
                     </p>
                 </section>
 
@@ -33,7 +33,7 @@ export default function InyoDigitalTwinPage() {
                     <section>
                         <h2 className="text-2xl font-bold mb-4 text-white">Challenge</h2>
                         <p>
-                            INYO Mobility needed a way to visualize and prototype vehicle designs without creating costly physical models. Traditional CAD workflows were slow and didn't provide real-time performance insights.
+                            INYO Mobility needed a way to visualise and prototype vehicle designs without building costly physical models. Traditional CAD workflows were slow and did not provide real-time performance insights.
                         </p>
                     </section>
 
@@ -95,7 +95,7 @@ export default function InyoDigitalTwinPage() {
                 <section className="bg-white/5 p-8 rounded-2xl">
                     <h2 className="text-2xl font-bold mb-4 text-white">Results</h2>
                     <p className="text-xl font-light leading-relaxed">
-                        Engineers reduced physical prototype iterations by <strong className="text-white">60%</strong>, accelerating the design process significantly while maintaining design quality and innovation standards.
+                        Engineers reduced physical prototype iterations by <strong className="text-white">60%</strong>. The design process moved significantly faster while design quality and innovation held steady.
                     </p>
                 </section>
             </div>

@@ -16,20 +16,20 @@ export default async function Home() {
                 <div className="hero-content">
                     <div className="hero-text">
                         <div className="hero-intro">
-                            <span className="label" style={{ marginBottom: '1.25rem', display: 'block' }}>Creative Technologist — Berlin</span>
+                            <span className="label hero-label">Creative technologist. Berlin.</span>
                             <h1 className="hero-title">
-                                AI visual production<br />&amp; technical solutions
+                                I build AI systems<br />that actually ship.
                             </h1>
                         </div>
 
                         <div className="hero-description">
-                            <p>I help agencies, studios, and product teams turn complex AI ideas into campaign-grade visuals, working pipelines, and deployed platforms.</p>
+                            <p>I help agencies, studios, and product teams move from interesting AI experiments to production work. Campaign visuals that hold up under a brand name. Pipelines that hold up under real deadlines. Platforms other people can use without me in the room.</p>
                         </div>
 
                         <div className="hero-actions">
                             <TrackedLink
                                 href={`mailto:${SITE_CONFIG.email}`}
-                                className="cta-button"
+                                className="btn-primary"
                                 eventName="contact_click"
                                 eventParams={{ location: 'hero' }}
                             >
@@ -108,20 +108,20 @@ export default async function Home() {
                 </div>
             </section>
 
-            {/* Contact — Dark */}
+            {/* Contact — dark bookend */}
             <section id="contact" className="contact-section">
                 <RevealOnScroll>
                     <div className="contact-inner">
                         <div className="section-header section-header-light">
                             <span className="section-number section-number-light">03</span>
                         </div>
-                        <h2>Let&apos;s work together</h2>
+                        <h2>Let&apos;s work together.</h2>
                         <p>
-                            If you have an AI project that needs someone who understands both the creative and the technical side — I&apos;d like to hear about it.
+                            If you have an AI project that needs someone who understands both the creative and the technical side, I would like to hear about it.
                         </p>
                         <TrackedLink
                             href={`mailto:${SITE_CONFIG.email}`}
-                            className="cta-button cta-button-light"
+                            className="btn-primary"
                             eventName="contact_click"
                             eventParams={{ location: 'contact' }}
                         >
@@ -135,13 +135,11 @@ export default async function Home() {
             <section id="blog" className="writing-section">
                 <div className="writing-inner">
                     <RevealOnScroll>
-                        <div className="section-header" style={{ marginBottom: 'var(--space-xl)' }}>
+                        <div className="section-header">
                             <span className="section-number">04</span>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', width: '100%' }}>
-                                <h2 style={{ marginBottom: 0 }}>Writing</h2>
-                                <a href="/blog" className="view-all-link">
-                                    View all
-                                </a>
+                            <div className="writing-header-row">
+                                <h2>Writing</h2>
+                                <a href="/blog" className="view-all-link">View all</a>
                             </div>
                         </div>
                     </RevealOnScroll>
@@ -171,7 +169,7 @@ export default async function Home() {
                     <div className="about-minimal-inner">
                         <span className="about-label">About</span>
                         <p>
-                            Background in architecture and computational design (MSc, DesignMorphine). Previously built digital twins and 3D platforms at INYO Mobility. Now focused exclusively on AI visual production and technical AI solutions — generative pipelines, prompt engineering, and full-stack AI tooling. Based in Berlin.
+                            Background in architecture and computational design (MSc, DesignMorphine). Previously built digital twins and 3D platforms at INYO Mobility. Now focused on AI visual production and technical AI solutions. That means generative pipelines in ComfyUI, prompt engineering at production scale, and full-stack AI tooling with Next.js, Python, and Three.js. Based in Berlin.
                         </p>
                     </div>
                 </RevealOnScroll>

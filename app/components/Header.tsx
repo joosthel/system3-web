@@ -17,14 +17,12 @@ export default function Header() {
 
     return (
         <header className="site-header">
-            <div className="header-left">
-                <Link href="/" className="header-logo" title={SITE_CONFIG.title}>
-                    <img src="/assets/imgs/JH_Logo-black.png" alt={`${SITE_CONFIG.title} Logo`} />
-                </Link>
-                <Link href="/" className="header-logo-text">
-                    <div className="site-title">Joost Helfers</div>
-                </Link>
-            </div>
+            <Link href="/" className="header-left" title={SITE_CONFIG.title}>
+                <span className="header-logo">
+                    <img src="/assets/imgs/JH_Logo-black.png" alt={`${SITE_CONFIG.author} logo`} />
+                </span>
+                <span className="site-title">Joost Helfers</span>
+            </Link>
 
             <nav className="header-nav">
                 {NAV_LINKS.map((link) => (

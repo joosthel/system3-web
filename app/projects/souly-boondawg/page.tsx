@@ -3,14 +3,14 @@ import ProjectLayout from '../../components/ProjectLayout';
 export default function SoulyBoondawgPage() {
     return (
         <ProjectLayout
-            title="Souly & Boondawg - I got this feeling"
-            description="A hybrid AI music video production transforming greenscreen footage into compelling visuals."
+            title="Souly & Boondawg. I got this feeling."
+            description="A hybrid AI music video that turns greenscreen footage into a finished visual through Stable Diffusion and VFX compositing."
             date="2025-09-10"
             tags={["AI Video Generation", "Video-to-Video", "ComfyUI", "Visual Storytelling"]}
             heroImage="/assets/imgs/proj_Souly-Boondawg-igotthisfeelling/Souly-Boondawg_igotthisfeeling-02.webp"
             projectUrl="https://youtu.be/j66rlYZQVeM?si=XuckWFc-6S6IufQI"
             nextProject={{
-                title: "INYO Mobility - Digital Twin Platform",
+                title: "INYO Mobility. Digital Twin Platform.",
                 url: "/projects/inyo-digital-twin"
             }}
         >
@@ -18,7 +18,7 @@ export default function SoulyBoondawgPage() {
                 <section>
                     <h2 className="text-3xl font-bold mb-6 text-white">Project Overview</h2>
                     <p>
-                        In collaboration with <a href="https://yyyyyyy.studio/" target="_blank" rel="noopener noreferrer">yyyyyyy.studio</a> as an AI Artist, I contributed to this hybrid production that seamlessly blends traditional greenscreen footage with generative AI environments. By leveraging advanced video-to-video models, we transposed the artists, Souly and Boondawg, into surreal, digitally constructed worlds, adding a distinct layer of visual narrative to the performance.
+                        I contributed to this hybrid production as an AI artist in collaboration with <a href="https://yyyyyyy.studio/" target="_blank" rel="noopener noreferrer">yyyyyyy.studio</a>. The piece blends traditional greenscreen footage with generative AI environments. Using video-to-video models, we moved the artists, Souly and Boondawg, into surreal, digitally constructed worlds and added a distinct layer of visual narrative on top of the performance.
                     </p>
                 </section>
 
@@ -28,7 +28,7 @@ export default function SoulyBoondawgPage() {
                             width="100%"
                             height="100%"
                             src="https://www.youtube.com/embed/j66rlYZQVeM"
-                            title="Souly & Boondawg - I got this feeling"
+                            title="Souly & Boondawg. I got this feeling."
                             frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen
@@ -39,7 +39,7 @@ export default function SoulyBoondawgPage() {
                                 __html: JSON.stringify({
                                     "@context": "https://schema.org",
                                     "@type": "VideoObject",
-                                    "name": "Souly & Boondawg - I got this feeling",
+                                    "name": "Souly & Boondawg. I got this feeling.",
                                     "description": "A hybrid AI music video production transforming greenscreen footage into compelling visuals.",
                                     "thumbnailUrl": [
                                         "https://joosthelfers.com/assets/imgs/proj_Souly-Boondawg-igotthisfeelling/Souly-Boondawg_igotthisfeeling-02.webp"
