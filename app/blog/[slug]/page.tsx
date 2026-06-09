@@ -1,6 +1,7 @@
 import { getPostBySlug, getPostSlugs } from "@/lib/blog";
 import { OG_DEFAULT_IMAGE, absoluteUrl } from "@/lib/metadata";
 import { SITE_CONFIG } from "@/lib/constants";
+import { blogPostingSchema, breadcrumbSchema, toJsonLd } from "@/lib/schema";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -58,17 +59,14 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{
-                        __html: JSON.stringify({
-                            "@context": "https://schema.org",
-                            "@type": "BlogPosting",
-                            "headline": post.title,
-                            "datePublished": new Date(post.date).toISOString(),
-                            "author": [{
-                                "@type": "Person",
-                                "name": "Joost Helfers",
-                                "url": "https://joosthelfers.com"
-                            }]
-                        })
+                        __html: JSON.stringify(toJsonLd(
+                            blogPostingSchema(post),
+                            breadcrumbSchema([
+                                { name: 'Home', path: '/' },
+                                { name: 'Writing', path: '/blog' },
+                                { name: post.title, path: `/blog/${post.slug}` },
+                            ])
+                        ))
                     }}
                 />
                 <Link

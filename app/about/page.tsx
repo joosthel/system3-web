@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { SITE_CONFIG } from '../../lib/constants';
+import { profilePageSchema, toJsonLd } from '@/lib/schema';
 import TrackedLink from '../components/TrackedLink';
 
 export const metadata: Metadata = {
@@ -17,6 +18,10 @@ export const metadata: Metadata = {
 export default function AboutPage() {
     return (
         <div className="about-page">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(toJsonLd(profilePageSchema())) }}
+            />
             <div className="wrapper">
                 <header className="about-page-header">
                     <span className="label">About</span>

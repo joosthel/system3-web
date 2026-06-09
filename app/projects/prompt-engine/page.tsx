@@ -7,6 +7,7 @@ export const metadata: Metadata = projectMetadata('prompt-engine');
 export default function PromptEnginePage() {
     return (
         <ProjectLayout
+            slug="prompt-engine"
             title="Prompt Enhancement Engine"
             description="An AI tool that turns a creative brief and reference images into a full set of optimised, consistent prompts."
             date="2025-03-01"

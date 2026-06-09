@@ -8,6 +8,7 @@ export const metadata: Metadata = projectMetadata('t-cell');
 export default function TCellPage() {
     return (
         <ProjectLayout
+            slug="t-cell"
             title="T-Cell AG. Explainer Videos."
             description="A series of videos for T-Cell AG explaining their hydrogen fuel cell technology and the impact it can have on the energy transition."
             date="2023-05-01"

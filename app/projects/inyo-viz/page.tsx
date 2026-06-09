@@ -7,6 +7,7 @@ export const metadata: Metadata = projectMetadata('inyo-viz');
 export default function InyoVizPage() {
     return (
         <ProjectLayout
+            slug="inyo-viz"
             title="INYO Mobility. Various Visualizations."
             description="3D visualisations and digital marketing materials for INYO Mobility's electric vehicle ecosystem."
             date="2023-05-01"

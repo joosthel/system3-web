@@ -7,6 +7,7 @@ export const metadata: Metadata = projectMetadata('msc-arcadia');
 export default function MscArcadiaPage() {
     return (
         <ProjectLayout
+            slug="msc-arcadia"
             title="DesignMorphine MSc. Project Arcadia."
             description="My final project for the MSc in Computational and Advanced Design. A deep exploration of parametric architecture."
             date="2022-09-01"

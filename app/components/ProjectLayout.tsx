@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import { ReactNode } from 'react';
+import { PROJECTS } from '@/lib/data';
+import { projectSchema, breadcrumbSchema, toJsonLd } from '@/lib/schema';
 
 interface ProjectLayoutProps {
     title: string;
@@ -8,6 +10,8 @@ interface ProjectLayoutProps {
     tags?: string[];
     heroImage?: string;
     projectUrl?: string;
+    /** Project id from lib/data.ts. When set, the page emits CreativeWork and breadcrumb JSON-LD. */
+    slug?: string;
     children: ReactNode;
     prevProject?: { url: string; title: string };
     nextProject?: { url: string; title: string };
@@ -20,11 +24,32 @@ export default function ProjectLayout({
     tags,
     heroImage,
     projectUrl,
+    slug,
     children,
     nextProject
 }: ProjectLayoutProps) {
+    const project = slug ? PROJECTS.find((p) => p.id === slug) : undefined;
+    if (slug && !project) {
+        throw new Error(`ProjectLayout: unknown project slug "${slug}"`);
+    }
+
     return (
         <article className="project-article">
+            {project && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify(toJsonLd(
+                            projectSchema(project),
+                            breadcrumbSchema([
+                                { name: 'Home', path: '/' },
+                                { name: 'Work', path: '/#work' },
+                                { name: project.title, path: project.url },
+                            ])
+                        ))
+                    }}
+                />
+            )}
             <div className="wrapper">
                 <header className="project-hero">
                     <div className="project-meta">

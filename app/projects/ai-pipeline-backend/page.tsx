@@ -7,6 +7,7 @@ export const metadata: Metadata = projectMetadata('ai-pipeline-backend');
 export default function AIPipelineBackendPage() {
     return (
         <ProjectLayout
+            slug="ai-pipeline-backend"
             title="AI Pipeline Backend & Interactive Segmentation Tool"
             description="Custom ComfyUI workflows and a web-based segmentation interface for an AI asset platform."
             date="2024-11-01"

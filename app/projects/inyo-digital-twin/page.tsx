@@ -7,6 +7,7 @@ export const metadata: Metadata = projectMetadata('inyo-digital-twin');
 export default function InyoDigitalTwinPage() {
     return (
         <ProjectLayout
+            slug="inyo-digital-twin"
             title="INYO Mobility. Digital Twin Platform."
             description="An interactive 3D platform for vehicle design optimisation, built full-stack with React and Three.js."
             date="2023-09-01"

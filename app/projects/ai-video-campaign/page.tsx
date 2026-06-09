@@ -7,6 +7,7 @@ export const metadata: Metadata = projectMetadata('ai-video-campaign');
 export default function AIVideoCampaignPage() {
     return (
         <ProjectLayout
+            slug="ai-video-campaign"
             title="AI Video Production for a Global Brand Campaign"
             description="A generative AI visual pipeline from storyboard to edited campaign video for a major consumer goods brand."
             date="2025-01-15"

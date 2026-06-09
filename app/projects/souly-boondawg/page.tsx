@@ -7,6 +7,7 @@ export const metadata: Metadata = projectMetadata('souly-boondawg');
 export default function SoulyBoondawgPage() {
     return (
         <ProjectLayout
+            slug="souly-boondawg"
             title="Souly & Boondawg. I got this feeling."
             description="A hybrid AI music video that turns greenscreen footage into a finished visual through Stable Diffusion and VFX compositing."
             date="2023-11-20"
