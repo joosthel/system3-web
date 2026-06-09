@@ -478,6 +478,12 @@ a:hover {
   line-height: 1.7;
 }
 
+.hero-credits {
+  margin-top: var(--space-lg);
+  max-width: 480px;
+  line-height: 1.9;
+}
+
 .hero-model {
   width: 100%;
   min-height: 45vh;
@@ -873,12 +879,100 @@ a:hover {
   margin: 0;
 }
 
+.about-minimal p + p { margin-top: var(--space-sm); }
+
+.about-more-link {
+  display: inline-block;
+  margin-top: var(--space-md);
+}
+
 @media (max-width: 767px) {
   .about-minimal { padding: var(--space-lg) var(--space-md); }
   .about-minimal-inner {
     grid-template-columns: 1fr;
     gap: var(--space-xs);
   }
+}
+
+/* ===================================================================
+   ABOUT PAGE
+   =================================================================== */
+.about-page {
+  padding: 120px 0 var(--space-2xl);
+}
+
+.about-page-header {
+  margin-bottom: var(--space-lg);
+}
+
+.about-page-header .label {
+  display: block;
+  margin-bottom: var(--space-sm);
+}
+
+.about-page-header h1 {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  margin-bottom: 0;
+}
+
+.about-page-content {
+  max-width: var(--content-width);
+}
+
+.about-page-content h2 {
+  margin-top: var(--space-lg);
+  font-size: 1.1rem;
+}
+
+.about-page-content p {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  margin-bottom: var(--space-md);
+}
+
+.about-page-figure {
+  margin: var(--space-lg) 0;
+}
+
+.about-page-figure img {
+  width: 100%;
+  background: var(--mute);
+}
+
+.about-page-figure figcaption {
+  font-family: var(--font-display);
+  font-size: var(--fs-label);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  margin-top: var(--space-xs);
+}
+
+.about-page-actions {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin: var(--space-md) 0 var(--space-lg);
+}
+
+.about-page-links {
+  font-size: 0.8125rem;
+  color: var(--fg-muted);
+}
+
+/* ===================================================================
+   SIMPLE PAGES (imprint, privacy)
+   =================================================================== */
+.post {
+  padding: 120px 0 var(--space-2xl);
+  max-width: var(--content-width);
+}
+
+.post-header { margin-bottom: var(--space-lg); }
+
+.post-title {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  margin-bottom: 0;
 }
 
 /* ===================================================================

@@ -5,7 +5,7 @@ export default function SoulyBoondawgPage() {
         <ProjectLayout
             title="Souly & Boondawg. I got this feeling."
             description="A hybrid AI music video that turns greenscreen footage into a finished visual through Stable Diffusion and VFX compositing."
-            date="2025-09-10"
+            date="2023-11-20"
             tags={["AI Video Generation", "Video-to-Video", "ComfyUI", "Visual Storytelling"]}
             heroImage="/assets/imgs/proj_Souly-Boondawg-igotthisfeelling/Souly-Boondawg_igotthisfeeling-02.webp"
             projectUrl="https://youtu.be/j66rlYZQVeM?si=XuckWFc-6S6IufQI"

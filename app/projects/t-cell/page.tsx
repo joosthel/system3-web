@@ -10,8 +10,8 @@ export default function TCellPage() {
             tags={["Video Production", "Motion Graphics", "Scientific Visualization", "Hydrogen Technology"]}
             heroImage="/assets/imgs/proj_T-Cell/T-Cell_Hero.webp"
             nextProject={{
-                title: "Souly & Boondawg. I got this feeling.",
-                url: "/projects/souly-boondawg"
+                title: "Prompt Enhancement Engine",
+                url: "/projects/prompt-engine"
             }}
         >
             <div className="space-y-20">

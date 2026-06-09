@@ -5,7 +5,7 @@ export default function MscArcadiaPage() {
         <ProjectLayout
             title="DesignMorphine MSc. Project Arcadia."
             description="My final project for the MSc in Computational and Advanced Design. A deep exploration of parametric architecture."
-            date="2023-05-01"
+            date="2022-09-01"
             tags={["Grasshopper", "Rhino", "Python", "Computational Design", "Parametric Architecture"]}
             heroImage="/assets/imgs/proj_MSc-CAD/MSc-CAD_04.webp"
             nextProject={{

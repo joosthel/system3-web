@@ -36,6 +36,10 @@ export default async function Home() {
                                 Get in touch
                             </TrackedLink>
                         </div>
+
+                        <p className="label hero-credits">
+                            Brand credits, direct and via agencies: Lindt · Zeiss · Google · Bosch · CADFEM · Souly
+                        </p>
                     </div>
 
                     {/* Hero 3D Model */}
@@ -168,9 +172,15 @@ export default async function Home() {
                 <RevealOnScroll>
                     <div className="about-minimal-inner">
                         <span className="about-label">About</span>
-                        <p>
-                            Background in architecture and computational design (MSc, DesignMorphine). Previously built digital twins and 3D platforms at INYO Mobility. Now focused on AI visual production and technical AI solutions. That means generative pipelines in ComfyUI, prompt engineering at production scale, and full-stack AI tooling with Next.js, Python, and Three.js. Based in Berlin.
-                        </p>
+                        <div>
+                            <p>
+                                Background in architecture and computational design (MSc, DesignMorphine). Previously built digital twins and 3D platforms at INYO Mobility. Now focused on AI visual production and technical AI solutions. That means generative pipelines in ComfyUI, prompt engineering at production scale, and full-stack AI tooling with Next.js, Python, and Three.js. Based in Berlin, where I also help run <a href="https://xdnet.work/" target="_blank" rel="noopener noreferrer">XD Network</a>, a collective around new technology and culture.
+                            </p>
+                            <p>
+                                Work I produced or contributed to has shipped for brands including Lindt, Zeiss, Google, Bosch, CADFEM, and Souly. Some directly, some through the agencies that held the contract.
+                            </p>
+                            <a href="/about" className="view-all-link about-more-link">More about me →</a>
+                        </div>
                     </div>
                 </RevealOnScroll>
             </section>

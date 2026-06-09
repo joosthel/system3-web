@@ -5,7 +5,7 @@ export default function InyoDigitalTwinPage() {
         <ProjectLayout
             title="INYO Mobility. Digital Twin Platform."
             description="An interactive 3D platform for vehicle design optimisation, built full-stack with React and Three.js."
-            date="2025-05-04"
+            date="2023-09-01"
             tags={["Digital Twin", "3D Visualization", "Real-time Rendering", "Data Integration", "Full Stack Development"]}
             heroImage="/assets/imgs/proj_INYO-Digital-Twin/Screenshot_3D-View.webp"
             projectUrl="https://inyo-mobility.com"

@@ -59,6 +59,24 @@ export const PROJECTS: Project[] = [
         tags: ['Digital Twin', 'React', 'Three.js', 'Web App']
     },
     {
+        id: 't-cell',
+        title: 'T-Cell AG. Explainer Videos.',
+        description: 'A series of videos for T-Cell AG explaining their hydrogen fuel cell technology and the impact it can have on the energy transition.',
+        image: '/assets/imgs/proj_T-Cell/T-Cell_Hero.webp',
+        url: '/projects/t-cell',
+        date: '2023-05-01',
+        tags: ['Video Production', 'Motion Graphics', 'Scientific Visualization', 'Hydrogen Technology']
+    },
+    {
+        id: 'inyo-viz',
+        title: 'INYO Mobility. Various Visualizations.',
+        description: '3D visualisations and digital marketing materials for INYO Mobility\'s electric vehicle ecosystem.',
+        image: '/assets/imgs/proj_INYO-Viz/INYO-Viz_06.webp',
+        url: '/projects/inyo-viz',
+        date: '2023-05-01',
+        tags: ['3D Visualization', 'Product Rendering', 'Marketing Design', 'Motion Graphics']
+    },
+    {
         id: 'msc-arcadia',
         title: 'DesignMorphine MSc. Project Arcadia.',
         description: 'My final project for the MSc in Computational and Advanced Design. A deep exploration of parametric architecture.',
