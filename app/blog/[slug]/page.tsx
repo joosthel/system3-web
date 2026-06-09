@@ -55,7 +55,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
             : [];
 
         return (
-            <article style={{ paddingTop: '120px', paddingBottom: '4rem', maxWidth: '1200px', margin: '0 auto', padding: '120px 2.5rem 4rem' }}>
+            <article className="blog-post">
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{
@@ -69,23 +69,12 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
                         ))
                     }}
                 />
-                <Link
-                    href="/blog"
-                    style={{ fontSize: '0.8125rem', color: 'var(--text-tertiary)', marginBottom: '2rem', display: 'inline-block' }}
-                >
+                <Link href="/blog" className="blog-post-back">
                     ← Back
                 </Link>
-                <header style={{ marginBottom: '2.5rem' }}>
-                    <h1 style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2rem)', marginBottom: '0.75rem' }}>{post.title}</h1>
-                    <div style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '0.75rem',
-                        fontFamily: "'Doto'",
-                        fontSize: '0.75rem',
-                        color: 'var(--text-tertiary)',
-                        letterSpacing: '0.02em',
-                    }}>
+                <header className="blog-post-header">
+                    <h1>{post.title}</h1>
+                    <div className="blog-meta">
                         <time>
                             {new Date(post.date).toLocaleDateString("en-US", {
                                 year: "numeric",
@@ -103,28 +92,16 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
                         )}
                     </div>
                 </header>
-                <div className="prose prose-lg max-w-none" style={{ maxWidth: '680px' }}>
+                <div className="prose prose-lg max-w-none blog-post-body">
                     <MDXRemote source={post.content} />
                 </div>
 
                 {relatedPosts.length > 0 && (
-                    <div style={{ marginTop: '4rem', paddingTop: '2rem', borderTop: '1px solid var(--border)', maxWidth: '680px' }}>
-                        <h3 style={{
-                            fontFamily: "'Doto'",
-                            fontSize: '0.6875rem',
-                            letterSpacing: '0.06em',
-                            textTransform: 'uppercase',
-                            color: 'var(--text-tertiary)',
-                            marginBottom: '1rem',
-                        }}>Related</h3>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                    <div className="blog-related">
+                        <h3 className="blog-related-heading">Related</h3>
+                        <div className="blog-related-list">
                             {relatedPosts.map((rp) => rp && (
-                                <Link key={rp.slug} href={`/blog/${rp.slug}`} style={{
-                                    fontSize: '0.9375rem',
-                                    fontFamily: "'Doto'",
-                                    fontWeight: 600,
-                                    color: 'var(--text-primary)',
-                                }}>
+                                <Link key={rp.slug} href={`/blog/${rp.slug}`}>
                                     {rp.title} →
                                 </Link>
                             ))}

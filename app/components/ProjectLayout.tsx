@@ -56,8 +56,8 @@ export default function ProjectLayout({
                         {date && <time>{new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}</time>}
                         {projectUrl && (
                             <>
-                                <span style={{ color: 'var(--text-tertiary)' }}>·</span>
-                                <a href={projectUrl} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-tertiary)', transition: 'color 0.15s ease' }}>
+                                <span>·</span>
+                                <a href={projectUrl} target="_blank" rel="noopener noreferrer">
                                     View Live ↗
                                 </a>
                             </>
@@ -76,7 +76,7 @@ export default function ProjectLayout({
                         </div>
                     )}
 
-                    <p style={{ maxWidth: '60ch', marginTop: 'var(--space-md)', color: 'var(--text-secondary)', fontSize: '0.9375rem', lineHeight: 1.7 }}>
+                    <p className="project-hero-desc">
                         {description}
                     </p>
                 </header>
@@ -97,15 +97,7 @@ export default function ProjectLayout({
 
                     {nextProject && (
                         <div className="project-next-nav">
-                            <span style={{
-                                display: 'block',
-                                fontFamily: "'Doto', monospace",
-                                fontSize: '0.6875rem',
-                                color: 'var(--text-tertiary)',
-                                marginBottom: '0.5rem',
-                                textTransform: 'uppercase',
-                                letterSpacing: '0.04em',
-                            }}>
+                            <span className="project-next-label">
                                 Next Project
                             </span>
                             <Link href={nextProject.url} className="project-next-link">
