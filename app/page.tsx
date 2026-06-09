@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import ProjectsCarousel from './components/ProjectsCarousel';
 import RevealOnScroll from './components/RevealOnScroll';
 import { SITE_CONFIG } from '../lib/constants';
@@ -143,14 +144,14 @@ export default async function Home() {
                             <span className="section-number">04</span>
                             <div className="writing-header-row">
                                 <h2>Writing</h2>
-                                <a href="/blog" className="view-all-link">View all</a>
+                                <Link href="/blog" className="view-all-link">View all</Link>
                             </div>
                         </div>
                     </RevealOnScroll>
                     <RevealOnScroll delay={80}>
                         <div>
                             {posts.slice(0, 3).map((post) => (
-                                <a key={post.slug} href={`/blog/${post.slug}`} className="writing-item">
+                                <Link key={post.slug} href={`/blog/${post.slug}`} className="writing-item">
                                     <h3 className="writing-item-title">
                                         {post.title}
                                     </h3>
@@ -160,7 +161,7 @@ export default async function Home() {
                                             month: "short",
                                         })}
                                     </time>
-                                </a>
+                                </Link>
                             ))}
                         </div>
                     </RevealOnScroll>
@@ -179,7 +180,7 @@ export default async function Home() {
                             <p>
                                 Work I produced or contributed to has shipped for brands including Lindt, Zeiss, Google, Bosch, CADFEM, and Souly. Some directly, some through the agencies that held the contract.
                             </p>
-                            <a href="/about" className="view-all-link about-more-link">More about me →</a>
+                            <Link href="/about" className="view-all-link about-more-link">More about me →</Link>
                         </div>
                     </div>
                 </RevealOnScroll>

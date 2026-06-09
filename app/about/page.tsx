@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { SITE_CONFIG } from '../../lib/constants';
 import { profilePageSchema, toJsonLd } from '@/lib/schema';
 import TrackedLink from '../components/TrackedLink';
@@ -38,7 +39,7 @@ export default function AboutPage() {
                     </p>
 
                     <p>
-                        Along the way, work I produced or contributed to has shipped for brands including Lindt, Zeiss, Google, Bosch, CADFEM, and Souly. Some of that came through direct projects, some through the agencies and studios that held the contract. The projects on the <a href="/#work">work page</a> show the process in more detail, including the parts I can talk about under NDA.
+                        Along the way, work I produced or contributed to has shipped for brands including Lindt, Zeiss, Google, Bosch, CADFEM, and Souly. Some of that came through direct projects, some through the agencies and studios that held the contract. The projects on the <Link href="/#work">work page</Link> show the process in more detail, including the parts I can talk about under NDA.
                     </p>
 
                     <h2>XD Network</h2>

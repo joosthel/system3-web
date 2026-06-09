@@ -1,6 +1,8 @@
 import { MetadataRoute } from 'next';
 import { SITE_CONFIG } from '@/lib/constants';
 
+export const dynamic = 'force-static';
+
 // AI crawlers explicitly allowed for Generative Engine Optimization (GEO).
 const AI_CRAWLERS = [
     'Googlebot',

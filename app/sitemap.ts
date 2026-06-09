@@ -3,6 +3,8 @@ import { SITE_CONFIG, SITE_LAST_UPDATED } from '@/lib/constants';
 import { PROJECTS } from '@/lib/data';
 import { getAllPosts } from '@/lib/blog';
 
+export const dynamic = 'force-static';
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const posts = getAllPosts();
     const newestPostDate = posts.length ? new Date(posts[0].date) : new Date(SITE_LAST_UPDATED);

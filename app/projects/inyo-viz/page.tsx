@@ -27,7 +27,7 @@ export default function InyoVizPage() {
                     </p>
                     <div className="mt-8 rounded-xl overflow-hidden">
                         <img src="/assets/imgs/proj_INYO-Viz/INYO-Viz_00.webp" alt="INYO Hero Visualization" className="w-full" />
-                        <p className="text-sm text-center text-gray-500 italic mt-2">Key hero visualization showcasing INYO's electric vehicle design</p>
+                        <p className="text-sm text-center text-gray-500 italic mt-2">Key hero visualization showcasing INYO&apos;s electric vehicle design</p>
                     </div>
                 </section>
 
@@ -38,7 +38,7 @@ export default function InyoVizPage() {
                         <div>
                             <h3 className="text-xl font-bold mb-4 text-white">3D Product Visualizations</h3>
                             <ul className="list-disc list-inside space-y-2 text-gray-300">
-                                <li>High-fidelity 3D models of INYO's electric vehicles</li>
+                                <li>High-fidelity 3D models of INYO&apos;s electric vehicles</li>
                                 <li>Photorealistic renderings for marketing campaigns</li>
                                 <li>Interactive 3D experiences for web presentations</li>
                                 <li>Technical visualization for product development</li>
@@ -97,7 +97,7 @@ export default function InyoVizPage() {
                     <h3 className="text-xl font-bold mb-4 text-white">Technical Implementation</h3>
                     <ul className="list-disc list-inside space-y-2 text-gray-300">
                         <li><strong className="text-white">3D Modeling</strong>: Created detailed vehicle models with accurate proportions and materials</li>
-                        <li><strong className="text-white">Lighting & Rendering</strong>: Developed lighting setups that emphasize the vehicles' premium design</li>
+                        <li><strong className="text-white">Lighting & Rendering</strong>: Developed lighting setups that emphasize the vehicles&apos; premium design</li>
                         <li><strong className="text-white">Post-Processing</strong>: Fine-tuned images for maximum impact across different media formats</li>
                     </ul>
                 </section>

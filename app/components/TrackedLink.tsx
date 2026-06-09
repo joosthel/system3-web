@@ -5,7 +5,7 @@ import React from 'react';
 
 interface TrackedLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
     eventName: string;
-    eventParams?: Record<string, any>;
+    eventParams?: Record<string, unknown>;
 }
 
 export default function TrackedLink({ eventName, eventParams, onClick, children, ...props }: TrackedLinkProps) {

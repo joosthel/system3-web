@@ -50,7 +50,7 @@ export default function TCellPage() {
                                 Your browser does not support the video tag.
                             </video>
                         </div>
-                        <p className="text-sm text-center text-gray-500 italic">Comprehensive presentation video explaining T-Cell's hydrogen fuel cell technology and its applications</p>
+                        <p className="text-sm text-center text-gray-500 italic">Comprehensive presentation video explaining T-Cell&apos;s hydrogen fuel cell technology and its applications</p>
                     </section>
 
                     <section>
@@ -83,7 +83,7 @@ export default function TCellPage() {
                             <li>How hydrogen fuel cells work</li>
                             <li>Environmental benefits of hydrogen technology</li>
                             <li>Practical applications in the energy transition</li>
-                            <li>T-Cell AG's role in advancing this technology</li>
+                            <li>T-Cell AG&apos;s role in advancing this technology</li>
                         </ul>
                     </section>
                 </div>

@@ -13,9 +13,10 @@ export async function generateStaticParams() {
     }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
     try {
-        const post = getPostBySlug(params.slug);
+        const { slug } = await params;
+        const post = getPostBySlug(slug);
         const image = absoluteUrl(OG_DEFAULT_IMAGE);
         return {
             title: post.title,
@@ -43,18 +44,26 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     }
 }
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
-    const { slug } = params;
+function loadPost(slug: string) {
     try {
-        const post = getPostBySlug(slug);
+        return getPostBySlug(slug);
+    } catch {
+        return null;
+    }
+}
 
-        const relatedPosts = post.relatedPosts
-            ? post.relatedPosts.map((relSlug) => {
-                try { return getPostBySlug(relSlug); } catch { return null; }
-            }).filter(Boolean)
-            : [];
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params;
+    const post = loadPost(slug);
+    if (!post) {
+        notFound();
+    }
 
-        return (
+    const relatedPosts = (post.relatedPosts ?? [])
+        .map((relSlug) => loadPost(relSlug))
+        .filter(Boolean);
+
+    return (
             <article className="blog-post">
                 <script
                     type="application/ld+json"
@@ -109,8 +118,5 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
                     </div>
                 )}
             </article>
-        );
-    } catch (error) {
-        notFound();
-    }
+    );
 }
