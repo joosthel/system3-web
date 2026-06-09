@@ -67,6 +67,8 @@ export default function RootLayout({
                 <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png" />
                 <meta name="apple-mobile-web-app-title" content="JH" />
                 <link rel="manifest" href="/assets/favicon/site.webmanifest" />
+                <link rel="alternate" type="application/rss+xml" title="Joost Helfers. Writing." href="/feed.xml" />
+                <link rel="alternate" type="application/feed+json" title="Joost Helfers. Writing." href="/feed.json" />
             </head>
             <body>
                 <GoogleAnalytics gaId="G-FV9Q5RL89T" />

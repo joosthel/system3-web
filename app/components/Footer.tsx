@@ -58,6 +58,7 @@ export default function Footer() {
                             >
                                 CV (PDF)
                             </TrackedLink>
+                            <a href="/feed.xml">RSS</a>
                         </nav>
                     </div>
                 </div>
