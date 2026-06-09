@@ -1,3 +1,10 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'Imprint',
+    description: 'Legal information for joosthelfers.com.',
+    alternates: { canonical: '/imprint' },
+};
 
 export default function Imprint() {
     return (

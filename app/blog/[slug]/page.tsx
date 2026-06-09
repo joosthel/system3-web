@@ -1,4 +1,6 @@
 import { getPostBySlug, getPostSlugs } from "@/lib/blog";
+import { OG_DEFAULT_IMAGE, absoluteUrl } from "@/lib/metadata";
+import { SITE_CONFIG } from "@/lib/constants";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -13,9 +15,27 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: { slug: string } }) {
     try {
         const post = getPostBySlug(params.slug);
+        const image = absoluteUrl(OG_DEFAULT_IMAGE);
         return {
             title: post.title,
-            description: post.content.substring(0, 160).replace(/\s+/g, ' ').trim() + '...',
+            description: post.excerpt,
+            alternates: { canonical: `/blog/${post.slug}` },
+            openGraph: {
+                title: post.title,
+                description: post.excerpt,
+                url: absoluteUrl(`/blog/${post.slug}`),
+                type: 'article',
+                publishedTime: new Date(post.date).toISOString(),
+                authors: [SITE_CONFIG.author],
+                tags: post.tags,
+                images: [{ url: image }],
+            },
+            twitter: {
+                card: 'summary_large_image',
+                title: post.title,
+                description: post.excerpt,
+                images: [image],
+            },
         };
     } catch {
         return {};

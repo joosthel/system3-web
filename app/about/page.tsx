@@ -6,6 +6,12 @@ export const metadata: Metadata = {
     title: 'About',
     description: 'Joost Helfers is a Berlin-based creative technologist focused on AI visual production, generative pipelines, and platforms teams can run themselves.',
     alternates: { canonical: '/about' },
+    openGraph: {
+        title: 'About | Joost Helfers',
+        description: 'Berlin-based creative technologist focused on AI visual production, generative pipelines, and platforms teams can run themselves.',
+        url: '/about',
+        type: 'profile',
+    },
 };
 
 export default function AboutPage() {

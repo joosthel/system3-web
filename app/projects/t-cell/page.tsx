@@ -1,5 +1,9 @@
+import type { Metadata } from 'next';
 import ProjectLayout from '../../components/ProjectLayout';
 import VideoJsonLd from '../../components/VideoJsonLd';
+import { projectMetadata } from '@/lib/metadata';
+
+export const metadata: Metadata = projectMetadata('t-cell');
 
 export default function TCellPage() {
     return (

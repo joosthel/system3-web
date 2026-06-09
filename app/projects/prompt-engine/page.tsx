@@ -1,4 +1,8 @@
+import type { Metadata } from 'next';
 import ProjectLayout from '../../components/ProjectLayout';
+import { projectMetadata } from '@/lib/metadata';
+
+export const metadata: Metadata = projectMetadata('prompt-engine');
 
 export default function PromptEnginePage() {
     return (

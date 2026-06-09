@@ -1,5 +1,18 @@
+import type { Metadata } from "next";
 import { getAllPosts } from "@/lib/blog";
 import BlogFilter from "./BlogFilter";
+
+export const metadata: Metadata = {
+    title: 'Writing',
+    description: 'Notes on AI visual production, agentic workflows, and how brands show up for AI agents. Written by Joost Helfers.',
+    alternates: { canonical: '/blog' },
+    openGraph: {
+        title: 'Writing | Joost Helfers',
+        description: 'Notes on AI visual production, agentic workflows, and how brands show up for AI agents.',
+        url: '/blog',
+        type: 'website',
+    },
+};
 
 export default function BlogIndex() {
     const posts = getAllPosts();
