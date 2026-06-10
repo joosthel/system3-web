@@ -16,15 +16,19 @@ get_project, list_posts, get_post, search_content. Linked from
 `/.well-known/agent.json`, llms.txt, and the `/agents` page.
 
 **Still open from the launch checklist**
-- Point joosthelfers.com DNS at Vercel (at Hostinger: replace the four
-  GitHub Pages A records on `@` with `A @ 76.76.21.21`; leave the www CNAME
-  and the iCloud MX records alone) and retire the GitHub Pages deployment.
 - Telegram channel for human and agent requests: deferred, planned. Once it
   exists, add the link to `/agents`, `agent.json`, and `SITE_CONFIG`.
 - Write the build up as a blog post (see cluster c below). Self-demonstrating.
+- Small cleanups: disable GitHub Pages in the repo settings (DNS no longer
+  points there), delete the leftover `_github-pages-challenge-joosthel` TXT
+  record at Hostinger, and set www → apex redirect in the Vercel dashboard
+  (Project → Settings → Domains; canonicals already point at the apex).
 
 **Done June 2026**
 - `llms@joosthelfers.com` receives mail (catch-all on the domain, iCloud MX).
+- joosthelfers.com and www serve from Vercel over HTTPS. The blocker was a
+  hidden `@ ALIAS joosthel.github.io` record at Hostinger that synthesized
+  GitHub Pages AAAA answers; deleted 2026-06-10 via the Hostinger API.
 
 ## 2. Editorial calendar (~1 post per month)
 
