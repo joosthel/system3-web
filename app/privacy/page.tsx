@@ -1,9 +1,17 @@
 import type { Metadata } from 'next';
+import { OG_DEFAULT_IMAGE } from '@/lib/metadata';
 
 export const metadata: Metadata = {
     title: 'Privacy Policy',
     description: 'How joosthelfers.com handles personal data.',
     alternates: { canonical: '/privacy' },
+    openGraph: {
+        title: 'Privacy Policy | Joost Helfers',
+        description: 'How joosthelfers.com handles personal data.',
+        url: '/privacy',
+        type: 'website',
+        images: [{ url: OG_DEFAULT_IMAGE, width: 1200, height: 630 }],
+    },
 };
 
 export default function Privacy() {

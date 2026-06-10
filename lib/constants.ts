@@ -8,7 +8,7 @@ export const SITE_CONFIG = {
     email: "mail@joosthelfers.com",
     description: "Berlin-based creative technologist. I build AI visual pipelines, automation workflows, and interactive platforms for agencies, studios, and product teams.",
     url: "https://joosthelfers.com",
-    github: "http://github.com/joosthel",
+    github: "https://github.com/joosthel",
     instagram: "https://instagram.com/joosthel",
     linkedin: "https://linkedin.com/in/joosthel",
     jobTitle: "Creative Technologist",

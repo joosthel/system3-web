@@ -159,6 +159,7 @@ export default async function Home() {
                                         {new Date(post.date).toLocaleDateString("en-US", {
                                             year: "numeric",
                                             month: "short",
+                                            timeZone: "UTC",
                                         })}
                                     </time>
                                 </Link>

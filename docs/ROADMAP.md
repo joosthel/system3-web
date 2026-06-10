@@ -69,7 +69,7 @@ Three clusters that match the positioning. Cross-link new posts through the
 - Portrait photo for the Person schema `image` property and the about page.
 - A SOIREE XD project page if there is shareable work from the events
   (a thumbnail already exists in `public/assets/imgs/proj_soireexd/`).
-- A "Lab" page for the experiments in `public/assets/imgs/lab/` (27 unused
+- A "Lab" page for the experiments in `public/assets/imgs/lab/` (28 unused
   generative images): cheap proof of ongoing exploration.
 - JPG copies of project hero images if LinkedIn previews of webp ever
   cause trouble.

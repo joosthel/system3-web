@@ -11,7 +11,6 @@ export default function PromptEnginePage() {
             title="Prompt Enhancement Engine"
             description="An AI tool that turns a creative brief and reference images into a full set of optimised, consistent prompts."
             date="2025-03-01"
-            tags={['Next.js', 'TypeScript', 'OpenRouter', 'Gemini', 'DeepSeek', 'Vercel', 'Prompt Engineering', 'AI Product']}
             heroImage="/assets/imgs/proj_prompt-engine/promptenhancer_screenshot.png"
             projectUrl="https://promptenhancer.joosthelfers.com"
             nextProject={{

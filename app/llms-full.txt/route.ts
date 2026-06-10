@@ -33,7 +33,10 @@ export async function GET() {
                 ...(post.updated ? [`Updated: ${post.updated}`] : []),
                 `Keywords: ${post.tags.join(', ')}`,
             ].join('\n');
-            return `${header}\n\n${post.content.trim()}`;
+            // Demote post-internal headings (## -> ####) so the markdown
+            // outline stays monotonic under the ### post title.
+            const body = post.content.trim().replace(/^(#{2,4})/gm, '##$1');
+            return `${header}\n\n${body}`;
         })
         .join('\n\n---\n\n');
 

@@ -48,6 +48,7 @@ export default function BlogFilter({ posts, tags }: { posts: BlogPost[]; tags: s
                                     year: "numeric",
                                     month: "short",
                                     day: "numeric",
+                                    timeZone: "UTC",
                                 })}
                             </time>
                             <span>·</span>

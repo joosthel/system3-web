@@ -89,6 +89,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                                 year: "numeric",
                                 month: "long",
                                 day: "numeric",
+                                timeZone: "UTC",
                             })}
                         </time>
                         <span>·</span>

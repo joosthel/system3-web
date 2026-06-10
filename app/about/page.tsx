@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { SITE_CONFIG } from '../../lib/constants';
+import { OG_DEFAULT_IMAGE } from '@/lib/metadata';
 import { profilePageSchema, toJsonLd } from '@/lib/schema';
 import TrackedLink from '../components/TrackedLink';
 
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
         description: 'Berlin-based creative technologist focused on AI visual production, generative pipelines, and platforms teams can run themselves.',
         url: '/about',
         type: 'profile',
+        images: [{ url: OG_DEFAULT_IMAGE, width: 1200, height: 630 }],
     },
 };
 
@@ -39,7 +41,7 @@ export default function AboutPage() {
                     </p>
 
                     <p>
-                        Along the way, work I produced or contributed to has shipped for brands including Lindt, Zeiss, Google, Bosch, CADFEM, and Souly. Some of that came through direct projects, some through the agencies and studios that held the contract. The projects on the <Link href="/#work">work page</Link> show the process in more detail, including the parts I can talk about under NDA.
+                        Along the way, work I produced or contributed to has shipped for brands including Lindt, Zeiss, Google, Bosch, CADFEM, and Souly. Some of that came through direct projects, some through the agencies and studios that held the contract. The <Link href="/#work">selected work</Link> section shows how I approach projects in more detail.
                     </p>
 
                     <h2>XD Network</h2>

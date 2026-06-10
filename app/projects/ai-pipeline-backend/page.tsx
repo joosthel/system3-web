@@ -11,7 +11,6 @@ export default function AIPipelineBackendPage() {
             title="AI Pipeline Backend & Interactive Segmentation Tool"
             description="Custom ComfyUI workflows and a web-based segmentation interface for an AI asset platform."
             date="2024-11-01"
-            tags={['ComfyUI', 'Python', 'Computer Vision', 'API Design', 'Prototyping', 'Full Stack']}
             nextProject={{
                 title: "Souly & Boondawg. I got this feeling.",
                 url: "/projects/souly-boondawg"

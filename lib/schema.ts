@@ -126,8 +126,13 @@ export function profilePageSchema() {
         '@type': 'ProfilePage',
         url: absoluteUrl('/about'),
         name: `About ${SITE_CONFIG.author}`,
-        mainEntity: { '@id': PERSON_ID },
-        isPartOf: { '@id': WEBSITE_ID },
+        mainEntity: personRef(),
+        isPartOf: {
+            '@type': 'WebSite',
+            '@id': WEBSITE_ID,
+            name: SITE_CONFIG.author,
+            url: SITE_CONFIG.url,
+        },
     };
 }
 

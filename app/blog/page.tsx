@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getAllPosts } from "@/lib/blog";
+import { OG_DEFAULT_IMAGE } from "@/lib/metadata";
 import BlogFilter from "./BlogFilter";
 
 export const metadata: Metadata = {
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
         description: 'Notes on AI visual production, agentic workflows, and how brands show up for AI agents.',
         url: '/blog',
         type: 'website',
+        images: [{ url: OG_DEFAULT_IMAGE, width: 1200, height: 630 }],
     },
 };
 

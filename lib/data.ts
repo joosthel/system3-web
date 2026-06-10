@@ -17,7 +17,7 @@ export const PROJECTS: Project[] = [
         image: '/assets/imgs/proj_prompt-engine/promptenhancer_screenshot.png',
         url: '/projects/prompt-engine',
         date: '2025-03-01',
-        tags: ['Next.js', 'TypeScript', 'OpenRouter', 'Vercel', 'AI Product'],
+        tags: ['Next.js', 'TypeScript', 'OpenRouter', 'Gemini', 'DeepSeek', 'Vercel', 'Prompt Engineering', 'AI Product'],
         badge: 'Live Project'
     },
     {
@@ -27,7 +27,7 @@ export const PROJECTS: Project[] = [
         image: '/assets/imgs/proj_ai-video-campaign/cover.webp',
         url: '/projects/ai-video-campaign',
         date: '2025-01-15',
-        tags: ['AI Visuals', 'Generative Video', 'ComfyUI', 'Prompt Engineering'],
+        tags: ['AI Visuals', 'Generative Video', 'ComfyUI', 'Prompt Engineering', 'Video Editing'],
         badge: 'NDA. Process only.'
     },
     {
@@ -37,7 +37,7 @@ export const PROJECTS: Project[] = [
         image: '/assets/imgs/proj_ai-pipeline-backend/cover.webp',
         url: '/projects/ai-pipeline-backend',
         date: '2024-11-01',
-        tags: ['ComfyUI', 'Python', 'Computer Vision', 'API Design'],
+        tags: ['ComfyUI', 'Python', 'Computer Vision', 'API Design', 'Prototyping', 'Full Stack'],
         badge: 'NDA. Process only.'
     },
     {
@@ -47,7 +47,7 @@ export const PROJECTS: Project[] = [
         image: '/assets/imgs/proj_Souly-Boondawg-igotthisfeelling/Souly-Boondawg_igotthisfeeling-02.webp',
         url: '/projects/souly-boondawg',
         date: '2023-11-20',
-        tags: ['AI Video', 'Music Video', 'Stable Diffusion', 'VFX']
+        tags: ['AI Video Generation', 'Video-to-Video', 'ComfyUI', 'Visual Storytelling']
     },
     {
         id: 'inyo-digital-twin',
@@ -56,7 +56,7 @@ export const PROJECTS: Project[] = [
         image: '/assets/imgs/proj_INYO-Digital-Twin/Screenshot_3D-View.webp',
         url: '/projects/inyo-digital-twin',
         date: '2023-09-01',
-        tags: ['Digital Twin', 'React', 'Three.js', 'Web App']
+        tags: ['Digital Twin', '3D Visualization', 'Real-time Rendering', 'Data Integration', 'Full Stack Development']
     },
     {
         id: 't-cell',
@@ -83,7 +83,7 @@ export const PROJECTS: Project[] = [
         image: '/assets/imgs/proj_MSc-CAD/MSc-CAD_04.webp',
         url: '/projects/msc-arcadia',
         date: '2022-09-01',
-        tags: ['Computational Design', 'Architecture', 'Houdini', 'Research']
+        tags: ['Grasshopper', 'Rhino', 'Python', 'Computational Design', 'Parametric Architecture']
     }
 ];
 

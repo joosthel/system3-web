@@ -42,12 +42,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         },
     ];
 
-    const projectRoutes: MetadataRoute.Sitemap = PROJECTS.map((project) => ({
-        url: `${SITE_CONFIG.url}/projects/${project.id}`,
-        lastModified: project.date ? new Date(project.date) : new Date(SITE_LAST_UPDATED),
-        changeFrequency: 'monthly',
-        priority: 0.8,
-    }));
+    // lastmod reflects page modification, not when the work was done: project
+    // pages change whenever the site-wide templates/copy do.
+    const siteUpdated = new Date(SITE_LAST_UPDATED);
+    const projectRoutes: MetadataRoute.Sitemap = PROJECTS.map((project) => {
+        const projectDate = project.date ? new Date(project.date) : siteUpdated;
+        return {
+            url: `${SITE_CONFIG.url}/projects/${project.id}`,
+            lastModified: projectDate > siteUpdated ? projectDate : siteUpdated,
+            changeFrequency: 'monthly',
+            priority: 0.8,
+        };
+    });
 
     const blogRoutes: MetadataRoute.Sitemap = posts.map((post) => ({
         url: `${SITE_CONFIG.url}/blog/${post.slug}`,

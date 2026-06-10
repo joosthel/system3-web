@@ -33,6 +33,10 @@ export default function ProjectLayout({
         throw new Error(`ProjectLayout: unknown project slug "${slug}"`);
     }
 
+    // lib/data.ts is the single source of truth for tags, so the visible
+    // list always matches the JSON-LD keywords and machine endpoints.
+    const displayTags = project?.tags ?? tags;
+
     return (
         <article className="project-article">
             {project && (
@@ -53,7 +57,7 @@ export default function ProjectLayout({
             <div className="wrapper">
                 <header className="project-hero">
                     <div className="project-meta">
-                        {date && <time>{new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}</time>}
+                        {date && <time>{new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', timeZone: 'UTC' })}</time>}
                         {projectUrl && (
                             <>
                                 <span>·</span>
@@ -66,9 +70,9 @@ export default function ProjectLayout({
 
                     <h1>{title}</h1>
 
-                    {tags && tags.length > 0 && (
+                    {displayTags && displayTags.length > 0 && (
                         <div className="project-tags">
-                            {tags.map(tag => (
+                            {displayTags.map(tag => (
                                 <span key={tag} className="tag">
                                     {tag}
                                 </span>

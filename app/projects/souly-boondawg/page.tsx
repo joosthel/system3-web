@@ -11,7 +11,6 @@ export default function SoulyBoondawgPage() {
             title="Souly & Boondawg. I got this feeling."
             description="A hybrid AI music video that turns greenscreen footage into a finished visual through Stable Diffusion and VFX compositing."
             date="2023-11-20"
-            tags={["AI Video Generation", "Video-to-Video", "ComfyUI", "Visual Storytelling"]}
             heroImage="/assets/imgs/proj_Souly-Boondawg-igotthisfeelling/Souly-Boondawg_igotthisfeeling-02.webp"
             projectUrl="https://youtu.be/j66rlYZQVeM?si=XuckWFc-6S6IufQI"
             nextProject={{
@@ -21,14 +20,14 @@ export default function SoulyBoondawgPage() {
         >
             <div className="space-y-12">
                 <section>
-                    <h2 className="text-3xl font-bold mb-6 text-white">Project Overview</h2>
+                    <h2>Project Overview</h2>
                     <p>
                         I contributed to this hybrid production as an AI artist in collaboration with <a href="https://yyyyyyy.studio/" target="_blank" rel="noopener noreferrer">yyyyyyy.studio</a>. The piece blends traditional greenscreen footage with generative AI environments. Using video-to-video models, we moved the artists, Souly and Boondawg, into surreal, digitally constructed worlds and added a distinct layer of visual narrative on top of the performance.
                     </p>
                 </section>
 
                 <section>
-                    <div className="aspect-video w-full rounded-xl overflow-hidden bg-gray-900 border border-white/10">
+                    <div className="aspect-video w-full overflow-hidden">
                         <iframe
                             width="100%"
                             height="100%"
@@ -56,20 +55,20 @@ export default function SoulyBoondawgPage() {
                         />
                     </div>
                     <div className="mt-4 text-center">
-                        <a href="https://www.youtube.com/watch?v=j66rlYZQVeM" target="_blank" rel="noopener noreferrer" className="text-xl font-semibold border-b border-white hover:text-gray-300 transition-colors">
+                        <a href="https://www.youtube.com/watch?v=j66rlYZQVeM" target="_blank" rel="noopener noreferrer">
                             Watch on YouTube ↗
                         </a>
                     </div>
                 </section>
 
                 <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <img src="/assets/imgs/proj_Souly-Boondawg-igotthisfeelling/Souly-Boondawg_igotthisfeeling-02.webp" alt="Scene from the music video" loading="lazy" className="w-full h-auto rounded-xl" />
-                    <img src="/assets/imgs/proj_Souly-Boondawg-igotthisfeelling/Souly-Boondawg_igotthisfeeling-03.webp" alt="Scene from the music video" loading="lazy" className="w-full h-auto rounded-xl" />
-                    <img src="/assets/imgs/proj_Souly-Boondawg-igotthisfeelling/Souly-Boondawg_igotthisfeeling-04.webp" alt="Scene from the music video" loading="lazy" className="w-full h-auto rounded-xl" />
-                    <img src="/assets/imgs/proj_Souly-Boondawg-igotthisfeelling/Souly-Boondawg_igotthisfeeling-05.webp" alt="Scene from the music video" loading="lazy" className="w-full h-auto rounded-xl" />
-                    <img src="/assets/imgs/proj_Souly-Boondawg-igotthisfeelling/Souly-Boondawg_igotthisfeeling-06.webp" alt="Scene from the music video" loading="lazy" className="w-full h-auto rounded-xl" />
-                    <img src="/assets/imgs/proj_Souly-Boondawg-igotthisfeelling/Souly-Boondawg_igotthisfeeling-07.webp" alt="Scene from the music video" loading="lazy" className="w-full h-auto rounded-xl" />
-                    <img src="/assets/imgs/proj_Souly-Boondawg-igotthisfeelling/Souly-Boondawg_igotthisfeeling-08.webp" alt="Scene from the music video" loading="lazy" className="w-full h-auto rounded-xl" />
+                    <img src="/assets/imgs/proj_Souly-Boondawg-igotthisfeelling/Souly-Boondawg_igotthisfeeling-02.webp" alt="Scene from the music video" loading="lazy" className="w-full h-auto" />
+                    <img src="/assets/imgs/proj_Souly-Boondawg-igotthisfeelling/Souly-Boondawg_igotthisfeeling-03.webp" alt="Scene from the music video" loading="lazy" className="w-full h-auto" />
+                    <img src="/assets/imgs/proj_Souly-Boondawg-igotthisfeelling/Souly-Boondawg_igotthisfeeling-04.webp" alt="Scene from the music video" loading="lazy" className="w-full h-auto" />
+                    <img src="/assets/imgs/proj_Souly-Boondawg-igotthisfeelling/Souly-Boondawg_igotthisfeeling-05.webp" alt="Scene from the music video" loading="lazy" className="w-full h-auto" />
+                    <img src="/assets/imgs/proj_Souly-Boondawg-igotthisfeelling/Souly-Boondawg_igotthisfeeling-06.webp" alt="Scene from the music video" loading="lazy" className="w-full h-auto" />
+                    <img src="/assets/imgs/proj_Souly-Boondawg-igotthisfeelling/Souly-Boondawg_igotthisfeeling-07.webp" alt="Scene from the music video" loading="lazy" className="w-full h-auto" />
+                    <img src="/assets/imgs/proj_Souly-Boondawg-igotthisfeelling/Souly-Boondawg_igotthisfeeling-08.webp" alt="Scene from the music video" loading="lazy" className="w-full h-auto" />
                 </section>
             </div>
         </ProjectLayout>

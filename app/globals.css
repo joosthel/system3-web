@@ -1336,6 +1336,33 @@ a:hover {
   padding: var(--space-md) 0;
 }
 
+/* Explicit ink so stray utility classes can never blank out headings. */
+.project-content h2,
+.project-content h3,
+.project-content strong {
+  color: var(--ink);
+}
+
+.project-highlight {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  padding: var(--space-md);
+  margin: var(--space-lg) 0;
+}
+
+.project-content blockquote {
+  border-left: 2px solid var(--ink);
+  padding-left: var(--space-md);
+  margin: var(--space-md) 0;
+}
+
+.project-content blockquote footer {
+  font-size: 0.8125rem;
+  font-style: normal;
+  color: var(--fg-muted);
+  margin-top: 0.5rem;
+}
+
 .hero-description.project-hero-desc { opacity: 1; }
 
 .project-next-nav {

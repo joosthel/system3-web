@@ -9,7 +9,7 @@ export const dynamic = 'force-static';
 
 export async function GET() {
     const caseStudies = PROJECTS.map(
-        (p) => `- ${SITE_CONFIG.url}${p.url} — ${p.title} ${p.description}`
+        (p) => `- ${SITE_CONFIG.url}${p.url} — ${p.title} — ${p.description}`
     ).join('\n');
 
     const services = SERVICES.map((s) => `- ${s.title} — ${s.description}`).join('\n');
