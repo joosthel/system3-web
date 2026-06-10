@@ -4,31 +4,25 @@ Where the site and the positioning go next. Written June 2026, after the
 positioning + GEO upgrade (about page, brand credits, XD Network, structured
 data, feeds, llms.txt/llms-full.txt, machine-readable JSON endpoints).
 
-## 1. MCP server (phase 2)
+## 1. MCP server — shipped June 2026, in-app
 
-A small public MCP server so AI agents can query the portfolio directly,
-instead of only crawling it. This is also a credibility play: the
-"MCP apps and agentic commerce" blog post argues brands need this layer,
-so the portfolio should demonstrate it.
+The plan changed from the original separate-repo idea: the whole site moved
+from GitHub Pages to Vercel, so the MCP server lives in this repo at
+`app/api/[transport]/route.ts` (`/api/mcp`, Streamable HTTP via `mcp-handler`,
+public, read-only, no auth). It imports `lib/data.ts` and `content/blog`
+directly; no fetch layer, no content duplication. Tools instead of resources
+(broader client support): get_profile, list_services, list_projects,
+get_project, list_posts, get_post, search_content. Linked from
+`/.well-known/agent.json`, llms.txt, and the `/agents` page.
 
-**Architecture**
-- Separate small repo/app deployed to Vercel at `mcp.joosthelfers.com`.
-  The website stays a static export on GitHub Pages.
-- TypeScript, `@modelcontextprotocol/sdk` plus Vercel's `mcp-handler`,
-  Streamable HTTP transport. Public, read-only, no auth.
-- Data strategy: fetch this site's static endpoints at request time
-  (`/api/projects.json`, `/api/blog.json`, `/llms-full.txt`). Zero content
-  duplication; the website remains the single source of truth.
-
-**Surface**
-- Resources: `portfolio://projects`, `portfolio://projects/{id}`,
-  `blog://posts`, `blog://posts/{slug}`, `profile://services`, `profile://contact`.
-- One tool: `search_content(query)` over projects and posts.
-
-**Launch checklist**
-- Add `mcp` link to `/.well-known/agent.json` and the llms.txt
-  Machine-Readable Resources section.
-- Write the build as a blog post (see cluster c below).
+**Still open from the launch checklist**
+- Create the `llms@joosthelfers.com` mailbox at the mail provider (it is
+  already published everywhere as the agent-contact address).
+- Point joosthelfers.com DNS at Vercel and retire the GitHub Pages deployment.
+- Optional: a Telegram channel for human and agent requests. Needs Joost's
+  Telegram account; once it exists, add the link to `/agents`, `agent.json`,
+  and `SITE_CONFIG`.
+- Write the build up as a blog post (see cluster c below). Self-demonstrating.
 
 ## 2. Editorial calendar (~1 post per month)
 

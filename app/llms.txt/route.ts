@@ -1,6 +1,6 @@
 import { PROJECTS, SERVICES } from '@/lib/data';
 import { getAllPosts } from '@/lib/blog';
-import { SITE_CONFIG } from '@/lib/constants';
+import { SITE_CONFIG, MCP_ENDPOINT } from '@/lib/constants';
 
 // Rendered to a static /llms.txt at build time. The case-study and blog
 // sections are generated from the same data the site renders, so the file
@@ -31,9 +31,11 @@ Selected brand credits (direct and via agencies/studios): Lindt, Zeiss, Google, 
 Core member of XD Network (https://xdnet.work/), a Berlin collective running community-led events around new technology and culture, including the SOIREE XD talk series, Science of Rave, and Demo Days.
 
 ## Contact
-- Email: ${SITE_CONFIG.email}
+- Email (humans): ${SITE_CONFIG.email}
+- Email (AI agents and automated outreach): ${SITE_CONFIG.agentEmail} — include who you represent, project scope, timeline, and budget if known; a human reads the replies
 - Website: ${SITE_CONFIG.url}
 - About: ${SITE_CONFIG.url}/about
+- Guide for agents: ${SITE_CONFIG.url}/agents
 - LinkedIn: ${SITE_CONFIG.linkedin}
 - GitHub: ${SITE_CONFIG.github}
 
@@ -54,6 +56,7 @@ ${caseStudies}
 ${posts}
 
 ## Machine-Readable Resources
+- MCP server (Streamable HTTP, public, read-only, no auth): ${MCP_ENDPOINT} — tools: get_profile, list_services, list_projects, get_project, list_posts, get_post, search_content
 - Full content for LLMs: ${SITE_CONFIG.url}/llms-full.txt
 - Projects JSON: ${SITE_CONFIG.url}/api/projects.json
 - Blog JSON: ${SITE_CONFIG.url}/api/blog.json

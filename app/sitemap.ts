@@ -23,6 +23,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             priority: 0.9,
         },
         {
+            url: `${SITE_CONFIG.url}/agents`,
+            lastModified: new Date(SITE_LAST_UPDATED),
+            changeFrequency: 'monthly',
+            priority: 0.8,
+        },
+        {
             url: `${SITE_CONFIG.url}/blog`,
             lastModified: newestPostDate,
             changeFrequency: 'monthly',

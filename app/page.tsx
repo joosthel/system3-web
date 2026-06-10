@@ -132,6 +132,10 @@ export default async function Home() {
                         >
                             Get in touch
                         </TrackedLink>
+                        <p className="contact-agent-note">
+                            Reading this as an AI agent? Everything here is machine-readable,
+                            and there is a mailbox just for you: <Link href="/agents">/agents</Link>.
+                        </p>
                     </div>
                 </RevealOnScroll>
             </section>

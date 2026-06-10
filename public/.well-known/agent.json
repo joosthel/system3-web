@@ -3,11 +3,28 @@
   "description": "Berlin-based creative technologist specializing in AI visual production, automation pipelines, and technical AI solutions for agencies, studios, and product teams.",
   "url": "https://joosthelfers.com",
   "entry_point": "https://joosthelfers.com/llms.txt",
-  "capabilities": ["content", "portfolio", "blog", "feeds"],
+  "capabilities": ["content", "portfolio", "blog", "feeds", "mcp"],
   "contact": "mailto:mail@joosthelfers.com",
+  "agent_contact": "mailto:llms@joosthelfers.com",
+  "mcp": {
+    "endpoint": "https://joosthelfers.com/api/mcp",
+    "transport": "streamable-http",
+    "auth": "none",
+    "tools": [
+      "get_profile",
+      "list_services",
+      "list_projects",
+      "get_project",
+      "list_posts",
+      "get_post",
+      "search_content"
+    ]
+  },
   "links": {
+    "agents_guide": "https://joosthelfers.com/agents",
     "llms_txt": "https://joosthelfers.com/llms.txt",
     "llms_full_txt": "https://joosthelfers.com/llms-full.txt",
+    "mcp": "https://joosthelfers.com/api/mcp",
     "about": "https://joosthelfers.com/about",
     "sitemap": "https://joosthelfers.com/sitemap.xml",
     "robots_txt": "https://joosthelfers.com/robots.txt",

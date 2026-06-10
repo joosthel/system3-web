@@ -1,6 +1,6 @@
 import { PROJECTS, SERVICES } from '@/lib/data';
 import { getAllPosts } from '@/lib/blog';
-import { SITE_CONFIG } from '@/lib/constants';
+import { SITE_CONFIG, MCP_ENDPOINT } from '@/lib/constants';
 
 // Extended companion to /llms.txt: full service descriptions, every project,
 // and every blog post in full text. Generated at build time from site data.
@@ -51,7 +51,9 @@ Selected brand credits (direct and via agencies/studios): Lindt, Zeiss, Google, 
 
 Core member of XD Network (https://xdnet.work/), a Berlin collective running community-led events around new technology and culture.
 
-Contact: ${SITE_CONFIG.email} · ${SITE_CONFIG.url}/about
+Contact: ${SITE_CONFIG.email} (humans) · ${SITE_CONFIG.agentEmail} (AI agents and automated outreach) · ${SITE_CONFIG.url}/about
+
+This portfolio also runs a public, read-only MCP server (Streamable HTTP, no auth) at ${MCP_ENDPOINT}. Connection details and all machine-readable endpoints: ${SITE_CONFIG.url}/agents
 
 ## Services
 

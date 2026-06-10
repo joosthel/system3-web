@@ -1,11 +1,14 @@
 // Bump when homepage or other static-page copy changes; used for sitemap lastModified.
-// (Git dates are unreliable in CI: the Pages workflow uses a shallow clone.)
-export const SITE_LAST_UPDATED = '2026-06-09';
+// (Git dates are unreliable in CI: deploy builds use shallow clones.)
+export const SITE_LAST_UPDATED = '2026-06-10';
 
 export const SITE_CONFIG = {
     title: "Joost Helfers. Creative Technologist. AI Visuals & Pipelines. Berlin.",
     author: "Joost Helfers",
     email: "mail@joosthelfers.com",
+    // Dedicated address for AI agents and automated outreach. Mail here is
+    // expected to come from bots; replies are read by a human.
+    agentEmail: "llms@joosthelfers.com",
     description: "Berlin-based creative technologist. I build AI visual pipelines, automation workflows, and interactive platforms for agencies, studios, and product teams.",
     url: "https://joosthelfers.com",
     github: "https://github.com/joosthel",
@@ -18,3 +21,6 @@ export const SITE_CONFIG = {
         "https://linkedin.com/in/joosthel"
     ]
 };
+
+// Public MCP endpoint (Streamable HTTP, no auth), served by app/api/[transport]/route.ts.
+export const MCP_ENDPOINT = `${SITE_CONFIG.url}/api/mcp`;

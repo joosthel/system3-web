@@ -60,6 +60,13 @@ export default function Footer() {
                             </TrackedLink>
                             <a href="/feed.xml">RSS</a>
                         </nav>
+
+                        <nav className="footer-nav">
+                            <span className="footer-nav-heading">Agents</span>
+                            <Link href="/agents">For AI agents</Link>
+                            <a href="/llms.txt">llms.txt</a>
+                            <a href={`mailto:${SITE_CONFIG.agentEmail}`}>{SITE_CONFIG.agentEmail}</a>
+                        </nav>
                     </div>
                 </div>
 

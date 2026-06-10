@@ -58,6 +58,11 @@ export default function AboutPage() {
                         <figcaption>SOIREE XD, an XD Network event series</figcaption>
                     </figure>
 
+                    <h2>Built for the agentic web</h2>
+                    <p>
+                        This site is also an experiment in being readable by machines. Every project and post exists as structured data, the whole portfolio is queryable over a public <Link href="/agents">MCP server</Link>, and there is a dedicated mailbox for AI agents that want to get in touch on someone&apos;s behalf. I build the same kind of agent-readable presence for clients, and I find it more honest to run it on my own site first.
+                    </p>
+
                     <h2>Work with me</h2>
                     <p>
                         If you have a project that needs someone who understands both the creative and the technical side, I would like to hear about it.

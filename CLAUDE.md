@@ -5,10 +5,14 @@ production, generative pipelines, digital platforms).
 
 ## Stack & deployment
 
-- Next.js App Router, TypeScript, Tailwind CSS, `output: 'export'` (fully static).
-- Deployed to **GitHub Pages** by `.github/workflows/nextjs.yml` on push to `main`.
-  There is **no server runtime**: no dynamic API routes, no headers()/cookies(), no ISR.
-- Build: `npm run build` (outputs to `out/`). Preview: `npx serve out`.
+- Next.js App Router, TypeScript, Tailwind CSS. Deployed to **Vercel**; pushes to
+  `main` go to production, other branches get preview deployments.
+- All pages are statically prerendered. The only server runtime is the public,
+  read-only **MCP server** at `app/api/[transport]/route.ts` (`/api/mcp`,
+  Streamable HTTP via `mcp-handler`, no auth, SSE disabled). It reads
+  `lib/data.ts` and `content/blog` directly; `next.config.js` bundles the MDX
+  files into that function via `outputFileTracingIncludes`.
+- Build: `npm run build`. Local dev: `npm run dev`.
 
 ## Where content lives
 
@@ -31,6 +35,16 @@ data, never a file in `public/`. A route-handler path must not collide with a
 
 JSON-LD schema builders live in `lib/schema.ts`; per-page metadata helpers in
 `lib/metadata.ts`.
+
+## Agent surfaces
+
+The site is positioned as a reference for agent-readable portfolios. The surfaces:
+MCP server (`/api/mcp`), `/agents` page (human+machine guide), `/llms.txt` +
+`/llms-full.txt`, `/.well-known/agent.json` (hand-maintained in `public/`),
+JSON endpoints, and feeds. `llms@joosthelfers.com` (in `SITE_CONFIG.agentEmail`)
+is the contact address for AI agents and automated outreach; `mail@` stays the
+human channel. When projects, services, or contact details change, the MCP tools
+and `agent.json` must stay consistent with `lib/data.ts` and `lib/constants.ts`.
 
 ## Voice rules for all site copy
 

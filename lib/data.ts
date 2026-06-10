@@ -126,5 +126,12 @@ export const SERVICES = [
         description: 'I design functional environments where data and space meet. Digital twins and interactive configurators that make complex systems legible for engineering, sales, and storytelling. Built with React, Three.js, and the rest of the modern web stack.',
         image: '/assets/imgs/services/service_digital-twin.webp',
         tags: ['Digital Twin Development', 'React / Next.js', 'Three.js', 'Unreal Engine', 'Data Integration', 'Platform Development']
+    },
+    {
+        id: 'agentic-presence',
+        title: 'Agentic Web Presence & GEO',
+        description: 'I make brands and portfolios readable for AI agents: llms.txt, structured data, machine-readable feeds, and MCP servers that let assistants query your content directly. More and more buying decisions start with a question to ChatGPT, Claude, or Perplexity instead of a search box; this is how you show up in the answer. Everything I offer here runs in production on this site first.',
+        image: '/assets/imgs/lab/genai_screens.webp',
+        tags: ['GEO', 'llms.txt', 'MCP Servers', 'Structured Data', 'JSON-LD', 'Agent Discovery', 'Next.js']
     }
 ];

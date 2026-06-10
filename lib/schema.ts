@@ -28,6 +28,19 @@ export function personSchema() {
         jobTitle: SITE_CONFIG.jobTitle,
         description: SITE_CONFIG.description,
         email: `mailto:${SITE_CONFIG.email}`,
+        contactPoint: [
+            {
+                '@type': 'ContactPoint',
+                contactType: 'business inquiries',
+                email: SITE_CONFIG.email,
+            },
+            {
+                '@type': 'ContactPoint',
+                contactType: 'AI agent inquiries',
+                email: SITE_CONFIG.agentEmail,
+                description: 'Contact channel for AI agents and automated outreach; replies come from a human.',
+            },
+        ],
         address: {
             '@type': 'PostalAddress',
             addressLocality: 'Berlin',
@@ -49,6 +62,8 @@ export function personSchema() {
             'ComfyUI',
             'Prompt Engineering',
             'Agentic Workflows',
+            'Generative Engine Optimization',
+            'Model Context Protocol',
             'Digital Twins',
             'Creative Technology',
             'Three.js',
