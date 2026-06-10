@@ -16,13 +16,15 @@ get_project, list_posts, get_post, search_content. Linked from
 `/.well-known/agent.json`, llms.txt, and the `/agents` page.
 
 **Still open from the launch checklist**
-- Create the `llms@joosthelfers.com` mailbox at the mail provider (it is
-  already published everywhere as the agent-contact address).
-- Point joosthelfers.com DNS at Vercel and retire the GitHub Pages deployment.
-- Optional: a Telegram channel for human and agent requests. Needs Joost's
-  Telegram account; once it exists, add the link to `/agents`, `agent.json`,
-  and `SITE_CONFIG`.
+- Point joosthelfers.com DNS at Vercel (at Hostinger: replace the four
+  GitHub Pages A records on `@` with `A @ 76.76.21.21`; leave the www CNAME
+  and the iCloud MX records alone) and retire the GitHub Pages deployment.
+- Telegram channel for human and agent requests: deferred, planned. Once it
+  exists, add the link to `/agents`, `agent.json`, and `SITE_CONFIG`.
 - Write the build up as a blog post (see cluster c below). Self-demonstrating.
+
+**Done June 2026**
+- `llms@joosthelfers.com` receives mail (catch-all on the domain, iCloud MX).
 
 ## 2. Editorial calendar (~1 post per month)
 
