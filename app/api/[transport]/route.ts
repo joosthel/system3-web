@@ -10,8 +10,9 @@ import { absoluteUrl } from '@/lib/metadata';
 // SSE transport is disabled: it would need Redis and is deprecated in the
 // MCP spec anyway.
 
-const json = (data: unknown) => ({
+const json = (data: unknown, isError = false) => ({
     content: [{ type: 'text' as const, text: JSON.stringify(data, null, 2) }],
+    ...(isError && { isError: true }),
 });
 
 function projectSummary(project: (typeof PROJECTS)[number]) {
@@ -115,10 +116,13 @@ const handler = createMcpHandler(
             async ({ id }) => {
                 const project = PROJECTS.find((p) => p.id === id);
                 if (!project) {
-                    return json({
-                        error: `Unknown project id "${id}"`,
-                        validIds: PROJECTS.map((p) => p.id),
-                    });
+                    return json(
+                        {
+                            error: `Unknown project id "${id}"`,
+                            validIds: PROJECTS.map((p) => p.id),
+                        },
+                        true,
+                    );
                 }
                 return json(projectSummary(project));
             },
@@ -147,10 +151,13 @@ const handler = createMcpHandler(
             async ({ slug }) => {
                 const post = getAllPosts().find((p) => p.slug === slug);
                 if (!post) {
-                    return json({
-                        error: `Unknown post slug "${slug}"`,
-                        validSlugs: getAllPosts().map((p) => p.slug),
-                    });
+                    return json(
+                        {
+                            error: `Unknown post slug "${slug}"`,
+                            validSlugs: getAllPosts().map((p) => p.slug),
+                        },
+                        true,
+                    );
                 }
                 return json({ ...postSummary(post), content: post.content.trim() });
             },
@@ -199,4 +206,50 @@ const handler = createMcpHandler(
     },
 );
 
-export { handler as GET, handler as POST, handler as DELETE };
+// The server is public and read-only, so wildcard CORS costs nothing and lets
+// browser-based MCP clients connect (server-to-server clients ignore it).
+const CORS_HEADERS: Record<string, string> = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, POST, DELETE, OPTIONS',
+    'Access-Control-Allow-Headers':
+        'Content-Type, Accept, Authorization, Mcp-Session-Id, MCP-Protocol-Version, Last-Event-ID',
+    'Access-Control-Expose-Headers': 'Mcp-Session-Id',
+    'Access-Control-Max-Age': '86400',
+};
+
+const withCors = async (req: Request): Promise<Response> => {
+    const res = await handler(req);
+    const wrapped = new Response(res.body, res);
+    for (const [key, value] of Object.entries(CORS_HEADERS)) {
+        wrapped.headers.set(key, value);
+    }
+    return wrapped;
+};
+
+export function OPTIONS() {
+    return new Response(null, { status: 204, headers: CORS_HEADERS });
+}
+
+// mcp-handler 1.1.0 awaits req.json() outside its try/catch and its response
+// adapter never settles when that throws, so a malformed JSON body would hang
+// the function until the platform timeout. Reject it here with a JSON-RPC
+// parse error instead. Remove once fixed upstream (vercel/mcp-handler).
+export async function POST(req: Request) {
+    if ((req.headers.get('content-type') ?? '').includes('application/json')) {
+        try {
+            await req.clone().json();
+        } catch {
+            return new Response(
+                JSON.stringify({
+                    jsonrpc: '2.0',
+                    error: { code: -32700, message: 'Parse error' },
+                    id: null,
+                }),
+                { status: 400, headers: { 'content-type': 'application/json', ...CORS_HEADERS } },
+            );
+        }
+    }
+    return withCors(req);
+}
+
+export { withCors as GET, withCors as DELETE };

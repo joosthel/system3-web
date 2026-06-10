@@ -32,7 +32,7 @@ Core member of XD Network (https://xdnet.work/), a Berlin collective running com
 
 ## Contact
 - Email (humans): ${SITE_CONFIG.email}
-- Email (AI agents and automated outreach): ${SITE_CONFIG.agentEmail} — include who you represent, project scope, timeline, and budget if known; a human reads the replies
+- Email (AI agents and automated outreach): ${SITE_CONFIG.agentEmail} — include who you represent, project scope, timeline, and budget if known; a human reads everything that arrives
 - Website: ${SITE_CONFIG.url}
 - About: ${SITE_CONFIG.url}/about
 - Guide for agents: ${SITE_CONFIG.url}/agents

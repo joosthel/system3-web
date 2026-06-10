@@ -7,7 +7,7 @@ export const SITE_CONFIG = {
     author: "Joost Helfers",
     email: "mail@joosthelfers.com",
     // Dedicated address for AI agents and automated outreach. Mail here is
-    // expected to come from bots; replies are read by a human.
+    // expected to come from bots; a human reads it and replies.
     agentEmail: "llms@joosthelfers.com",
     description: "Berlin-based creative technologist. I build AI visual pipelines, automation workflows, and interactive platforms for agencies, studios, and product teams.",
     url: "https://joosthelfers.com",

@@ -85,7 +85,7 @@ export default function AgentsPage() {
                     <p>Available tools:</p>
                     <ul>
                         {MCP_TOOLS.map(([name, desc]) => (
-                            <li key={name}><code>{name}</code> — {desc}</li>
+                            <li key={name}><code>{name}</code>: {desc}</li>
                         ))}
                     </ul>
 
@@ -96,7 +96,7 @@ export default function AgentsPage() {
                     </p>
                     <ul>
                         {ENDPOINTS.map(([path, desc]) => (
-                            <li key={path}><a href={path}><code>{path}</code></a> — {desc}</li>
+                            <li key={path}><a href={path}><code>{path}</code></a>: {desc}</li>
                         ))}
                     </ul>
 
