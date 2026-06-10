@@ -47,7 +47,7 @@ export const viewport: Viewport = {
 };
 
 import JsonLd from './components/JsonLd';
-import { GoogleAnalytics } from '@next/third-parties/google';
+import { Analytics } from '@vercel/analytics/next';
 
 export default function RootLayout({
     children,
@@ -71,7 +71,7 @@ export default function RootLayout({
                 <link rel="alternate" type="application/feed+json" title="Joost Helfers. Writing." href="/feed.json" />
             </head>
             <body>
-                <GoogleAnalytics gaId="G-FV9Q5RL89T" />
+                <Analytics />
                 <JsonLd />
                 <Header />
                 <main className="page-content">{children}</main>

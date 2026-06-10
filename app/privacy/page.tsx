@@ -65,10 +65,7 @@ export default function Privacy() {
 
                     <h2>3. Cookies</h2>
                     <p>
-                        The Internet pages of the Joost Helfers use cookies. Cookies are text files that are stored in a computer system via an Internet browser.
-                    </p>
-                    <p>
-                        The data subject may, at any time, prevent the setting of cookies through our website by means of a corresponding setting of the Internet browser used, and may thus permanently deny the setting of cookies.
+                        This website does not set cookies. Visitor statistics are collected without cookies and without any technology that identifies or tracks individual visitors (see section 7).
                     </p>
 
                     <h2>4. Collection of general data and information</h2>
@@ -95,9 +92,9 @@ export default function Privacy() {
                         <li>i) Withdraw his or her consent to processing of his or her personal data at any time.</li>
                     </ul>
 
-                    <h2>7. Data protection provisions about the application and use of Google Analytics 4 (GA4)</h2>
+                    <h2>7. Data protection provisions about the application and use of Vercel Web Analytics</h2>
                     <p>
-                        On this website, the controller has integrated Google Analytics 4 (GA4). We use Google Analytics 4 with IP anonymization enabled (anonymize_ip: true) and consent mode implementation.
+                        On this website, the controller has integrated Vercel Web Analytics, a privacy-friendly analytics service provided by Vercel Inc. (440 N Barranca Avenue #4133, Covina, CA 91723, USA), which also hosts this website. Vercel Web Analytics does not use cookies and does not collect or store personal data: visits are counted through an anonymized hash that cannot identify an individual visitor and is discarded after 24 hours. Collected data is limited to aggregated information such as page views, referrers, country, browser, and device type. No data is shared with third parties for advertising purposes and no cross-site tracking takes place.
                     </p>
 
                     <h2>13. Existence of automated decision-making</h2>
