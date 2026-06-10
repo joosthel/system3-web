@@ -1,9 +1,12 @@
 /** @type {import('next').NextConfig} */
-// Trigger rebuild for Tailwind v3 downgrade
 const nextConfig = {
-  output: 'export',
   images: {
     unoptimized: true,
+  },
+  // The MCP route reads blog MDX from disk at request time; bundle the
+  // content directory into its serverless function.
+  outputFileTracingIncludes: {
+    '/api/[transport]': ['./content/blog/*.mdx'],
   },
 };
 

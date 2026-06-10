@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import { ReactNode } from 'react';
+import { PROJECTS } from '@/lib/data';
+import { projectSchema, breadcrumbSchema, toJsonLd } from '@/lib/schema';
 
 interface ProjectLayoutProps {
     title: string;
@@ -8,6 +10,8 @@ interface ProjectLayoutProps {
     tags?: string[];
     heroImage?: string;
     projectUrl?: string;
+    /** Project id from lib/data.ts. When set, the page emits CreativeWork and breadcrumb JSON-LD. */
+    slug?: string;
     children: ReactNode;
     prevProject?: { url: string; title: string };
     nextProject?: { url: string; title: string };
@@ -20,19 +24,44 @@ export default function ProjectLayout({
     tags,
     heroImage,
     projectUrl,
+    slug,
     children,
     nextProject
 }: ProjectLayoutProps) {
+    const project = slug ? PROJECTS.find((p) => p.id === slug) : undefined;
+    if (slug && !project) {
+        throw new Error(`ProjectLayout: unknown project slug "${slug}"`);
+    }
+
+    // lib/data.ts is the single source of truth for tags, so the visible
+    // list always matches the JSON-LD keywords and machine endpoints.
+    const displayTags = project?.tags ?? tags;
+
     return (
         <article className="project-article">
+            {project && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify(toJsonLd(
+                            projectSchema(project),
+                            breadcrumbSchema([
+                                { name: 'Home', path: '/' },
+                                { name: 'Work', path: '/#work' },
+                                { name: project.title, path: project.url },
+                            ])
+                        ))
+                    }}
+                />
+            )}
             <div className="wrapper">
                 <header className="project-hero">
                     <div className="project-meta">
-                        {date && <time>{new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}</time>}
+                        {date && <time>{new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', timeZone: 'UTC' })}</time>}
                         {projectUrl && (
                             <>
-                                <span style={{ color: 'var(--text-tertiary)' }}>·</span>
-                                <a href={projectUrl} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-tertiary)', transition: 'color 0.15s ease' }}>
+                                <span>·</span>
+                                <a href={projectUrl} target="_blank" rel="noopener noreferrer">
                                     View Live ↗
                                 </a>
                             </>
@@ -41,9 +70,9 @@ export default function ProjectLayout({
 
                     <h1>{title}</h1>
 
-                    {tags && tags.length > 0 && (
+                    {displayTags && displayTags.length > 0 && (
                         <div className="project-tags">
-                            {tags.map(tag => (
+                            {displayTags.map(tag => (
                                 <span key={tag} className="tag">
                                     {tag}
                                 </span>
@@ -51,7 +80,7 @@ export default function ProjectLayout({
                         </div>
                     )}
 
-                    <p style={{ maxWidth: '60ch', marginTop: 'var(--space-md)', color: 'var(--text-secondary)', fontSize: '0.9375rem', lineHeight: 1.7 }}>
+                    <p className="project-hero-desc">
                         {description}
                     </p>
                 </header>
@@ -72,15 +101,7 @@ export default function ProjectLayout({
 
                     {nextProject && (
                         <div className="project-next-nav">
-                            <span style={{
-                                display: 'block',
-                                fontFamily: "'Doto', monospace",
-                                fontSize: '0.6875rem',
-                                color: 'var(--text-tertiary)',
-                                marginBottom: '0.5rem',
-                                textTransform: 'uppercase',
-                                letterSpacing: '0.04em',
-                            }}>
+                            <span className="project-next-label">
                                 Next Project
                             </span>
                             <Link href={nextProject.url} className="project-next-link">

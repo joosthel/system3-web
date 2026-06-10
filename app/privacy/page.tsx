@@ -1,3 +1,18 @@
+import type { Metadata } from 'next';
+import { OG_DEFAULT_IMAGE } from '@/lib/metadata';
+
+export const metadata: Metadata = {
+    title: 'Privacy Policy',
+    description: 'How joosthelfers.com handles personal data.',
+    alternates: { canonical: '/privacy' },
+    openGraph: {
+        title: 'Privacy Policy | Joost Helfers',
+        description: 'How joosthelfers.com handles personal data.',
+        url: '/privacy',
+        type: 'website',
+        images: [{ url: OG_DEFAULT_IMAGE, width: 1200, height: 630 }],
+    },
+};
 
 export default function Privacy() {
     return (
@@ -72,7 +87,7 @@ export default function Privacy() {
                         <li>a) Obtain confirmation as to whether or not personal data concerning him or her are being processed.</li>
                         <li>b) Obtain free information about his or her personal data stored at any time and a copy of this information.</li>
                         <li>c) Obtain without undue delay the rectification of inaccurate personal data concerning him or her.</li>
-                        <li>d) Obtain the erasure of personal data concerning him or her without undue delay ("Right to be forgotten").</li>
+                        <li>d) Obtain the erasure of personal data concerning him or her without undue delay (&quot;Right to be forgotten&quot;).</li>
                         <li>e) Obtain from the controller restriction of processing.</li>
                         <li>f) Receive the personal data concerning him or her, which was provided to a controller, in a structured, commonly used and machine-readable format.</li>
                         <li>g) Object, on grounds relating to his or her particular situation, at any time, to processing of personal data concerning him or her.</li>

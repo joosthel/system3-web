@@ -1,12 +1,16 @@
+import type { Metadata } from 'next';
 import ProjectLayout from '../../components/ProjectLayout';
+import { projectMetadata } from '@/lib/metadata';
+
+export const metadata: Metadata = projectMetadata('ai-video-campaign');
 
 export default function AIVideoCampaignPage() {
     return (
         <ProjectLayout
+            slug="ai-video-campaign"
             title="AI Video Production for a Global Brand Campaign"
-            description="A generative AI visual pipeline from storyboard to edited campaign video for a major consumer goods brand."
+            description="A generative AI visual pipeline from storyboard to edited campaign video."
             date="2025-01-15"
-            tags={['AI Visuals', 'Generative Video', 'ComfyUI', 'Prompt Engineering', 'Video Editing']}
             nextProject={{
                 title: "AI Pipeline Backend & Interactive Segmentation Tool",
                 url: "/projects/ai-pipeline-backend"

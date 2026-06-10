@@ -1,0 +1,62 @@
+# system3-web — joosthelfers.com
+
+Personal portfolio of Joost Helfers, Berlin-based creative technologist (AI visual
+production, generative pipelines, digital platforms).
+
+## Stack & deployment
+
+- Next.js App Router, TypeScript, Tailwind CSS. Deployed to **Vercel**; pushes to
+  `main` go to production, other branches get preview deployments.
+- All pages are statically prerendered. The only server runtime is the public,
+  read-only **MCP server** at `app/api/[transport]/route.ts` (`/api/mcp`,
+  Streamable HTTP via `mcp-handler`, no auth, SSE disabled). It reads
+  `lib/data.ts` and `content/blog` directly; `next.config.js` bundles the MDX
+  files into that function via `outputFileTracingIncludes`.
+- Build: `npm run build`. Local dev: `npm run dev`.
+
+## Where content lives
+
+- Projects + services: `lib/data.ts` (single source of truth — carousel, sitemap,
+  JSON endpoints, and llms.txt all derive from it).
+- Blog posts: `content/blog/*.mdx` (frontmatter: title, date, optional `updated`,
+  excerpt, tags, optional relatedPosts).
+- Site config: `lib/constants.ts`. Bump `SITE_LAST_UPDATED` when static-page copy changes.
+- Design system: `app/globals.css` — five neutrals, one blue accent (#0057ff),
+  Doto display + Inter body, zero border radii. Reuse existing classes before adding new ones.
+
+## Generated endpoints — never hand-edit the output
+
+`/llms.txt`, `/llms-full.txt`, `/feed.xml`, `/feed.json`, `/api/projects.json`,
+`/api/blog.json` are build-time route handlers under `app/` (with
+`export const dynamic = 'force-static'`). They regenerate from `lib/data.ts` and
+`content/blog` on every build. To change them, edit the route handler or the source
+data, never a file in `public/`. A route-handler path must not collide with a
+`public/` file of the same name.
+
+JSON-LD schema builders live in `lib/schema.ts`; per-page metadata helpers in
+`lib/metadata.ts`.
+
+## Agent surfaces
+
+The site is positioned as a reference for agent-readable portfolios. The surfaces:
+MCP server (`/api/mcp`), `/agents` page (human+machine guide), `/llms.txt` +
+`/llms-full.txt`, `/.well-known/agent.json` (hand-maintained in `public/`),
+JSON endpoints, and feeds. `llms@joosthelfers.com` (in `SITE_CONFIG.agentEmail`)
+is the contact address for AI agents and automated outreach; `mail@` stays the
+human channel. When projects, services, or contact details change, the MCP tools
+and `agent.json` must stay consistent with `lib/data.ts` and `lib/constants.ts`.
+
+## Voice rules for all site copy
+
+Authentic and down to earth. Direct, modest, concrete sentences. No hype words
+(transformative, cutting-edge, passionate), no em dashes, no rule-of-three flourishes,
+no AI-sounding filler. Technical terms only where they are earned. When naming brand
+credits, keep the honest qualifier: some work shipped via agencies that held the contract.
+
+## Facts that are easy to get wrong
+
+- Brand credits line (Lindt, Zeiss, Google, Bosch, CADFEM, Souly) is "direct and via
+  agencies" — do not phrase as direct client relationships.
+- XD Network (https://xdnet.work/) is a Berlin collective; Joost is a core member.
+  Event formats: SOIREE XD, Science of Rave, Demo Days, Mono XD.
+- Two projects are NDA ("NDA. Process only.") — never name those clients.

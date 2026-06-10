@@ -1,0 +1,18 @@
+/* TEAM */
+Creative Technologist: Joost Helfers
+Site: https://joosthelfers.com
+Location: Berlin, Germany
+Contact: mail [at] joosthelfers.com
+Agent contact: llms [at] joosthelfers.com
+LinkedIn: https://linkedin.com/in/joosthel
+GitHub: https://github.com/joosthel
+
+/* SITE */
+Stack: Next.js, TypeScript, Tailwind CSS
+Hosting: Vercel
+MCP: https://joosthelfers.com/api/mcp
+Fonts: Doto, Inter
+Last update: 2026/06/10
+
+/* THANKS */
+XD Network — https://xdnet.work/

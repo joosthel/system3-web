@@ -1,4 +1,7 @@
 import { getPostBySlug, getPostSlugs } from "@/lib/blog";
+import { OG_DEFAULT_IMAGE, absoluteUrl } from "@/lib/metadata";
+import { SITE_CONFIG } from "@/lib/constants";
+import { blogPostingSchema, breadcrumbSchema, toJsonLd } from "@/lib/schema";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -10,69 +13,83 @@ export async function generateStaticParams() {
     }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
     try {
-        const post = getPostBySlug(params.slug);
+        const { slug } = await params;
+        const post = getPostBySlug(slug);
+        const image = absoluteUrl(OG_DEFAULT_IMAGE);
         return {
             title: post.title,
-            description: post.content.substring(0, 160).replace(/\s+/g, ' ').trim() + '...',
+            description: post.excerpt,
+            alternates: { canonical: `/blog/${post.slug}` },
+            openGraph: {
+                title: post.title,
+                description: post.excerpt,
+                url: absoluteUrl(`/blog/${post.slug}`),
+                type: 'article',
+                publishedTime: new Date(post.date).toISOString(),
+                authors: [SITE_CONFIG.author],
+                tags: post.tags,
+                images: [{ url: image }],
+            },
+            twitter: {
+                card: 'summary_large_image',
+                title: post.title,
+                description: post.excerpt,
+                images: [image],
+            },
         };
     } catch {
         return {};
     }
 }
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
-    const { slug } = params;
+function loadPost(slug: string) {
     try {
-        const post = getPostBySlug(slug);
+        return getPostBySlug(slug);
+    } catch {
+        return null;
+    }
+}
 
-        const relatedPosts = post.relatedPosts
-            ? post.relatedPosts.map((relSlug) => {
-                try { return getPostBySlug(relSlug); } catch { return null; }
-            }).filter(Boolean)
-            : [];
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params;
+    const post = loadPost(slug);
+    if (!post) {
+        notFound();
+    }
 
-        return (
-            <article style={{ paddingTop: '120px', paddingBottom: '4rem', maxWidth: '1200px', margin: '0 auto', padding: '120px 2.5rem 4rem' }}>
+    const relatedPosts = (post.relatedPosts ?? [])
+        .map((relSlug) => loadPost(relSlug))
+        .filter(Boolean);
+
+    return (
+            <article className="blog-post">
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{
-                        __html: JSON.stringify({
-                            "@context": "https://schema.org",
-                            "@type": "BlogPosting",
-                            "headline": post.title,
-                            "datePublished": new Date(post.date).toISOString(),
-                            "author": [{
-                                "@type": "Person",
-                                "name": "Joost Helfers",
-                                "url": "https://joosthelfers.com"
-                            }]
-                        })
+                        __html: JSON.stringify(toJsonLd(
+                            blogPostingSchema(post),
+                            breadcrumbSchema([
+                                { name: 'Home', path: '/' },
+                                { name: 'Writing', path: '/blog' },
+                                { name: post.title, path: `/blog/${post.slug}` },
+                            ])
+                        ))
                     }}
                 />
-                <Link
-                    href="/blog"
-                    style={{ fontSize: '0.8125rem', color: 'var(--text-tertiary)', marginBottom: '2rem', display: 'inline-block' }}
-                >
+                <Link href="/blog" className="blog-post-back">
                     ← Back
                 </Link>
-                <header style={{ marginBottom: '2.5rem' }}>
-                    <h1 style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2rem)', marginBottom: '0.75rem' }}>{post.title}</h1>
-                    <div style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '0.75rem',
-                        fontFamily: "'Doto'",
-                        fontSize: '0.75rem',
-                        color: 'var(--text-tertiary)',
-                        letterSpacing: '0.02em',
-                    }}>
+                <header className="blog-post-header">
+                    <h1>{post.title}</h1>
+                    <div className="blog-meta">
                         <time>
                             {new Date(post.date).toLocaleDateString("en-US", {
                                 year: "numeric",
                                 month: "long",
                                 day: "numeric",
+                                timeZone: "UTC",
                             })}
                         </time>
                         <span>·</span>
@@ -85,28 +102,16 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
                         )}
                     </div>
                 </header>
-                <div className="prose prose-lg max-w-none" style={{ maxWidth: '680px' }}>
+                <div className="prose prose-lg max-w-none blog-post-body">
                     <MDXRemote source={post.content} />
                 </div>
 
                 {relatedPosts.length > 0 && (
-                    <div style={{ marginTop: '4rem', paddingTop: '2rem', borderTop: '1px solid var(--border)', maxWidth: '680px' }}>
-                        <h3 style={{
-                            fontFamily: "'Doto'",
-                            fontSize: '0.6875rem',
-                            letterSpacing: '0.06em',
-                            textTransform: 'uppercase',
-                            color: 'var(--text-tertiary)',
-                            marginBottom: '1rem',
-                        }}>Related</h3>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                    <div className="blog-related">
+                        <h3 className="blog-related-heading">Related</h3>
+                        <div className="blog-related-list">
                             {relatedPosts.map((rp) => rp && (
-                                <Link key={rp.slug} href={`/blog/${rp.slug}`} style={{
-                                    fontSize: '0.9375rem',
-                                    fontFamily: "'Doto'",
-                                    fontWeight: 600,
-                                    color: 'var(--text-primary)',
-                                }}>
+                                <Link key={rp.slug} href={`/blog/${rp.slug}`}>
                                     {rp.title} →
                                 </Link>
                             ))}
@@ -114,8 +119,5 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
                     </div>
                 )}
             </article>
-        );
-    } catch (error) {
-        notFound();
-    }
+    );
 }
