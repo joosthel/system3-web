@@ -1,0 +1,16 @@
+/* TEAM */
+Creative Technologist: Joost Helfers
+Site: https://joosthelfers.com
+Location: Berlin, Germany
+Contact: mail [at] joosthelfers.com
+LinkedIn: https://linkedin.com/in/joosthel
+GitHub: https://github.com/joosthel
+
+/* SITE */
+Stack: Next.js, TypeScript, Tailwind CSS
+Hosting: GitHub Pages
+Fonts: Doto, Inter
+Last update: 2026/06/09
+
+/* THANKS */
+XD Network — https://xdnet.work/

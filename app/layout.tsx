@@ -25,11 +25,13 @@ export const metadata: Metadata = {
         siteName: SITE_CONFIG.title,
         locale: 'en_US',
         type: 'website',
+        images: [{ url: '/assets/imgs/og-default.png', width: 1200, height: 630 }],
     },
     twitter: {
         card: 'summary_large_image',
         title: SITE_CONFIG.title,
         description: SITE_CONFIG.description,
+        images: ['/assets/imgs/og-default.png'],
     },
     alternates: {
         canonical: '/',
@@ -58,13 +60,15 @@ export default function RootLayout({
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
                 <link href="https://fonts.googleapis.com/css2?family=Doto:wght@400;500;600;700&display=swap" rel="stylesheet" />
-                <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+                <script async type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
                 <link rel="icon" type="image/png" href="/assets/favicon/favicon-96x96.png" sizes="96x96" />
                 <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg" />
                 <link rel="shortcut icon" href="/assets/favicon/favicon.ico" />
                 <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png" />
                 <meta name="apple-mobile-web-app-title" content="JH" />
                 <link rel="manifest" href="/assets/favicon/site.webmanifest" />
+                <link rel="alternate" type="application/rss+xml" title="Joost Helfers. Writing." href="/feed.xml" />
+                <link rel="alternate" type="application/feed+json" title="Joost Helfers. Writing." href="/feed.json" />
             </head>
             <body>
                 <GoogleAnalytics gaId="G-FV9Q5RL89T" />

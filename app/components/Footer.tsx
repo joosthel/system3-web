@@ -42,7 +42,7 @@ export default function Footer() {
                             <span className="footer-nav-heading">Navigate</span>
                             <Link href="/#work">Work</Link>
                             <Link href="/#services">Expertise</Link>
-                            <Link href="/#about">About</Link>
+                            <Link href="/about">About</Link>
                             <Link href="/blog">Writing</Link>
                         </nav>
 
@@ -58,6 +58,7 @@ export default function Footer() {
                             >
                                 CV (PDF)
                             </TrackedLink>
+                            <a href="/feed.xml">RSS</a>
                         </nav>
                     </div>
                 </div>

@@ -1,3 +1,18 @@
+import type { Metadata } from 'next';
+import { OG_DEFAULT_IMAGE } from '@/lib/metadata';
+
+export const metadata: Metadata = {
+    title: 'Imprint',
+    description: 'Legal information for joosthelfers.com.',
+    alternates: { canonical: '/imprint' },
+    openGraph: {
+        title: 'Imprint | Joost Helfers',
+        description: 'Legal information for joosthelfers.com.',
+        url: '/imprint',
+        type: 'website',
+        images: [{ url: OG_DEFAULT_IMAGE, width: 1200, height: 630 }],
+    },
+};
 
 export default function Imprint() {
     return (

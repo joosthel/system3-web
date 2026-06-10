@@ -1,31 +1,10 @@
-import { SITE_CONFIG } from '@/lib/constants';
+import { personSchema, webSiteSchema, toJsonLd } from '@/lib/schema';
 
 export default function JsonLd() {
-    const jsonLd = {
-        '@context': 'https://schema.org',
-        '@type': 'Person',
-        name: SITE_CONFIG.author,
-        url: SITE_CONFIG.url,
-        sameAs: SITE_CONFIG.sameAs,
-        jobTitle: SITE_CONFIG.jobTitle,
-        worksFor: {
-            '@type': 'Organization',
-            name: 'Freelance',
-        },
-        description: SITE_CONFIG.description,
-        knowsAbout: [
-            "Creative Technology",
-            "AI Strategy",
-            "3D Design",
-            "Workflow Automation",
-            "Creative Coding"
-        ]
-    };
-
     return (
         <script
             type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(toJsonLd(personSchema(), webSiteSchema())) }}
         />
     );
 }

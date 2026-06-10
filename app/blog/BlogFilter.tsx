@@ -12,9 +12,7 @@ interface BlogPost {
     readTime: number;
 }
 
-const TAG_OPTIONS = ["Technical", "Strategy", "Process", "Opinion"];
-
-export default function BlogFilter({ posts }: { posts: BlogPost[] }) {
+export default function BlogFilter({ posts, tags }: { posts: BlogPost[]; tags: string[] }) {
     const [activeTag, setActiveTag] = useState<string | null>(null);
 
     const filtered = activeTag
@@ -23,14 +21,14 @@ export default function BlogFilter({ posts }: { posts: BlogPost[] }) {
 
     return (
         <>
-            <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '2.5rem', flexWrap: 'wrap' }}>
+            <div className="blog-filter-row">
                 <button
                     onClick={() => setActiveTag(null)}
                     className={`tag-filter ${!activeTag ? "tag-filter-active" : ""}`}
                 >
                     All
                 </button>
-                {TAG_OPTIONS.map((tag) => (
+                {tags.map((tag) => (
                     <button
                         key={tag}
                         onClick={() => setActiveTag(activeTag === tag ? null : tag)}
@@ -42,37 +40,15 @@ export default function BlogFilter({ posts }: { posts: BlogPost[] }) {
             </div>
             <div>
                 {filtered.map((post) => (
-                    <Link key={post.slug} href={`/blog/${post.slug}`} style={{
-                        display: 'block',
-                        borderBottom: '1px solid var(--border)',
-                        padding: '1.5rem 0',
-                        textDecoration: 'none',
-                        transition: 'opacity 0.15s ease',
-                    }}>
-                        <h2 style={{
-                            fontSize: '1rem',
-                            fontWeight: 600,
-                            fontFamily: "'Doto'",
-                            marginBottom: '0.375rem',
-                            color: 'var(--text-primary)',
-                        }}>
-                            {post.title}
-                        </h2>
-                        <div style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '0.75rem',
-                            fontSize: '0.75rem',
-                            fontFamily: "'Doto'",
-                            color: 'var(--text-tertiary)',
-                            letterSpacing: '0.02em',
-                            marginBottom: '0.5rem',
-                        }}>
+                    <Link key={post.slug} href={`/blog/${post.slug}`} className="blog-list-item">
+                        <h2>{post.title}</h2>
+                        <div className="blog-meta">
                             <time>
                                 {new Date(post.date).toLocaleDateString("en-US", {
                                     year: "numeric",
                                     month: "short",
                                     day: "numeric",
+                                    timeZone: "UTC",
                                 })}
                             </time>
                             <span>·</span>
@@ -84,16 +60,11 @@ export default function BlogFilter({ posts }: { posts: BlogPost[] }) {
                                 </>
                             )}
                         </div>
-                        <p style={{
-                            fontSize: '0.875rem',
-                            color: 'var(--text-secondary)',
-                            lineHeight: 1.6,
-                            marginBottom: 0,
-                        }}>{post.excerpt}</p>
+                        <p>{post.excerpt}</p>
                     </Link>
                 ))}
                 {filtered.length === 0 && (
-                    <p style={{ color: 'var(--text-tertiary)', fontSize: '0.875rem' }}>No posts found for this tag.</p>
+                    <p className="blog-empty">No posts found for this tag.</p>
                 )}
             </div>
         </>

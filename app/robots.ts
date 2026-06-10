@@ -1,6 +1,31 @@
 import { MetadataRoute } from 'next';
 import { SITE_CONFIG } from '@/lib/constants';
 
+export const dynamic = 'force-static';
+
+// AI crawlers explicitly allowed for Generative Engine Optimization (GEO).
+const AI_CRAWLERS = [
+    'Googlebot',
+    'Google-Extended',
+    'Bingbot',
+    'GPTBot',
+    'OAI-SearchBot',
+    'ChatGPT-User',
+    'ClaudeBot',
+    'Claude-User',
+    'Claude-SearchBot',
+    'anthropic-ai',
+    'PerplexityBot',
+    'Perplexity-User',
+    'Applebot',
+    'Applebot-Extended',
+    'CCBot',
+    'meta-externalagent',
+    'FacebookBot',
+    'Amazonbot',
+    'DuckAssistBot',
+];
+
 export default async function robots(): Promise<MetadataRoute.Robots> {
     return {
         rules: [
@@ -9,9 +34,8 @@ export default async function robots(): Promise<MetadataRoute.Robots> {
                 allow: '/',
                 disallow: '/private/',
             },
-            // Explicitly allow AI bots for Generative Engine Optimization (GEO)
             {
-                userAgent: ['Googlebot', 'GPTBot', 'Applebot', 'CCBot'],
+                userAgent: AI_CRAWLERS,
                 allow: '/',
             }
         ],
