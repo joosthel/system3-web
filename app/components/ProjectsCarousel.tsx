@@ -11,10 +11,11 @@ export default function ProjectsCarousel({ projects }: { projects: Project[] }) 
         if (carouselRef.current) {
             const { current } = carouselRef;
             const scrollAmount = current.clientWidth * 0.8; // Scroll 80% of view width
+            const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
             current.scrollBy({
                 left: direction === 'left' ? -scrollAmount : scrollAmount,
-                behavior: 'smooth'
+                behavior: reducedMotion ? 'auto' : 'smooth'
             });
         }
     };

@@ -90,10 +90,10 @@ export default async function Home() {
                             <h2>Capabilities</h2>
                         </div>
                     </RevealOnScroll>
-                    <div className="services-grid">
-                        {SERVICES.map((service, i) => (
-                            <RevealOnScroll key={service.id} delay={i * 80}>
-                                <div className="service-card">
+                    <RevealOnScroll delay={100}>
+                        <div className="services-grid">
+                            {SERVICES.map((service) => (
+                                <div className="service-card" key={service.id}>
                                     <div className="service-image">
                                         <img src={service.image} alt={service.title} width="800" height="600" loading="lazy" />
                                     </div>
@@ -107,9 +107,9 @@ export default async function Home() {
                                         </div>
                                     </div>
                                 </div>
-                            </RevealOnScroll>
-                        ))}
-                    </div>
+                            ))}
+                        </div>
+                    </RevealOnScroll>
                 </div>
             </section>
 
