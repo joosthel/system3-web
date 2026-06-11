@@ -11,22 +11,25 @@ const nextConfig = {
   outputFileTracingIncludes: {
     '/api/[transport]': ['./content/blog/*.mdx'],
   },
-  // RFC 8288 Link headers for agent discovery (registered IANA rels only).
+  // RFC 8288 Link headers for agent discovery (registered IANA rels only),
+  // plus Vary: Accept on the pages that content-negotiate markdown via
+  // proxy.ts (matcher list mirrored there).
   async headers() {
+    const linkHeader = {
+      key: 'Link',
+      value: [
+        `<${SITE_URL}/.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json"`,
+        `<${SITE_URL}/llms.txt>; rel="service-doc"; type="text/plain"`,
+        `<${SITE_URL}/.well-known/agent-card.json>; rel="describedby"; type="application/json"`,
+      ].join(', '),
+    };
+    const negotiated = ['/', '/about', '/agents', '/blog', '/blog/:slug', '/projects/:slug'];
     return [
-      {
-        source: '/:path*',
-        headers: [
-          {
-            key: 'Link',
-            value: [
-              `<${SITE_URL}/.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json"`,
-              `<${SITE_URL}/llms.txt>; rel="service-doc"; type="text/plain"`,
-              `<${SITE_URL}/.well-known/agent-card.json>; rel="describedby"; type="application/json"`,
-            ].join(', '),
-          },
-        ],
-      },
+      { source: '/:path*', headers: [linkHeader] },
+      ...negotiated.map((source) => ({
+        source,
+        headers: [{ key: 'Vary', value: 'Accept' }],
+      })),
     ];
   },
 };
