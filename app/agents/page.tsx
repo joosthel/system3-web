@@ -100,6 +100,15 @@ export default function AgentsPage() {
                         ))}
                     </ul>
 
+                    <h2>Markdown and in-browser tools</h2>
+                    <p>
+                        Every page here returns markdown when requested with an{' '}
+                        <code>Accept: text/markdown</code> header; browsers keep getting
+                        HTML. In browsers that support WebMCP, the site also registers a
+                        small set of tools (profile, projects, search) through{' '}
+                        <code>navigator.modelContext</code>.
+                    </p>
+
                     <h2>Contact</h2>
                     <p>
                         Automated and agent-initiated mail goes to{' '}

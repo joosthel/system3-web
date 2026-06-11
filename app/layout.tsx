@@ -47,6 +47,7 @@ export const viewport: Viewport = {
 };
 
 import JsonLd from './components/JsonLd';
+import WebMcpProvider from './components/WebMcpProvider';
 import { Analytics } from '@vercel/analytics/next';
 
 export default function RootLayout({
@@ -73,6 +74,7 @@ export default function RootLayout({
             <body>
                 <Analytics />
                 <JsonLd />
+                <WebMcpProvider />
                 <Header />
                 <main className="page-content">{children}</main>
                 <Footer />
