@@ -1,7 +1,7 @@
 # system3-web — joosthelfers.com
 
-Personal portfolio of Joost Helfers, Berlin-based creative technologist (AI visual
-production, generative pipelines, digital platforms).
+Personal portfolio of Joost Helfers, Berlin-based creative technologist and AI artist
+(AI visuals and film, generative pipelines, agentic systems).
 
 ## Stack & deployment
 
@@ -57,6 +57,8 @@ credits, keep the honest qualifier: some work shipped via agencies that held the
 
 - Brand credits line (Lindt, Zeiss, Google, Bosch, CADFEM, Souly) is "direct and via
   agencies" — do not phrase as direct client relationships.
-- XD Network (https://xdnet.work/) is a Berlin collective; Joost is a core member.
-  Event formats: SOIREE XD, Science of Rave, Demo Days, Mono XD.
+- XD Network was removed from all site copy in June 2026 (Joost is unsure about
+  staying in the collective). Do not re-add it anywhere without asking him.
+- Three.js is not a core skill: it was used on one project (INYO digital twin). It may
+  appear as a tag on the INYO project pages only, never in bio, stack, or service copy.
 - Two projects are NDA ("NDA. Process only.") — never name those clients.

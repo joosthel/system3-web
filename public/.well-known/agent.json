@@ -1,6 +1,6 @@
 {
   "name": "Joost Helfers",
-  "description": "Berlin-based creative technologist specializing in AI visual production, automation pipelines, and technical AI solutions for agencies, studios, and product teams.",
+  "description": "Berlin-based creative technologist and AI artist. AI visuals and film, generative pipelines, and agentic systems for brands, agencies, studios, and product teams.",
   "url": "https://joosthelfers.com",
   "entry_point": "https://joosthelfers.com/llms.txt",
   "capabilities": ["content", "portfolio", "blog", "feeds", "mcp"],

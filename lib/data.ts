@@ -108,30 +108,30 @@ export const ACTIVE_PROJECTS: ActiveProject[] = [
 export const SERVICES = [
     {
         id: 'ai-visuals',
-        title: 'AI Visual Production',
-        description: 'Campaign-grade AI visuals and video. I work with generative models to produce imagery that meets the accuracy and quality demands of real brand work. Product consistency across shots, readable text in-frame, and coherent art direction from one hero image to the next.',
+        title: 'AI Visual Production & AI Film',
+        description: 'Campaign-grade AI visuals, video, and film. I work with generative models to produce imagery that meets the accuracy and quality demands of real brand work. Product consistency across shots, readable text in-frame, and coherent art direction from the first hero image to the final edit.',
         image: '/assets/imgs/services/service_cgi.webp',
-        tags: ['Generative AI', 'ComfyUI', 'Prompt Engineering', 'Video Production', 'Campaign Visuals', 'Brand Imagery']
+        tags: ['Generative AI', 'AI Film', 'ComfyUI', 'Prompt Engineering', 'Video Production', 'Campaign Visuals', 'Brand Imagery']
     },
     {
         id: 'automation',
-        title: 'AI Automation & Custom Pipelines',
-        description: 'I build custom, scalable pipelines that automate the repetitive parts of design and content production. The result is faster turnaround, reliable outputs, and a clear path from an idea to a shippable asset. Built with ComfyUI, Python, and cloud infrastructure that teams can actually run.',
+        title: 'Generative Pipelines & Creative Infrastructure',
+        description: 'Custom, scalable pipelines that automate the repetitive parts of design and content production. The result is faster turnaround, reliable outputs, and a clear path from an idea to a shippable asset. Built with ComfyUI, Python, and cloud infrastructure that teams can actually run.',
         image: '/assets/imgs/services/service_truck.webp',
-        tags: ['ComfyUI', 'Generative Workflows', 'AI Integration', 'Python', 'Custom LoRAs', 'Cloud Integration', 'R&D', 'Agentic Workflows', 'AI Strategy']
-    },
-    {
-        id: 'digital-platforms',
-        title: 'Real-Time & Digital Twin Platforms',
-        description: 'I design functional environments where data and space meet. Digital twins and interactive configurators that make complex systems legible for engineering, sales, and storytelling. Built with React, Three.js, and the rest of the modern web stack.',
-        image: '/assets/imgs/services/service_digital-twin.webp',
-        tags: ['Digital Twin Development', 'React / Next.js', 'Three.js', 'Unreal Engine', 'Data Integration', 'Platform Development']
+        tags: ['ComfyUI', 'Generative Workflows', 'AI Integration', 'Python', 'Custom LoRAs', 'Cloud Integration', 'R&D', 'AI Strategy']
     },
     {
         id: 'agentic-presence',
-        title: 'Agentic Web Presence & GEO',
+        title: 'Agentic Systems & GEO',
         description: 'I make brands and portfolios readable for AI agents: llms.txt, structured data, machine-readable feeds, and MCP servers that let assistants query your content directly. More and more buying decisions start with a question to ChatGPT, Claude, or Perplexity instead of a search box; this is how you show up in the answer. Everything I offer here runs in production on this site first.',
         image: '/assets/imgs/lab/genai_screens.webp',
-        tags: ['GEO', 'llms.txt', 'MCP Servers', 'Structured Data', 'JSON-LD', 'Agent Discovery', 'Next.js']
+        tags: ['GEO', 'llms.txt', 'MCP Servers', 'Agentic Workflows', 'Structured Data', 'JSON-LD', 'Agent Discovery', 'Next.js']
+    },
+    {
+        id: 'digital-platforms',
+        title: 'Interactive Platforms & Creative Tools',
+        description: 'Functional environments where data and space meet. Digital twins, interactive configurators, and internal creative tools that make complex systems legible for engineering, sales, and storytelling. Built with React and the modern web stack.',
+        image: '/assets/imgs/services/service_digital-twin.webp',
+        tags: ['Digital Twin Development', 'Interactive Configurators', 'React / Next.js', 'Real-Time 3D', 'Unreal Engine', 'Data Integration', 'Platform Development']
     }
 ];

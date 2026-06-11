@@ -7,11 +7,11 @@ import TrackedLink from '../components/TrackedLink';
 
 export const metadata: Metadata = {
     title: 'About',
-    description: 'Joost Helfers is a Berlin-based creative technologist focused on AI visual production, generative pipelines, and platforms teams can run themselves.',
+    description: 'Joost Helfers is a Berlin-based creative technologist and AI artist focused on AI visuals and film, generative pipelines, and agentic systems.',
     alternates: { canonical: '/about' },
     openGraph: {
         title: 'About | Joost Helfers',
-        description: 'Berlin-based creative technologist focused on AI visual production, generative pipelines, and platforms teams can run themselves.',
+        description: 'Berlin-based creative technologist and AI artist focused on AI visuals and film, generative pipelines, and agentic systems.',
         url: '/about',
         type: 'profile',
         images: [{ url: OG_DEFAULT_IMAGE, width: 1200, height: 630 }],
@@ -33,29 +33,29 @@ export default function AboutPage() {
 
                 <div className="about-page-content">
                     <p>
-                        I am a creative technologist in Berlin. I help agencies, studios, and product teams move from AI experiments to production work. Campaign visuals that hold up under a brand name, generative pipelines that hold up under real deadlines, and platforms other people can use without me in the room.
+                        I am a creative technologist and AI artist in Berlin. I help brands, agencies, studios, and product teams turn generative AI into production work. Campaign visuals and film that hold up under a brand name, generative pipelines that hold up under real deadlines, and platforms other people can use without me in the room.
                     </p>
 
                     <p>
-                        My background is in architecture and computational design (MSc, DesignMorphine). Before going independent I built digital twins and 3D platforms at INYO Mobility. Today most of my work is AI visual production and technical AI systems. In practice that means generative pipelines in ComfyUI, prompt engineering at production scale, and full-stack AI tooling with Next.js, Python, and Three.js.
+                        My background is in architecture and computational design (MSc, DesignMorphine). Before going independent I built digital twins and 3D platforms at INYO Mobility. Today most of my work is AI visual production and AI systems. In practice that means generative pipelines in ComfyUI, prompt engineering at production scale, and full-stack AI tooling with Next.js and Python.
                     </p>
 
                     <p>
                         Along the way, work I produced or contributed to has shipped for brands including Lindt, Zeiss, Google, Bosch, CADFEM, and Souly. Some of that came through direct projects, some through the agencies and studios that held the contract. The <Link href="/#work">selected work</Link> section shows how I approach projects in more detail.
                     </p>
 
-                    <h2>XD Network</h2>
+                    <h2>The art side</h2>
                     <p>
-                        Outside of client work I am a core member of <a href="https://xdnet.work/" target="_blank" rel="noopener noreferrer">XD Network</a>, a Berlin collective running community-led events around new technology and culture. That includes SOIREE XD, an ongoing talk series on early signs of disruption in business, design, art, and culture, plus formats like Science of Rave and Demo Days.
+                        Not everything here is client work. I make AI film and visual experiments of my own, like the hybrid music video for Souly and Boondawg, and my roots are in computational design and parametric architecture. That side of the practice feeds the client side: most techniques I use on brand work started as an experiment without a brief.
                     </p>
 
                     <figure className="about-page-figure">
                         <img
-                            src="/assets/imgs/proj_soireexd/SoireeXD-thumbnail.webp"
-                            alt="SOIREE XD, an XD Network event series in Berlin"
+                            src="/assets/imgs/proj_Souly-Boondawg-igotthisfeelling/Souly-Boondawg_igotthisfeeling-02.webp"
+                            alt="Still from the Souly and Boondawg hybrid AI music video"
                             loading="lazy"
                         />
-                        <figcaption>SOIREE XD, an XD Network event series</figcaption>
+                        <figcaption>Souly &amp; Boondawg, I got this feeling. Hybrid AI music video.</figcaption>
                     </figure>
 
                     <h2>Built for the agentic web</h2>

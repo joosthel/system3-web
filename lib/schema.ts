@@ -50,12 +50,6 @@ export function personSchema() {
             '@type': 'EducationalOrganization',
             name: 'DesignMorphine',
         },
-        memberOf: {
-            '@type': 'Organization',
-            name: 'XD Network',
-            url: 'https://xdnet.work/',
-            description: 'Berlin collective running community-led events around new technology and culture',
-        },
         knowsAbout: [
             'Generative AI',
             'AI Visual Production',
@@ -66,7 +60,8 @@ export function personSchema() {
             'Model Context Protocol',
             'Digital Twins',
             'Creative Technology',
-            'Three.js',
+            'AI Film',
+            'AI Systems',
             'Next.js',
             'Python',
             'Computational Design',

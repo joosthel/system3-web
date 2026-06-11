@@ -58,12 +58,10 @@ const handler = createMcpHandler(
                     role: SITE_CONFIG.jobTitle,
                     location: 'Berlin, Germany',
                     summary:
-                        'Berlin-based creative technologist. Helps agencies, studios, and product teams move from AI experiments to production work: campaign-grade AI visuals, generative pipelines, and platforms teams can run themselves. Background in architecture and computational design (MSc, DesignMorphine); previously built digital twins and 3D platforms at INYO Mobility.',
+                        'Berlin-based creative technologist and AI artist. Helps brands, agencies, studios, and product teams turn generative AI into production work: campaign-grade AI visuals and film, generative pipelines, and platforms teams can run themselves. Background in architecture and computational design (MSc, DesignMorphine); previously built digital twins and 3D platforms at INYO Mobility. Alongside client work he makes AI film and visual experiments of his own.',
                     services: SERVICES.map((s) => ({ id: s.id, title: s.title })),
                     brandCredits:
                         'Lindt, Zeiss, Google, Bosch, CADFEM, Souly — direct and via agencies/studios that held the contract.',
-                    community:
-                        'Core member of XD Network (https://xdnet.work/), a Berlin collective running community-led events around new technology and culture (SOIREE XD, Science of Rave, Demo Days, Mono XD).',
                     contact: {
                         humans: SITE_CONFIG.email,
                         agents: {
@@ -197,7 +195,7 @@ const handler = createMcpHandler(
     {
         serverInfo: { name: 'joosthelfers-portfolio', version: '1.0.0' },
         capabilities: { tools: {} },
-        instructions: `Read-only portfolio server for Joost Helfers, a Berlin-based creative technologist (AI visual production, generative pipelines, digital platforms). Use get_profile for bio and contact, list_projects/get_project for case studies, list_posts/get_post for writing, and search_content for keyword lookups. For automated outreach, email ${SITE_CONFIG.agentEmail}. Endpoint: ${MCP_ENDPOINT}.`,
+        instructions: `Read-only portfolio server for Joost Helfers, a Berlin-based creative technologist and AI artist (AI visuals and film, generative pipelines, agentic systems). Use get_profile for bio and contact, list_projects/get_project for case studies, list_posts/get_post for writing, and search_content for keyword lookups. For automated outreach, email ${SITE_CONFIG.agentEmail}. Endpoint: ${MCP_ENDPOINT}.`,
     },
     {
         basePath: '/api',

@@ -42,14 +42,12 @@ export async function GET() {
 
     const body = `# Joost Helfers — Full Content for LLMs
 
-> Berlin-based creative technologist specializing in AI visual production and technical AI solutions. This file contains the full text of the portfolio and blog at ${SITE_CONFIG.url}. A shorter overview lives at ${SITE_CONFIG.url}/llms.txt.
+> Berlin-based creative technologist and AI artist. AI visuals and film, generative pipelines, and agentic systems. This file contains the full text of the portfolio and blog at ${SITE_CONFIG.url}. A shorter overview lives at ${SITE_CONFIG.url}/llms.txt.
 
 ## About
-Joost Helfers helps agencies, studios, and product teams turn complex AI ideas into campaign-grade visuals, working pipelines, and deployed platforms. Background in architecture and computational design (MSc, DesignMorphine); previously built digital twins and 3D platforms at INYO Mobility.
+Joost Helfers helps brands, agencies, studios, and product teams turn generative AI into production work: campaign-grade visuals and film, working pipelines, and deployed platforms. Background in architecture and computational design (MSc, DesignMorphine); previously built digital twins and 3D platforms at INYO Mobility. Alongside client work he makes AI film and visual experiments of his own.
 
 Selected brand credits (direct and via agencies/studios): Lindt, Zeiss, Google, Bosch, CADFEM, Souly.
-
-Core member of XD Network (https://xdnet.work/), a Berlin collective running community-led events around new technology and culture.
 
 Contact: ${SITE_CONFIG.email} (humans) · ${SITE_CONFIG.agentEmail} (AI agents and automated outreach) · ${SITE_CONFIG.url}/about
 

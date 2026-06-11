@@ -54,11 +54,11 @@ Three clusters that match the positioning. Cross-link new posts through the
 
 ## 3. Positioning arc
 
-- **Now**: "I build AI systems that actually ship." Proof: portfolio,
+- **Now** (updated June 2026): "AI visuals, pipelines, and agents. Built to
+  ship." Identity: creative technologist & AI artist. Proof: portfolio,
   brand credits line, live Prompt Enhancement Engine.
 - **Next 6 months**: accumulate named proof. More public case studies in the
-  T-Cell mold, testimonials where clients allow it, XD Network visibility
-  (events are public, citable, and Berlin-local).
+  T-Cell mold, testimonials where clients allow it.
 - **12 months**: the GEO/agentic-presence cluster positions Joost as someone
   who builds and explains agent-readable brand presence. That feeds directly
   into an "agentic presence" service offer (MCP apps, GEO audits) on top of
@@ -67,8 +67,6 @@ Three clusters that match the positioning. Cross-link new posts through the
 ## 4. Site backlog (small, non-urgent)
 
 - Portrait photo for the Person schema `image` property and the about page.
-- A SOIREE XD project page if there is shareable work from the events
-  (a thumbnail already exists in `public/assets/imgs/proj_soireexd/`).
 - A "Lab" page for the experiments in `public/assets/imgs/lab/` (28 unused
   generative images): cheap proof of ongoing exploration.
 - JPG copies of project hero images if LinkedIn previews of webp ever

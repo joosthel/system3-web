@@ -20,15 +20,12 @@ export async function GET() {
 
     const body = `# Joost Helfers
 
-> Berlin-based creative technologist specializing in AI visual production and technical AI solutions.
+> Berlin-based creative technologist and AI artist. AI visuals and film, generative pipelines, and agentic systems for brands, agencies, studios, and product teams.
 
 ## About
-Joost Helfers helps agencies, studios, and product teams turn complex AI ideas into campaign-grade visuals, working pipelines, and deployed platforms. Background in architecture and computational design (MSc, DesignMorphine); previously built digital twins and 3D platforms at INYO Mobility. Now focused on AI visual production and technical AI solutions: generative pipelines, prompt engineering, and full-stack AI tooling.
+Joost Helfers helps brands, agencies, studios, and product teams turn generative AI into production work: campaign-grade visuals and film, working pipelines, and deployed platforms. Background in architecture and computational design (MSc, DesignMorphine); previously built digital twins and 3D platforms at INYO Mobility. Now focused on AI visual production, generative pipelines, and agentic systems. Alongside client work he makes AI film and visual experiments of his own.
 
 Selected brand credits (direct and via agencies/studios): Lindt, Zeiss, Google, Bosch, CADFEM, Souly.
-
-## Community
-Core member of XD Network (https://xdnet.work/), a Berlin collective running community-led events around new technology and culture, including the SOIREE XD talk series, Science of Rave, and Demo Days.
 
 ## Contact
 - Email (humans): ${SITE_CONFIG.email}
@@ -40,8 +37,9 @@ Core member of XD Network (https://xdnet.work/), a Berlin collective running com
 - GitHub: ${SITE_CONFIG.github}
 
 ## Tech Stack
-- Frontend: Next.js, TypeScript, React, Three.js, Tailwind CSS
-- AI/ML: ComfyUI, Stable Diffusion, OpenRouter, custom LoRAs, prompt engineering
+- AI visuals: ComfyUI, Stable Diffusion, OpenRouter, custom LoRAs, prompt engineering
+- AI systems: MCP servers, agentic workflows, structured data, GEO
+- Web: Next.js, TypeScript, React, Tailwind CSS
 - Backend: Python, Node.js, API design
 - Infrastructure: Vercel, cloud GPU pipelines
 - Design: Houdini, Blender, computational/parametric design

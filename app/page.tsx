@@ -17,14 +17,14 @@ export default async function Home() {
                 <div className="hero-content">
                     <div className="hero-text">
                         <div className="hero-intro">
-                            <span className="label hero-label">Creative technologist. Berlin.</span>
+                            <span className="label hero-label">Creative technologist & AI artist. Berlin.</span>
                             <h1 className="hero-title">
-                                I build AI systems<br />that actually ship.
+                                AI visuals, pipelines, and agents.<br />Built to ship.
                             </h1>
                         </div>
 
                         <div className="hero-description">
-                            <p>I help agencies, studios, and product teams move from interesting AI experiments to production work. Campaign visuals that hold up under a brand name. Pipelines that hold up under real deadlines. Platforms other people can use without me in the room.</p>
+                            <p>I help brands, agencies, and product teams turn generative AI into production work. Campaign visuals and film that hold up under a brand name. Pipelines that hold up under real deadlines. Agent-ready platforms people can use without me in the room.</p>
                         </div>
 
                         <div className="hero-actions">
@@ -180,7 +180,7 @@ export default async function Home() {
                         <span className="about-label">About</span>
                         <div>
                             <p>
-                                Background in architecture and computational design (MSc, DesignMorphine). Previously built digital twins and 3D platforms at INYO Mobility. Now focused on AI visual production and technical AI solutions. That means generative pipelines in ComfyUI, prompt engineering at production scale, and full-stack AI tooling with Next.js, Python, and Three.js. Based in Berlin, where I also help run <a href="https://xdnet.work/" target="_blank" rel="noopener noreferrer">XD Network</a>, a collective around new technology and culture.
+                                Background in architecture and computational design (MSc, DesignMorphine). Previously built digital twins and 3D platforms at INYO Mobility. Now based in Berlin and focused on AI visual production, generative pipelines, and agentic systems. That means campaign visuals and AI film, ComfyUI pipelines at production scale, and full-stack AI tooling with Next.js and Python. Alongside client work I make AI film and visual experiments of my own.
                             </p>
                             <p>
                                 Work I produced or contributed to has shipped for brands including Lindt, Zeiss, Google, Bosch, CADFEM, and Souly. Some directly, some through the agencies that held the contract.

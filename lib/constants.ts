@@ -1,20 +1,20 @@
 // Bump when homepage or other static-page copy changes; used for sitemap lastModified.
 // (Git dates are unreliable in CI: deploy builds use shallow clones.)
-export const SITE_LAST_UPDATED = '2026-06-10';
+export const SITE_LAST_UPDATED = '2026-06-11';
 
 export const SITE_CONFIG = {
-    title: "Joost Helfers. Creative Technologist. AI Visuals & Pipelines. Berlin.",
+    title: "Joost Helfers. Creative Technologist & AI Artist. AI Visuals, Pipelines & Agents. Berlin.",
     author: "Joost Helfers",
     email: "mail@joosthelfers.com",
     // Dedicated address for AI agents and automated outreach. Mail here is
     // expected to come from bots; a human reads it and replies.
     agentEmail: "llms@joosthelfers.com",
-    description: "Berlin-based creative technologist. I build AI visual pipelines, automation workflows, and interactive platforms for agencies, studios, and product teams.",
+    description: "Berlin-based creative technologist and AI artist. I make campaign-grade AI visuals and film, build generative pipelines and creative tooling, and set up agentic systems for brands, agencies, studios, and product teams.",
     url: "https://joosthelfers.com",
     github: "https://github.com/joosthel",
     instagram: "https://instagram.com/joosthel",
     linkedin: "https://linkedin.com/in/joosthel",
-    jobTitle: "Creative Technologist",
+    jobTitle: "Creative Technologist & AI Artist",
     sameAs: [
         "https://github.com/joosthel",
         "https://instagram.com/joosthel",
