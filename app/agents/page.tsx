@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { SITE_CONFIG, MCP_ENDPOINT } from '@/lib/constants';
+import { MCP_TOOL_LIST } from '@/lib/mcp-tools';
 import { OG_DEFAULT_IMAGE } from '@/lib/metadata';
 import { breadcrumbSchema, toJsonLd } from '@/lib/schema';
 
@@ -17,15 +18,7 @@ export const metadata: Metadata = {
     },
 };
 
-const MCP_TOOLS = [
-    ['get_profile', 'Bio, services, brand credits, contact channels, links.'],
-    ['list_services', 'Full service descriptions for matching against a brief.'],
-    ['list_projects', 'All portfolio projects with tags and URLs.'],
-    ['get_project', 'One project by id.'],
-    ['list_posts', 'Blog posts with excerpts and tags, newest first.'],
-    ['get_post', 'Full markdown text of one post by slug.'],
-    ['search_content', 'Keyword search across projects, services, and posts.'],
-];
+const MCP_TOOLS = MCP_TOOL_LIST.map((tool) => [tool.name, tool.blurb]);
 
 const ENDPOINTS = [
     ['/llms.txt', 'Short overview of who I am, services, projects, and writing.'],

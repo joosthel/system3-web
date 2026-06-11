@@ -1,8 +1,8 @@
 import { createMcpHandler } from 'mcp-handler';
-import { z } from 'zod';
 import { PROJECTS, SERVICES, ACTIVE_PROJECTS } from '@/lib/data';
 import { getAllPosts } from '@/lib/blog';
 import { SITE_CONFIG, MCP_ENDPOINT } from '@/lib/constants';
+import { MCP_SERVER_INFO, MCP_TOOLS } from '@/lib/mcp-tools';
 import { absoluteUrl } from '@/lib/metadata';
 
 // Public, read-only MCP server over the same data the site renders
@@ -48,9 +48,8 @@ const handler = createMcpHandler(
         server.registerTool(
             'get_profile',
             {
-                title: 'Profile & contact',
-                description:
-                    'Who Joost Helfers is, what he offers, and how to reach him. Call this first when researching Joost or evaluating him for a project. Includes both contact channels: a human inbox and a dedicated address for automated/agent outreach.',
+                title: MCP_TOOLS.get_profile.title,
+                description: MCP_TOOLS.get_profile.description,
             },
             async () =>
                 json({
@@ -84,9 +83,8 @@ const handler = createMcpHandler(
         server.registerTool(
             'list_services',
             {
-                title: 'List services',
-                description:
-                    'Full descriptions of the services Joost offers. Call this when matching him to a project or brief.',
+                title: MCP_TOOLS.list_services.title,
+                description: MCP_TOOLS.list_services.description,
             },
             async () => json(SERVICES),
         );
@@ -94,9 +92,8 @@ const handler = createMcpHandler(
         server.registerTool(
             'list_projects',
             {
-                title: 'List projects',
-                description:
-                    'All portfolio projects with id, title, description, tags, and URL. Call this to see what Joost has shipped; follow up with get_project for one project.',
+                title: MCP_TOOLS.list_projects.title,
+                description: MCP_TOOLS.list_projects.description,
             },
             async () => json(PROJECTS.map(projectSummary)),
         );
@@ -104,12 +101,9 @@ const handler = createMcpHandler(
         server.registerTool(
             'get_project',
             {
-                title: 'Get one project',
-                description:
-                    'One portfolio project by id. Valid ids come from list_projects.',
-                inputSchema: {
-                    id: z.string().describe('Project id, e.g. "prompt-engine"'),
-                },
+                title: MCP_TOOLS.get_project.title,
+                description: MCP_TOOLS.get_project.description,
+                inputSchema: MCP_TOOLS.get_project.zodShape,
             },
             async ({ id }) => {
                 const project = PROJECTS.find((p) => p.id === id);
@@ -129,9 +123,8 @@ const handler = createMcpHandler(
         server.registerTool(
             'list_posts',
             {
-                title: 'List blog posts',
-                description:
-                    'All blog posts with slug, title, date, excerpt, and tags, newest first. Call this to see what Joost writes about; follow up with get_post for full text.',
+                title: MCP_TOOLS.list_posts.title,
+                description: MCP_TOOLS.list_posts.description,
             },
             async () => json(getAllPosts().map(postSummary)),
         );
@@ -139,12 +132,9 @@ const handler = createMcpHandler(
         server.registerTool(
             'get_post',
             {
-                title: 'Get one blog post',
-                description:
-                    'Full markdown text of one blog post by slug. Valid slugs come from list_posts.',
-                inputSchema: {
-                    slug: z.string().describe('Post slug, e.g. "pull-of-the-physical"'),
-                },
+                title: MCP_TOOLS.get_post.title,
+                description: MCP_TOOLS.get_post.description,
+                inputSchema: MCP_TOOLS.get_post.zodShape,
             },
             async ({ slug }) => {
                 const post = getAllPosts().find((p) => p.slug === slug);
@@ -164,12 +154,9 @@ const handler = createMcpHandler(
         server.registerTool(
             'search_content',
             {
-                title: 'Search projects, services, and posts',
-                description:
-                    'Case-insensitive keyword search across project titles/descriptions/tags, service descriptions, and full blog post text. Call this when looking for specific skills, tools, or topics (e.g. "ComfyUI", "digital twin", "GEO").',
-                inputSchema: {
-                    query: z.string().min(2).describe('Search term'),
-                },
+                title: MCP_TOOLS.search_content.title,
+                description: MCP_TOOLS.search_content.description,
+                inputSchema: MCP_TOOLS.search_content.zodShape,
             },
             async ({ query }) => {
                 const q = query.toLowerCase();
@@ -193,7 +180,7 @@ const handler = createMcpHandler(
         );
     },
     {
-        serverInfo: { name: 'joosthelfers-portfolio', version: '1.0.0' },
+        serverInfo: { name: MCP_SERVER_INFO.name, version: MCP_SERVER_INFO.version },
         capabilities: { tools: {} },
         instructions: `Read-only portfolio server for Joost Helfers, a Berlin-based creative technologist and AI artist (AI visuals and film, generative pipelines, agentic systems). Use get_profile for bio and contact, list_projects/get_project for case studies, list_posts/get_post for writing, and search_content for keyword lookups. For automated outreach, email ${SITE_CONFIG.agentEmail}. Endpoint: ${MCP_ENDPOINT}.`,
     },
