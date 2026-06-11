@@ -29,7 +29,14 @@ const ENDPOINTS = [
     ['/feed.json', 'JSON Feed.'],
     ['/sitemap.xml', 'Sitemap with content dates.'],
     ['/.well-known/agent.json', 'Agent discovery file pointing at everything on this list.'],
-    ['/robots.txt', 'AI crawlers are explicitly allowed.'],
+    ['/.well-known/api-catalog', 'API catalog (RFC 9727) listing every machine endpoint.'],
+    ['/.well-known/mcp/server-card.json', 'MCP server card: tools and connection details.'],
+    ['/.well-known/agent-card.json', 'A2A-style agent card describing this content service.'],
+    ['/.well-known/agent-skills/index.json', 'Agent skills index with a how-to-query skill.'],
+    ['/openapi.json', 'OpenAPI 3.1 description of the JSON endpoints.'],
+    ['/api/health', 'Static health endpoint; a 200 means the deployment serves.'],
+    ['/auth.md', 'Authentication notes. Short version: there is none, everything is public.'],
+    ['/robots.txt', 'AI crawlers are explicitly allowed; content signals are fully open.'],
 ];
 
 export default function AgentsPage() {

@@ -55,6 +55,11 @@ ${posts}
 
 ## Machine-Readable Resources
 - MCP server (Streamable HTTP, public, read-only, no auth): ${MCP_ENDPOINT} — tools: get_profile, list_services, list_projects, get_project, list_posts, get_post, search_content
+- MCP server card: ${SITE_CONFIG.url}/.well-known/mcp/server-card.json
+- A2A agent card: ${SITE_CONFIG.url}/.well-known/agent-card.json
+- API catalog (RFC 9727): ${SITE_CONFIG.url}/.well-known/api-catalog
+- Agent skills index: ${SITE_CONFIG.url}/.well-known/agent-skills/index.json
+- OpenAPI (JSON endpoints): ${SITE_CONFIG.url}/openapi.json
 - Full content for LLMs: ${SITE_CONFIG.url}/llms-full.txt
 - Projects JSON: ${SITE_CONFIG.url}/api/projects.json
 - Blog JSON: ${SITE_CONFIG.url}/api/blog.json
@@ -62,7 +67,10 @@ ${posts}
 - JSON Feed: ${SITE_CONFIG.url}/feed.json
 - Sitemap: ${SITE_CONFIG.url}/sitemap.xml
 - Agent discovery: ${SITE_CONFIG.url}/.well-known/agent.json
-- Robots: ${SITE_CONFIG.url}/robots.txt
+- Auth notes (none required): ${SITE_CONFIG.url}/auth.md
+- Health: ${SITE_CONFIG.url}/api/health
+- Robots (content signals fully open): ${SITE_CONFIG.url}/robots.txt
+- Markdown versions of pages: request any page URL with "Accept: text/markdown"
 `;
 
     return new Response(body, {

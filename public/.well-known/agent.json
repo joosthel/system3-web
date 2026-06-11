@@ -20,11 +20,19 @@
       "search_content"
     ]
   },
+  "content_negotiation": "Request any page URL with 'Accept: text/markdown' to get a markdown version.",
   "links": {
     "agents_guide": "https://joosthelfers.com/agents",
     "llms_txt": "https://joosthelfers.com/llms.txt",
     "llms_full_txt": "https://joosthelfers.com/llms-full.txt",
     "mcp": "https://joosthelfers.com/api/mcp",
+    "mcp_server_card": "https://joosthelfers.com/.well-known/mcp/server-card.json",
+    "a2a_agent_card": "https://joosthelfers.com/.well-known/agent-card.json",
+    "api_catalog": "https://joosthelfers.com/.well-known/api-catalog",
+    "agent_skills_index": "https://joosthelfers.com/.well-known/agent-skills/index.json",
+    "openapi": "https://joosthelfers.com/openapi.json",
+    "health": "https://joosthelfers.com/api/health",
+    "auth_md": "https://joosthelfers.com/auth.md",
     "about": "https://joosthelfers.com/about",
     "sitemap": "https://joosthelfers.com/sitemap.xml",
     "robots_txt": "https://joosthelfers.com/robots.txt",

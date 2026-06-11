@@ -41,10 +41,20 @@ JSON-LD schema builders live in `lib/schema.ts`; per-page metadata helpers in
 The site is positioned as a reference for agent-readable portfolios. The surfaces:
 MCP server (`/api/mcp`), `/agents` page (human+machine guide), `/llms.txt` +
 `/llms-full.txt`, `/.well-known/agent.json` (hand-maintained in `public/`),
-JSON endpoints, and feeds. `llms@joosthelfers.com` (in `SITE_CONFIG.agentEmail`)
-is the contact address for AI agents and automated outreach; `mail@` stays the
-human channel. When projects, services, or contact details change, the MCP tools
-and `agent.json` must stay consistent with `lib/data.ts` and `lib/constants.ts`.
+JSON endpoints, and feeds. Discovery surfaces generated from `lib/mcp-tools.ts`,
+`lib/agent-skills.ts`, and `lib/constants.ts`: `/.well-known/api-catalog`,
+`/.well-known/mcp/server-card.json`, `/.well-known/agent-card.json`,
+`/.well-known/agent-skills/*`, `/openapi.json`, `/api/health`, `/auth.md`.
+`robots.txt` is a route handler (`app/robots.txt/route.ts`) carrying
+Content-Signal directives; Link headers live in `next.config.js` `headers()`.
+Markdown negotiation: `proxy.ts` rewrites page requests with
+`Accept: text/markdown` to `/md/*` routes built by `lib/markdown.ts` — update
+`lib/markdown.ts` when static-page copy changes, and `proxy.ts` + the `/md`
+params when pages are added. `llms@joosthelfers.com` (in
+`SITE_CONFIG.agentEmail`) is the contact address for AI agents and automated
+outreach; `mail@` stays the human channel. When projects, services, contact
+details, or MCP tools change, `lib/mcp-tools.ts` and the hand-maintained
+`agent.json` must stay consistent with `lib/data.ts` and `lib/constants.ts`.
 
 ## Voice rules for all site copy
 
