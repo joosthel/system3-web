@@ -29,6 +29,20 @@ get_project, list_posts, get_post, search_content. Linked from
 - joosthelfers.com and www serve from Vercel over HTTPS. The blocker was a
   hidden `@ ALIAS joosthel.github.io` record at Hostinger that synthesized
   GitHub Pages AAAA answers; deleted 2026-06-10 via the Hostinger API.
+- Agent-readiness pass 2026-06-11: Link headers, api-catalog, MCP server
+  card, A2A agent card, agent-skills index, Content-Signal robots.txt,
+  auth.md, markdown content negotiation (proxy.ts), WebMCP tools.
+- DNS-AID (draft-mozleywilliams-dnsop-dnsaid): not implementable as
+  specified. Hostinger DNS supports no SVCB/HTTPS record types (API enum:
+  A, AAAA, CNAME, ALIAS, MX, TXT, NS, SOA, SRV, CAA) and no DNSSEC signing
+  control via the API, so ServiceMode records under `_agents` cannot be
+  published or authenticated. Fallback shipped 2026-06-11: TXT records at
+  `_agents` and `_index._agents` pointing at the agent card and MCP
+  endpoint (non-standard pointer). Revisit if the zone moves to a DNS host
+  with SVCB + DNSSEC support.
+- The leftover `_github-pages-challenge-joosthel` TXT record is still in
+  the zone: the Hostinger MCP delete tool does not expose name/type
+  filters safely. Delete it by hand in hPanel at some point; it is inert.
 
 ## 2. Editorial calendar (~1 post per month)
 
