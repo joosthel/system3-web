@@ -16,8 +16,8 @@ Personal portfolio of Joost Helfers, Berlin-based creative technologist and AI a
 
 ## Where content lives
 
-- Projects + services: `lib/data.ts` (single source of truth — carousel, sitemap,
-  JSON endpoints, and llms.txt all derive from it).
+- Projects + services: `lib/data.ts` (single source of truth — home project index,
+  sitemap, JSON endpoints, and llms.txt all derive from it).
 - Blog posts: `content/blog/*.mdx` (frontmatter: title, date, optional `updated`,
   excerpt, tags, optional relatedPosts).
 - Site config: `lib/constants.ts`. Bump `SITE_LAST_UPDATED` when static-page copy changes.

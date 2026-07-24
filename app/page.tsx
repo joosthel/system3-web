@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import ProjectsCarousel from './components/ProjectsCarousel';
+import Script from 'next/script';
+import ProjectIndex from './components/ProjectIndex';
 import RevealOnScroll from './components/RevealOnScroll';
 import { SITE_CONFIG } from '../lib/constants';
 import { PROJECTS, SERVICES } from '../lib/data';
@@ -43,7 +44,12 @@ export default async function Home() {
                         </p>
                     </div>
 
-                    {/* Hero 3D Model */}
+                    {/* Hero 3D Model — model-viewer loads only on this page, after idle */}
+                    <Script
+                        type="module"
+                        src="https://unpkg.com/@google/model-viewer@4.1.0/dist/model-viewer.min.js"
+                        strategy="lazyOnload"
+                    />
                     <div className="hero-model">
                         {/* @ts-expect-error - model-viewer is a custom element */}
                         <model-viewer
@@ -76,7 +82,7 @@ export default async function Home() {
                         </div>
                     </RevealOnScroll>
                     <RevealOnScroll delay={100}>
-                        <ProjectsCarousel projects={PROJECTS} />
+                        <ProjectIndex projects={PROJECTS} />
                     </RevealOnScroll>
                 </div>
             </section>

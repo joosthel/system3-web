@@ -58,6 +58,31 @@ export default function AboutPage() {
                         <figcaption>Souly &amp; Boondawg, I got this feeling. Hybrid AI music video.</figcaption>
                     </figure>
 
+                    <h2>How I work with AI</h2>
+                    <p>
+                        AI is a tool. One part in a workflow, something you tweak and work with to get the most out of it. In practice that means:
+                    </p>
+                    <ol className="manifesto-list">
+                        <li>
+                            <strong>AI is a tool, not the work.</strong> A model on its own produces nothing a brand can use. The result comes from the workflow around it and the decisions made at every step.
+                        </li>
+                        <li>
+                            <strong>Workflows beat prompts.</strong> A single prompt is a gamble. A pipeline with controlled inputs and repeatable settings is a production method. I build pipelines.
+                        </li>
+                        <li>
+                            <strong>Tweak until it holds.</strong> Default output is a draft. I adjust samplers and control inputs and do real post-work until a result survives a client review.
+                        </li>
+                        <li>
+                            <strong>Know the failure modes.</strong> Every model breaks somewhere: text in frame, product details, motion. Knowing where it breaks decides whether AI is the right tool for the job at all.
+                        </li>
+                        <li>
+                            <strong>The model does not replace craft.</strong> Art direction and editing decide the final result. The model widens what one person can produce. It does not decide what is good.
+                        </li>
+                        <li>
+                            <strong>Say what was generated.</strong> I can tell a client exactly which shot was AI, which was 3D, and what was fixed by hand. The process is part of the deliverable.
+                        </li>
+                    </ol>
+
                     <h2>Built for the agentic web</h2>
                     <p>
                         This site is also an experiment in being readable by machines. Every project and post exists as structured data, the whole portfolio is queryable over a public <Link href="/agents">MCP server</Link>, and there is a dedicated mailbox for AI agents that want to get in touch on someone&apos;s behalf. I build the same kind of agent-readable presence for clients, and I find it more honest to run it on my own site first.

@@ -7,6 +7,8 @@ export interface Project {
     date?: string;
     tags?: string[];
     badge?: string;
+    /** Short label for the home page project index, e.g. 'AI Film' */
+    category?: string;
 }
 
 export const PROJECTS: Project[] = [
@@ -18,7 +20,8 @@ export const PROJECTS: Project[] = [
         url: '/projects/prompt-engine',
         date: '2025-03-01',
         tags: ['Next.js', 'TypeScript', 'OpenRouter', 'Gemini', 'DeepSeek', 'Vercel', 'Prompt Engineering', 'AI Product'],
-        badge: 'Live Project'
+        badge: 'Live Project',
+        category: 'AI Product'
     },
     {
         id: 'ai-video-campaign',
@@ -28,7 +31,8 @@ export const PROJECTS: Project[] = [
         url: '/projects/ai-video-campaign',
         date: '2025-01-15',
         tags: ['AI Visuals', 'Generative Video', 'ComfyUI', 'Prompt Engineering', 'Video Editing'],
-        badge: 'NDA. Process only.'
+        badge: 'NDA. Process only.',
+        category: 'AI Film'
     },
     {
         id: 'ai-pipeline-backend',
@@ -38,7 +42,8 @@ export const PROJECTS: Project[] = [
         url: '/projects/ai-pipeline-backend',
         date: '2024-11-01',
         tags: ['ComfyUI', 'Python', 'Computer Vision', 'API Design', 'Prototyping', 'Full Stack'],
-        badge: 'NDA. Process only.'
+        badge: 'NDA. Process only.',
+        category: 'AI Pipeline'
     },
     {
         id: 'souly-boondawg',
@@ -47,7 +52,8 @@ export const PROJECTS: Project[] = [
         image: '/assets/imgs/proj_Souly-Boondawg-igotthisfeelling/Souly-Boondawg_igotthisfeeling-02.webp',
         url: '/projects/souly-boondawg',
         date: '2023-11-20',
-        tags: ['AI Video Generation', 'Video-to-Video', 'ComfyUI', 'Visual Storytelling']
+        tags: ['AI Video Generation', 'Video-to-Video', 'ComfyUI', 'Visual Storytelling'],
+        category: 'AI Music Video'
     },
     {
         id: 'inyo-digital-twin',
@@ -56,7 +62,8 @@ export const PROJECTS: Project[] = [
         image: '/assets/imgs/proj_INYO-Digital-Twin/Screenshot_3D-View.webp',
         url: '/projects/inyo-digital-twin',
         date: '2023-09-01',
-        tags: ['Digital Twin', '3D Visualization', 'Real-time Rendering', 'Data Integration', 'Full Stack Development']
+        tags: ['Digital Twin', '3D Visualization', 'Real-time Rendering', 'Data Integration', 'Full Stack Development'],
+        category: 'Digital Twin'
     },
     {
         id: 't-cell',
@@ -65,7 +72,8 @@ export const PROJECTS: Project[] = [
         image: '/assets/imgs/proj_T-Cell/T-Cell_Hero.webp',
         url: '/projects/t-cell',
         date: '2023-05-01',
-        tags: ['Video Production', 'Motion Graphics', 'Scientific Visualization', 'Hydrogen Technology']
+        tags: ['Video Production', 'Motion Graphics', 'Scientific Visualization', 'Hydrogen Technology'],
+        category: 'Explainer Film'
     },
     {
         id: 'inyo-viz',
@@ -74,7 +82,8 @@ export const PROJECTS: Project[] = [
         image: '/assets/imgs/proj_INYO-Viz/INYO-Viz_06.webp',
         url: '/projects/inyo-viz',
         date: '2023-05-01',
-        tags: ['3D Visualization', 'Product Rendering', 'Marketing Design', 'Motion Graphics']
+        tags: ['3D Visualization', 'Product Rendering', 'Marketing Design', 'Motion Graphics'],
+        category: '3D Visualization'
     },
     {
         id: 'msc-arcadia',
@@ -83,7 +92,8 @@ export const PROJECTS: Project[] = [
         image: '/assets/imgs/proj_MSc-CAD/MSc-CAD_04.webp',
         url: '/projects/msc-arcadia',
         date: '2022-09-01',
-        tags: ['Grasshopper', 'Rhino', 'Python', 'Computational Design', 'Parametric Architecture']
+        tags: ['Grasshopper', 'Rhino', 'Python', 'Computational Design', 'Parametric Architecture'],
+        category: 'Computational Design'
     }
 ];
 

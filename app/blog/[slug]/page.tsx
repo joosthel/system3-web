@@ -13,6 +13,10 @@ export async function generateStaticParams() {
     }));
 }
 
+// Only the prerendered posts exist; without this Vercel provisions an
+// SSR fallback function for unknown slugs.
+export const dynamicParams = false;
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
     try {
         const { slug } = await params;
