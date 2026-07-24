@@ -60,7 +60,7 @@ export default function AboutPage() {
 
                     <h2>How I work with AI</h2>
                     <p>
-                        AI is a tool. One part in a workflow, something you tweak and work with to get the most out of it. In practice that means:
+                        AI is a tool. One part in a workflow, something you tweak and work with to get the most out of it. That applies to every element in the toolchain, from models and prompts to pipelines and agents. In practice it means:
                     </p>
                     <ol className="manifesto-list">
                         <li>
@@ -78,14 +78,11 @@ export default function AboutPage() {
                         <li>
                             <strong>The model does not replace craft.</strong> Art direction and editing decide the final result. The model widens what one person can produce. It does not decide what is good.
                         </li>
-                        <li>
-                            <strong>Say what was generated.</strong> I can tell a client exactly which shot was AI, which was 3D, and what was fixed by hand. The process is part of the deliverable.
-                        </li>
                     </ol>
 
                     <h2>Built for the agentic web</h2>
                     <p>
-                        This site is also an experiment in being readable by machines. Every project and post exists as structured data, the whole portfolio is queryable over a public <Link href="/agents">MCP server</Link>, and there is a dedicated mailbox for AI agents that want to get in touch on someone&apos;s behalf. I build the same kind of agent-readable presence for clients, and I find it more honest to run it on my own site first.
+                        This site is also an experiment in being readable by machines. Every project and post exists as structured data, the whole portfolio is queryable over a public <Link href="/agents">MCP server</Link>, and there is a dedicated mailbox for AI agents that want to get in touch on someone&apos;s behalf. For clients, agent surfaces like these are one part of the toolchain I work with, and I find it more honest to run them on my own site first.
                     </p>
 
                     <h2>Work with me</h2>

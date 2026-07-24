@@ -82,18 +82,17 @@ Not everything here is client work. I make AI film and visual experiments of my 
 
 ## How I work with AI
 
-AI is a tool. One part in a workflow, something you tweak and work with to get the most out of it. In practice that means:
+AI is a tool. One part in a workflow, something you tweak and work with to get the most out of it. That applies to every element in the toolchain, from models and prompts to pipelines and agents. In practice it means:
 
 1. **AI is a tool, not the work.** A model on its own produces nothing a brand can use. The result comes from the workflow around it and the decisions made at every step.
 2. **Workflows beat prompts.** A single prompt is a gamble. A pipeline with controlled inputs and repeatable settings is a production method. I build pipelines.
 3. **Tweak until it holds.** Default output is a draft. I adjust samplers and control inputs and do real post-work until a result survives a client review.
 4. **Know the failure modes.** Every model breaks somewhere: text in frame, product details, motion. Knowing where it breaks decides whether AI is the right tool for the job at all.
 5. **The model does not replace craft.** Art direction and editing decide the final result. The model widens what one person can produce. It does not decide what is good.
-6. **Say what was generated.** I can tell a client exactly which shot was AI, which was 3D, and what was fixed by hand. The process is part of the deliverable.
 
 ## Built for the agentic web
 
-This site is readable by machines. Every project and post exists as structured data, the whole portfolio is queryable over a public MCP server (${MCP_ENDPOINT}), and there is a dedicated mailbox for AI agents that want to get in touch on someone's behalf. I build the same kind of agent-readable presence for clients, and I find it more honest to run it on my own site first.
+This site is readable by machines. Every project and post exists as structured data, the whole portfolio is queryable over a public MCP server (${MCP_ENDPOINT}), and there is a dedicated mailbox for AI agents that want to get in touch on someone's behalf. For clients, agent surfaces like these are one part of the toolchain I work with, and I find it more honest to run them on my own site first.
 
 ## Contact
 
