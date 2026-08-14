@@ -20,9 +20,9 @@ export default function SoulyBoondawgPage() {
         >
             <div className="space-y-12">
                 <section>
-                    <h2>Project Overview</h2>
+                    <h2>The project</h2>
                     <p>
-                        I contributed to this hybrid production as an AI artist in collaboration with <a href="https://yyyyyyy.studio/" target="_blank" rel="noopener noreferrer">yyyyyyy.studio</a>. The piece blends traditional greenscreen footage with generative AI environments. Using video-to-video models, we moved the artists, Souly and Boondawg, into surreal, digitally constructed worlds and added a distinct layer of visual narrative on top of the performance.
+                        I worked on this hybrid production as an AI artist together with <a href="https://yyyyyyy.studio/" target="_blank" rel="noopener noreferrer">yyyyyyy.studio</a>. The artists, Souly and Boondawg, were shot on greenscreen. Video-to-video models then moved them into surreal, digitally built worlds, adding a visual narrative of its own on top of the performance.
                     </p>
                 </section>
 
@@ -44,7 +44,7 @@ export default function SoulyBoondawgPage() {
                                     "@context": "https://schema.org",
                                     "@type": "VideoObject",
                                     "name": "Souly & Boondawg. I got this feeling.",
-                                    "description": "A hybrid AI music video production transforming greenscreen footage into compelling visuals.",
+                                    "description": "A hybrid AI music video turning greenscreen footage into generative worlds.",
                                     "thumbnailUrl": [
                                         "https://joosthelfers.com/assets/imgs/proj_Souly-Boondawg-igotthisfeelling/Souly-Boondawg_igotthisfeeling-02.webp"
                                     ],

@@ -18,41 +18,41 @@ export default function AIPipelineBackendPage() {
         >
             <div className="space-y-12">
                 <section>
-                    <h2>The Brief</h2>
+                    <h2>The brief</h2>
                     <p>
-                        A platform client had existing ComfyUI workflows for background replacement and product or person swapping in images. The bottleneck was accurate masking. Text-based prompting alone could not reliably isolate the exact product or region that needed editing, especially for the non-technical end users on their platform.
+                        A platform client had existing ComfyUI workflows for background replacement and product or person swapping in images. The bottleneck was accurate masking. Text prompting alone couldn&apos;t reliably isolate the exact product or region that needed editing, especially for the non-technical users on their platform.
                     </p>
                     <p>
-                        They needed a better input mechanism, and wanted to explore what was technically possible before committing to a full build.
-                    </p>
-                </section>
-
-                <section>
-                    <h2>My Approach</h2>
-                    <p>
-                        The goal was a prototype that let users click or draw on an image to select an object. That selection is automatically converted to an accurate segmentation mask, which then feeds into the existing ComfyUI backend.
-                    </p>
-                    <p>
-                        I scoped this as an exploration: test the technical approach, validate the UX, and produce something hand-off-ready for their engineering team if it proved viable.
+                        They needed a better input mechanism, and wanted to see what was technically possible before committing to a full build.
                     </p>
                 </section>
 
                 <section>
-                    <h2>What Was Built</h2>
+                    <h2>My approach</h2>
+                    <p>
+                        The goal was a prototype where users click or draw on an image to select an object. That selection gets converted into an accurate segmentation mask, which then feeds into the existing ComfyUI backend.
+                    </p>
+                    <p>
+                        I scoped it as an exploration: test the technical approach, validate the UX, and hand over something their engineering team could build on if it proved viable.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>What I built</h2>
                     <ul>
-                        <li>A lightweight web interface for object selection directly on an image</li>
-                        <li>A server-side segmentation pipeline that converts the selection into a clean, accurate mask</li>
-                        <li>API interfaces structured so the prototype can be integrated into their existing platform by their own engineer</li>
+                        <li>A lightweight web interface for selecting objects directly on an image</li>
+                        <li>A server-side segmentation pipeline that turns the selection into a clean, accurate mask</li>
+                        <li>API interfaces structured so their own engineer can integrate the prototype into the platform</li>
                     </ul>
                     <p>
-                        The result is that their end users can now select a product in an image by clicking on it, rather than describing it in a text prompt. Mask accuracy improved considerably and the prompt-writing barrier is gone for less technical users.
+                        Their end users now select a product by clicking on it instead of describing it in a text prompt. Mask accuracy went up a lot, and the prompt-writing barrier is gone.
                     </p>
                 </section>
 
                 <section>
                     <h2>Outcome</h2>
                     <p>
-                        The prototype validated the technical approach and is ready for integration. It significantly reduces the failure rate of their masking step and opens the workflow to a broader, less technical user base.
+                        The prototype proved the approach and is ready for integration. The masking step fails far less often, and the workflow now works for people who would never write a prompt.
                     </p>
                 </section>
 

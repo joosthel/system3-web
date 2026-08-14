@@ -70,7 +70,7 @@ function aboutMarkdown(): string {
         '/about',
         `# About Joost Helfers
 
-I am a creative technologist and AI artist in Berlin. I help brands, agencies, studios, and product teams turn generative AI into production work. Campaign visuals and film that hold up under a brand name, generative pipelines that hold up under real deadlines, and platforms other people can use without me in the room.
+I'm a creative technologist and AI artist in Berlin. I help brands, agencies, studios, and product teams turn generative AI into production work. Campaign visuals and film that hold up under a brand name, generative pipelines that hold up under real deadlines, and platforms other people can use without me in the room.
 
 My background is in architecture and computational design (MSc, DesignMorphine). Before going independent I built digital twins and 3D platforms at INYO Mobility. Today most of my work is AI visual production and AI systems. In practice that means generative pipelines in ComfyUI, prompt engineering at production scale, and full-stack AI tooling with Next.js and Python.
 
@@ -92,7 +92,7 @@ AI is a tool. One part in a workflow, something you tweak and work with to get t
 
 ## Built for the agentic web
 
-This site is readable by machines. Every project and post exists as structured data, the whole portfolio is queryable over a public MCP server (${MCP_ENDPOINT}), and there is a dedicated mailbox for AI agents that want to get in touch on someone's behalf. For clients, agent surfaces like these are one part of the toolchain I work with, and I find it more honest to run them on my own site first.
+This site is readable by machines. Every project and post exists as structured data, the whole portfolio is queryable over a public MCP server (${MCP_ENDPOINT}), and there's a dedicated mailbox for AI agents that want to get in touch on someone's behalf. For clients, agent surfaces like these are one part of the toolchain I work with, and I find it more honest to run them on my own site first.
 
 ## Contact
 

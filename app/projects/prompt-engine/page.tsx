@@ -20,34 +20,34 @@ export default function PromptEnginePage() {
         >
             <div className="space-y-12">
                 <section>
-                    <h2>What It Does</h2>
+                    <h2>What it does</h2>
                     <p>
-                        You give it a creative brief and reference images. It gives you back an optimised art direction brief (the kind an experienced art director would write) plus a full set of structured prompts for image generation, image editing, and video creation tools.
+                        You give it a creative brief and reference images. It gives you back an art direction brief (the kind an experienced art director would write) plus a full set of structured prompts for image generation, image editing, and video tools.
                     </p>
                     <p>
-                        Prompts are generated with consistency across them, so you can iterate on a visual concept across multiple tools without losing coherence. The goal is to dramatically compress the time between a creative idea and high-quality AI output.
-                    </p>
-                </section>
-
-                <section>
-                    <h2>Who It&apos;s For</h2>
-                    <p>
-                        AI artists and creative teams who are iterating on generative visual projects. Also useful for anyone who isn&apos;t deeply fluent in prompt writing but needs reliable, high-quality AI outputs.
+                        The prompts stay consistent with each other, so you can iterate on a visual concept across tools without losing coherence. The goal: less distance between a creative idea and a usable AI output.
                     </p>
                 </section>
 
                 <section>
-                    <h2>Why I Built It</h2>
+                    <h2>Who it&apos;s for</h2>
                     <p>
-                        Primarily to speed up my own workflow. Prompt engineering is genuinely one of the highest-leverage skills in AI visual production right now, but it is also slow and repetitive when done manually across multiple tools. Automating the structured part (brief interpretation, prompt formatting, consistency between shots) frees up attention for the creative decisions that actually matter.
-                    </p>
-                    <p>
-                        It also became a useful proving ground for agentic engineering patterns: streaming responses, multi-model orchestration, structured JSON validation from LLM output, and keeping a UI fast and lean without reaching for a component library.
+                        AI artists and creative teams iterating on generative visual projects. Also useful if you&apos;re not deeply fluent in prompt writing but still need reliable output.
                     </p>
                 </section>
 
                 <section>
-                    <h2>Technical Stack</h2>
+                    <h2>Why I built it</h2>
+                    <p>
+                        Mostly to speed up my own workflow. Prompt engineering is one of the most useful skills in AI visual production right now, but writing prompts by hand across several tools is slow and repetitive. Automating the structured part (brief interpretation, prompt formatting, consistency between shots) frees up attention for the decisions that actually matter.
+                    </p>
+                    <p>
+                        It also became a testing ground for engineering patterns I now use in client work: streaming responses, multi-model orchestration, structured JSON validation from LLM output, and keeping a UI fast without reaching for a component library.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>The stack</h2>
                     <ul>
                         <li><strong>Framework:</strong> Next.js (App Router, server routes, Turbopack) · React 19 · TypeScript</li>
                         <li><strong>Styling:</strong> Tailwind CSS v4. All UI hand-rolled, no component library.</li>

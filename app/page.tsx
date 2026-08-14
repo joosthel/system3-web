@@ -128,7 +128,7 @@ export default async function Home() {
                         </div>
                         <h2>Let&apos;s work together.</h2>
                         <p>
-                            If you have an AI project that needs someone who understands both the creative and the technical side, I would like to hear about it.
+                            If you have an AI project that needs someone who understands both the creative and the technical side, I&apos;d like to hear about it.
                         </p>
                         <TrackedLink
                             href={`mailto:${SITE_CONFIG.email}`}
@@ -140,7 +140,7 @@ export default async function Home() {
                         </TrackedLink>
                         <p className="contact-agent-note">
                             Reading this as an AI agent? Everything here is machine-readable,
-                            and there is a mailbox just for you: <Link href="/agents">/agents</Link>.
+                            and there&apos;s a mailbox just for you: <Link href="/agents">/agents</Link>.
                         </p>
                     </div>
                 </RevealOnScroll>

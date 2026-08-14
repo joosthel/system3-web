@@ -20,36 +20,36 @@ export default function InyoVizPage() {
         >
             <div className="space-y-20">
                 <section>
-                    <h2>Project Overview</h2>
+                    <h2>The project</h2>
                     <p>
-                        INYO Mobility is building a new kind of electric vehicle ecosystem for urban transportation. I produced a comprehensive set of 3D visualisations and marketing materials that showcase the technology and the design thinking behind it.
+                        INYO Mobility is building a new kind of electric vehicle ecosystem for urban transportation. I produced the 3D visualisations and marketing materials that show the vehicles and the design thinking behind them.
                     </p>
                     <div className="mt-8 overflow-hidden">
                         <img src="/assets/imgs/proj_INYO-Viz/INYO-Viz_00.webp" alt="INYO Hero Visualization" className="w-full" />
-                        <p className="text-sm text-center text-gray-500 italic mt-2">Key hero visualization showcasing INYO&apos;s electric vehicle design</p>
+                        <p className="text-sm text-center text-gray-500 italic mt-2">The hero visual</p>
                     </div>
                 </section>
 
                 <section>
-                    <h2>Key Deliverables</h2>
+                    <h2>What I delivered</h2>
 
                     <div className="grid md:grid-cols-2 gap-12 mb-12">
                         <div>
-                            <h3>3D Product Visualizations</h3>
+                            <h3>3D product visuals</h3>
                             <ul>
-                                <li>High-fidelity 3D models of INYO&apos;s electric vehicles</li>
-                                <li>Photorealistic renderings for marketing campaigns</li>
-                                <li>Interactive 3D experiences for web presentations</li>
-                                <li>Technical visualization for product development</li>
+                                <li>Detailed 3D models of INYO&apos;s electric vehicles</li>
+                                <li>Photorealistic renders for campaigns</li>
+                                <li>Interactive 3D for web presentations</li>
+                                <li>Technical visualisation for product development</li>
                             </ul>
                         </div>
                         <div>
-                            <h3>Marketing Materials</h3>
+                            <h3>Marketing materials</h3>
                             <ul>
-                                <li>Digital assets for social media campaigns</li>
-                                <li>Print materials for trade shows and exhibitions</li>
-                                <li>Interactive presentations for investor meetings</li>
-                                <li>Brand-consistent visual identity across all materials</li>
+                                <li>Social media assets</li>
+                                <li>Print material for trade shows</li>
+                                <li>Presentations for investor meetings</li>
+                                <li>One consistent look across all of it</li>
                             </ul>
                         </div>
                     </div>
@@ -57,47 +57,47 @@ export default function InyoVizPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <img src="/assets/imgs/proj_INYO-Viz/INYO-Viz_01.webp" alt="Product Visualization 1" className="w-full" />
-                            <p className="text-sm text-center text-gray-500 italic mt-2">Detailed product visualization highlighting vehicle design</p>
+                            <p className="text-sm text-center text-gray-500 italic mt-2">Product visual</p>
                         </div>
                         <div>
                             <img src="/assets/imgs/proj_INYO-Viz/INYO-Viz_02.webp" alt="Product Visualization 2" className="w-full" />
-                            <p className="text-sm text-center text-gray-500 italic mt-2">Technical rendering showcasing engineering precision</p>
+                            <p className="text-sm text-center text-gray-500 italic mt-2">Technical render</p>
                         </div>
                     </div>
 
                     <div className="mt-8">
                         <img src="/assets/imgs/proj_INYO-Viz/INYO-Viz_03.webp" alt="Marketing Visualization" className="w-full" />
-                        <p className="text-sm text-center text-gray-500 italic mt-2">Marketing visualization emphasizing the sleek design and innovation</p>
+                        <p className="text-sm text-center text-gray-500 italic mt-2">Marketing visual</p>
                     </div>
                 </section>
 
 
                 <section>
-                    <h2>Process & Approach</h2>
+                    <h2>Process</h2>
                     <p className="mb-8">
-                        The project began with understanding INYO&apos;s vision for sustainable urban mobility. I worked closely with their design team to keep technical details accurate while maintaining the sleek, futuristic aesthetic that defines the brand.
+                        I worked directly with INYO&apos;s design team. The job was keeping the technical details accurate while hitting the clean, futuristic look the brand goes for.
                     </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
                         <div>
                             <img src="/assets/imgs/proj_INYO-Viz/INYO-Viz_04.webp" alt="Design Process 1" className="w-full" />
-                            <p className="text-sm text-center text-gray-500 italic mt-2">Initial design exploration and concept development</p>
+                            <p className="text-sm text-center text-gray-500 italic mt-2">Early exploration</p>
                         </div>
                         <div>
                             <img src="/assets/imgs/proj_INYO-Viz/INYO-Viz_05.webp" alt="Design Process 2" className="w-full" />
-                            <p className="text-sm text-center text-gray-500 italic mt-2">Refinement of visual style and technical accuracy</p>
+                            <p className="text-sm text-center text-gray-500 italic mt-2">Refining the style</p>
                         </div>
                         <div>
                             <img src="/assets/imgs/proj_INYO-Viz/INYO-Viz_07.webp" alt="Design Process 3" className="w-full" />
-                            <p className="text-sm text-center text-gray-500 italic mt-2">Final visualization polish and presentation preparation</p>
+                            <p className="text-sm text-center text-gray-500 italic mt-2">Final polish</p>
                         </div>
                     </div>
 
-                    <h3>Technical Implementation</h3>
+                    <h3>How it was made</h3>
                     <ul>
-                        <li><strong>3D Modeling</strong>: Created detailed vehicle models with accurate proportions and materials</li>
-                        <li><strong>Lighting & Rendering</strong>: Developed lighting setups that emphasize the vehicles&apos; premium design</li>
-                        <li><strong>Post-Processing</strong>: Fine-tuned images for maximum impact across different media formats</li>
+                        <li><strong>Modeling</strong>: Vehicle models with accurate proportions and materials</li>
+                        <li><strong>Lighting and rendering</strong>: Setups built around the vehicles&apos; design</li>
+                        <li><strong>Post</strong>: Images tuned per output format, from social to print</li>
                     </ul>
                 </section>
 
@@ -105,7 +105,7 @@ export default function InyoVizPage() {
                     <div className="relative z-10">
                         <h2>Results</h2>
                         <p>
-                            The visualisations have been used across INYO&apos;s marketing channels and supported their work in securing funding and partnerships. The materials communicate the engineering and design quality of the ecosystem to investors, customers, and media.
+                            INYO used the visuals across their marketing channels and in the funding and partnership conversations that followed. They show investors, customers, and media the engineering and design quality behind the ecosystem.
                         </p>
                         <blockquote>
                             &ldquo;The visualisations captured our vision and helped us communicate the potential of our technology to stakeholders.&rdquo;

@@ -91,7 +91,7 @@ export default function AgentsPage() {
 
                     <h2>Plain endpoints</h2>
                     <p>
-                        If you would rather fetch than connect, the same content is available
+                        If you&apos;d rather fetch than connect, the same content is available
                         as flat files and JSON:
                     </p>
                     <ul>

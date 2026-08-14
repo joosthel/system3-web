@@ -19,59 +19,59 @@ export default function MscArcadiaPage() {
         >
             <div className="space-y-20">
                 <section>
-                    <h2>Project Overview</h2>
+                    <h2>The project</h2>
                     <p>
-                        Project Arcadia is the culmination of my Master&apos;s degree in Computational and Advanced Design. It explores the intersection of parametric design, environmental responsiveness, and architectural form-finding through computational methods.
+                        Project Arcadia is my final project for the MSc in Computational and Advanced Design. It explores parametric architecture that responds to its environment, with the form found through computational methods rather than drawn by hand.
                     </p>
                     <div className="mt-8 overflow-hidden">
                         <img src="/assets/imgs/proj_MSc-CAD/MSc-CAD_01.webp" alt="Main project visualization" className="w-full" />
-                        <p className="text-sm text-center text-gray-500 italic mt-2">Main project visualization showcasing the parametric structure</p>
+                        <p className="text-sm text-center text-gray-500 italic mt-2">The parametric structure</p>
                     </div>
                 </section>
 
                 <section>
-                    <h2>Design Process</h2>
+                    <h2>Process</h2>
                     <p className="mb-8">
-                        The project began with extensive research into responsive architectural systems and how computational tools can be used to create adaptive structures that respond to environmental conditions.
+                        It started with research into responsive architectural systems: structures that adapt to the conditions around them, and the computational tools that make that possible.
                     </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                         <div>
                             <img src="/assets/imgs/proj_MSc-CAD/MSc-CAD_02.webp" alt="Initial research" className="w-full" />
-                            <p className="text-sm text-center text-gray-500 italic mt-2">Initial research and conceptual framework development</p>
+                            <p className="text-sm text-center text-gray-500 italic mt-2">Early research and concept work</p>
                         </div>
                         <div>
                             <img src="/assets/imgs/proj_MSc-CAD/MSc-CAD_03.webp" alt="Computational methodology" className="w-full" />
-                            <p className="text-sm text-center text-gray-500 italic mt-2">Computational methodology and parameter exploration</p>
+                            <p className="text-sm text-center text-gray-500 italic mt-2">Exploring the parameter space</p>
                         </div>
                     </div>
 
-                    <h3>Computational Framework</h3>
+                    <h3>The framework</h3>
                     <p className="mb-6">
-                        The design framework was built using Grasshopper and custom Python components, allowing for real-time parameter adjustments and form optimization based on environmental data inputs.
+                        I built the framework in Grasshopper with custom Python components. Parameters adjust in real time, and the form optimises itself against environmental data.
                     </p>
                     <img src="/assets/imgs/proj_MSc-CAD/MSc-CAD_04.webp" alt="Computational Framework" className="w-full" />
-                    <p className="text-sm text-center text-gray-500 italic mt-2">Computational design framework and parameter relationships</p>
+                    <p className="text-sm text-center text-gray-500 italic mt-2">The framework and its parameter relationships</p>
                 </section>
 
                 <section>
-                    <h2>Development Phases</h2>
+                    <h2>Iterations</h2>
                     <p className="mb-8">
-                        The project evolved through multiple iterations, each refining the relationship between form, function, and environmental responsiveness.
+                        The design went through several rounds, each one refining how form and environmental response relate to each other.
                     </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
                         <div>
                             <img src="/assets/imgs/proj_MSc-CAD/MSc-CAD_05.webp" alt="Development Phase 1" className="w-full" />
-                            <p className="text-sm text-center text-gray-500 italic mt-2">First iteration exploring basic parametric relationships</p>
+                            <p className="text-sm text-center text-gray-500 italic mt-2">First iteration, basic parametric relationships</p>
                         </div>
                         <div>
                             <img src="/assets/imgs/proj_MSc-CAD/MSc-CAD_06.webp" alt="Development Phase 2" className="w-full" />
-                            <p className="text-sm text-center text-gray-500 italic mt-2">Refinement of environmental response mechanisms</p>
+                            <p className="text-sm text-center text-gray-500 italic mt-2">Refining the environmental response</p>
                         </div>
                         <div>
                             <img src="/assets/imgs/proj_MSc-CAD/MSc-CAD_07.webp" alt="Development Phase 3" className="w-full" />
-                            <p className="text-sm text-center text-gray-500 italic mt-2">Advanced optimization and performance testing</p>
+                            <p className="text-sm text-center text-gray-500 italic mt-2">Optimisation and performance testing</p>
                         </div>
                     </div>
 
@@ -106,17 +106,17 @@ export default function MscArcadiaPage() {
                 </section>
 
                 <section>
-                    <h2>Final Design</h2>
+                    <h2>The final design</h2>
                     <p className="mb-8">
-                        The final design integrates computational design principles with architectural sensibility. The structure is both formally compelling and environmentally responsive.
+                        The final structure holds up as architecture, not just as a computational exercise. And it stays responsive to the environment it sits in.
                     </p>
 
                     <div className="mb-12">
                         <img src="/assets/imgs/proj_MSc-CAD/MSc-CAD_08.webp" alt="Final Design" className="w-full" />
-                        <p className="text-sm text-center text-gray-500 italic mt-2">Final design render showing the completed parametric structure</p>
+                        <p className="text-sm text-center text-gray-500 italic mt-2">Render of the final structure</p>
                     </div>
 
-                    <h3>Project Video</h3>
+                    <h3>Project video</h3>
                     <div className="aspect-video w-full overflow-hidden mb-4">
                         <iframe
                             width="100%"
@@ -134,7 +134,7 @@ export default function MscArcadiaPage() {
                                     "@context": "https://schema.org",
                                     "@type": "VideoObject",
                                     "name": "DesignMorphine MSc Project",
-                                    "description": "Final project presentation showcasing the complete design process and outcomes",
+                                    "description": "The final project presentation, covering the full design process",
                                     "thumbnailUrl": [
                                         "https://joosthelfers.com/assets/imgs/proj_MSc-CAD/MSc-CAD_08.webp"
                                     ],
@@ -144,35 +144,35 @@ export default function MscArcadiaPage() {
                             }}
                         />
                     </div>
-                    <p className="text-sm text-center text-gray-500 italic">Final project presentation showcasing the complete design process and outcomes</p>
+                    <p className="text-sm text-center text-gray-500 italic">The final project presentation, covering the full design process</p>
                 </section>
 
                 <section className="project-highlight">
-                    <h2>Technical Implementation</h2>
+                    <h2>The toolset</h2>
                     <div className="grid md:grid-cols-2 gap-4">
                         <div>
-                            <h3 className="mb-1">Parametric Modeling</h3>
+                            <h3 className="mb-1">Parametric modeling</h3>
                             <p className="text-gray-400">Grasshopper for visual programming</p>
                         </div>
                         <div>
-                            <h3 className="mb-1">Environmental Analysis</h3>
-                            <p className="text-gray-400">Climate data integration for responsive behavior</p>
+                            <h3 className="mb-1">Environmental analysis</h3>
+                            <p className="text-gray-400">Climate data feeding the responsive behaviour</p>
                         </div>
                         <div>
-                            <h3 className="mb-1">Form Optimization</h3>
+                            <h3 className="mb-1">Form optimisation</h3>
                             <p className="text-gray-400">Python scripting for performance-based design</p>
                         </div>
                         <div>
-                            <h3 className="mb-1">Visualization</h3>
-                            <p className="text-gray-400">High-quality rendering pipeline for presentation</p>
+                            <h3 className="mb-1">Visualisation</h3>
+                            <p className="text-gray-400">Rendering pipeline for the final presentation</p>
                         </div>
                     </div>
                 </section>
 
                 <section>
-                    <h2>Key Learnings</h2>
+                    <h2>What it taught me</h2>
                     <p>
-                        This project taught me how to balance computational complexity with design intent. Parametric tools are not only efficient. They are a creative medium for architectural exploration.
+                        How to balance computational complexity with design intent. And that parametric tools aren&apos;t just efficient, they&apos;re a creative medium in their own right.
                     </p>
                 </section>
             </div>

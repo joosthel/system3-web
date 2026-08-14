@@ -33,7 +33,7 @@ export default function AboutPage() {
 
                 <div className="about-page-content">
                     <p>
-                        I am a creative technologist and AI artist in Berlin. I help brands, agencies, studios, and product teams turn generative AI into production work. Campaign visuals and film that hold up under a brand name, generative pipelines that hold up under real deadlines, and platforms other people can use without me in the room.
+                        I&apos;m a creative technologist and AI artist in Berlin. I help brands, agencies, studios, and product teams turn generative AI into production work. Campaign visuals and film that hold up under a brand name, generative pipelines that hold up under real deadlines, and platforms other people can use without me in the room.
                     </p>
 
                     <p>
@@ -82,12 +82,12 @@ export default function AboutPage() {
 
                     <h2>Built for the agentic web</h2>
                     <p>
-                        This site is also an experiment in being readable by machines. Every project and post exists as structured data, the whole portfolio is queryable over a public <Link href="/agents">MCP server</Link>, and there is a dedicated mailbox for AI agents that want to get in touch on someone&apos;s behalf. For clients, agent surfaces like these are one part of the toolchain I work with, and I find it more honest to run them on my own site first.
+                        This site is also an experiment in being readable by machines. Every project and post exists as structured data, the whole portfolio is queryable over a public <Link href="/agents">MCP server</Link>, and there&apos;s a dedicated mailbox for AI agents that want to get in touch on someone&apos;s behalf. For clients, agent surfaces like these are one part of the toolchain I work with, and I find it more honest to run them on my own site first.
                     </p>
 
                     <h2>Work with me</h2>
                     <p>
-                        If you have a project that needs someone who understands both the creative and the technical side, I would like to hear about it.
+                        If you have a project that needs someone who understands both the creative and the technical side, I&apos;d like to hear about it.
                     </p>
 
                     <div className="about-page-actions">

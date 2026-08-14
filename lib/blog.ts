@@ -50,7 +50,10 @@ export function getPostBySlug(slug: string): Post {
 export function getAllPosts(): Post[] {
     const slugs = getPostSlugs();
     const posts = slugs
+        .filter((slug) => slug.endsWith(".mdx"))
         .map((slug) => getPostBySlug(slug))
+        // Drafts and template stubs without frontmatter are not posts
+        .filter((post) => Boolean(post.title && post.date))
         // Sort posts by date in descending order
         .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
     return posts;

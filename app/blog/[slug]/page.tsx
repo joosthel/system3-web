@@ -1,4 +1,4 @@
-import { getPostBySlug, getPostSlugs } from "@/lib/blog";
+import { getAllPosts, getPostBySlug } from "@/lib/blog";
 import { OG_DEFAULT_IMAGE, absoluteUrl } from "@/lib/metadata";
 import { SITE_CONFIG } from "@/lib/constants";
 import { blogPostingSchema, breadcrumbSchema, toJsonLd } from "@/lib/schema";
@@ -7,10 +7,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
-    const posts = getPostSlugs();
-    return posts.map((slug) => ({
-        slug: slug.replace(/\.mdx$/, ""),
-    }));
+    return getAllPosts().map((post) => ({ slug: post.slug }));
 }
 
 // Only the prerendered posts exist; without this Vercel provisions an
