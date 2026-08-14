@@ -1,0 +1,53 @@
+---
+title: "Is Local AI just another trend or is there something to it?"
+date: "2026-08-14"
+excerpt: "Open models now run close to the frontier on your own hardware. They're distillations, not magic, but they're private, stable, and genuinely usable. A look at whether local AI is a passing trend or something worth building on."
+tags: ["Opinion", "Strategy", "AI"]
+relatedPosts: ["pull-of-the-physical"]
+---
+
+Something shifted in the last few months. The AI models you can run on your own machine got a lot better. Not frontier-lab better, but close enough that the gap stopped being the first thing you notice. So the fair question is whether this is just another hype cycle, or whether there's something real here. I think there's something real.
+
+I want to be honest about what these models actually are. Most of the strong open ones are distillations. A large frontier model teaches a smaller one, and the smaller one inherits a good chunk of the behaviour without the size. That's not the same as running the original. But it turns out you don't always need the original. You need something that works, and these work.
+
+## The part people underrate: they don't move
+
+A model you run locally is frozen. It's a file on your disk. It won't change overnight, it won't get quantised under you, it won't get a safety update that changes how it answers next Tuesday. A hosted model can do all of that without telling you, and suddenly a prompt that worked last month behaves differently.
+
+For anything you want to depend on, that stability matters more than a few points on a benchmark. You test something once, and it keeps behaving the same way. That's rare right now, and it's worth a lot.
+
+And it's genuinely private. The data never leaves the machine. Not "encrypted in transit", not "we don't train on your data". It physically doesn't go anywhere.
+
+## It's not just text
+
+This isn't only a language-model story. A lot of the most interesting local AI work is in image and video. Tools like ComfyUI have been running on local hardware for years, and that whole ecosystem is open, fast-moving, and built around models you own. Some of the best generative visual work happening right now never touches a hosted API.
+
+The divide between open and closed is real, but it's smaller than the headlines make it sound. On plenty of tasks you'd struggle to tell which one produced the result.
+
+## The catch is hardware
+
+Here's the honest bottleneck. Getting started is not trivial, and good hardware is expensive. Running a capable model at usable speed means real GPU power, and that's an upfront cost, not a monthly one. The initial setup takes some patience too.
+
+That's the trade. You pay more at the start, and in return you own the thing.
+
+## So why bother?
+
+A few reasons, and they add up.
+
+Independence. You know exactly what's running, where, and what it costs. No surprise pricing, no rate limits, no model getting deprecated out from under you. A clear overview of the whole thing.
+
+Privacy, again, because it's the big one. For anyone handling sensitive data, "nothing leaves the premises" isn't a nice-to-have. It's the requirement.
+
+Uncensored models. This one matters for security work specifically. A lot of legitimate cybersecurity tasks, red-teaming, analysing malware, testing your own systems, run straight into a hosted model's refusals. A local model you control doesn't get in the way of work you're authorised to do.
+
+And agentic use cases. If you want an agent running around the clock, local AI changes the maths. No per-token cost climbing while it works, no limits, no meter running. It just runs, and you already paid for the hardware.
+
+## Where this is going
+
+The direction is clear even if the details aren't. Models keep getting smaller for the same capability, and that points at embedded systems and phones. Real AI running on hardware you carry, offline, is close. A lot of the research here is just getting started, which is the exciting part. There's a lot still to come.
+
+## So, trend or not?
+
+I don't think local AI replaces the frontier labs. For the hardest problems you still reach for the biggest models. But there's a real place for local, and it's bigger than most people assume. The use cases are genuinely interesting, and sometimes local is even faster, which opens up things you couldn't do with a round trip to an API.
+
+So not a trend. Or at least, not only one. I'm going to follow this field closely. It has too much potential to ignore, and right now it's still early enough to be fun.
