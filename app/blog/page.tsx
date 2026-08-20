@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getAllPosts } from "@/lib/blog";
 import { OG_DEFAULT_IMAGE } from "@/lib/metadata";
+import { blogCollectionSchema, toJsonLd } from "@/lib/schema";
 import BlogFilter from "./BlogFilter";
 
 export const metadata: Metadata = {
@@ -22,6 +23,10 @@ export default function BlogIndex() {
 
     return (
         <div className="blog-page">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(toJsonLd(blogCollectionSchema(posts))) }}
+            />
             <h1>Writing</h1>
             <BlogFilter
                 tags={tags}

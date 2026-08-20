@@ -5,6 +5,7 @@ import type { Post } from './blog';
 
 export const PERSON_ID = `${SITE_CONFIG.url}/#person`;
 export const WEBSITE_ID = `${SITE_CONFIG.url}/#website`;
+export const BLOG_ID = `${SITE_CONFIG.url}/blog#blog`;
 
 // Compact reference to the Person entity defined in the root layout graph.
 // Name and url are repeated so the node is still meaningful for parsers
@@ -123,11 +124,39 @@ export function blogPostingSchema(post: Post) {
         wordCount: post.content.trim().split(/\s+/).length,
         inLanguage: 'en',
         author: personRef(),
+        publisher: {
+            '@type': 'Organization',
+            name: SITE_CONFIG.author,
+            url: SITE_CONFIG.url,
+            logo: {
+                '@type': 'ImageObject',
+                url: absoluteUrl(OG_DEFAULT_IMAGE),
+            },
+        },
         isPartOf: {
             '@type': 'Blog',
+            '@id': BLOG_ID,
             name: 'Writing',
             url: absoluteUrl('/blog'),
         },
+    };
+}
+
+export function blogCollectionSchema(posts: Post[]) {
+    return {
+        '@type': 'Blog',
+        '@id': BLOG_ID,
+        name: 'Writing',
+        url: absoluteUrl('/blog'),
+        description:
+            'Notes on AI visual production, agentic workflows, and how brands show up for AI agents.',
+        creator: personRef(),
+        blogPost: posts.map((post) => ({
+            '@type': 'BlogPosting',
+            headline: post.title,
+            url: absoluteUrl(`/blog/${post.slug}`),
+            datePublished: new Date(post.date).toISOString(),
+        })),
     };
 }
 
