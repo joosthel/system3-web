@@ -41,24 +41,23 @@ export default function BlogFilter({ posts, tags }: { posts: BlogPost[]; tags: s
             <div>
                 {filtered.map((post) => (
                     <Link key={post.slug} href={`/blog/${post.slug}`} className="blog-list-item">
-                        <h2>{post.title}</h2>
-                        <div className="blog-meta">
-                            <time>
-                                {new Date(post.date).toLocaleDateString("en-US", {
-                                    year: "numeric",
-                                    month: "short",
-                                    day: "numeric",
-                                    timeZone: "UTC",
-                                })}
-                            </time>
-                            <span>·</span>
-                            <span>{post.readTime} min</span>
-                            {post.tags.length > 0 && (
-                                <>
-                                    <span>·</span>
-                                    <span>{post.tags.join(", ")}</span>
-                                </>
-                            )}
+                        <div className="blog-list-line">
+                            <h2>{post.title}</h2>
+                            <div className="blog-meta">
+                                <time>
+                                    {new Date(post.date).toLocaleDateString("en-US", {
+                                        year: "numeric",
+                                        month: "short",
+                                        timeZone: "UTC",
+                                    })}
+                                </time>
+                                {post.tags.length > 0 && (
+                                    <>
+                                        <span>·</span>
+                                        <span>{post.tags.join(", ")}</span>
+                                    </>
+                                )}
+                            </div>
                         </div>
                         <p>{post.excerpt}</p>
                     </Link>

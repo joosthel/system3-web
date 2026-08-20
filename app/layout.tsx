@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Doto } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import './globals.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -8,13 +8,6 @@ import { SITE_CONFIG } from '../lib/constants';
 const inter = Inter({
     subsets: ['latin'],
     variable: '--font-inter',
-    display: 'swap',
-});
-
-const doto = Doto({
-    subsets: ['latin'],
-    weight: ['400', '500', '600', '700'],
-    variable: '--font-doto',
     display: 'swap',
 });
 
@@ -63,7 +56,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en" className={`${inter.variable} ${doto.variable}`}>
+        <html lang="en" className={inter.variable}>
             <head>
                 <link rel="icon" type="image/png" href="/assets/favicon/favicon-96x96.png" sizes="96x96" />
                 <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg" />
