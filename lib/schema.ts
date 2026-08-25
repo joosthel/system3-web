@@ -143,7 +143,7 @@ export function serviceSchema(service: { id: string; title: string; description:
         areaServed: [
             { '@type': 'City', name: 'Berlin' },
             { '@type': 'Country', name: 'Germany' },
-            { '@type': 'AdministrativeArea', name: 'Remote (EU and worldwide)' },
+            { '@type': 'AdministrativeArea', name: 'Worldwide (remote and on-site)' },
         ],
     };
 }
@@ -167,7 +167,7 @@ export function packageOfferSchema(pkg: ServicePackage) {
             areaServed: [
                 { '@type': 'City', name: 'Berlin' },
                 { '@type': 'Country', name: 'Germany' },
-                { '@type': 'AdministrativeArea', name: 'Remote (EU and worldwide)' },
+                { '@type': 'AdministrativeArea', name: 'Worldwide (remote and on-site)' },
             ],
         },
     };

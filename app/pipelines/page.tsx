@@ -51,7 +51,7 @@ const PIPELINE_FAQS = [
     {
         question: 'Do you work with clients outside Berlin?',
         answer:
-            'Yes. On-site in Berlin and remote across Europe and worldwide. Pipelines are handed over as systems your team runs, so distance matters less after handover anyway.',
+            'Yes, worldwide. Most work runs remote; on-site visits happen wherever the project is, with travel costs covered by the client. Pipelines are handed over as systems your team runs, so distance matters less after handover anyway.',
     },
 ];
 

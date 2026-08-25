@@ -141,7 +141,7 @@ Fixed scope, fixed price, no discovery-call maze. Four engagements for bringing 
 
 - Fixed price quoted before work starts
 - Documentation the team can follow without help
-- On-site in Berlin, remote across Europe and worldwide
+- Remote worldwide; on-site visits anywhere, travel costs covered by the client
 - Assets stay on your hardware for everything local
 
 Prices are entry points; larger builds get scoped after an audit or pilot.

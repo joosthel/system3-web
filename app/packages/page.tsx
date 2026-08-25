@@ -17,7 +17,7 @@ const formatPrice = (value: number) =>
 const INCLUDED = [
     'Fixed price quoted before work starts',
     'Documentation your team can follow without help',
-    'On-site in Berlin, remote across Europe and worldwide',
+    'Remote worldwide; on-site visits anywhere, travel costs covered by the client',
     'Assets stay on your hardware for everything local',
 ];
 

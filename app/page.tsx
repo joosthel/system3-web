@@ -38,7 +38,7 @@ const HOME_FAQS = [
     {
         question: 'Is the work Berlin-based or remote?',
         answer:
-            'Both. Home base is Berlin, Germany, with projects across Europe and worldwide: on-site in Berlin, remote everywhere else.',
+            'Remote anywhere in the world. Home base is Berlin, Germany; on-site visits happen wherever the project is, with travel covered by the client.',
     },
 ];
 
