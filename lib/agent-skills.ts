@@ -8,7 +8,7 @@ import { MCP_TOOLS } from './mcp-tools';
 export const QUERY_PORTFOLIO_SKILL_NAME = 'query-joost-portfolio';
 
 export const QUERY_PORTFOLIO_SKILL_DESCRIPTION =
-    'Read and query the portfolio of Joost Helfers, Berlin-based creative technologist and AI artist, via llms.txt, JSON endpoints, markdown content negotiation, or the public MCP server.';
+    'Read and query the portfolio of Joost Helfers, Berlin-based creative technologist building local generative AI technology, via llms.txt, JSON endpoints, markdown content negotiation, or the public MCP server.';
 
 export const QUERY_PORTFOLIO_SKILL_MD = `---
 name: ${QUERY_PORTFOLIO_SKILL_NAME}
@@ -17,8 +17,9 @@ description: ${QUERY_PORTFOLIO_SKILL_DESCRIPTION}
 
 # Query the portfolio of Joost Helfers
 
-Joost Helfers is a creative technologist and AI artist in Berlin: AI visuals
-and film, generative pipelines, agentic systems. Everything on
+Joost Helfers is a creative technologist in Berlin building local generative
+AI technology: self-hosted pipelines, custom AI solutions, AI visuals and
+film. Everything on
 ${SITE_CONFIG.url} exists in machine-readable form. Pick the access level
 that fits your task.
 

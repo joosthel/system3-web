@@ -53,9 +53,15 @@ export function personSchema() {
         },
         knowsAbout: [
             'Generative AI',
-            'AI Visual Production',
+            'Local Generative AI Pipelines',
+            'Self-Hosted AI',
+            'Local LLM Inference',
             'ComfyUI',
+            'LoRA Training',
+            'AI Visual Production',
             'Prompt Engineering',
+            'Workflow Automation',
+            'Custom AI Solutions',
             'Agentic Workflows',
             'Generative Engine Optimization',
             'Model Context Protocol',
@@ -107,6 +113,37 @@ export function breadcrumbSchema(items: Array<{ name: string; path: string }>) {
             name: item.name,
             item: absoluteUrl(item.path),
         })),
+    };
+}
+
+export function faqPageSchema(faqs: Array<{ question: string; answer: string }>) {
+    return {
+        '@type': 'FAQPage',
+        mainEntity: faqs.map((faq) => ({
+            '@type': 'Question',
+            name: faq.question,
+            acceptedAnswer: {
+                '@type': 'Answer',
+                text: faq.answer,
+            },
+        })),
+    };
+}
+
+export function serviceSchema(service: { id: string; title: string; description: string }) {
+    return {
+        '@type': 'Service',
+        '@id': `${SITE_CONFIG.url}/pipelines#${service.id}`,
+        name: service.title,
+        description: service.description,
+        url: `${SITE_CONFIG.url}/pipelines#${service.id}`,
+        serviceType: service.title,
+        provider: personRef(),
+        areaServed: [
+            { '@type': 'City', name: 'Berlin' },
+            { '@type': 'Country', name: 'Germany' },
+            { '@type': 'AdministrativeArea', name: 'Remote (EU and worldwide)' },
+        ],
     };
 }
 

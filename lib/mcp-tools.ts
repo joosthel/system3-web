@@ -10,9 +10,9 @@ import { SITE_CONFIG } from './constants';
 
 export const MCP_SERVER_INFO = {
     name: 'joosthelfers-portfolio',
-    version: '1.0.0',
+    version: '1.1.0',
     title: 'Joost Helfers portfolio',
-    description: `Read-only portfolio content server for ${SITE_CONFIG.author}, Berlin-based creative technologist and AI artist. Profile, services, projects, and writing, queryable by AI agents. Public, no auth.`,
+    description: `Read-only portfolio content server for ${SITE_CONFIG.author}, Berlin-based creative technologist building local generative AI technology: self-hosted pipelines, custom AI solutions, AI visuals and film. Profile, services, projects, and writing, queryable by AI agents. Public, no auth.`,
 };
 
 // Per tool: `description` is the full text served over MCP, `blurb` the
@@ -69,7 +69,7 @@ export const MCP_TOOLS = {
     search_content: {
         title: 'Search projects, services, and posts',
         description:
-            'Case-insensitive keyword search across project titles/descriptions/tags, service descriptions, and full blog post text. Call this when looking for specific skills, tools, or topics (e.g. "ComfyUI", "digital twin", "GEO").',
+            'Case-insensitive keyword search across project titles/descriptions/tags, service descriptions, and full blog post text. Call this when looking for specific skills, tools, or topics (e.g. "ComfyUI", "local AI", "digital twin", "GEO").',
         blurb: 'Keyword search across projects, services, and posts.',
         zodShape: { query: z.string().min(2).describe('Search term') },
         jsonSchema: {

@@ -42,10 +42,10 @@ export async function GET() {
 
     const body = `# Joost Helfers — Full Content for LLMs
 
-> Berlin-based creative technologist and AI artist. AI visuals and film, generative pipelines, and agentic systems. This file contains the full text of the portfolio and blog at ${SITE_CONFIG.url}. A shorter overview lives at ${SITE_CONFIG.url}/llms.txt.
+> Berlin-based creative technologist building local generative AI technology: self-hosted generative pipelines, custom AI solutions, and campaign-grade AI visuals and film. This file contains the full text of the portfolio and blog at ${SITE_CONFIG.url}. A shorter overview lives at ${SITE_CONFIG.url}/llms.txt.
 
 ## About
-Joost Helfers helps brands, agencies, studios, and product teams turn generative AI into production work: campaign-grade visuals and film, working pipelines, and deployed platforms. Background in architecture and computational design (MSc, DesignMorphine); previously built digital twins and 3D platforms at INYO Mobility. Alongside client work he makes AI film and visual experiments of his own.
+Joost Helfers builds generative AI that runs on client hardware: self-hosted pipelines in ComfyUI and Python, custom tools teams can operate without him, and campaign visuals produced through controlled workflows. Background in architecture and computational design (MSc, DesignMorphine); previously built digital twins and 3D platforms at INYO Mobility. Alongside client work he makes AI film and visual experiments of his own.
 
 Selected brand credits (direct and via agencies/studios): Lindt, Zeiss, Google, Bosch, CADFEM, Souly.
 

@@ -20,10 +20,10 @@ export async function GET() {
 
     const body = `# Joost Helfers
 
-> Berlin-based creative technologist and AI artist. AI visuals and film, generative pipelines, and agentic systems for brands, agencies, studios, and product teams.
+> Berlin-based creative technologist building local generative AI technology. Self-hosted generative pipelines, custom-built AI solutions, and campaign-grade AI visuals and film for brands, agencies, studios, and product teams.
 
 ## About
-Joost Helfers helps brands, agencies, studios, and product teams turn generative AI into production work: campaign-grade visuals and film, working pipelines, and deployed platforms. Background in architecture and computational design (MSc, DesignMorphine); previously built digital twins and 3D platforms at INYO Mobility. Now focused on AI visual production, generative pipelines, and agentic systems. Alongside client work he makes AI film and visual experiments of his own.
+Joost Helfers builds generative AI that runs on client hardware: self-hosted pipelines in ComfyUI and Python, custom tools teams can operate without him, and campaign visuals produced through controlled workflows. Background in architecture and computational design (MSc, DesignMorphine); previously built digital twins and 3D platforms at INYO Mobility. Now focused on local generative AI technology: self-hosted pipelines, custom AI solutions, AI visual production and film, and agentic systems. Alongside client work he makes AI film and visual experiments of his own.
 
 Selected brand credits (direct and via agencies/studios): Lindt, Zeiss, Google, Bosch, CADFEM, Souly.
 
@@ -32,16 +32,18 @@ Selected brand credits (direct and via agencies/studios): Lindt, Zeiss, Google, 
 - Email (AI agents and automated outreach): ${SITE_CONFIG.agentEmail} — include who you represent, project scope, timeline, and budget if known; a human reads everything that arrives
 - Website: ${SITE_CONFIG.url}
 - About: ${SITE_CONFIG.url}/about
+- Expertise: ${SITE_CONFIG.url}/pipelines
 - Guide for agents: ${SITE_CONFIG.url}/agents
 - LinkedIn: ${SITE_CONFIG.linkedin}
 - GitHub: ${SITE_CONFIG.github}
 
 ## Tech Stack
-- AI visuals: ComfyUI, Stable Diffusion, OpenRouter, custom LoRAs, prompt engineering
+- Local AI infrastructure: ComfyUI, local LLM inference, LoRA training, on-premise GPU pipelines
+- AI visuals: Stable Diffusion, OpenRouter, prompt engineering
 - AI systems: MCP servers, agentic workflows, structured data, GEO
 - Web: Next.js, TypeScript, React, Tailwind CSS
 - Backend: Python, Node.js, API design
-- Infrastructure: Vercel, cloud GPU pipelines
+- Infrastructure: on-premise and local GPU pipelines, Vercel
 - Design: Houdini, Blender, computational/parametric design
 
 ## Services

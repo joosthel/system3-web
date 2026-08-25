@@ -115,33 +115,58 @@ export const ACTIVE_PROJECTS: ActiveProject[] = [
     }
 ];
 
-export const SERVICES = [
+export interface Service {
+    id: string;
+    title: string;
+    /** Short version for the home page capability rows and listings. */
+    description: string;
+    /** Longer paragraphs for the /pipelines expertise page. */
+    longDescription?: string[];
+    tags?: string[];
+}
+
+export const SERVICES: Service[] = [
+    {
+        id: 'local-pipelines',
+        title: 'Local Generative AI Pipelines',
+        description: 'Self-hosted generative pipelines and local LLM systems, engineered to run on your GPU hardware. Assets stay in-house, output repeats reliably, your team owns the system at handover.',
+        longDescription: [
+            'A local pipeline runs AI models on hardware you control: your workstation, an on-premise server, or a rented dedicated GPU. Nothing is sent to a hosted API. For brand work that means assets under NDA never leave the building, there is no per-request meter running, and a system you validated last quarter still behaves the same this quarter.',
+            'Systems get built end to end: generative image and video pipelines in ComfyUI, self-hosted language models for drafting, extraction, classification, and internal assistants, and the Python automation layer that ties them into production. Inputs are controlled, settings are versioned, and every step from raw input to delivered result repeats reliably.',
+            'Where the cloud is genuinely the better tool, that gets said plainly. But the default setup keeps the work on your side of the network line.',
+        ],
+        tags: ['On-Premise GPUs', 'ComfyUI', 'Local LLM Inference', 'Custom Nodes', 'LoRA Training', 'Python', 'Workflow Automation']
+    },
+    {
+        id: 'custom-solutions',
+        title: 'Custom AI Solutions & Creative Tooling',
+        description: 'Off-the-shelf tools rarely fit real production. Purpose-built web apps, internal tooling, and interfaces shaped around how a team actually works.',
+        longDescription: [
+            'Most AI tools are generic because they were built for everyone. Production teams need the opposite: a tool shaped around their briefs, their approval loops, and their asset formats.',
+            'Tools like these get designed and built end to end, from interface to model plumbing. Examples from real projects: a prompt enhancement engine that turns creative briefs into consistent production prompts, and segmentation interfaces that let non-engineers direct computer-vision models in the browser. Built with Next.js, TypeScript, and Python.',
+            'Everything ships documented well enough that a team can run it without outside help. Deliberately: tools you depend on should not depend on anyone else.',
+        ],
+        tags: ['Next.js', 'TypeScript', 'Python', 'API Design', 'Internal Tools', 'Creative Tooling', 'Full Stack']
+    },
     {
         id: 'ai-visuals',
         title: 'AI Visual Production & AI Film',
-        description: 'Campaign-grade AI visuals, video, and film. I work with generative models to produce imagery that meets the accuracy and quality demands of real brand work. Product consistency across shots, readable text in-frame, and coherent art direction from the first hero image to the final edit.',
-        image: '/assets/imgs/services/service_cgi.webp',
-        tags: ['Generative AI', 'AI Film', 'ComfyUI', 'Prompt Engineering', 'Video Production', 'Campaign Visuals', 'Brand Imagery']
-    },
-    {
-        id: 'automation',
-        title: 'Generative Pipelines & Creative Infrastructure',
-        description: 'Custom, scalable pipelines that automate the repetitive parts of design and content production. The result is faster turnaround, reliable outputs, and a clear path from an idea to a shippable asset. Built with ComfyUI, Python, and cloud infrastructure that teams can actually run.',
-        image: '/assets/imgs/services/service_truck.webp',
-        tags: ['ComfyUI', 'Generative Workflows', 'AI Integration', 'Python', 'Custom LoRAs', 'Cloud Integration', 'R&D', 'AI Strategy']
+        description: 'Campaign-grade AI visuals and film, produced through controlled pipelines: product consistency across shots, readable text in frame, art direction that survives client review.',
+        longDescription: [
+            'Campaign imagery has requirements a one-off generation cannot meet: the product looks like the product in every shot, typography in frame is correct, and the edit holds together. Getting there is a pipeline problem before it is a prompting problem.',
+            'Visuals and film come out of controlled workflows: reference-locked generation, controlled inputs, and real post-work. The result is imagery that holds up under a brand name, delivered at campaign speed.',
+            'This work runs on the same infrastructure as every other build here, locally where the project demands it.',
+        ],
+        tags: ['AI Visuals', 'AI Film', 'Generative Video', 'Campaign Imagery', 'Brand Consistency', 'Video Production', 'Post-Production']
     },
     {
         id: 'agentic-presence',
         title: 'Agentic Systems & GEO',
-        description: 'I make brands and portfolios readable for AI agents: llms.txt, structured data, machine-readable feeds, and MCP servers that let assistants query your content directly. More and more buying decisions start with a question to ChatGPT, Claude, or Perplexity instead of a search box; this is how you show up in the answer. Everything I offer here runs in production on this site first.',
-        image: '/assets/imgs/lab/genai_screens.webp',
-        tags: ['GEO', 'llms.txt', 'MCP Servers', 'Agentic Workflows', 'Structured Data', 'JSON-LD', 'Agent Discovery', 'Next.js']
-    },
-    {
-        id: 'digital-platforms',
-        title: 'Interactive Platforms & Creative Tools',
-        description: 'Functional environments where data and space meet. Digital twins, interactive configurators, and internal creative tools that make complex systems legible for engineering, sales, and storytelling. Built with React and the modern web stack.',
-        image: '/assets/imgs/services/service_digital-twin.webp',
-        tags: ['Digital Twin Development', 'Interactive Configurators', 'React / Next.js', 'Real-Time 3D', 'Unreal Engine', 'Data Integration', 'Platform Development']
+        description: 'Brands made readable for AI agents: structured data, llms.txt, machine-readable feeds, and MCP servers. So buying decisions that start as a question to ChatGPT or Claude end with you in the answer.',
+        longDescription: [
+            'More and more buying decisions start as a question to ChatGPT, Claude, or Perplexity instead of a search box. Showing up in the answer requires content machines can parse and trust: clean structured data, agent-readable formats, and interfaces agents can query directly.',
+            'The setup covers llms.txt, JSON-LD, machine-readable feeds, and MCP servers that let assistants pull facts about a business straight from the source. Everything on offer here runs in production on this site first, so you can inspect exactly what you would be getting.',
+        ],
+        tags: ['GEO', 'llms.txt', 'MCP Servers', 'Structured Data', 'JSON-LD', 'Agentic Workflows', 'Agent Discovery']
     }
 ];

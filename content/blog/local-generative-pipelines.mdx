@@ -1,0 +1,39 @@
+---
+title: "What goes into a local generative AI pipeline"
+date: "2026-08-25"
+excerpt: "A local pipeline is not a ComfyUI graph someone saved once. It's versioned workflows, controlled inputs, trained LoRAs where base models fall short, and an interface your team can actually use. A walkthrough of how I build these for client production."
+tags: ["Technical", "AI", "ComfyUI", "Pipelines"]
+relatedPosts: ["local-ai", "self-hosted-or-cloud", "qwen38-local"]
+---
+
+Most of my client work starts the same way. Someone has seen what generative models can do, they have real production requirements, and somewhere between those two things sits a gap that a saved ComfyUI graph cannot close. The gap is the pipeline. This post walks through what actually goes into one.
+
+## The definition I work with
+
+A local generative AI pipeline runs AI models on hardware you control instead of a hosted API. Your workstation or your own server. That choice has consequences people usually expect, like privacy and cost, and one they often miss: stability. Models you host yourself are files. They do not get updated under you, and a workflow you validated in March still behaves the same in September. For brand production, where a validated look has to survive weeks of review cycles, that stability is the feature.
+
+The range is wider than most people expect. Generative image and video pipelines built in ComfyUI. Self-hosted language models for drafting, extraction, classification, and internal assistants. Agents running on local hardware around the clock. Different models, one engineering standard underneath: controlled inputs, versioned settings, repeatable output.
+
+## Versioned workflows beat saved graphs
+
+The first step from hobby to production is treating workflows like code. Every ComfyUI graph gets versioned, every model gets pinned, and inputs are controlled rather than typed freehand into a node. When output drifts, we can point at what changed. When it works, we know exactly why, so we can reproduce it next month.
+
+This sounds bureaucratic but it is the opposite. It is what lets you move fast later, because nobody is afraid to touch the thing that produces the campaign assets.
+
+The same discipline carries over to local LLM systems, where it looks slightly different: models get pinned, prompts and retrieval setups get evaluated like code, and a change to the stack has to prove itself against the old one before it ships. A language model that starts answering differently after an update is exactly the problem versioning exists to prevent.
+
+## Where base models fall short
+
+Base models get you most of the way and then fail in specific, repeatable places. Product details drift across shots. A character looks slightly different in every frame. The style wanders toward generic. These failure modes have known fixes: LoRAs trained on your product or style, ControlNet-style conditioning for composition, custom nodes where the stock ones fall short. Training happens locally too, which matters more than it sounds, because reference material for a product launch tends to be exactly the kind of asset that should not leave the building.
+
+## The interface decides adoption
+
+Here is the part that gets skipped most often. The people using the pipeline day to day are designers and editors, not engineers. If running it means opening a node graph with forty nodes, adoption dies and the pipeline becomes something only I can operate. So most engagements include a small web interface on top, built with Next.js: pick the brief, upload references, get consistent outputs. The prompt enhancement engine I run live is a good example of the pattern.
+
+## Handover is part of the build
+
+I document workflows well enough that the team can run them without me in the room, and I train the people who will. Partly that is honesty about scope: if it only works while I am watching, it is not infrastructure, it is a service dependency. Mostly it is because the teams who own their pipelines end up using them far more than the ones who rent access to mine.
+
+## Where this is all going
+
+Local hardware keeps getting cheaper per unit of capability, and open image models keep closing the gap to hosted ones. The direction favors owning the pipeline. If any of this maps onto problems you have, my [expertise page](/pipelines) lays out how I work, and the earlier post on [whether local AI is a trend](/blog/local-ai) covers why I think the foundation is solid.

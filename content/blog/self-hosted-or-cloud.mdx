@@ -1,0 +1,35 @@
+---
+title: "Self-hosted or cloud API? An honest comparison"
+date: "2026-08-25"
+excerpt: "Local-first is how I build, but it isn't a religion. A concrete look at where self-hosted pipelines genuinely win: confidentiality, cost predictability, reproducibility. And the three situations where I'll recommend a hosted API instead."
+tags: ["Strategy", "AI", "Pipelines"]
+relatedPosts: ["local-generative-pipelines", "local-ai", "qwen38-local"]
+---
+
+I build local generative AI infrastructure for a living, so you would expect me to tell you it always wins. It does not. What it does is win decisively on a specific set of constraints that happen to cover a lot of production work, and lose on others that matter just as much in different projects. Here is how I actually decide.
+
+## Where self-hosted wins
+
+**Confidentiality is the clean one.** Assets generated locally never leave your network. Not encrypted in transit, not covered by a data processing agreement, just physically nowhere else. For NDA-heavy brand work this frequently decides the question before any other factor gets discussed.
+
+**Cost predictability comes second.** Hosted APIs meter per image or per token, which is fine until a campaign scales and the invoice becomes a line item someone questions. Local hardware costs what it costs up front, and after that generating ten thousand variants costs the same as generating ten.
+
+**Reproducibility is the underrated one.** Hosted models change under you. A provider updates a model, and a prompt chain you validated starts behaving differently mid-project with no way to pin the old behaviour. Locally, models are files. You pin them, and your validated workflow stays validated.
+
+## Where I will point you at a cloud API
+
+Three situations, and I run into all of them regularly.
+
+First, when the capability only exists as a hosted model. Some frontier capabilities have no open equivalent yet, and pretending otherwise wastes everyone's time. Second, when volume is too low to justify hardware. If you generate twenty images a month, the maths almost never works out for owning a GPU. Third, burst demand. When a project occasionally needs fifty times its normal throughput, elastic hosted capacity absorbs that and owned hardware cannot.
+
+A lot of real setups end up hybrid, and that is fine. The pipeline handles the high-volume, confidentiality-sensitive core locally; specific steps call out to hosted models where their capability earns it.
+
+## The honest trade-off
+
+What local asks of you is upfront effort. Hardware is a purchase, not a subscription. Someone has to engineer the workflows, keep them versioned, and maintain the stack. That work is exactly what I do for clients, but it should be scoped honestly against what production actually needs rather than assumed away.
+
+## The decision in one paragraph
+
+If your constraints are confidentiality, predictable cost, and outputs that must stay consistent over time, build local. If your constraint is access to the single best model for occasional use, use the cloud. Most teams I meet have more of the first set of constraints than they realised, which is why local-first has gone from ideological position to practical default in my work.
+
+If you want to see how that looks as built systems rather than arguments, there is a walkthrough in [what goes into a local generative AI pipeline](/blog/local-generative-pipelines), and my [expertise page](/pipelines) covers engagements.

@@ -57,7 +57,7 @@ const handler = createMcpHandler(
                     role: SITE_CONFIG.jobTitle,
                     location: 'Berlin, Germany',
                     summary:
-                        'Berlin-based creative technologist and AI artist. Helps brands, agencies, studios, and product teams turn generative AI into production work: campaign-grade AI visuals and film, generative pipelines, and platforms teams can run themselves. Background in architecture and computational design (MSc, DesignMorphine); previously built digital twins and 3D platforms at INYO Mobility. Alongside client work he makes AI film and visual experiments of his own.',
+                        'Berlin-based creative technologist building local generative AI technology. Self-hosted AI systems on client hardware: generative image and video pipelines (ComfyUI), local LLM systems, agentic automation (Python), custom solutions and creative tooling (Next.js, TypeScript), and campaign-grade AI visuals and film produced through controlled workflows. Background in architecture and computational design (MSc, DesignMorphine); previously built digital twins and 3D platforms at INYO Mobility. Alongside client work he makes AI film and visual experiments of his own.',
                     services: SERVICES.map((s) => ({ id: s.id, title: s.title })),
                     brandCredits:
                         'Lindt, Zeiss, Google, Bosch, CADFEM, Souly — direct and via agencies/studios that held the contract.',
@@ -72,6 +72,7 @@ const handler = createMcpHandler(
                         website: SITE_CONFIG.url,
                         about: `${SITE_CONFIG.url}/about`,
                         agents: `${SITE_CONFIG.url}/agents`,
+                        expertise: `${SITE_CONFIG.url}/pipelines`,
                         linkedin: SITE_CONFIG.linkedin,
                         github: SITE_CONFIG.github,
                         llmsTxt: `${SITE_CONFIG.url}/llms.txt`,
@@ -182,7 +183,7 @@ const handler = createMcpHandler(
     {
         serverInfo: { name: MCP_SERVER_INFO.name, version: MCP_SERVER_INFO.version },
         capabilities: { tools: {} },
-        instructions: `Read-only portfolio server for Joost Helfers, a Berlin-based creative technologist and AI artist (AI visuals and film, generative pipelines, agentic systems). Use get_profile for bio and contact, list_projects/get_project for case studies, list_posts/get_post for writing, and search_content for keyword lookups. For automated outreach, email ${SITE_CONFIG.agentEmail}. Endpoint: ${MCP_ENDPOINT}.`,
+        instructions: `Read-only portfolio server for Joost Helfers, a Berlin-based creative technologist building local generative AI technology (self-hosted pipelines, custom AI solutions, AI visuals and film, agentic systems). Use get_profile for bio and contact, list_services for capability matching, list_projects/get_project for case studies, list_posts/get_post for writing, and search_content for keyword lookups. For automated outreach, email ${SITE_CONFIG.agentEmail}. Endpoint: ${MCP_ENDPOINT}.`,
     },
     {
         basePath: '/api',

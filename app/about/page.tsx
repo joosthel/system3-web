@@ -7,11 +7,11 @@ import TrackedLink from '../components/TrackedLink';
 
 export const metadata: Metadata = {
     title: 'About',
-    description: 'Joost Helfers is a Berlin-based creative technologist and AI artist focused on AI visuals and film, generative pipelines, and agentic systems.',
+    description: 'Joost Helfers is a Berlin-based creative technologist building local generative AI technology: self-hosted pipelines, custom AI solutions, and campaign-grade AI visuals.',
     alternates: { canonical: '/about' },
     openGraph: {
         title: 'About | Joost Helfers',
-        description: 'Berlin-based creative technologist and AI artist focused on AI visuals and film, generative pipelines, and agentic systems.',
+        description: 'Berlin-based creative technologist building local generative AI technology: self-hosted pipelines, custom AI solutions, and campaign-grade AI visuals.',
         url: '/about',
         type: 'profile',
         images: [{ url: OG_DEFAULT_IMAGE, width: 1200, height: 630 }],
@@ -33,11 +33,11 @@ export default function AboutPage() {
 
                 <div className="about-page-content">
                     <p>
-                        I&apos;m a creative technologist and AI artist in Berlin. I help brands, agencies, studios, and product teams turn generative AI into production work. Campaign visuals and film that hold up under a brand name, generative pipelines that hold up under real deadlines, and platforms other people can use without me in the room.
+                        I&apos;m a creative technologist in Berlin. I build AI systems that run on hardware you control: self-hosted pipelines that turn models into production workflows, custom tools your team operates without me, and campaign-grade AI visuals produced on top of those same systems.
                     </p>
 
                     <p>
-                        My background is in architecture and computational design (MSc, DesignMorphine). Before going independent I built digital twins and 3D platforms at INYO Mobility. Today most of my work is AI visual production and AI systems. In practice that means generative pipelines in ComfyUI, prompt engineering at production scale, and full-stack AI tooling with Next.js and Python.
+                        My background is in architecture and computational design (MSc, DesignMorphine). Before going independent I built digital twins and 3D platforms at INYO Mobility. Today most of my work is local generative AI technology. In practice that means pipelines engineered in ComfyUI and Python, purpose-built interfaces with Next.js and TypeScript, and prompt engineering at production scale. Where a hosted model genuinely earns its place, I use one; the infrastructure underneath stays on my clients&apos; side of the network line by default.
                     </p>
 
                     <p>

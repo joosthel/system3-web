@@ -1,6 +1,6 @@
 {
   "name": "Joost Helfers",
-  "description": "Berlin-based creative technologist and AI artist. AI visuals and film, generative pipelines, and agentic systems for brands, agencies, studios, and product teams.",
+  "description": "Berlin-based creative technologist building local generative AI technology. Self-hosted AI pipelines, local LLM systems, custom AI solutions, and AI visuals and film for brands, agencies, studios, and product teams.",
   "url": "https://joosthelfers.com",
   "entry_point": "https://joosthelfers.com/llms.txt",
   "capabilities": ["content", "portfolio", "blog", "feeds", "mcp"],
@@ -34,6 +34,7 @@
     "health": "https://joosthelfers.com/api/health",
     "auth_md": "https://joosthelfers.com/auth.md",
     "about": "https://joosthelfers.com/about",
+    "expertise": "https://joosthelfers.com/pipelines",
     "sitemap": "https://joosthelfers.com/sitemap.xml",
     "robots_txt": "https://joosthelfers.com/robots.txt",
     "projects_json": "https://joosthelfers.com/api/projects.json",
