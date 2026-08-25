@@ -7,7 +7,7 @@ import { NextRequest, NextResponse } from 'next/server';
 // /.well-known, /imprint, /privacy, and /md itself are untouched. Keep the
 // matcher and getMarkdownParams() in lib/markdown.ts in step.
 export const config = {
-    matcher: ['/', '/about', '/agents', '/blog', '/blog/:slug', '/projects/:slug', '/pipelines'],
+    matcher: ['/', '/about', '/agents', '/blog', '/blog/:slug', '/projects/:slug', '/pipelines', '/packages'],
 };
 
 export default function proxy(req: NextRequest) {

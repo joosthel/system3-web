@@ -7,7 +7,7 @@ import TrackedLink from './TrackedLink';
 
 const NAV_LINKS = [
     { href: '/#work', label: 'Work' },
-    { href: '/pipelines', label: 'Expertise' },
+    { href: '/packages', label: 'Packages' },
     { href: '/about', label: 'About' },
     { href: '/blog', label: 'Writing' },
 ];

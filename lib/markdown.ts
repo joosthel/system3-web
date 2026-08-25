@@ -1,4 +1,4 @@
-import { PROJECTS, SERVICES } from './data';
+import { PROJECTS, SERVICES, PACKAGES } from './data';
 import { getAllPosts } from './blog';
 import { SITE_CONFIG, MCP_ENDPOINT } from './constants';
 import { MCP_TOOL_LIST } from './mcp-tools';
@@ -116,6 +116,39 @@ ${services}
 ## Questions
 
 ${faqs}
+
+## Contact
+
+- Humans: ${SITE_CONFIG.email}
+- AI agents and automated outreach: ${SITE_CONFIG.agentEmail}
+`,
+    );
+}
+
+function packagesMarkdown(): string {
+    const packages = PACKAGES.map(
+        (p) =>
+            `### ${p.name} — from €${p.priceFrom.toLocaleString('en-US')} (${p.duration})\n\n${p.tagline}\n\n${p.description}\n\nDeliverables:\n\n${p.deliverables.map((d) => `- ${d}`).join('\n')}\n\nBest for: ${p.bestFor}`,
+    ).join('\n\n');
+
+    return page(
+        '/packages',
+        `# Packages
+
+Fixed scope, fixed price, no discovery-call maze. Four engagements for bringing generative AI into production on your own hardware.
+
+## Included in every package
+
+- Fixed price quoted before work starts
+- Documentation the team can follow without help
+- On-site in Berlin, remote across Europe and worldwide
+- Assets stay on your hardware for everything local
+
+Prices are entry points; larger builds get scoped after an audit or pilot.
+
+## The packages
+
+${packages}
 
 ## Contact
 
@@ -262,6 +295,7 @@ export function getMarkdownParams(): Array<string[]> {
         ['about'],
         ['agents'],
         ['pipelines'],
+        ['packages'],
         ['blog'],
         ...getAllPosts().map((p) => ['blog', p.slug]),
         ...PROJECTS.map((p) => ['projects', p.id]),
@@ -274,6 +308,7 @@ export function renderMarkdown(segments: string[]): string | null {
         if (segments[0] === 'about') return aboutMarkdown();
         if (segments[0] === 'agents') return agentsMarkdown();
         if (segments[0] === 'pipelines') return pipelinesMarkdown();
+        if (segments[0] === 'packages') return packagesMarkdown();
         if (segments[0] === 'blog') return blogIndexMarkdown();
         return null;
     }

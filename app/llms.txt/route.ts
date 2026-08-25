@@ -33,6 +33,7 @@ Selected brand credits (direct and via agencies/studios): Lindt, Zeiss, Google, 
 - Website: ${SITE_CONFIG.url}
 - About: ${SITE_CONFIG.url}/about
 - Expertise: ${SITE_CONFIG.url}/pipelines
+- Packages (fixed-scope engagements with starting prices): ${SITE_CONFIG.url}/packages
 - Guide for agents: ${SITE_CONFIG.url}/agents
 - LinkedIn: ${SITE_CONFIG.linkedin}
 - GitHub: ${SITE_CONFIG.github}

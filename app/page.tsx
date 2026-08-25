@@ -71,8 +71,8 @@ export default async function Home() {
                             >
                                 Get in touch
                             </TrackedLink>
-                            <Link href="/pipelines" className="btn-secondary hero-secondary-link">
-                                How projects run
+                            <Link href="/packages" className="btn-secondary hero-secondary-link">
+                                See packages
                             </Link>
                         </div>
 

@@ -2,6 +2,7 @@ import { SITE_CONFIG } from './constants';
 import { OG_DEFAULT_IMAGE, absoluteUrl } from './metadata';
 import type { Project } from './data';
 import type { Post } from './blog';
+import type { ServicePackage } from './data';
 
 export const PERSON_ID = `${SITE_CONFIG.url}/#person`;
 export const WEBSITE_ID = `${SITE_CONFIG.url}/#website`;
@@ -144,6 +145,31 @@ export function serviceSchema(service: { id: string; title: string; description:
             { '@type': 'Country', name: 'Germany' },
             { '@type': 'AdministrativeArea', name: 'Remote (EU and worldwide)' },
         ],
+    };
+}
+
+export function packageOfferSchema(pkg: ServicePackage) {
+    const url = `${SITE_CONFIG.url}/packages#${pkg.id}`;
+    return {
+        '@type': 'Offer',
+        '@id': url,
+        name: pkg.name,
+        description: `${pkg.tagline} ${pkg.description}`,
+        url,
+        price: pkg.priceFrom,
+        priceCurrency: 'EUR',
+        itemOffered: {
+            '@type': 'Service',
+            name: pkg.name,
+            description: pkg.description,
+            serviceType: pkg.name,
+            provider: personRef(),
+            areaServed: [
+                { '@type': 'City', name: 'Berlin' },
+                { '@type': 'Country', name: 'Germany' },
+                { '@type': 'AdministrativeArea', name: 'Remote (EU and worldwide)' },
+            ],
+        },
     };
 }
 

@@ -73,6 +73,7 @@ const handler = createMcpHandler(
                         about: `${SITE_CONFIG.url}/about`,
                         agents: `${SITE_CONFIG.url}/agents`,
                         expertise: `${SITE_CONFIG.url}/pipelines`,
+                        packages: `${SITE_CONFIG.url}/packages`,
                         linkedin: SITE_CONFIG.linkedin,
                         github: SITE_CONFIG.github,
                         llmsTxt: `${SITE_CONFIG.url}/llms.txt`,
