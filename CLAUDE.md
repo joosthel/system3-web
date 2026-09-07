@@ -50,7 +50,12 @@ Content-Signal directives; Link headers live in `next.config.js` `headers()`.
 Markdown negotiation: `proxy.ts` rewrites page requests with
 `Accept: text/markdown` to `/md/*` routes built by `lib/markdown.ts` — update
 `lib/markdown.ts` when static-page copy changes, and `proxy.ts` + the `/md`
-params when pages are added. `llms@joosthelfers.com` (in
+params when pages are added. WebMCP: `app/components/WebMcpProvider.tsx` registers the
+same seven tools in-browser via `document.modelContext.registerTool()`, built
+by `lib/webmcp-tools.ts`; tool metadata lives zod-free in
+`lib/mcp-tool-meta.ts` (`lib/mcp-tools.ts` adds the zod shapes). Chrome
+149-156 needs an origin-trial token in `WEBMCP_ORIGIN_TRIAL_TOKEN`
+to expose tools without a flag. `llms@joosthelfers.com` (in
 `SITE_CONFIG.agentEmail`) is the contact address for AI agents and automated
 outreach; `mail@` stays the human channel. When projects, services, contact
 details, or MCP tools change, `lib/mcp-tools.ts` and the hand-maintained
@@ -72,3 +77,13 @@ credits, keep the honest qualifier: some work shipped via agencies that held the
 - Three.js is not a core skill: it was used on one project (INYO digital twin). It may
   appear as a tag on the INYO project pages only, never in bio, stack, or service copy.
 - Two projects are NDA ("NDA. Process only.") — never name those clients.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

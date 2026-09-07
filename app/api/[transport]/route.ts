@@ -3,6 +3,7 @@ import { PROJECTS, SERVICES, ACTIVE_PROJECTS } from '@/lib/data';
 import { getAllPosts } from '@/lib/blog';
 import { SITE_CONFIG, MCP_ENDPOINT } from '@/lib/constants';
 import { MCP_SERVER_INFO, MCP_TOOLS } from '@/lib/mcp-tools';
+import { PROFILE_SUMMARY } from '@/lib/mcp-tool-meta';
 import { absoluteUrl } from '@/lib/metadata';
 
 // Public, read-only MCP server over the same data the site renders
@@ -56,8 +57,7 @@ const handler = createMcpHandler(
                     name: SITE_CONFIG.author,
                     role: SITE_CONFIG.jobTitle,
                     location: 'Berlin, Germany',
-                    summary:
-                        'Berlin-based creative technologist building local generative AI technology. Self-hosted AI systems on client hardware: generative image and video pipelines (ComfyUI), local LLM systems, agentic automation (Python), custom solutions and creative tooling (Next.js, TypeScript), and campaign-grade AI visuals and film produced through controlled workflows. Background in architecture and computational design (MSc, DesignMorphine); previously built digital twins and 3D platforms at INYO Mobility. Alongside client work he makes AI film and visual experiments of his own.',
+                    summary: PROFILE_SUMMARY,
                     services: SERVICES.map((s) => ({ id: s.id, title: s.title })),
                     brandCredits:
                         'Lindt, Zeiss, Google, Bosch, CADFEM, Souly — direct and via agencies/studios that held the contract.',

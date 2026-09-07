@@ -229,6 +229,10 @@ ${tools}
 - ${SITE_CONFIG.url}/.well-known/agent-skills/index.json
 - ${SITE_CONFIG.url}/openapi.json, ${SITE_CONFIG.url}/api/health, ${SITE_CONFIG.url}/auth.md
 
+## Markdown and in-browser tools (WebMCP)
+
+Every page returns markdown when requested with \`Accept: text/markdown\`. In browsers that implement WebMCP (Chrome 149 and Edge 150 during the origin trial, or the enable-webmcp-testing flag), every page registers the same seven tools through document.modelContext.registerTool(), all marked readOnlyHint.
+
 ## Contact
 
 Automated and agent-initiated mail goes to ${SITE_CONFIG.agentEmail}. Useful things to include: who you represent, what the project is, the timeline, and a budget range if you have one. A human reads everything that arrives. Humans writing directly are better off at ${SITE_CONFIG.email}.

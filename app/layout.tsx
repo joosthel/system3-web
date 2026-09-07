@@ -64,6 +64,11 @@ export default function RootLayout({
                 <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png" />
                 <meta name="apple-mobile-web-app-title" content="JH" />
                 <link rel="manifest" href="/assets/favicon/site.webmanifest" />
+                {/* WebMCP origin trial (Chrome 149-156, Edge 150+): token from
+                    https://developer.chrome.com/origintrials, set at build time. */}
+                {process.env.WEBMCP_ORIGIN_TRIAL_TOKEN && (
+                    <meta httpEquiv="origin-trial" content={process.env.WEBMCP_ORIGIN_TRIAL_TOKEN} />
+                )}
                 <link rel="alternate" type="application/rss+xml" title="Joost Helfers. Writing." href="/feed.xml" />
                 <link rel="alternate" type="application/feed+json" title="Joost Helfers. Writing." href="/feed.json" />
             </head>

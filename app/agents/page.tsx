@@ -105,9 +105,17 @@ export default function AgentsPage() {
                     <p>
                         Every page here returns markdown when requested with an{' '}
                         <code>Accept: text/markdown</code> header; browsers keep getting
-                        HTML. In browsers that support WebMCP, the site also registers a
-                        small set of tools (profile, projects, search) through{' '}
-                        <code>navigator.modelContext</code>.
+                        HTML.
+                    </p>
+                    <p>
+                        In browsers that implement WebMCP (Chrome 149 and Edge 150 during
+                        the origin trial, or any Chromium build with the{' '}
+                        <code>enable-webmcp-testing</code> flag), every page registers the
+                        same seven tools listed above through{' '}
+                        <code>document.modelContext.registerTool()</code>. An agent working
+                        inside the browser can query the portfolio without leaving the page
+                        or scraping it. All tools carry <code>readOnlyHint</code>; nothing
+                        here changes state.
                     </p>
 
                     <h2>Contact</h2>

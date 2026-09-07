@@ -1,117 +1,52 @@
-"use client";
+'use client';
 
 import { useEffect } from 'react';
-import { SITE_CONFIG, MCP_ENDPOINT } from '../../lib/constants';
+import { buildWebMcpTools, type WebMcpTool } from '@/lib/webmcp-tools';
 
-// WebMCP: expose a few site tools to AI agents running in the browser via
-// navigator.modelContext.provideContext(). Hard no-op in browsers without
-// the API. Data comes inline from SITE_CONFIG (already in the bundle) or
-// lazily from the existing JSON endpoints, so the component stays tiny.
+// WebMCP: register the portfolio's read-only tools with the browser so an
+// in-page agent (Gemini in Chrome, Edge Copilot, ChatGPT Desktop, ...) can
+// query the site without scraping it. Current spec and Chrome 149+ expose
+// document.modelContext.registerTool(); early-preview builds exposed
+// navigator.modelContext.provideContext(), which is kept as a fallback.
+// Hard no-op everywhere else. Production exposure in Chrome 149-156 needs
+// an origin-trial token (WEBMCP_ORIGIN_TRIAL_TOKEN, see layout).
 
-type TextResult = { content: Array<{ type: 'text'; text: string }> };
-
-type WebMcpTool = {
-    name: string;
-    description: string;
-    inputSchema: Record<string, unknown>;
-    execute: (args?: Record<string, unknown>) => Promise<TextResult>;
+type ModelContextLike = {
+    registerTool?: (tool: WebMcpTool, options?: { signal?: AbortSignal }) => Promise<void>;
+    provideContext?: (context: { tools: unknown[] }) => void;
 };
 
-type ModelContext = {
-    provideContext?: (context: { tools: WebMcpTool[] }) => void;
-};
-
-const text = (data: unknown): TextResult => ({
-    content: [{ type: 'text', text: JSON.stringify(data, null, 2) }],
-});
-
-const fetchJson = (path: string): Promise<Array<Record<string, unknown>>> =>
-    fetch(path).then((res) => res.json());
-
-let registered = false;
+function getModelContext(): ModelContextLike | undefined {
+    const doc = document as Document & { modelContext?: ModelContextLike };
+    const nav = navigator as Navigator & { modelContext?: ModelContextLike };
+    return doc.modelContext ?? nav.modelContext;
+}
 
 export default function WebMcpProvider() {
     useEffect(() => {
-        if (registered) return;
-        const modelContext = (navigator as Navigator & { modelContext?: ModelContext })
-            .modelContext;
-        if (typeof modelContext?.provideContext !== 'function') return;
-        registered = true;
+        const context = getModelContext();
+        if (!context) return;
+        const tools = buildWebMcpTools();
 
-        modelContext.provideContext({
-            tools: [
-                {
-                    name: 'get_profile',
-                    description:
-                        'Who Joost Helfers is (Berlin-based creative technologist and AI artist), what he offers, and how to reach him.',
-                    inputSchema: { type: 'object', properties: {} },
-                    execute: async () =>
-                        text({
-                            name: SITE_CONFIG.author,
-                            role: SITE_CONFIG.jobTitle,
-                            location: 'Berlin, Germany',
-                            description: SITE_CONFIG.description,
-                            contact: {
-                                humans: SITE_CONFIG.email,
-                                agents: SITE_CONFIG.agentEmail,
-                            },
-                            links: {
-                                website: SITE_CONFIG.url,
-                                agentsGuide: `${SITE_CONFIG.url}/agents`,
-                                mcp: MCP_ENDPOINT,
-                                linkedin: SITE_CONFIG.linkedin,
-                                github: SITE_CONFIG.github,
-                            },
-                        }),
-                },
-                {
-                    name: 'list_projects',
-                    description:
-                        'All portfolio projects with title, description, tags, and URL.',
-                    inputSchema: { type: 'object', properties: {} },
-                    execute: async () => text(await fetchJson('/api/projects.json')),
-                },
-                {
-                    name: 'search_content',
-                    description:
-                        'Case-insensitive keyword search across portfolio projects and blog posts.',
-                    inputSchema: {
-                        type: 'object',
-                        properties: {
-                            query: {
-                                type: 'string',
-                                description: 'Search term, at least 2 characters',
-                            },
-                        },
-                        required: ['query'],
-                    },
-                    execute: async (args) => {
-                        const query = String(args?.query ?? '').trim().toLowerCase();
-                        if (query.length < 2) {
-                            return text({ error: 'query must be at least 2 characters' });
-                        }
-                        const [projects, posts] = await Promise.all([
-                            fetchJson('/api/projects.json'),
-                            fetchJson('/api/blog.json'),
-                        ]);
-                        const hit = (item: Record<string, unknown>, fields: string[]) =>
-                            fields
-                                .map((field) => {
-                                    const value = item[field];
-                                    return Array.isArray(value) ? value.join(' ') : String(value ?? '');
-                                })
-                                .join(' ')
-                                .toLowerCase()
-                                .includes(query);
-                        return text({
-                            query,
-                            projects: projects.filter((p) => hit(p, ['title', 'description', 'tags'])),
-                            posts: posts.filter((p) => hit(p, ['title', 'excerpt', 'tags'])),
-                        });
-                    },
-                },
-            ],
-        });
+        if (typeof context.registerTool === 'function') {
+            const controller = new AbortController();
+            for (const tool of tools) {
+                // NotAllowedError when a Permissions-Policy disables `tools`.
+                context.registerTool(tool, { signal: controller.signal }).catch(() => undefined);
+            }
+            return () => controller.abort();
+        }
+
+        if (typeof context.provideContext === 'function') {
+            context.provideContext({
+                tools: tools.map((tool) => ({
+                    ...tool,
+                    execute: async (input?: Record<string, unknown>) => ({
+                        content: [{ type: 'text', text: JSON.stringify(await tool.execute(input), null, 2) }],
+                    }),
+                })),
+            });
+        }
     }, []);
 
     return null;

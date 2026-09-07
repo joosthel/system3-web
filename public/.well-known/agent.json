@@ -3,13 +3,27 @@
   "description": "Berlin-based creative technologist building local generative AI technology. Self-hosted AI pipelines, local LLM systems, custom AI solutions, and AI visuals and film for brands, agencies, studios, and product teams.",
   "url": "https://joosthelfers.com",
   "entry_point": "https://joosthelfers.com/llms.txt",
-  "capabilities": ["content", "portfolio", "blog", "feeds", "mcp"],
+  "capabilities": ["content", "portfolio", "blog", "feeds", "mcp", "webmcp"],
   "contact": "mailto:mail@joosthelfers.com",
   "agent_contact": "mailto:llms@joosthelfers.com",
   "mcp": {
     "endpoint": "https://joosthelfers.com/api/mcp",
     "transport": "streamable-http",
     "auth": "none",
+    "tools": [
+      "get_profile",
+      "list_services",
+      "list_projects",
+      "get_project",
+      "list_posts",
+      "get_post",
+      "search_content"
+    ]
+  },
+  "webmcp": {
+    "api": "document.modelContext",
+    "registered_on": "every page",
+    "read_only": true,
     "tools": [
       "get_profile",
       "list_services",
