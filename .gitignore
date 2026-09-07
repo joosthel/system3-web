@@ -32,3 +32,4 @@ ts-debug.log*
 .agents/
 .claude/skills/
 skills-lock.json
+tsconfig.tsbuildinfo
