@@ -67,6 +67,7 @@ export default function ProjectIndex({ projects }: { projects: Project[] }) {
                         className="project-row"
                         onMouseEnter={() => setActive(i)}
                     >
+                        <span className="project-row-number">{String(i + 1).padStart(2, '0')}</span>
                         <h3 className="project-row-title">{project.title}</h3>
                         <span className="meta project-row-meta">
                             {[project.category, project.date?.slice(0, 4), project.badge]

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Script from 'next/script';
 import ProjectIndex from './components/ProjectIndex';
 import RevealOnScroll from './components/RevealOnScroll';
+import GpuField from './components/GpuField';
 import { SITE_CONFIG } from '../lib/constants';
 import { PROJECTS, SERVICES } from '../lib/data';
 import { faqPageSchema, toJsonLd } from '../lib/schema';
@@ -49,6 +50,7 @@ export default async function Home() {
         <div className="home-container">
             {/* Hero */}
             <section className="hero-section">
+                <GpuField />
                 <div className="hero-content">
                     <div className="hero-text">
                         <div className="hero-intro">
@@ -98,8 +100,12 @@ export default async function Home() {
                             ar
                             ar-modes="webxr scene-viewer"
                             shadow-intensity="1"
+                            interaction-prompt="none"
                             camera-target="0m 1m 0m"
-                            camera-orbit="0deg 80deg 2m"
+                            camera-orbit="0deg 82deg 4m"
+                            field-of-view="30deg"
+                            min-camera-orbit="auto auto 3m"
+                            max-camera-orbit="auto auto 6m"
                             src="/assets/3D/Joost_Waving_AI.glb"
                             alt="A 3D model of myself waving and greeting you">
                             {/* @ts-expect-error - model-viewer is a custom element */}
@@ -241,6 +247,7 @@ export default async function Home() {
 
             {/* Contact — light panel bookend, last stop */}
             <section id="contact" className="contact-section">
+                <GpuField variant="panel" />
                 <RevealOnScroll>
                     <div className="contact-inner">
                         <div className="section-header section-header-light">

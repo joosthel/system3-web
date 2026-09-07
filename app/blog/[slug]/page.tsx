@@ -5,6 +5,7 @@ import { blogPostingSchema, breadcrumbSchema, toJsonLd } from "@/lib/schema";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import ReadingProgress from "@/app/components/ReadingProgress";
 
 export async function generateStaticParams() {
     return getAllPosts().map((post) => ({ slug: post.slug }));
@@ -66,6 +67,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
     return (
             <article className="blog-post">
+                <ReadingProgress />
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{

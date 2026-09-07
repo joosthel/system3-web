@@ -11,13 +11,14 @@ export default function Footer() {
     useEffect(() => {
         function updateBerlinTime() {
             try {
-                const berlinTime = new Date().toLocaleTimeString('en-US', {
+                // en-GB yields "17:42 CEST" / "17:42 CET"; en-US would print "GMT+2".
+                setTime(new Date().toLocaleTimeString('en-GB', {
                     timeZone: 'Europe/Berlin',
                     hour: '2-digit',
                     minute: '2-digit',
                     hour12: false,
-                });
-                setTime(`${berlinTime} CET`);
+                    timeZoneName: 'short',
+                }));
             } catch {
                 setTime('Berlin, Germany');
             }
@@ -78,6 +79,7 @@ export default function Footer() {
                         <Link href="/privacy">Privacy</Link>
                     </div>
                     <div className="footer-location">
+                        <span className="live-dot" aria-hidden="true" />
                         Berlin {time && `· ${time}`}
                     </div>
                 </div>

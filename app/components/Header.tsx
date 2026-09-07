@@ -1,6 +1,7 @@
 "use client";
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { SITE_CONFIG } from '../../lib/constants';
 import TrackedLink from './TrackedLink';
@@ -14,6 +15,12 @@ const NAV_LINKS = [
 
 export default function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
+    const pathname = usePathname();
+
+    const isCurrent = (href: string) => {
+        const path = href.split('#')[0] || '/';
+        return path === '/' ? pathname === '/' : pathname === path || pathname.startsWith(`${path}/`);
+    };
 
     useEffect(() => {
         if (!menuOpen) return;
@@ -33,14 +40,19 @@ export default function Header() {
         <header className="site-header">
             <Link href="/" className="header-left" title={SITE_CONFIG.title}>
                 <span className="header-logo">
-                    <img src="/assets/imgs/JH_Logo-black.png" alt={`${SITE_CONFIG.author} logo`} />
+                    <img src="/assets/imgs/JH_Logo-black-88.png" alt={`${SITE_CONFIG.author} logo`} width="22" height="22" />
                 </span>
                 <span className="site-title">Joost Helfers</span>
             </Link>
 
             <nav className="header-nav">
                 {NAV_LINKS.map((link) => (
-                    <Link key={link.href} href={link.href} className="header-nav-link">
+                    <Link
+                        key={link.href}
+                        href={link.href}
+                        className="header-nav-link"
+                        aria-current={isCurrent(link.href) ? 'page' : undefined}
+                    >
                         {link.label}
                     </Link>
                 ))}
